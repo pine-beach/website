@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started — Business in a Box | Pine Beach</title>
+  <meta name="description" content="Everything you need to know before buying Business in a Box. Full setup walkthrough — what you need, how it works, and what you'll have at the end." />
+  <meta property="og:title" content="Getting Started — Business in a Box | Pine Beach" />
+  <meta property="og:description" content="Full setup guide. No surprises. 45–90 minutes from zero to a working AI team." />
+  <meta property="og:image" content="./logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ─────────────────────────────────────
+       Getting Started — page-specific styles
+    ───────────────────────────────────────*/
+
+    /* Page hero — condensed, document feel */
+    .doc-hero {
+      padding-top: 96px;
+      padding-bottom: 0;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .doc-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--charcoal-10) 1px, transparent 1px),
+        linear-gradient(90deg, var(--charcoal-10) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      opacity: .4;
+    }
+
+    .doc-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-block: 3.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .doc-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      font-size: .875rem;
+      color: var(--charcoal-60);
+      font-weight: 450;
+      transition: color var(--transition), gap var(--transition);
+      margin-bottom: .5rem;
+    }
+    .doc-back-link:hover { color: var(--charcoal); gap: .5rem; }
+
+    .doc-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .3rem .75rem;
+      border: 1.5px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      width: fit-content;
+    }
+
+    .doc-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.1;
+      color: var(--charcoal);
+      max-width: 24ch;
+    }
+
+    .doc-hero-sub {
+      font-size: 1.0625rem;
+      color: var(--charcoal-60);
+      line-height: 1.65;
+      max-width: 54ch;
+    }
+
+    /* Time estimate chips */
+    .doc-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .625rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .doc-meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      padding: .375rem .875rem;
+      border: 1.5px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      font-size: .8125rem;
+      color: var(--charcoal-60);
+      background: var(--white);
+    }
+
+    .doc-meta-chip svg { color: var(--amber-dim); flex-shrink: 0; }
+
+    /* Phase nav strip */
+    .phase-nav {
+      background: var(--charcoal);
+      position: sticky;
+      top: 64px;
+      z-index: 90;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .phase-nav::-webkit-scrollbar { display: none; }
+
+    .phase-nav-inner {
+      display: flex;
+      align-items: stretch;
+      min-width: max-content;
+    }
+
+    .phase-nav-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .875rem 1.25rem;
+      font-size: .8125rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.45);
+      border-right: 1px solid rgba(255,255,255,.08);
+      transition: color var(--transition), background var(--transition);
+      white-space: nowrap;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .phase-nav-item:hover { color: rgba(255,255,255,.85); background: rgba(255,255,255,.05); }
+    .phase-nav-item.active { color: var(--amber-light); }
+
+    .phase-nav-num {
+      font-size: .6875rem;
+      font-weight: 600;
+      color: var(--amber-dim);
+      letter-spacing: .06em;
+    }
+
+    /* Main doc layout */
+    .doc-layout {
+      display: grid;
+      gap: 0;
+      background: var(--white);
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        grid-template-columns: 240px 1fr;
+        align-items: start;
+        gap: 0;
+      }
+    }
+
+    /* Sidebar TOC */
+    .doc-sidebar {
+      display: none;
+      position: sticky;
+      top: calc(64px + 45px);
+      height: calc(100vh - 110px);
+      overflow-y: auto;
+      padding: 2rem 1.5rem 2rem 0;
+      border-right: 1.5px solid var(--border);
+    }
+
+    @media (min-width: 1024px) {
+      .doc-sidebar { display: block; }
+    }
+
+    .sidebar-label {
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--charcoal-40);
+      margin-bottom: .75rem;
+      padding-left: 1.5rem;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .5rem 1rem .5rem 1.5rem;
+      font-size: .875rem;
+      color: var(--charcoal-60);
+      border-radius: 0;
+      transition: color var(--transition), background var(--transition);
+      line-height: 1.4;
+    }
+    .sidebar-link:hover { color: var(--charcoal); background: var(--offwhite); }
+    .sidebar-link.active {
+      color: var(--charcoal);
+      font-weight: 500;
+      border-left: 2px solid var(--charcoal);
+      padding-left: calc(1.5rem - 2px);
+      background: var(--offwhite);
+    }
+
+    .sidebar-num {
+      font-size: .6875rem;
+      color: var(--amber-dim);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* Doc content area */
+    .doc-content {
+      padding: 3rem 0;
+      min-width: 0;
+    }
+
+    @media (min-width: 1024px) {
+      .doc-content { padding: 3rem 0 3rem 3rem; }
+    }
+
+    /* Path selector */
+    .path-selector {
+      display: grid;
+      gap: 1px;
+      border: 1.5px solid var(--border-mid);
+      margin-bottom: 3rem;
+      background: var(--border-mid);
+    }
+
+    @media (min-width: 640px) {
+      .path-selector { grid-template-columns: 1fr 1fr; }
+    }
+
+    .path-card {
+      background: var(--white);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: .625rem;
+      cursor: default;
+    }
+
+    .path-card-label {
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber-dim);
+    }
+
+    .path-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      line-height: 1.2;
+    }
+
+    .path-card p {
+      font-size: .9rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+    }
+
+    .path-card-cta {
+      margin-top: .5rem;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      border-bottom: 1px solid var(--charcoal);
+      padding-bottom: 1px;
+      width: fit-content;
+      transition: gap var(--transition), opacity var(--transition);
+    }
+    .path-card-cta:hover { gap: .55rem; opacity: .7; }
+
+    /* Phase sections — accordion-style */
+    .phase-section {
+      border: 1.5px solid var(--border-mid);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem 1.75rem;
+      cursor: pointer;
+      background: var(--white);
+      transition: background var(--transition);
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .phase-header:hover { background: var(--offwhite); }
+    .phase-header.open { background: var(--charcoal); color: white; }
+
+    .phase-num-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid var(--border-mid);
+      flex-shrink: 0;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      color: var(--amber-dim);
+      background: var(--white);
+      transition: border-color var(--transition), background var(--transition), color var(--transition);
+    }
+    .phase-header.open .phase-num-badge {
+      background: var(--amber);
+      border-color: var(--amber-dim);
+      color: var(--charcoal);
+    }
+
+    .phase-header-text {
+      flex: 1;
+    }
+
+    .phase-header-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      line-height: 1.2;
+      transition: color var(--transition);
+    }
+    .phase-header.open .phase-header-title { color: #fff; }
+
+    .phase-header-sub {
+      font-size: .8125rem;
+      color: var(--charcoal-60);
+      margin-top: .25rem;
+      line-height: 1.4;
+      transition: color var(--transition);
+    }
+    .phase-header.open .phase-header-sub { color: rgba(255,255,255,.55); }
+
+    .phase-chevron {
+      color: var(--charcoal-40);
+      transition: transform var(--transition), color var(--transition);
+      flex-shrink: 0;
+    }
+    .phase-header.open .phase-chevron { transform: rotate(180deg); color: rgba(255,255,255,.5); }
+
+    .phase-body {
+      display: none;
+      border-top: 1.5px solid var(--border);
+      background: var(--white);
+    }
+    .phase-body.open { display: block; }
+
+    .phase-body-inner {
+      padding: 2rem 1.75rem;
+    }
+
+    /* Step cards within phases */
+    .step-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1.5px solid var(--border);
+      margin-block: 1.5rem;
+      background: var(--border);
+    }
+
+    .step-card {
+      background: var(--white);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .step-card-header {
+      display: flex;
+      align-items: center;
+      gap: .875rem;
+    }
+
+    .step-card-num {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--border-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .6875rem;
+      font-weight: 700;
+      color: var(--amber-dim);
+      letter-spacing: .05em;
+      flex-shrink: 0;
+    }
+
+    .step-card-title {
+      font-size: .9375rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .step-card-body {
+      font-size: .9rem;
+      color: var(--charcoal-60);
+      line-height: 1.65;
+      padding-left: calc(28px + .875rem);
+    }
+
+    /* Checkpoint block */
+    .checkpoint {
+      border: 1.5px solid var(--green);
+      background: rgba(45,74,62,.04);
+      padding: 1.25rem 1.5rem;
+      margin-block: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .625rem;
+    }
+
+    .checkpoint-label {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    .checkpoint p {
+      font-size: .9rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+    }
+
+    /* Code blocks */
+    .code-block {
+      background: var(--charcoal);
+      border: 1.5px solid var(--charcoal-80);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.5rem;
+      margin-block: 1rem;
+      overflow-x: auto;
+    }
+
+    .code-block code {
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+      font-size: .8125rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.88);
+      white-space: pre;
+    }
+
+    .code-block code .cm { color: rgba(255,255,255,.35); }      /* comment */
+    .code-block code .kw { color: var(--amber-light); }          /* keyword */
+    .code-block code .str { color: #a8d8a8; }                    /* string */
+    .code-block code .cmd { color: #b4d4ff; }                    /* command */
+
+    /* Inline code */
+    code:not(.code-block code) {
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+      font-size: .85em;
+      background: var(--cream);
+      border: 1px solid var(--border-mid);
+      padding: .1em .4em;
+      border-radius: var(--radius-sm);
+      color: var(--charcoal);
+    }
+
+    /* Callout / warning */
+    .callout {
+      border-left: 3px solid var(--amber-dim);
+      padding: 1rem 1.25rem;
+      background: rgba(212,165,116,.06);
+      margin-block: 1rem;
+    }
+
+    .callout p {
+      font-size: .9rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .callout strong { color: var(--charcoal); }
+
+    .callout--green {
+      border-left-color: var(--green);
+      background: rgba(45,74,62,.05);
+    }
+
+    /* Tables in docs */
+    .doc-table-wrap {
+      overflow-x: auto;
+      margin-block: 1.25rem;
+      border: 1.5px solid var(--border-mid);
+    }
+
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .875rem;
+    }
+
+    .doc-table th {
+      background: var(--charcoal);
+      color: rgba(255,255,255,.75);
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .75rem 1rem;
+      text-align: left;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .doc-table th:last-child { border-right: none; }
+
+    .doc-table td {
+      padding: .75rem 1rem;
+      color: var(--charcoal-80);
+      border-right: 1.5px solid var(--border);
+      border-bottom: 1.5px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .doc-table td:last-child { border-right: none; }
+    .doc-table tr:last-child td { border-bottom: none; }
+    .doc-table tr:nth-child(even) td { background: var(--offwhite); }
+
+    /* Doc prose elements */
+    .doc-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      margin-top: 2rem;
+      margin-bottom: .75rem;
+    }
+
+    .doc-body h4 {
+      font-size: .9375rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-top: 1.5rem;
+      margin-bottom: .5rem;
+    }
+
+    .doc-body p {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.7;
+      margin-bottom: .75rem;
+    }
+
+    .doc-body ul {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-bottom: .75rem;
+      padding-left: 0;
+    }
+
+    .doc-body ul li {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      display: flex;
+      gap: .625rem;
+      align-items: flex-start;
+    }
+
+    .doc-body ul li::before {
+      content: '—';
+      color: var(--amber-dim);
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .doc-body ol {
+      list-style: none;
+      counter-reset: ol-counter;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-bottom: .75rem;
+    }
+
+    .doc-body ol li {
+      counter-increment: ol-counter;
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      display: flex;
+      gap: .625rem;
+      align-items: flex-start;
+    }
+
+    .doc-body ol li::before {
+      content: counter(ol-counter) '.';
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--amber-dim);
+      flex-shrink: 0;
+      padding-top: 2px;
+      min-width: 1.25rem;
+    }
+
+    /* Role table in path selector */
+    .role-grid {
+      display: grid;
+      gap: 1px;
+      background: var(--border);
+      border: 1.5px solid var(--border-mid);
+      margin-block: 1rem;
+    }
+
+    @media (min-width: 480px) {
+      .role-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 768px) {
+      .role-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .role-cell {
+      background: var(--white);
+      padding: 1rem 1.25rem;
+    }
+
+    .role-emoji { font-size: 1.25rem; line-height: 1; margin-bottom: .375rem; }
+    .role-name { font-size: .9rem; font-weight: 600; color: var(--charcoal); margin-bottom: .25rem; }
+    .role-desc { font-size: .8rem; color: var(--charcoal-60); line-height: 1.5; }
+
+    /* CTA bar at bottom */
+    .doc-cta-bar {
+      background: var(--charcoal);
+      padding: 3rem 0;
+      margin-top: 3rem;
+      border-top: 1.5px solid var(--border);
+    }
+
+    .doc-cta-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 640px) {
+      .doc-cta-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .doc-cta-text h2 {
+      font-family: var(--font-serif);
+      font-size: 1.625rem;
+      color: #fff;
+      margin-bottom: .5rem;
+    }
+
+    .doc-cta-text p {
+      font-size: .9375rem;
+      color: rgba(255,255,255,.55);
+      max-width: 44ch;
+      line-height: 1.6;
+    }
+
+    /* Open/closed all controls */
+    .expand-controls {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .expand-btn {
+      font-size: .8125rem;
+      font-weight: 500;
+      color: var(--charcoal-60);
+      cursor: pointer;
+      padding: .375rem .75rem;
+      border: 1.5px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .expand-btn:hover { background: var(--offwhite); border-color: var(--charcoal-20); color: var(--charcoal); }
+
+    /* Phase 5 task cards */
+    .task-cards {
+      display: grid;
+      gap: 1px;
+      background: var(--border);
+      border: 1.5px solid var(--border-mid);
+      margin-block: 1.25rem;
+    }
+
+    .task-card {
+      background: var(--white);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .task-card-label {
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber-dim);
+      margin-bottom: .5rem;
+    }
+
+    .task-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.0625rem;
+      color: var(--charcoal);
+      margin-bottom: .5rem;
+    }
+
+    .task-card p {
+      font-size: .875rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+    }
+
+    /* What you'll have — outcome strip */
+    .outcome-strip {
+      border: 1.5px solid var(--green);
+      background: rgba(45,74,62,.04);
+      padding: 1.75rem;
+      margin-bottom: 2.5rem;
+      display: grid;
+      gap: .75rem;
+    }
+
+    .outcome-strip h3 {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      color: var(--green);
+      margin: 0;
+    }
+
+    .outcome-items {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .outcome-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .625rem;
+      font-size: .9rem;
+      color: var(--charcoal-80);
+      line-height: 1.5;
+    }
+
+    .outcome-item svg { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+
+    /* Responsive content tweak */
+    @media (max-width: 480px) {
+      .phase-body-inner { padding: 1.5rem 1.25rem; }
+      .phase-header { padding: 1.25rem; }
+      .step-card { padding: 1rem 1.25rem; }
+      .code-block { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Pine Beach home">
+        <img src="logo.png" alt="Pine Beach" />
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#what-we-do">What we do</a>
+        <a href="index.html#products">Products</a>
+        <a href="getting-started.html" style="color: var(--charcoal); font-weight: 600;">Getting started</a>
+      </nav>
+      <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-sm btn-primary nav-cta" target="_blank" rel="noopener">Buy now — $25</a>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" aria-hidden="true">
+      <a href="index.html#what-we-do">What we do</a>
+      <a href="index.html#products">Products</a>
+      <a href="getting-started.html">Getting started</a>
+      <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary" target="_blank" rel="noopener">Buy now — $25</a>
+    </div>
+  </header>
+
+  <!-- ─── PAGE HERO ─── -->
+  <div class="doc-hero">
+    <div class="container doc-hero-inner">
+      <a href="index.html" class="doc-back-link">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to Pine Beach
+      </a>
+      <div class="doc-hero-badge">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Business in a Box
+      </div>
+      <h1>Getting started.<br/><em>No surprises.</em></h1>
+      <p class="doc-hero-sub">
+        The full setup walkthrough — everything you need to know before (and after) you buy.
+        What's required, what you'll do, and what you'll have at the end.
+      </p>
+      <div class="doc-meta">
+        <div class="doc-meta-chip">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3.5l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Setup time: 45–90 minutes
+        </div>
+        <div class="doc-meta-chip">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Running in under 2 hours
+        </div>
+        <div class="doc-meta-chip">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M5 8h6M5 5.5h3M5 10.5h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          6 phases + FAQ
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PHASE NAV STRIP ─── -->
+  <nav class="phase-nav" aria-label="Phase navigation">
+    <div class="container phase-nav-inner">
+      <a href="#phase-0" class="phase-nav-item"><span class="phase-nav-num">0</span> Prerequisites</a>
+      <a href="#phase-1" class="phase-nav-item"><span class="phase-nav-num">1</span> Download</a>
+      <a href="#phase-2" class="phase-nav-item"><span class="phase-nav-num">2</span> Setup Script</a>
+      <a href="#phase-3a" class="phase-nav-item"><span class="phase-nav-num">3A</span> Fresh Install</a>
+      <a href="#phase-3b" class="phase-nav-item"><span class="phase-nav-num">3B</span> Existing Setup</a>
+      <a href="#phase-4" class="phase-nav-item"><span class="phase-nav-num">4</span> Discord</a>
+      <a href="#phase-5" class="phase-nav-item"><span class="phase-nav-num">5</span> First Hour</a>
+      <a href="#phase-6" class="phase-nav-item"><span class="phase-nav-num">6</span> Daily Operations</a>
+      <a href="#faq" class="phase-nav-item"><span class="phase-nav-num">?</span> FAQ</a>
+    </div>
+  </nav>
+
+  <!-- ─── MAIN DOC LAYOUT ─── -->
+  <div class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+    <div class="doc-layout">
+
+      <!-- Sidebar -->
+      <aside class="doc-sidebar" aria-label="Table of contents">
+        <div class="sidebar-label">Phases</div>
+        <a href="#phase-0" class="sidebar-link"><span class="sidebar-num">0</span> Prerequisites</a>
+        <a href="#phase-1" class="sidebar-link"><span class="sidebar-num">1</span> Download & Unzip</a>
+        <a href="#phase-2" class="sidebar-link"><span class="sidebar-num">2</span> Setup Script</a>
+        <a href="#phase-3a" class="sidebar-link"><span class="sidebar-num">3A</span> Fresh Install</a>
+        <a href="#phase-3b" class="sidebar-link"><span class="sidebar-num">3B</span> Existing Setup</a>
+        <a href="#phase-4" class="sidebar-link"><span class="sidebar-num">4</span> Discord Setup</a>
+        <a href="#phase-5" class="sidebar-link"><span class="sidebar-num">5</span> Your First Hour</a>
+        <a href="#phase-6" class="sidebar-link"><span class="sidebar-num">6</span> Daily Operations</a>
+        <div class="sidebar-label" style="margin-top: 1.5rem;">Reference</div>
+        <a href="#faq" class="sidebar-link">FAQ</a>
+        <a href="#troubleshooting" class="sidebar-link">Troubleshooting</a>
+        <a href="#help" class="sidebar-link">Getting help</a>
+      </aside>
+
+      <!-- Content -->
+      <main class="doc-content" id="doc-main">
+
+        <!-- What you'll have at the end -->
+        <div class="outcome-strip reveal">
+          <h3>What you'll have at the end</h3>
+          <div class="outcome-items">
+            <div class="outcome-item">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              A fully operational AI team — CEO, CTO, CMO, CFO, CISO, CSO (pick what you need)
+            </div>
+            <div class="outcome-item">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Each agent with its own workspace, memory, and identity — ready to work from day one
+            </div>
+            <div class="outcome-item">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Discord integration so you can message your team from anywhere
+            </div>
+            <div class="outcome-item">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              A daily rhythm — morning briefs, task routing, standup reports — running on autopilot
+            </div>
+          </div>
+        </div>
+
+        <!-- Path selector -->
+        <div class="section-label reveal">Before you start — which path are you on?</div>
+        <div class="path-selector reveal">
+          <div class="path-card">
+            <div class="path-card-label">Path A</div>
+            <h3>I'm brand new to OpenClaw. Nothing set up yet.</h3>
+            <p>Follow every phase in order: 0 → 1 → 2 → 3A → 4 → 5 → 6.</p>
+            <a href="#phase-0" class="path-card-cta">
+              Start here
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="path-card" style="background: var(--offwhite);">
+            <div class="path-card-label">Path B</div>
+            <h3>I already have OpenClaw with agents running.</h3>
+            <p>Follow phases 0, 1, and 2 as normal — then skip to Phase 3B instead of 3A.</p>
+            <a href="#phase-3b" class="path-card-cta">
+              Jump to 3B
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Expand/collapse all -->
+        <div class="expand-controls">
+          <button class="expand-btn" id="expand-all">Expand all</button>
+          <button class="expand-btn" id="collapse-all">Collapse all</button>
+        </div>
+
+        <!-- ─── PHASE 0 ─── -->
+        <div class="phase-section reveal" id="phase-0">
+          <button class="phase-header" aria-expanded="false">
+            <div class="phase-num-badge">0</div>
+            <div class="phase-header-text">
+              <div class="phase-header-title">Prerequisites check</div>
+              <div class="phase-header-sub">5 minutes · Verify OpenClaw, your AI model, and the Gateway</div>
+            </div>
+            <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="phase-body" aria-hidden="true">
+            <div class="phase-body-inner doc-body">
+              <p>A 5-minute check now prevents 2 hours of confusion later. Run through all four steps before moving on.</p>
+
+              <h3>0.1 — Verify OpenClaw is installed</h3>
+              <div class="code-block"><code>openclaw --version</code></div>
+              <p>You should see a version number like <code>openclaw/2026.x.x</code>. If you see <code>command not found</code>, go to 0.2 below.</p>
+
+              <h3>0.2 — Install OpenClaw (if needed)</h3>
+              <p><strong>macOS or Linux:</strong></p>
+              <div class="code-block"><code>curl -fsSL https://openclaw.ai/install.sh | bash</code></div>
+              <p>This downloads the CLI, installs it globally, and launches an onboarding wizard. Follow the wizard — it will ask you to configure your AI provider.</p>
+              <p><strong>Windows:</strong> OpenClaw requires WSL2. First install it (<code>wsl --install</code> in PowerShell as Administrator, restart), then open your WSL2 terminal and run the Linux command above.</p>
+              <div class="callout">
+                <p><strong>⚠️ Common issue — <code>command not found</code> after install:</strong> Run <code>npm prefix -g</code> to find where npm installs global packages, then add that bin folder to your PATH.</p>
+              </div>
+
+              <h3>0.3 — Verify your AI model is configured</h3>
+              <div class="code-block"><code>openclaw models status</code></div>
+              <p>You should see at least one provider listed as <strong>active</strong>. If nothing is configured, run:</p>
+              <div class="code-block"><code>openclaw onboard</code></div>
+              <p>The wizard will ask you to choose between:</p>
+              <ul>
+                <li><strong>Anthropic API key</strong> — best for most users. Get one at <a href="https://console.anthropic.com" target="_blank" rel="noopener" style="color: var(--charcoal); border-bottom: 1px solid;">console.anthropic.com</a> → API Keys → Create Key. Looks like <code>sk-ant-...</code>. Costs are usage-based (typically a few dollars/month for a small team).</li>
+                <li><strong>Claude subscription token</strong> — uses your existing Claude subscription. Run <code>claude setup-token</code> on a machine with the Claude CLI installed, then paste the output when prompted.</li>
+              </ul>
+
+              <h3>0.4 — Verify the Gateway is running</h3>
+              <div class="code-block"><code>openclaw gateway status</code></div>
+              <p>Should say <code>running</code> or <code>active</code>. If not:</p>
+              <div class="code-block"><code>openclaw gateway start</code></div>
+
+              <div class="checkpoint">
+                <div class="checkpoint-label">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Phase 0 checkpoint
+                </div>
+                <p>All three of these should pass before continuing:</p>
+                <div class="code-block"><code>openclaw --version      <span class="cm"># prints a version number</span>
+openclaw models status  <span class="cm"># shows at least one active provider</span>
+openclaw gateway status <span class="cm"># shows "running"</span></code></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PHASE 1 ─── -->
+        <div class="phase-section reveal" id="phase-1">
+          <button class="phase-header" aria-expanded="false">
+            <div class="phase-num-badge">1</div>
+            <div class="phase-header-text">
+              <div class="phase-header-title">Download &amp; unzip</div>
+              <div class="phase-header-sub">5 minutes · Get the files, verify the contents</div>
+            </div>
+            <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="phase-body" aria-hidden="true">
+            <div class="phase-body-inner doc-body">
+              <h3>1.1 — Find your download</h3>
+              <p>After purchasing on Gumroad, check your email for a receipt with a "View content" or "Download" button. The file will be named something like <code>business-in-a-box-v1.x.zip</code>.</p>
+              <p>Can't find the email? Log in at <a href="https://gumroad.com/library" target="_blank" rel="noopener" style="color: var(--charcoal); border-bottom: 1px solid;">gumroad.com/library</a> with the email you used to purchase.</p>
+
+              <h3>1.2 — Unzip the archive</h3>
+              <p><strong>macOS:</strong> Double-click the <code>.zip</code> file in Finder, or in Terminal:</p>
+              <div class="code-block"><code>cd ~/Downloads
+unzip business-in-a-box-*.zip</code></div>
+              <p><strong>Linux:</strong> Same as above. If <code>unzip</code> isn't installed: <code>sudo apt install unzip</code> (Debian/Ubuntu) or <code>sudo dnf install unzip</code> (Fedora).</p>
+
+              <h3>1.3 — Verify the contents</h3>
+              <div class="code-block"><code>cd business-in-a-box*
+ls -la</code></div>
+              <p>You should see all of these:</p>
+              <div class="code-block"><code>SKILL.md                  <span class="cm">← Product overview</span>
+FAQ.md                    <span class="cm">← Answers to common questions</span>
+scripts/setup.sh          <span class="cm">← The setup script (Phase 2)</span>
+templates/                <span class="cm">← AGENTS.md, all SOUL-*.md files</span>
+references/               <span class="cm">← This guide, security framework</span>
+examples/                 <span class="cm">← Filled-in examples to reference</span></code></div>
+              <div class="callout">
+                <p><strong>⚠️ Only see a few files?</strong> macOS sometimes unzips into a nested folder. Run <code>ls */</code> to look one level deeper.</p>
+              </div>
+
+              <div class="checkpoint">
+                <div class="checkpoint-label">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Phase 1 checkpoint
+                </div>
+                <div class="code-block"><code>ls scripts/setup.sh templates/AGENTS.md templates/SOUL-CEO.md</code></div>
+                <p>All three exist? Move to Phase 2.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PHASE 2 ─── -->
+        <div class="phase-section reveal" id="phase-2">
+          <button class="phase-header" aria-expanded="false">
+            <div class="phase-num-badge">2</div>
+            <div class="phase-header-text">
+              <div class="phase-header-title">Run the setup script</div>
+              <div class="phase-header-sub">10–15 minutes · Answer 4 questions, get your entire workspace generated</div>
+            </div>
+            <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="phase-body" aria-hidden="true">
+            <div class="phase-body-inner doc-body">
+              <p>The setup script does the heavy lifting: it asks you a series of questions, then generates your entire workspace — all files pre-filled with your company name and agent names, ready to use.</p>
+
+              <h3>2.1 — Run the script</h3>
+              <p>Make sure you're inside the unzipped folder, then run:</p>
+              <div class="code-block"><code>bash scripts/setup.sh ~/workspace</code></div>
+              <p><code>~/workspace</code> is where your agent files will live. Change it to any path you like. The rest of this guide assumes <code>~/workspace</code>.</p>
+
+              <h3>2.2 — What the script will ask</h3>
+              <p>The script runs in 4 steps:</p>
+
+              <div class="step-cards">
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">1/4</div>
+                    <div class="step-card-title">Company &amp; owner</div>
+                  </div>
+                  <div class="step-card-body">Your company name and what your agents should call you (first name). Leave company name blank to use "My Company" as default.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">2/4</div>
+                    <div class="step-card-title">Choose your agents</div>
+                  </div>
+                  <div class="step-card-body">CEO is always included. Press Enter (or Y) for each role you want, N to skip. Pick what matches your immediate needs — adding more later takes 5 minutes.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">3/4</div>
+                    <div class="step-card-title">Name your agents</div>
+                  </div>
+                  <div class="step-card-body">Give each agent a name, or press Enter for the defaults. These are personality names, not role names — your CEO can be "Marcus" or "Aria" or anything you like.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">4/4</div>
+                    <div class="step-card-title">Workspace generation</div>
+                  </div>
+                  <div class="step-card-body">The script builds everything and prints a config snippet at the end. Takes about 10 seconds. Don't interrupt it.</div>
+                </div>
+              </div>
+
+              <h3>Which agents do I actually need?</h3>
+              <div class="role-grid">
+                <div class="role-cell">
+                  <div class="role-emoji">🏢</div>
+                  <div class="role-name">CEO (always included)</div>
+                  <div class="role-desc">Runs standups, coordinates the team, reports to you. Always required.</div>
+                </div>
+                <div class="role-cell">
+                  <div class="role-emoji">💻</div>
+                  <div class="role-name">CTO</div>
+                  <div class="role-desc">If you're building software, websites, or anything technical.</div>
+                </div>
+                <div class="role-cell">
+                  <div class="role-emoji">📣</div>
+                  <div class="role-name">CMO</div>
+                  <div class="role-desc">If you're doing marketing, content, social media, or brand work.</div>
+                </div>
+                <div class="role-cell">
+                  <div class="role-emoji">💰</div>
+                  <div class="role-name">CFO</div>
+                  <div class="role-desc">If you have revenue, costs, or financial tracking to manage.</div>
+                </div>
+                <div class="role-cell">
+                  <div class="role-emoji">🛡️</div>
+                  <div class="role-name">CISO</div>
+                  <div class="role-desc">Security and risk. Recommended for most — handles threat awareness.</div>
+                </div>
+                <div class="role-cell">
+                  <div class="role-emoji">🎧</div>
+                  <div class="role-name">CSO</div>
+                  <div class="role-desc">If customers email you or you need dedicated support handling.</div>
+                </div>
+              </div>
+              <p style="margin-top: .5rem; font-size: .875rem; color: var(--charcoal-60);">Not sure? Start with CEO + the one or two roles that match your most immediate work. Re-run the script any time — existing files are never overwritten.</p>
+
+              <div class="checkpoint">
+                <div class="checkpoint-label">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Phase 2 checkpoint
+                </div>
+                <div class="code-block"><code><span class="cm"># Should exist and contain your company name</span>
+grep -i "company" ~/workspace/AGENTS.md | head -3
+
+<span class="cm"># Should show agent directories</span>
+ls ~/workspace/agents/
+
+<span class="cm"># Should show your agents listed in config format</span>
+cat ~/workspace/openclaw-agents.txt</code></div>
+                <p>All working? Now go to Phase 3A (new setup) or Phase 3B (existing setup).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PHASE 3A ─── -->
+        <div class="phase-section reveal" id="phase-3a">
+          <button class="phase-header" aria-expanded="false">
+            <div class="phase-num-badge">3A</div>
+            <div class="phase-header-text">
+              <div class="phase-header-title">Fresh install — wire up your agents</div>
+              <div class="phase-header-sub">New to OpenClaw · Edit one config file, copy credentials, restart Gateway</div>
+            </div>
+            <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="phase-body" aria-hidden="true">
+            <div class="phase-body-inner doc-body">
+              <div class="callout callout--green">
+                <p><strong>Only follow 3A if:</strong> you're new to OpenClaw with no existing agents. Already have agents running? Skip to <a href="#phase-3b" style="color: var(--charcoal); border-bottom: 1px solid;">Phase 3B</a>.</p>
+              </div>
+
+              <h3>3A.1 — Open your config file</h3>
+              <p>OpenClaw reads its config from <code>~/.openclaw/openclaw.json</code> (JSON5 format — allows comments and trailing commas). Open it:</p>
+              <div class="code-block"><code>nano ~/.openclaw/openclaw.json</code></div>
+
+              <h3>3A.2 — Add your agents</h3>
+              <p>Replace the contents with this. <strong>Change every path that says <code>/home/yourname/workspace</code></strong> to your actual workspace path (run <code>echo ~/workspace</code> to find it). Remove blocks for roles you didn't select in Phase 2.</p>
+              <div class="code-block"><code><span class="cm">// ~/.openclaw/openclaw.json</span>
+{
+  agents: {
+    defaults: {
+      model: {
+        primary: <span class="str">"anthropic/claude-sonnet-4-5"</span>,
+      },
+    },
+    list: [
+      {
+        id: <span class="str">"ceo"</span>,
+        workspace: <span class="str">"/home/yourname/workspace/agents/ceo"</span>,
+        model: <span class="str">"anthropic/claude-opus-4-6"</span>,  <span class="cm">// CEO gets Opus — worth it</span>
+      },
+      {
+        id: <span class="str">"cto"</span>,
+        workspace: <span class="str">"/home/yourname/workspace/agents/cto"</span>,
+      },
+      {
+        id: <span class="str">"cmo"</span>,
+        workspace: <span class="str">"/home/yourname/workspace/agents/cmo"</span>,
+      },
+      <span class="cm">// ... add/remove roles to match your Phase 2 selections</span>
+    ],
+  },
+}</code></div>
+
+              <h3>3A.3 — Copy credentials to each agent</h3>
+              <p>Each agent has its own auth store. Copy your main credentials across:</p>
+              <div class="code-block"><code><span class="cm"># Create auth directories for each agent</span>
+mkdir -p ~/.openclaw/agents/ceo/agent
+mkdir -p ~/.openclaw/agents/cto/agent
+<span class="cm"># (repeat for each agent you created)</span>
+
+<span class="cm"># Copy credentials</span>
+cp ~/.openclaw/agents/main/agent/auth-profiles.json ~/.openclaw/agents/ceo/agent/
+cp ~/.openclaw/agents/main/agent/auth-profiles.json ~/.openclaw/agents/cto/agent/
+<span class="cm"># (repeat for each agent)</span></code></div>
+              <div class="callout">
+                <p><strong>⚠️ Can't find auth-profiles.json?</strong> Run <code>find ~/.openclaw/agents -name "auth-profiles.json"</code> to locate it, then copy from that path.</p>
+              </div>
+
+              <h3>3A.4 — Reload and verify</h3>
+              <div class="code-block"><code>openclaw gateway restart
+openclaw agents list</code></div>
+              <p>You should see each agent listed. If one is missing, there's usually a typo in the config path. Run <code>openclaw doctor</code> for diagnostics.</p>
+
+              <div class="checkpoint">
+                <div class="checkpoint-label">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Phase 3A checkpoint
+                </div>
+                <div class="code-block"><code>openclaw gateway status  <span class="cm"># running</span>
+openclaw agents list     <span class="cm"># lists ceo, cto, etc.</span>
+openclaw doctor          <span class="cm"># no errors</span></code></div>
+                <p>All good? Skip to <a href="#phase-4" style="color: var(--charcoal); border-bottom: 1px solid;">Phase 4: Discord Setup</a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PHASE 3B ─── -->
+        <div class="phase-section reveal" id="phase-3b">
+          <button class="phase-header" aria-expanded="false">
+            <div class="phase-num-badge">3B</div>
+            <div class="phase-header-text">
+              <div class="phase-header-title">Existing setup — add agents without breaking anything</div>
+              <div class="phase-header-sub">Already have OpenClaw running · Config merge, not replace · Two sub-paths</div>
+            </div>
+            <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="phase-body" aria-hidden="true">
+            <div class="phase-body-inner doc-body">
+              <div class="callout callout--green">
+                <p><strong>Only follow 3B if:</strong> you already have OpenClaw running with one or more agents. New to OpenClaw? Use <a href="#phase-3a" style="color: var(--charcoal); border-bottom: 1px solid;">Phase 3A</a> instead.</p>
+              </div>
+              <p>This is a <strong>config merge, not a replace</strong>. Your existing agent stays exactly as it is.</p>
+
+              <h3>First: check your current config pattern</h3>
+              <div class="code-block"><code>cat ~/.openclaw/openclaw.json</code></div>
+
+              <div class="step-cards">
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">A</div>
+                    <div class="step-card-title">Single agent (no <code>agents.list</code>)</div>
+                  </div>
+                  <div class="step-card-body">Your config has <code>agents.defaults.workspace</code> but no <code>list</code> array. Your single agent is the implicit <code>main</code> agent.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">B</div>
+                    <div class="step-card-title">Explicit agent list (has <code>agents.list</code>)</div>
+                  </div>
+                  <div class="step-card-body">Your config already has an <code>agents.list</code> array. You'll be adding to it.</div>
+                </div>
+              </div>
+
+              <h3>Choose your path</h3>
+              <div class="path-selector" style="margin-top: .75rem;">
+                <div class="path-card">
+                  <div class="path-card-label">Option 1</div>
+                  <h3>Upgrade existing agent to CEO</h3>
+                  <p>Your existing agent becomes the CEO. Its identity changes to match the CEO SOUL.md. Best if it's already your primary AI.</p>
+                </div>
+                <div class="path-card" style="background: var(--offwhite);">
+                  <div class="path-card-label">Option 2</div>
+                  <h3>Keep existing agent, add team alongside</h3>
+                  <p>Your agent keeps its ID and SOUL. Business in a Box agents run completely separately. Best if your existing agent has a specific purpose.</p>
+                </div>
+              </div>
+
+              <h4>Option 1 — Upgrade to CEO</h4>
+              <ol>
+                <li>Find your existing workspace: <code>openclaw agents list</code></li>
+                <li>Copy the CEO SOUL: <code>cp ~/workspace/agents/ceo/SOUL.md /path/to/your/workspace/SOUL.md</code></li>
+                <li>Copy company constitution: <code>cp ~/workspace/AGENTS.md /path/to/your/workspace/AGENTS.md</code></li>
+                <li>Edit <code>~/.openclaw/openclaw.json</code> — add an <code>agents.list</code>, make your existing workspace the CEO entry (<code>id: "ceo", default: true</code>), then add the new agent blocks</li>
+                <li>Copy credentials to new agents (see Phase 3A.3)</li>
+                <li>Restart: <code>openclaw gateway restart && openclaw agents list</code></li>
+              </ol>
+
+              <h4>Option 2 — Keep existing, add alongside</h4>
+              <p>Open <code>~/.openclaw/openclaw.json</code> and add the Business in a Box agents to your existing list. If you're in Pattern A (no <code>agents.list</code>), make your existing agent explicit first:</p>
+              <div class="code-block"><code>{
+  agents: {
+    defaults: {
+      model: { primary: <span class="str">"anthropic/claude-sonnet-4-5"</span> },
+    },
+    list: [
+      <span class="cm">// YOUR EXISTING AGENT — unchanged</span>
+      {
+        id: <span class="str">"main"</span>,
+        default: <span class="kw">true</span>,
+        workspace: <span class="str">"/home/yourname/.openclaw/workspace"</span>,  <span class="cm">// do not change</span>
+      },
+
+      <span class="cm">// BUSINESS IN A BOX — new additions</span>
+      {
+        id: <span class="str">"ceo"</span>,
+        workspace: <span class="str">"/home/yourname/workspace/agents/ceo"</span>,
+        model: <span class="str">"anthropic/claude-opus-4-6"</span>,
+      },
+      { id: <span class="str">"cto"</span>, workspace: <span class="str">"/home/yourname/workspace/agents/cto"</span> },
+      <span class="cm">// ... add roles you selected in Phase 2</span>
+    ],
+  },
+  <span class="cm">// Keep all your other existing config — do NOT delete anything</span>
+}</code></div>
+              <p>Then validate, copy credentials, and reload:</p>
+              <div class="code-block"><code>openclaw doctor
+<span class="cm"># fix any errors, then:</span>
+openclaw gateway restart
+openclaw agents list</code></div>
+
+              <div class="checkpoint">
+                <div class="checkpoint-label">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Phase 3B checkpoint
+                </div>
+                <div class="code-block"><code>openclaw gateway status  <span class="cm"># running</span>
+openclaw agents list     <span class="cm"># shows original agent AND new ones</span>
+openclaw doctor          <span class="cm"># no errors</span></code></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PHASE 4 ─── -->
+        <div class="phase-section reveal" id="phase-4">
+          <button class="phase-header" aria-expanded="false">
+            <div class="phase-num-badge">4</div>
+            <div class="phase-header-text">
+              <div class="phase-header-title">Discord setup</div>
+              <div class="phase-header-sub">Optional but recommended · Create a server, bot, and pair your agents</div>
+            </div>
+            <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="phase-body" aria-hidden="true">
+            <div class="phase-body-inner doc-body">
+              <div class="callout">
+                <p><strong>Can I skip Discord?</strong> Yes. Talk to agents via <code>openclaw dashboard</code> in your browser, or via the CLI: <code>openclaw agent --agent ceo --message "your message"</code>. Discord is the designed experience, but not required.</p>
+              </div>
+
+              <div class="step-cards">
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">4.1</div>
+                    <div class="step-card-title">Create a Discord server</div>
+                  </div>
+                  <div class="step-card-body">In Discord, click + in the sidebar → Create My Own → For me and my friends. Name it something like "[Your Company] HQ".</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">4.2</div>
+                    <div class="step-card-title">Create channels for each agent</div>
+                  </div>
+                  <div class="step-card-body">One text channel per agent: <code>#ceo-office</code>, <code>#dev-workshop</code>, <code>#marketing-hub</code>, <code>#finance-desk</code>, <code>#security-ops</code>, <code>#support-desk</code>, <code>#general</code>, <code>#war-room</code>.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">4.3</div>
+                    <div class="step-card-title">Create a Discord bot</div>
+                  </div>
+                  <div class="step-card-body">Go to <a href="https://discord.com/developers/applications" target="_blank" rel="noopener" style="color: var(--charcoal); border-bottom: 1px solid;">discord.com/developers/applications</a> → New Application → name it after your CEO. Under Bot, enable <strong>Message Content Intent</strong> (required) and Server Members Intent. Click Reset Token and copy it.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">4.4</div>
+                    <div class="step-card-title">Enable Developer Mode &amp; collect IDs</div>
+                  </div>
+                  <div class="step-card-body">User Settings → Advanced → Developer Mode ON. Then: right-click server icon → Copy Server ID. Right-click your username → Copy User ID. Save both.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">4.5–4.6</div>
+                    <div class="step-card-title">Add bot token to OpenClaw</div>
+                  </div>
+                  <div class="step-card-body">
+                    <div class="code-block" style="margin-top: .5rem;"><code><span class="cm"># Never paste the token in a chat message</span>
+openclaw config set channels.discord.token <span class="str">'"YOUR_BOT_TOKEN"'</span> --json
+openclaw config set channels.discord.enabled <span class="kw">true</span> --json
+openclaw gateway restart</code></div>
+                  </div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">4.7</div>
+                    <div class="step-card-title">Configure server in OpenClaw</div>
+                  </div>
+                  <div class="step-card-body">
+                    Add the Discord config block to <code>~/.openclaw/openclaw.json</code>:
+                    <div class="code-block" style="margin-top: .5rem;"><code>channels: {
+  discord: {
+    enabled: <span class="kw">true</span>,
+    token: <span class="str">"YOUR_BOT_TOKEN"</span>,
+    groupPolicy: <span class="str">"allowlist"</span>,
+    guilds: {
+      <span class="str">"YOUR_SERVER_ID"</span>: {
+        requireMention: <span class="kw">false</span>,
+        users: [<span class="str">"YOUR_USER_ID"</span>],
+      },
+    },
+  },
+},</code></div>
+                  </div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">4.8</div>
+                    <div class="step-card-title">Invite the bot to your server</div>
+                  </div>
+                  <div class="step-card-body">In the Developer Portal → OAuth2 → URL Generator: check <code>bot</code> and <code>applications.commands</code>. Bot permissions: View Channels, Send Messages, Read Message History, Embed Links, Attach Files. Copy the URL, paste in browser, select your server, Authorize.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">4.9</div>
+                    <div class="step-card-title">Pair with your bot</div>
+                  </div>
+                  <div class="step-card-body">
+                    DM your bot in Discord. It will send a pairing code. Then:
+                    <div class="code-block" style="margin-top: .5rem;"><code>openclaw pairing list discord
+openclaw pairing approve discord CODE</code></div>
+                  </div>
+                </div>
+              </div>
+
+              <h3>Common Discord issues</h3>
+              <div class="doc-table-wrap">
+                <table class="doc-table">
+                  <thead>
+                    <tr>
+                      <th>Symptom</th>
+                      <th>Likely cause</th>
+                      <th>Fix</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Bot is online but doesn't respond</td>
+                      <td>Message Content Intent not enabled</td>
+                      <td>Developer Portal → Bot → enable it → restart gateway</td>
+                    </tr>
+                    <tr>
+                      <td>"Guild messages blocked" in logs</td>
+                      <td>Server ID not in allowlist</td>
+                      <td>Check <code>YOUR_SERVER_ID</code> in config — must be numeric, not a server name</td>
+                    </tr>
+                    <tr>
+                      <td>Responds in DM but not in channel</td>
+                      <td><code>requireMention</code> is true</td>
+                      <td>Set <code>requireMention: false</code> in guild config</td>
+                    </tr>
+                    <tr>
+                      <td>"Pairing required" message</td>
+                      <td>Bot hasn't been paired</td>
+                      <td>Run <code>openclaw pairing list discord</code> and approve</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="checkpoint">
+                <div class="checkpoint-label">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Phase 4 checkpoint
+                </div>
+                <p>Send a message in your <code>#ceo-office</code> channel. Your CEO agent should respond within a few seconds.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PHASE 5 ─── -->
+        <div class="phase-section reveal" id="phase-5">
+          <button class="phase-header" aria-expanded="false">
+            <div class="phase-num-badge">5</div>
+            <div class="phase-header-text">
+              <div class="phase-header-title">Your first hour</div>
+              <div class="phase-header-sub">Setup is done · Boot your CEO, orient the team, give first tasks</div>
+            </div>
+            <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="phase-body" aria-hidden="true">
+            <div class="phase-body-inner doc-body">
+              <div class="step-cards">
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">0–5m</div>
+                    <div class="step-card-title">Boot up your CEO</div>
+                  </div>
+                  <div class="step-card-body">
+                    In Discord's <code>#ceo-office</code>, send:<br/><br/>
+                    <em style="color: var(--charcoal-80);">"Good morning. Read your SOUL.md and AGENTS.md, then read MEMORY.md and tell me your read on our current situation and priorities."</em>
+                    <br/><br/>
+                    The CEO will read their context files and respond with a synthesis of who they are and what they understand about your company. <strong>If they say MEMORY.md is empty</strong>, that's expected on day one — spend 10 minutes filling it in with your company mission and current projects. This is the most valuable 10 minutes of setup.
+                  </div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">5–15m</div>
+                    <div class="step-card-title">Set the day's agenda</div>
+                  </div>
+                  <div class="step-card-body">Have a brief conversation with the CEO: what are the top 3 priorities today? Is there anything you're blocked on? The CEO will write this into their daily note.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">15–30m</div>
+                    <div class="step-card-title">Boot up your other agents</div>
+                  </div>
+                  <div class="step-card-body">For each agent: <em>"Good morning, [name]. You're the [role] of [Company]. Read your SOUL.md and AGENTS.md, then check TASKS.md for anything in your lane. What are your priorities for today?"</em> — You don't need to micromanage this. The SOUL and AGENTS files do the work.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">30–45m</div>
+                    <div class="step-card-title">Give each agent a first task</div>
+                  </div>
+                  <div class="step-card-body">See the task ideas below.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">45–60m</div>
+                    <div class="step-card-title">CEO synthesises and briefs you</div>
+                  </div>
+                  <div class="step-card-body"><em>"Write me a morning brief. Summarise what each agent did today, what's in progress, and what decisions I need to make."</em> — This is the artifact that keeps you in sync going forward.</div>
+                </div>
+              </div>
+
+              <h3>Three first-task ideas</h3>
+              <div class="task-cards">
+                <div class="task-card">
+                  <div class="task-card-label">Option 1 → send to CEO</div>
+                  <h4>Plan a growth strategy</h4>
+                  <p><em>"We're [2–3 sentence description]. What growth strategy would you recommend for the next 90 days? Give me 3 concrete options with tradeoffs."</em></p>
+                </div>
+                <div class="task-card">
+                  <div class="task-card-label">Option 2 → send to CEO</div>
+                  <h4>Audit current operations</h4>
+                  <p><em>"Audit our current operations. What's missing? What's inefficient? What should we fix first? Base your answer on what you know about us so far — flag anything where you need more information."</em></p>
+                </div>
+                <div class="task-card">
+                  <div class="task-card-label">Option 3 → send to CMO</div>
+                  <h4>Build a marketing campaign</h4>
+                  <p><em>"I want to launch [product/service]. Build me a 30-day marketing campaign. Include: target audience, key messages, channel mix, and a week-by-week execution plan."</em></p>
+                </div>
+              </div>
+
+              <div class="checkpoint">
+                <div class="checkpoint-label">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  What success looks like after hour 1
+                </div>
+                <ul>
+                  <li>A CEO who understands your company context and has produced at least one useful output</li>
+                  <li>Each agent oriented and ready to work</li>
+                  <li>At least one real task in progress</li>
+                  <li>A morning brief you can act on</li>
+                  <li>MEMORY.md filled in with your company's context</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PHASE 6 ─── -->
+        <div class="phase-section reveal" id="phase-6">
+          <button class="phase-header" aria-expanded="false">
+            <div class="phase-num-badge">6</div>
+            <div class="phase-header-text">
+              <div class="phase-header-title">Daily operations</div>
+              <div class="phase-header-sub">The ongoing rhythm · Morning briefs, task routing, standup reports</div>
+            </div>
+            <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="phase-body" aria-hidden="true">
+            <div class="phase-body-inner doc-body">
+              <h3>The daily rhythm</h3>
+              <div class="step-cards">
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">AM</div>
+                    <div class="step-card-title">Morning</div>
+                  </div>
+                  <div class="step-card-body">Read CEO's brief (or ask for one) → review overnight → give direction, approvals, or corrections → set the day's priorities.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">→</div>
+                    <div class="step-card-title">Throughout the day</div>
+                  </div>
+                  <div class="step-card-body">Drop tasks into agent channels as they come up → agents execute and report back → CEO tracks and coordinates.</div>
+                </div>
+                <div class="step-card">
+                  <div class="step-card-header">
+                    <div class="step-card-num">PM</div>
+                    <div class="step-card-title">End of day</div>
+                  </div>
+                  <div class="step-card-body">Ask CEO for a close-of-day brief → agents update daily notes → CEO synthesises for tomorrow.</div>
+                </div>
+              </div>
+
+              <h3>Useful prompts for daily use</h3>
+              <div class="doc-table-wrap">
+                <table class="doc-table">
+                  <thead>
+                    <tr><th>What you want</th><th>What to say</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Standup report</td>
+                      <td><em>"Generate a standup report. What did each agent do today? What's blocked? What needs my attention?"</em></td>
+                    </tr>
+                    <tr>
+                      <td>Company-wide direction change</td>
+                      <td><em>"New priority: we're pivoting focus to [X] this week. Adjust team priorities and brief each agent."</em></td>
+                    </tr>
+                    <tr>
+                      <td>Task for a specific agent</td>
+                      <td>Message them directly in their channel: <em>"Pause current work. New task: [description]. Report back with your plan before starting."</em></td>
+                    </tr>
+                    <tr>
+                      <td>Add context that persists</td>
+                      <td>Edit <code>~/workspace/agents/ceo/MEMORY.md</code> directly — this is the CEO's long-term memory</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3>Adding a new agent later</h3>
+              <div class="code-block"><code><span class="cm"># Re-run setup from the skill directory (skips existing files)</span>
+bash scripts/setup.sh ~/workspace
+
+<span class="cm"># Add new agent to ~/.openclaw/openclaw.json (same pattern as Phase 3A)</span>
+
+<span class="cm"># Create auth credentials</span>
+mkdir -p ~/.openclaw/agents/NEWROLE/agent
+cp ~/.openclaw/agents/ceo/agent/auth-profiles.json ~/.openclaw/agents/NEWROLE/agent/
+
+<span class="cm"># Reload</span>
+openclaw gateway restart
+openclaw agents list</code></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── FAQ ─── -->
+        <div style="margin-top: 3rem;" id="faq">
+          <div class="section-label reveal">Frequently asked questions</div>
+
+          <div class="phase-section reveal">
+            <button class="phase-header" aria-expanded="false">
+              <div class="phase-header-text">
+                <div class="phase-header-title">Do I need all six agents right away?</div>
+              </div>
+              <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="phase-body" aria-hidden="true">
+              <div class="phase-body-inner doc-body">
+                <p>No. CEO + one or two agents is a solid start. The CEO is the only one that's essential — everything flows through them. Add more as the workload justifies it.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-section reveal">
+            <button class="phase-header" aria-expanded="false">
+              <div class="phase-header-text">
+                <div class="phase-header-title">What if I don't use Discord?</div>
+              </div>
+              <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="phase-body" aria-hidden="true">
+              <div class="phase-body-inner doc-body">
+                <p>Use the OpenClaw dashboard (<code>openclaw dashboard</code>) or the CLI: <code>openclaw agent --agent ceo --message "your message here"</code>. Discord is the recommended interface, but not required — agents work either way.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-section reveal">
+            <button class="phase-header" aria-expanded="false">
+              <div class="phase-header-text">
+                <div class="phase-header-title">How do agents share information with each other?</div>
+              </div>
+              <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="phase-body" aria-hidden="true">
+              <div class="phase-body-inner doc-body">
+                <p>Through files in the shared workspace — TASKS.md, daily notes, MEMORY.md. There's no real-time agent-to-agent messaging by default. The CEO is the coordinator: you tell the CEO, the CEO delegates via TASKS.md, other agents read their queue.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-section reveal">
+            <button class="phase-header" aria-expanded="false">
+              <div class="phase-header-text">
+                <div class="phase-header-title">What model should I use for each agent?</div>
+              </div>
+              <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="phase-body" aria-hidden="true">
+              <div class="phase-body-inner doc-body">
+                <p>CEO → Opus (handles complex reasoning, synthesis, coordination — worth the extra cost). All other agents → Sonnet (fast and cost-effective for execution tasks). Run <code>openclaw models status list</code> to see what's available on your account.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-section reveal">
+            <button class="phase-header" aria-expanded="false">
+              <div class="phase-header-text">
+                <div class="phase-header-title">Why won't my agents remember things between sessions?</div>
+              </div>
+              <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="phase-body" aria-hidden="true">
+              <div class="phase-body-inner doc-body">
+                <p>Context doesn't persist automatically — agents read files at session start. The solution: make sure important decisions go into daily notes and MEMORY.md. If an agent keeps forgetting context, prompt them: <em>"Read your MEMORY.md and today's daily note, then confirm your current priorities."</em></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-section reveal">
+            <button class="phase-header" aria-expanded="false">
+              <div class="phase-header-text">
+                <div class="phase-header-title">My existing agent broke after editing the config. What do I do?</div>
+              </div>
+              <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="phase-body" aria-hidden="true">
+              <div class="phase-body-inner doc-body">
+                <div class="code-block"><code>openclaw doctor   <span class="cm"># identifies the issue</span>
+openclaw logs     <span class="cm"># shows recent errors</span></code></div>
+                <p>If you need to revert: the config is at <code>~/.openclaw/openclaw.json</code>. Undo your last change and restart. The most common cause is a missing comma or mismatched brace in JSON5 — <code>openclaw doctor</code> will tell you exactly which line.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-section reveal">
+            <button class="phase-header" aria-expanded="false">
+              <div class="phase-header-text">
+                <div class="phase-header-title">The setup script errored on macOS</div>
+              </div>
+              <svg class="phase-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="phase-body" aria-hidden="true">
+              <div class="phase-body-inner doc-body">
+                <p>macOS ships with an old bash. Run explicitly with a modern one:</p>
+                <div class="code-block"><code>which bash   <span class="cm"># should show /usr/local/bin/bash if you have Homebrew</span>
+/usr/local/bin/bash scripts/setup.sh ~/workspace</code></div>
+                <p>Or install a modern bash: <code>brew install bash</code>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── TROUBLESHOOTING ─── -->
+        <div style="margin-top: 2rem;" id="troubleshooting">
+          <div class="section-label reveal">Troubleshooting</div>
+          <div class="doc-table-wrap reveal">
+            <table class="doc-table">
+              <thead>
+                <tr><th>Issue</th><th>Fix</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Agents aren't reading SOUL.md</td>
+                  <td>Check that SOUL.md exists in the agent's workspace root. The workspace path in config must point to the folder <em>containing</em> SOUL.md.</td>
+                </tr>
+                <tr>
+                  <td>CEO standup is too long / unfocused</td>
+                  <td>Add to CEO's SOUL.md: "Keep standups concise — 3 bullets per agent maximum. Flag only what requires the owner's attention."</td>
+                </tr>
+                <tr>
+                  <td>"No API key found" on a new agent</td>
+                  <td>Auth is per-agent. Re-run the credential copy from Phase 3A.3, or run <code>openclaw onboard</code> for that specific agent.</td>
+                </tr>
+                <tr>
+                  <td>Gateway won't restart after config changes</td>
+                  <td>Syntax error in JSON5. Run <code>openclaw doctor</code> — it pinpoints the line. Common: missing comma, mismatched brace, Windows backslash in path.</td>
+                </tr>
+                <tr>
+                  <td>Discord bot silent despite being online</td>
+                  <td>Message Content Intent not enabled (Developer Portal → Bot). Or Server ID is wrong — must be numeric. Or <code>requireMention: true</code> — set to false.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ─── HELP ─── -->
+        <div id="help" style="margin-top: 2.5rem;" class="reveal">
+          <div class="callout callout--green">
+            <p><strong>Something not working?</strong> Email us at <a href="mailto:hello@pinebeach.com.au" style="color: var(--charcoal); border-bottom: 1px solid;">hello@pinebeach.com.au</a>. We built this for ourselves first — we want it to work for you.</p>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ─── BOTTOM CTA ─── -->
+  <div class="doc-cta-bar">
+    <div class="container">
+      <div class="doc-cta-inner">
+        <div class="doc-cta-text">
+          <h2>Ready to run your team?</h2>
+          <p>45–90 minutes from zero to a fully operational AI team. One-time purchase, lifetime updates.</p>
+        </div>
+        <div style="display: flex; gap: .75rem; flex-wrap: wrap;">
+          <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+            Get Business in a Box — $25
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="index.html" class="btn btn-ghost btn-lg" style="border-color: rgba(255,255,255,.3); color: rgba(255,255,255,.7);">
+            Back to Pine Beach
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo" aria-label="Pine Beach — back to top">
+          <img src="logo.png" alt="Pine Beach" />
+        </a>
+        <p class="footer-tagline">Built on solid ground.</p>
+        <p class="footer-supporting">Pine Beach — AI-powered tools for people with real work to do.</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <span class="footer-link-label">Products</span>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">Daily Operations (free)</a>
+          <a href="https://gumroad.com/l/pine-beach-business-in-a-box" target="_blank" rel="noopener">Business in a Box</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Docs</span>
+          <a href="getting-started.html">Getting started</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Links</span>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://gumroad.com/pinebeach" target="_blank" rel="noopener">Gumroad</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Company</span>
+          <a href="index.html#what-we-do">About</a>
+          <a href="index.html#signup">Stay in the loop</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Pine Beach. All rights reserved.</p>
+        <p class="footer-built"><em>Shipping tools we use. Selling them honestly.</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // ─── Accordion (phase sections) ───────────────────
+    document.querySelectorAll('.phase-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const body = header.nextElementSibling;
+        const isOpen = header.classList.contains('open');
+
+        header.classList.toggle('open', !isOpen);
+        header.setAttribute('aria-expanded', String(!isOpen));
+        body.classList.toggle('open', !isOpen);
+        body.setAttribute('aria-hidden', String(isOpen));
+      });
+    });
+
+    // ─── Expand / collapse all ───────────────────────
+    document.getElementById('expand-all').addEventListener('click', () => {
+      document.querySelectorAll('.phase-header').forEach(h => {
+        h.classList.add('open');
+        h.setAttribute('aria-expanded', 'true');
+        h.nextElementSibling.classList.add('open');
+        h.nextElementSibling.setAttribute('aria-hidden', 'false');
+      });
+    });
+    document.getElementById('collapse-all').addEventListener('click', () => {
+      document.querySelectorAll('.phase-header').forEach(h => {
+        h.classList.remove('open');
+        h.setAttribute('aria-expanded', 'false');
+        h.nextElementSibling.classList.remove('open');
+        h.nextElementSibling.setAttribute('aria-hidden', 'true');
+      });
+    });
+
+    // ─── Sidebar active state on scroll ─────────────
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('[id^="phase-"], #faq, #troubleshooting, #help');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sidebarLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+
+    // ─── Phase nav active state ──────────────────────
+    const phaseNavItems = document.querySelectorAll('.phase-nav-item');
+    const phaseObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          phaseNavItems.forEach(item => {
+            item.classList.toggle('active', item.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+
+    sections.forEach(s => phaseObserver.observe(s));
+
+    // ─── Auto-open phase if URL hash matches ────────
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        const header = target.querySelector('.phase-header');
+        if (header) {
+          header.classList.add('open');
+          header.setAttribute('aria-expanded', 'true');
+          header.nextElementSibling.classList.add('open');
+          header.nextElementSibling.setAttribute('aria-hidden', 'false');
+        }
+      }
+    }
+  </script>
+</body>
+</html>
