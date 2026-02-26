@@ -558,6 +558,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 @media (min-width: 640px) {
   .products-grid { grid-template-columns: 1fr 1fr; }
+  .product-card--brand { grid-column: 1 / -1; }
+}
+
+@media (min-width: 1060px) {
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  .product-card--brand { grid-column: auto; }
 }
 
 /* Product Card — box frame motif */
@@ -689,6 +695,108 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .product-card--paid .product-features li svg { color: var(--amber); }
 
 .product-cta-group { margin-top: .5rem; }
+
+/* Brand card — deep forest, amber accents */
+.product-card--brand {
+  background: var(--green-dark);
+  color: #fff;
+}
+
+.product-card--brand .product-icon { color: rgba(255,255,255,.25); }
+.product-card--brand .product-name { color: #fff; }
+.product-card--brand .product-tagline { color: rgba(255,255,255,.55); font-style: italic; }
+.product-card--brand .product-price { color: var(--amber); }
+.product-card--brand .product-desc { color: rgba(255,255,255,.65); }
+.product-card--brand .product-who {
+  color: rgba(255,255,255,.5);
+  border-color: rgba(255,255,255,.12);
+}
+.product-card--brand .product-who strong { color: rgba(255,255,255,.8); }
+.product-card--brand .product-features li { color: rgba(255,255,255,.8); }
+.product-card--brand .product-features li svg { color: var(--amber); }
+.product-card--brand .btn-outline {
+  border-color: rgba(255,255,255,.3);
+  color: #fff;
+}
+.product-card--brand .btn-outline:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.6);
+}
+.product-card--brand .btn-primary {
+  background: var(--amber);
+  color: var(--charcoal);
+  border-color: transparent;
+}
+.product-card--brand .btn-primary:hover {
+  background: var(--amber-light);
+  box-shadow: 0 4px 20px rgba(212,165,116,.3);
+}
+.product-card--brand .product-badge--paid {
+  background: rgba(212,165,116,.15);
+  color: var(--amber);
+  border-color: rgba(212,165,116,.35);
+}
+
+/* Bundle banner — Launch in a Box */
+.bundle-banner {
+  margin-top: 1.5px;
+  border: 1.5px solid var(--border-mid);
+  border-top: none;
+  background: var(--offwhite);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 2rem;
+  flex-wrap: wrap;
+}
+
+.bundle-banner-content {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bundle-label {
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+  white-space: nowrap;
+}
+
+.bundle-name {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  color: var(--charcoal);
+  line-height: 1.3;
+}
+
+.bundle-desc {
+  font-size: .875rem;
+  color: var(--charcoal-60);
+}
+
+.bundle-price {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  white-space: nowrap;
+}
+
+.bundle-price s {
+  font-weight: 400;
+  color: var(--charcoal-40);
+  font-size: .9375rem;
+  text-decoration: line-through;
+}
+
+@media (max-width: 639px) {
+  .bundle-banner { padding: 1.25rem 1.5rem; }
+  .bundle-banner-content { gap: .5rem; }
+}
 
 /* Paid card button overrides */
 .product-card--paid .btn-outline {
