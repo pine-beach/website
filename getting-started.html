@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting Started — Business in a Box | Pine Beach</title>
-  <meta name="description" content="Get Business in a Box running in 4 steps — your agent handles the setup. Or follow the full manual guide. Either way, you're live in under an hour." />
-  <meta property="og:title" content="Getting Started — Business in a Box | Pine Beach" />
+  <title>Getting Started — Team in a Box | Pine Beach</title>
+  <meta name="description" content="Get Team in a Box running in 4 steps — your agent handles the setup. Or follow the full manual guide. Either way, you're live in under an hour." />
+  <meta property="og:title" content="Getting Started — Team in a Box | Pine Beach" />
   <meta property="og:description" content="4-step quick install via your agent, or the full manual guide. No surprises. Under an hour from zero to a working AI team." />
   <meta property="og:image" content="./logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -965,7 +965,7 @@
         <a href="index.html#products">Products</a>
         <a href="getting-started.html" style="color: var(--charcoal); font-weight: 600;">Getting started</a>
       </nav>
-      <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-sm btn-primary nav-cta" target="_blank" rel="noopener">Buy now — $25</a>
+      <a href="https://gumroad.com/l/pine-beach-team-in-a-box" class="btn btn-sm btn-primary nav-cta" target="_blank" rel="noopener">Buy Team in a Box — $25</a>
       <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -974,7 +974,7 @@
       <a href="index.html#what-we-do">What we do</a>
       <a href="index.html#products">Products</a>
       <a href="getting-started.html">Getting started</a>
-      <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary" target="_blank" rel="noopener">Buy now — $25</a>
+      <a href="https://gumroad.com/l/pine-beach-team-in-a-box" class="btn btn-primary" target="_blank" rel="noopener">Buy Team in a Box — $25</a>
     </div>
   </header>
 
@@ -987,7 +987,7 @@
       </a>
       <div class="doc-hero-badge">
         <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        Business in a Box
+        Team in a Box
       </div>
       <h1>Getting started.<br/><em>No surprises.</em></h1>
       <p class="doc-hero-sub">
@@ -1025,7 +1025,7 @@
         <div class="qs-step">
           <div class="qs-num">01</div>
           <h3>Download the package</h3>
-          <p>Get Business in a Box from Gumroad. Check your email for the download link after purchase.</p>
+          <p>Get Team in a Box from Gumroad. Check your email for the download link after purchase.</p>
         </div>
         <div class="qs-step">
           <div class="qs-num">02</div>
@@ -1034,7 +1034,7 @@
         </div>
         <div class="qs-step">
           <div class="qs-num">03</div>
-          <h3>Tell your agent: "Install Business in a Box"</h3>
+          <h3>Tell your agent: "Install Team in a Box"</h3>
           <p>Open your OpenClaw agent and say exactly that. The built-in installer skill takes it from there — no scripts, no config editing.</p>
         </div>
         <div class="qs-step">
@@ -1220,17 +1220,17 @@ openclaw gateway status <span class="cm"># shows "running"</span></code></div>
           <div class="phase-body" aria-hidden="true">
             <div class="phase-body-inner doc-body">
               <h3>1.1 — Find your download</h3>
-              <p>After purchasing on Gumroad, check your email for a receipt with a "View content" or "Download" button. The file will be named something like <code>business-in-a-box-v1.x.zip</code>.</p>
+              <p>After purchasing on Gumroad, check your email for a receipt with a "View content" or "Download" button. The file will be named something like <code>team-in-a-box-v1.x.zip</code>.</p>
               <p>Can't find the email? Log in at <a href="https://gumroad.com/library" target="_blank" rel="noopener" style="color: var(--charcoal); border-bottom: 1px solid;">gumroad.com/library</a> with the email you used to purchase.</p>
 
               <h3>1.2 — Unzip the archive</h3>
               <p><strong>macOS:</strong> Double-click the <code>.zip</code> file in Finder, or in Terminal:</p>
               <div class="code-block"><code>cd ~/Downloads
-unzip business-in-a-box-*.zip</code></div>
+unzip team-in-a-box-*.zip</code></div>
               <p><strong>Linux:</strong> Same as above. If <code>unzip</code> isn't installed: <code>sudo apt install unzip</code> (Debian/Ubuntu) or <code>sudo dnf install unzip</code> (Fedora).</p>
 
               <h3>1.3 — Verify the contents</h3>
-              <div class="code-block"><code>cd business-in-a-box*
+              <div class="code-block"><code>cd team-in-a-box*
 ls -la</code></div>
               <p>You should see all of these:</p>
               <div class="code-block"><code>SKILL.md                  <span class="cm">← Product overview</span>
@@ -1379,6 +1379,7 @@ cat ~/workspace/openclaw-agents.txt</code></div>
               </div>
 
               <h3>3A.1 — Open your config file</h3>
+
               <p>OpenClaw reads its config from <code>~/.openclaw/openclaw.json</code> (JSON5 format — allows comments and trailing commas). Open it:</p>
               <div class="code-block"><code>nano ~/.openclaw/openclaw.json</code></div>
 
@@ -1492,7 +1493,7 @@ openclaw doctor          <span class="cm"># no errors</span></code></div>
                 <div class="path-card" style="background: var(--offwhite);">
                   <div class="path-card-label">Option 2</div>
                   <h3>Keep existing agent, add team alongside</h3>
-                  <p>Your agent keeps its ID and SOUL. Business in a Box agents run completely separately. Best if your existing agent has a specific purpose.</p>
+                  <p>Your agent keeps its ID and SOUL. Team in a Box agents run completely separately. Best if your existing agent has a specific purpose.</p>
                 </div>
               </div>
 
@@ -1507,7 +1508,7 @@ openclaw doctor          <span class="cm"># no errors</span></code></div>
               </ol>
 
               <h4>Option 2 — Keep existing, add alongside</h4>
-              <p>Open <code>~/.openclaw/openclaw.json</code> and add the Business in a Box agents to your existing list. If you're in Pattern A (no <code>agents.list</code>), make your existing agent explicit first:</p>
+              <p>Open <code>~/.openclaw/openclaw.json</code> and add the Team in a Box agents to your existing list. If you're in Pattern A (no <code>agents.list</code>), make your existing agent explicit first:</p>
               <div class="code-block"><code>{
   agents: {
     defaults: {
@@ -1521,7 +1522,7 @@ openclaw doctor          <span class="cm"># no errors</span></code></div>
         workspace: <span class="str">"/home/yourname/.openclaw/workspace"</span>,  <span class="cm">// do not change</span>
       },
 
-      <span class="cm">// BUSINESS IN A BOX — new additions</span>
+      <span class="cm">// TEAM IN A BOX — new additions</span>
       {
         id: <span class="str">"ceo"</span>,
         workspace: <span class="str">"/home/yourname/workspace/agents/ceo"</span>,
@@ -2032,11 +2033,11 @@ openclaw logs     <span class="cm"># shows recent errors</span></code></div>
         </div>
         <div style="display: flex; gap: .75rem; flex-wrap: wrap;">
           <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-            Get Business in a Box — $25
+            Get Business in a Box — $35
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="index.html" class="btn btn-ghost btn-lg" style="border-color: rgba(255,255,255,.3); color: rgba(255,255,255,.7);">
-            Back to Pine Beach
+          <a href="https://gumroad.com/l/pine-beach-team-in-a-box" class="btn btn-ghost btn-lg" style="border-color: rgba(255,255,255,.3); color: rgba(255,255,255,.7);" target="_blank" rel="noopener">
+            Team in a Box only — $25
           </a>
         </div>
       </div>
@@ -2058,7 +2059,9 @@ openclaw logs     <span class="cm"># shows recent errors</span></code></div>
         <div class="footer-link-group">
           <span class="footer-link-label">Products</span>
           <a href="https://github.com/pinebeach" target="_blank" rel="noopener">Daily Operations (free)</a>
-          <a href="https://gumroad.com/l/pine-beach-business-in-a-box" target="_blank" rel="noopener">Business in a Box</a>
+          <a href="https://gumroad.com/l/pine-beach-brand-in-a-box" target="_blank" rel="noopener">Brand in a Box — $19</a>
+          <a href="https://gumroad.com/l/pine-beach-team-in-a-box" target="_blank" rel="noopener">Team in a Box — $25</a>
+          <a href="https://gumroad.com/l/pine-beach-business-in-a-box" target="_blank" rel="noopener">Business in a Box — $35 (bundle)</a>
         </div>
         <div class="footer-link-group">
           <span class="footer-link-label">Docs</span>
