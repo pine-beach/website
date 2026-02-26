@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Cases — Pine Beach</title>
+  <meta name="description" content="See how founders, solopreneurs, and small business owners are using Pine Beach's AI team to run their operations." />
+  <meta property="og:title" content="Use Cases — Pine Beach" />
+  <meta property="og:description" content="Real workflows. Real results. See what an AI team can do for your business." />
+  <meta property="og:image" content="./logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ─── USE CASES PAGE ─── */
+
+    /* Hero */
+    .uc-hero {
+      padding: 7rem 0 4rem;
+      background: var(--offwhite);
+      border-bottom: 1.5px solid var(--charcoal-10);
+    }
+    .uc-hero-inner {
+      max-width: 720px;
+    }
+    .uc-hero-badge {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber-dim);
+      border: 1.5px solid var(--charcoal-10);
+      padding: .375rem .875rem;
+      margin-bottom: 1.5rem;
+    }
+    .uc-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin: 0 0 1.25rem;
+    }
+    .uc-hero-sub {
+      font-size: 1.125rem;
+      color: var(--charcoal-60);
+      line-height: 1.65;
+      margin: 0;
+      max-width: 560px;
+    }
+
+    /* Category section */
+    .uc-category {
+      padding: 4rem 0 2rem;
+    }
+    .uc-category + .uc-category {
+      border-top: 1.5px solid var(--charcoal-10);
+    }
+    .uc-category-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .uc-category-label {
+      font-family: var(--font-sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber-dim);
+    }
+    .uc-category-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--charcoal);
+      margin: .25rem 0 .625rem;
+    }
+    .uc-category-desc {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      max-width: 640px;
+      margin: 0;
+    }
+
+    /* Use-case cards grid */
+    .uc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    /* Individual card */
+    .uc-card {
+      border: 1.5px solid var(--charcoal);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .15s ease, transform .15s ease;
+    }
+    .uc-card:hover {
+      box-shadow: var(--shadow-lift);
+      transform: translateY(-2px);
+    }
+    .uc-card-inner {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .uc-card-headline {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      margin: 0 0 .75rem;
+      line-height: 1.2;
+    }
+    .uc-card-desc {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      margin: 0 0 1.25rem;
+      flex: 1;
+    }
+    .uc-card-agents {
+      border-top: 1px solid var(--charcoal-10);
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+    .uc-card-agents-label {
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--charcoal-40);
+      margin-bottom: .5rem;
+    }
+    .uc-agent-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .375rem;
+    }
+    .uc-agent-tag {
+      font-size: .75rem;
+      font-weight: 500;
+      color: var(--charcoal-80);
+      background: var(--offwhite);
+      border: 1px solid var(--charcoal-10);
+      padding: .25rem .625rem;
+    }
+
+    /* CTA banner */
+    .uc-cta {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 5rem 0;
+      margin-top: 5rem;
+    }
+    .uc-cta-inner {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .uc-cta-eyebrow {
+      font-family: var(--font-sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber-dim);
+      margin-bottom: 1.25rem;
+    }
+    .uc-cta h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      color: var(--white);
+      margin: 0 0 1rem;
+      line-height: 1.15;
+    }
+    .uc-cta p {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,.65);
+      line-height: 1.65;
+      margin: 0 0 2.5rem;
+    }
+    .uc-cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .uc-hero {
+        padding: 5rem 0 3rem;
+      }
+      .uc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Pine Beach home">
+        <img src="logo.png" alt="Pine Beach" />
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#the-story">The story</a>
+        <a href="index.html#products">Products</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="use-cases.html" aria-current="page">Use Cases</a>
+        <a href="getting-started.html">Getting started</a>
+      </nav>
+      <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-sm btn-primary nav-cta" target="_blank" rel="noopener">Get Business in a Box — $25</a>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" aria-hidden="true">
+      <a href="index.html#the-story">The story</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#how-it-works">How it works</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="getting-started.html">Getting started</a>
+      <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary" target="_blank" rel="noopener">Get Business in a Box — $25</a>
+    </div>
+  </header>
+
+  <!-- ─── HERO ─── -->
+  <section class="uc-hero">
+    <div class="container uc-hero-inner">
+      <div class="uc-hero-badge">Use Cases</div>
+      <h1>What an AI team actually does for your business.</h1>
+      <p class="uc-hero-sub">
+        <!-- PLACEHOLDER — Echo delivering full copy to /home/atlas/workspace/brand/USE_CASES_PAGE.md -->
+        Real workflows. Real results. From solopreneurs to small businesses — here's how founders are putting their AI team to work.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <main>
+
+    <!-- ─── CATEGORY: SOLOPRENEURS ─── -->
+    <section class="section uc-category" id="solopreneurs">
+      <div class="container">
+        <div class="uc-category-header">
+          <div>
+            <div class="uc-category-label">Solopreneurs</div>
+            <h2 class="uc-category-title">Running a one-person business — without the burnout.</h2>
+            <p class="uc-category-desc">
+              <!-- PLACEHOLDER — Echo to provide category intro copy -->
+              When you're the CEO, CMO, CFO, and support desk, something always gets dropped. An AI team handles the noise so you can stay in your zone.
+            </p>
+          </div>
+        </div>
+
+        <div class="uc-grid">
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER: Use case headline -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER: Short description of this use case and outcome -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Atlas (CEO)</span>
+                  <span class="uc-agent-tag">Echo (CMO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Ledger (CFO)</span>
+                  <span class="uc-agent-tag">Harbor (CSO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Forge (CTO)</span>
+                  <span class="uc-agent-tag">Atlas (CEO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CATEGORY: SIDE HUSTLERS ─── -->
+    <section class="section uc-category" id="side-hustlers">
+      <div class="container">
+        <div class="uc-category-header">
+          <div>
+            <div class="uc-category-label">Side Hustlers</div>
+            <h2 class="uc-category-title">Turning 10 hours a week into a real business.</h2>
+            <p class="uc-category-desc">
+              <!-- PLACEHOLDER — Echo to provide category intro copy -->
+              You've got a day job. You're building something on the side. An AI team makes sure your side hustle doesn't die from neglect.
+            </p>
+          </div>
+        </div>
+
+        <div class="uc-grid">
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Echo (CMO)</span>
+                  <span class="uc-agent-tag">Harbor (CSO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Ledger (CFO)</span>
+                  <span class="uc-agent-tag">Atlas (CEO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Sentinel (CISO)</span>
+                  <span class="uc-agent-tag">Forge (CTO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CATEGORY: SMALL BUSINESS ─── -->
+    <section class="section uc-category" id="small-business">
+      <div class="container">
+        <div class="uc-category-header">
+          <div>
+            <div class="uc-category-label">Small Business</div>
+            <h2 class="uc-category-title">Punching above your weight — without hiring above your budget.</h2>
+            <p class="uc-category-desc">
+              <!-- PLACEHOLDER — Echo to provide category intro copy -->
+              Small teams do the work of larger ones when their operational overhead is handled. An AI back-office changes what's possible.
+            </p>
+          </div>
+        </div>
+
+        <div class="uc-grid">
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Atlas (CEO)</span>
+                  <span class="uc-agent-tag">Ledger (CFO)</span>
+                  <span class="uc-agent-tag">Harbor (CSO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Echo (CMO)</span>
+                  <span class="uc-agent-tag">Forge (CTO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Sentinel (CISO)</span>
+                  <span class="uc-agent-tag">Harbor (CSO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CATEGORY: FREELANCERS & CONSULTANTS ─── -->
+    <section class="section uc-category" id="freelancers">
+      <div class="container">
+        <div class="uc-category-header">
+          <div>
+            <div class="uc-category-label">Freelancers &amp; Consultants</div>
+            <h2 class="uc-category-title">Bill for your expertise. Let the team handle the rest.</h2>
+            <p class="uc-category-desc">
+              <!-- PLACEHOLDER — Echo to provide category intro copy -->
+              Proposals, invoices, client follow-ups, project tracking — your AI team keeps the business moving so your billable hours go to actual work.
+            </p>
+          </div>
+        </div>
+
+        <div class="uc-grid">
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Ledger (CFO)</span>
+                  <span class="uc-agent-tag">Atlas (CEO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Harbor (CSO)</span>
+                  <span class="uc-agent-tag">Echo (CMO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="uc-card">
+            <div class="uc-card-inner">
+              <h3 class="uc-card-headline"><!-- PLACEHOLDER -->[Headline TBD — Echo delivering]</h3>
+              <p class="uc-card-desc"><!-- PLACEHOLDER -->[Description TBD — Echo delivering]</p>
+              <div class="uc-card-agents">
+                <div class="uc-card-agents-label">Agents involved</div>
+                <div class="uc-agent-tags">
+                  <span class="uc-agent-tag">Forge (CTO)</span>
+                  <span class="uc-agent-tag">Sentinel (CISO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── CTA BANNER ─── -->
+  <section class="uc-cta" id="get-started">
+    <div class="container">
+      <div class="uc-cta-inner">
+        <div class="uc-cta-eyebrow">Ready to deploy</div>
+        <h2>Your AI team is waiting. $25 to deploy.</h2>
+        <p>
+          <!-- PLACEHOLDER — Echo to provide CTA copy -->
+          Everything shown here comes pre-built in Business in a Box. One purchase. No subscription. No lock-in.
+        </p>
+        <div class="uc-cta-actions">
+          <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+            Get Business in a Box — $25
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="getting-started.html" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,.3); color: var(--white);">
+            Read the setup guide
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo" aria-label="Pine Beach — back to top">
+          <img src="logo.png" alt="Pine Beach" />
+        </a>
+        <p class="footer-tagline">Human-founded. AI-operated.</p>
+        <p class="footer-supporting">Real tools from an AI team that depends on them.</p>
+        <p class="footer-supporting" style="font-size: .8125rem; color: var(--charcoal-40); margin-top: .25rem;">
+          <em>Built on <a href="https://openclaw.ai" target="_blank" rel="noopener" style="color: var(--charcoal-40); border-bottom: 1px solid;">OpenClaw</a>. Running in production. Available to you.</em>
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <span class="footer-link-label">Products</span>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">Daily Operations (free)</a>
+          <a href="https://gumroad.com/l/pine-beach-business-in-a-box" target="_blank" rel="noopener">Business in a Box</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Pages</span>
+          <a href="use-cases.html">Use Cases</a>
+          <a href="getting-started.html">Getting started</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Links</span>
+          <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://gumroad.com/pinebeach" target="_blank" rel="noopener">Gumroad</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Company</span>
+          <a href="index.html#the-story">The story</a>
+          <a href="index.html#signup">Stay in the loop</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Pine Beach. All rights reserved.</p>
+        <p class="footer-built"><em>Human-founded. AI-operated. Shipping tools we use. Selling them honestly.</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
