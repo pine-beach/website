@@ -407,8 +407,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   margin-top: .5rem;
 }
 
-@media (min-width: 400px) {
-  .hero-ctas { flex-direction: row; max-width: none; justify-content: center; width: auto; }
+@media (min-width: 600px) {
+  .hero-ctas { flex-direction: row; max-width: none; justify-content: center; width: auto; flex-wrap: wrap; }
 }
 
 .hero-trust {
@@ -1232,3 +1232,231 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* Prevent text orphans */
 h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE POLISH — MOBILE / TABLET FIXES
+   Breakpoints: mobile ≤599px, tablet 600–767px
+═══════════════════════════════════════════ */
+
+/* ── Nav: mobile menu CTA button full-width ── */
+.nav-mobile-menu .btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* ── Hero CTAs ──────────────────────────────
+   Row layout starts at 600px (changed from 400px) so two long
+   `white-space:nowrap` buttons never overflow on phones.
+   Below 600px: full-width column buttons.
+───────────────────────────────────────────── */
+@media (max-width: 599px) {
+  .hero-ctas {
+    max-width: 100%;
+    align-items: stretch;
+  }
+  .hero-ctas .btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* ── Stat strip: left-align on single-column mobile ── */
+@media (max-width: 599px) {
+  .stat-item {
+    align-items: flex-start;
+  }
+  .stat-number {
+    font-size: 2.5rem;
+  }
+}
+
+/* ── Bundle hero: reduce padding + fix 4-col screenshot tabs ──
+   .bundle-hero-content has `padding: 2.5rem` in index.html <style>.
+   On 320px: 320 – 40px gutter – 2×40px padding = 200px, too tight.
+   Use !important to override the page-level <style> block.
+───────────────────────────────────────────── */
+@media (max-width: 599px) {
+  .bundle-hero-content {
+    padding: 1.25rem !important;
+  }
+  .bundle-hero-screenshots {
+    padding: 1rem !important;
+  }
+  .bundle-hero .btn {
+    white-space: normal;
+  }
+}
+
+/* Screenshots 4-col tabs: reduce to 2 cols on mobile */
+@media (max-width: 599px) {
+  .screenshots-tabs {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ── Bundle banner: stack + full-width button on mobile ── */
+@media (max-width: 599px) {
+  .bundle-banner {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .bundle-banner .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Proof section CTA: full-width on mobile ──
+   `white-space:nowrap` on "Get Business in a Box — $197"
+   requires ~300px; overflows a 280px container on 320px screens.
+───────────────────────────────────────────── */
+@media (max-width: 599px) {
+  .proof-inner .btn {
+    width: 100%;
+    justify-content: center;
+    white-space: normal;
+  }
+}
+
+/* ── Footer top: stack logo + tagline on mobile ──
+   Inline `style="display:flex; align-items:center; gap:2rem"` prevents
+   CSS stacking — override with !important.
+───────────────────────────────────────────── */
+@media (max-width: 639px) {
+  .footer-top {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.875rem !important;
+  }
+}
+
+/* ── Footer bottom: stack + centre on mobile ── */
+@media (max-width: 639px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+  }
+  .footer-copy,
+  .footer-built {
+    text-align: center;
+  }
+}
+
+/* ── Getting Started doc CTA bar: full-width buttons ──
+   The button wrapper has inline style="display:flex; flex-wrap:wrap"
+   so needs !important to force column on mobile.
+───────────────────────────────────────────── */
+@media (max-width: 639px) {
+  .doc-cta-inner > div {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.625rem !important;
+  }
+  .doc-cta-inner .btn {
+    width: 100%;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
+/* ── Use Cases CTA actions: full-width + column on mobile ── */
+@media (max-width: 599px) {
+  .uc-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .uc-cta-actions .btn {
+    width: 100%;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* ── Getting Started: quickstart steps readable at 320px ── */
+@media (max-width: 480px) {
+  .qs-step {
+    padding: 1.25rem;
+  }
+  .quickstart-section {
+    padding: 2.5rem 0;
+  }
+}
+
+/* ── Getting Started: doc meta chips wrap cleanly ── */
+@media (max-width: 480px) {
+  .doc-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .doc-meta-chip {
+    width: 100%;
+  }
+}
+
+/* ── Use cases hero: back link + title padding ── */
+@media (max-width: 480px) {
+  .uc-hero {
+    padding: 6rem 0 2.5rem;
+  }
+}
+
+/* ── General: section label / sub max-width respects container ── */
+@media (max-width: 600px) {
+  .section-sub {
+    max-width: 100%;
+  }
+}
+
+/* ── Nav logo: constrain width on mobile so hamburger stays visible ── */
+@media (max-width: 767px) {
+  .nav-logo img {
+    max-width: 160px;
+    height: 44px;
+  }
+  .nav-inner {
+    gap: 0.75rem;
+  }
+}
+
+/* ── Support email link: allow wrapping on very small screens ── */
+@media (max-width: 400px) {
+  .support-email-link {
+    width: 100%;
+    justify-content: center;
+    word-break: break-all;
+  }
+}
+
+/* ── General: prevent any single element from causing horizontal scroll ── */
+@media (max-width: 767px) {
+  .site-nav,
+  .hero,
+  .section,
+  .what-we-do,
+  .products,
+  .how-it-works,
+  .social-proof,
+  .email-capture,
+  .site-footer,
+  .support-section,
+  .doc-hero,
+  .quickstart-section,
+  .uc-hero,
+  .uc-category,
+  .uc-cta,
+  .doc-cta-bar {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
