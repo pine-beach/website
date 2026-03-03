@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Websites for Australian Small Businesses — Pine Beach</title>
+  <meta name="description" content="Pine Beach builds SEO-optimised websites for Australian small businesses. $79/month, no setup fee, cancel anytime. Get found on Google. 30-day money-back guarantee." />
+  <meta property="og:title" content="Professional Websites for Australian Small Businesses — Pine Beach" />
+  <meta property="og:description" content="Pine Beach builds SEO-optimised websites for Australian small businesses. $79/month, no setup fee, cancel anytime." />
+  <meta property="og:image" content="../logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    /* ── Websites landing page styles ── */
+
+    .section-label-green {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+
+    /* Nav CTA */
+    .nav-cta-website {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      background: var(--green);
+      color: var(--white) !important;
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: .5rem 1.125rem;
+      white-space: nowrap;
+    }
+    .nav-cta-website:hover { background: var(--green-dark); }
+
+    /* Hero */
+    .hero-websites {
+      padding-block: 5rem 4rem;
+      background: var(--offwhite);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .hero-websites h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      max-width: 720px;
+    }
+    .hero-websites .sub {
+      font-size: clamp(.9375rem, 2vw, 1.125rem);
+      color: var(--charcoal-60);
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary-green {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: .875rem 1.75rem;
+      text-decoration: none;
+      transition: background var(--transition);
+    }
+    .btn-primary-green:hover { background: var(--charcoal-80); }
+    .btn-secondary-link {
+      display: inline-flex;
+      align-items: center;
+      font-size: .9375rem;
+      font-weight: 500;
+      color: var(--charcoal-60);
+      border-bottom: 1px solid var(--charcoal-20);
+      padding-bottom: 2px;
+    }
+    .btn-secondary-link:hover { color: var(--charcoal); border-color: var(--charcoal); }
+
+    .trust-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .75rem 1.5rem;
+      font-size: .875rem;
+      color: var(--charcoal-60);
+    }
+    .trust-bar-item {
+      display: flex;
+      align-items: center;
+      gap: .375rem;
+    }
+    .trust-bar-item svg { color: var(--green); }
+
+    /* One-liner */
+    .one-liner-section {
+      padding-block: 2.5rem;
+      background: var(--green);
+      color: var(--white);
+    }
+    .one-liner-section blockquote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      line-height: 1.4;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* How it works — detailed */
+    .how-detailed-section {
+      padding-block: 5rem;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .how-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 2.5rem;
+    }
+    .how-step {
+      display: grid;
+      gap: 2rem;
+      padding-block: 3rem;
+      border-bottom: 1.5px solid var(--border);
+    }
+    .how-step:last-child { border-bottom: none; }
+    @media (min-width: 640px) {
+      .how-step { grid-template-columns: 80px 1fr; align-items: start; }
+    }
+    .how-step-number {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      color: var(--charcoal-20);
+      line-height: 1;
+    }
+    .how-step-content h3 {
+      font-size: 1.1875rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: .75rem;
+    }
+    .how-step-content p {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.75;
+      margin-bottom: .75rem;
+    }
+    .how-step-note {
+      font-size: .8125rem;
+      color: var(--charcoal-40);
+      font-style: italic;
+    }
+
+    /* Included table */
+    .included-section {
+      padding-block: 5rem;
+      background: var(--offwhite);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .included-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      font-size: .9375rem;
+      border: 1.5px solid var(--border-mid);
+    }
+    .included-table thead {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+    .included-table th {
+      padding: .875rem 1.25rem;
+      text-align: left;
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .included-table td {
+      padding: .875rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .included-table tr:last-child td { border-bottom: none; }
+    .included-table tr:nth-child(even) td { background: var(--white); }
+    .included-table td:first-child { font-weight: 500; color: var(--charcoal); }
+    .included-table td:last-child { color: var(--charcoal-60); }
+    .tick-green { color: var(--green); font-weight: 700; }
+
+    /* Pricing */
+    .pricing-section {
+      padding-block: 5rem;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .pricing-card {
+      border: 2px solid var(--charcoal);
+      max-width: 560px;
+      margin: 2rem auto 0;
+    }
+    .pricing-card-header {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 2rem 2.5rem;
+    }
+    .pricing-badge-bar {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 1rem;
+    }
+    .pricing-card-price {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      margin-bottom: .75rem;
+    }
+    .pricing-amount {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      line-height: 1;
+    }
+    .pricing-period {
+      font-size: 1rem;
+      color: rgba(255,255,255,.6);
+    }
+    .pricing-sub {
+      font-size: .875rem;
+      color: rgba(255,255,255,.6);
+    }
+    .pricing-card-body {
+      padding: 2rem 2.5rem;
+      background: var(--white);
+    }
+    .pricing-features {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-bottom: 2rem;
+    }
+    .pricing-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .9375rem;
+      color: var(--charcoal-80);
+    }
+    .pricing-feature-check { color: var(--green); flex-shrink: 0; margin-top: .1em; }
+    .pricing-cta {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .btn-pricing {
+      display: block;
+      text-align: center;
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      width: 100%;
+    }
+    .btn-pricing:hover { background: var(--charcoal-80); }
+    .pricing-fine-print {
+      font-size: .8125rem;
+      color: var(--charcoal-40);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* Hormozi comparison */
+    .hormozi-comparison {
+      background: var(--offwhite);
+      border: 1.5px solid var(--border);
+      padding: 2rem;
+      margin-top: 3rem;
+      max-width: 720px;
+      margin-inline: auto;
+    }
+    .hormozi-comparison h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--charcoal-60);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .8125rem;
+    }
+    .hormozi-comparison p {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.75;
+      margin-bottom: .5rem;
+    }
+    .hormozi-comparison strong { color: var(--charcoal); }
+    .hormozi-highlight {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      font-size: .9375rem;
+      font-weight: 500;
+      line-height: 1.6;
+      margin-top: 1.25rem;
+    }
+
+    /* Pays for itself */
+    .pays-section {
+      padding-block: 5rem;
+      background: var(--cream);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .pays-inner {
+      display: grid;
+      gap: 3rem;
+    }
+    @media (min-width: 860px) {
+      .pays-inner { grid-template-columns: 1fr 1fr; align-items: start; }
+    }
+    .pays-text p {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .pays-text .quote-block {
+      border-left: 3px solid var(--green);
+      padding: 1rem 1.25rem;
+      background: var(--white);
+      font-style: italic;
+      font-size: .9375rem;
+      color: var(--charcoal-80);
+      line-height: 1.6;
+      margin-top: 1.5rem;
+    }
+    .pays-calc {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.25rem 1.5rem;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      gap: 1rem;
+    }
+    .calc-row-label { font-size: .9375rem; color: var(--charcoal-80); }
+    .calc-row-value { font-family: var(--font-serif); font-size: 1.5rem; color: var(--charcoal); white-space: nowrap; }
+    .calc-row-sub { font-size: .75rem; color: var(--charcoal-40); margin-top: .2rem; }
+    .calc-result {
+      background: var(--green);
+      color: var(--white);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .calc-result-label { font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: .5rem; }
+    .calc-result-value { font-family: var(--font-serif); font-size: 2rem; }
+    .calc-result-sub { font-size: .875rem; color: rgba(255,255,255,.7); margin-top: .25rem; }
+
+    /* Social proof */
+    .proof-section {
+      padding-block: 5rem;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .proof-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (min-width: 700px) {
+      .proof-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .proof-card {
+      background: var(--offwhite);
+      border: 1.5px solid var(--border);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .proof-stars { color: var(--amber); font-size: 1rem; letter-spacing: .1em; }
+    .proof-quote {
+      font-size: .9375rem;
+      color: var(--charcoal-80);
+      line-height: 1.7;
+      font-style: italic;
+      flex: 1;
+    }
+    .proof-author {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--charcoal-40);
+    }
+    .proof-tagline {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--offwhite);
+      border: 1.5px solid var(--border);
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      text-align: center;
+    }
+    .proof-placeholder-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: .8125rem;
+      color: var(--charcoal-40);
+      font-style: italic;
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding-block: 5rem;
+      background: var(--offwhite);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 2rem;
+      border: 1.5px solid var(--border-mid);
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      padding: 1.375rem 1.5rem;
+      font-weight: 600;
+      font-size: .9375rem;
+      color: var(--charcoal);
+      cursor: pointer;
+      gap: 1rem;
+      background: var(--white);
+      border: none;
+      text-align: left;
+      width: 100%;
+      line-height: 1.4;
+    }
+    .faq-question:hover { background: var(--offwhite); }
+    .faq-question svg { flex-shrink: 0; transition: transform var(--transition); color: var(--charcoal-40); margin-top: .1em; }
+    .faq-answer {
+      display: none;
+      padding: 0 1.5rem 1.375rem;
+      background: var(--white);
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-question svg { transform: rotate(180deg); }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* Final CTA */
+    .final-cta-section {
+      padding-block: 5rem;
+      background: var(--charcoal);
+      color: var(--white);
+      text-align: center;
+    }
+    .final-cta-section h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    .final-cta-section p {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,.7);
+      max-width: 560px;
+      margin: 0 auto 1rem;
+      line-height: 1.65;
+    }
+    .final-cta-price {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      font-size: 1.125rem;
+      font-weight: 700;
+      padding: .5rem 1.5rem;
+      margin-bottom: 2rem;
+      letter-spacing: .04em;
+    }
+    .final-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .btn-cta-white {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--white);
+      color: var(--charcoal);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: .875rem 1.75rem;
+    }
+    .btn-cta-white:hover { background: var(--cream); }
+    .btn-cta-outline-white {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: 1.5px solid rgba(255,255,255,.4);
+      color: var(--white);
+      font-size: .9375rem;
+      font-weight: 500;
+      padding: .875rem 1.75rem;
+    }
+    .btn-cta-outline-white:hover { border-color: rgba(255,255,255,.8); }
+    .final-cta-reassurance {
+      font-size: .8125rem;
+      color: rgba(255,255,255,.45);
+    }
+
+    /* Footer bridge */
+    .footer-bridge-products {
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+      margin-top: 1.25rem;
+      font-size: .875rem;
+      color: var(--charcoal-60);
+    }
+    .footer-bridge-products a {
+      color: var(--charcoal);
+      border-bottom: 1px solid var(--charcoal-20);
+    }
+    .footer-bridge-products a:hover { border-color: var(--charcoal); }
+
+    /* Comparison table (same as homepage) */
+    .comparison-section {
+      padding-block: 5rem;
+      background: var(--cream);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin-top: 2rem;
+      border: 1.5px solid var(--border-mid);
+    }
+    .comparison-table {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      font-size: .875rem;
+    }
+    .comparison-table th {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: .875rem 1.25rem;
+      text-align: left;
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .comparison-table th.highlight-col { background: var(--green); }
+    .comparison-table td {
+      padding: .875rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--charcoal-80);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table td.highlight-col {
+      background: rgba(45, 74, 62, .04);
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+    .comparison-table tr:nth-child(even) td { background: var(--offwhite); }
+    .comparison-table tr:nth-child(even) td.highlight-col { background: rgba(45, 74, 62, .06); }
+    .tick { color: var(--green); font-weight: 700; }
+    .cross { color: var(--charcoal-40); }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <header class="site-nav" id="top">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="Pine Beach home">
+        <img src="../logo-text.png" alt="Pine Beach" />
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/websites" style="border-bottom: 2px solid var(--charcoal);">Websites</a>
+        <a href="/about">About</a>
+        <a href="/products">Products &amp; Tools</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <a href="#get-started" class="nav-cta-website">Get Your Website →</a>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" aria-hidden="true">
+      <a href="/websites">Websites</a>
+      <a href="/about">About</a>
+      <a href="/products">Products &amp; Tools</a>
+      <a href="/contact">Contact</a>
+      <a href="#get-started" class="btn btn-primary">Get Your Website →</a>
+    </div>
+  </header>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero-websites">
+    <div class="container">
+      <div style="display: inline-flex; align-items: center; gap: .5rem; background: var(--green); color: var(--white); font-size: .8125rem; font-weight: 700; letter-spacing: .08em; padding: .4rem 1rem; margin-bottom: 1.75rem;">
+        🇦🇺 Australian owned and operated
+      </div>
+      <h1>A professional website for your business.<br/><span style="color: var(--green-light);">$79 a month. No setup fee.</span></h1>
+      <p class="sub">We build it, we launch it, we keep it running. You focus on the business.<br/>Found on Google. Ready in days. Backed by a 30-day guarantee.</p>
+      <div class="hero-ctas">
+        <a href="#get-started" class="btn-primary-green">Get Started — $79/month →</a>
+        <a href="#how-it-works" class="btn-secondary-link">See how it works ↓</a>
+      </div>
+      <div class="trust-bar">
+        <span class="trust-bar-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          $0 setup fee
+        </span>
+        <span class="trust-bar-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          30-day money-back guarantee
+        </span>
+        <span class="trust-bar-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Cancel anytime
+        </span>
+        <span class="trust-bar-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Australian support
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ONE-LINER ─── -->
+  <section class="one-liner-section">
+    <div class="container">
+      <blockquote>"Less than one consult. A new SEO-optimised website will generate much more business. It pays for itself."</blockquote>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section class="how-detailed-section" id="how-it-works">
+    <div class="container">
+      <span class="section-label-green">How it works</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Three steps. Your part takes about 10 minutes.</h2>
+
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-number">01</div>
+          <div class="how-step-content">
+            <h3>Tell us about your business</h3>
+            <p>Fill in a short form — your business name, your services, your suburb, and how customers should contact you. That's genuinely all we need to get started.</p>
+            <p class="how-step-note">No meetings. No discovery calls. No 40-question brief.</p>
+          </div>
+        </div>
+
+        <div class="how-step">
+          <div class="how-step-number">02</div>
+          <div class="how-step-content">
+            <h3>We build your website</h3>
+            <p>Our team puts together a professional, SEO-optimised website for your specific business. Not a generic template — your services, your location, your voice. We'll have a draft ready within a few business days.</p>
+            <p class="how-step-note">You don't touch a thing at this point.</p>
+          </div>
+        </div>
+
+        <div class="how-step">
+          <div class="how-step-number">03</div>
+          <div class="how-step-content">
+            <h3>You check it, we launch it</h3>
+            <p>We send you the preview link. You look it over. Want anything changed? Just tell us and we'll fix it before it goes live. Happy with it? We make it live. Your business starts appearing on Google.</p>
+            <p class="how-step-note">Your total time investment: about 10 minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT'S INCLUDED ─── -->
+  <section class="included-section">
+    <div class="container">
+      <span class="section-label-green">What's included</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Everything you need. Nothing you have to manage.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); margin-top: .75rem; max-width: 560px; line-height: 1.7;">This is what $79 a month actually gets you — no add-ons, no surprises.</p>
+
+      <div style="overflow-x: auto; margin-top: 2rem;">
+        <table class="included-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">What's Included</th>
+              <th>Why It Matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tick-green">✓</span> Professional 5-page website</td>
+              <td>Built for your business, not a template you fill in yourself</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Your own .com.au domain</td>
+              <td>Yours forever — we transfer it to you on request, no conditions</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Fast Australian hosting</td>
+              <td>Local servers, fast load times, 99.9% uptime</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> SSL security certificate</td>
+              <td>The padlock in the browser. Google requires it. Your customers trust it.</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> SEO setup from day one</td>
+              <td>Your business name + suburb + service, set up to show in Google results</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Mobile-first design</td>
+              <td>Over 70% of your customers are searching on their phones</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Click-to-call button</td>
+              <td>One tap and they're calling you — the most important feature for local business</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Google Maps embed</td>
+              <td>Directions to your business, right on your site</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Google Business Profile link</td>
+              <td>Connecting your site improves your Google Maps ranking immediately</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Contact form</td>
+              <td>Enquiries land directly in your inbox</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Up to 2 updates per month</td>
+              <td>Changed your hours? New service? Just message us. Done in 48 hours.</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Email support</td>
+              <td>Real people. Real replies. Business hours, Australian time.</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> 30-day money-back guarantee</td>
+              <td>If you're not happy for any reason, full refund. No questions.</td>
+            </tr>
+            <tr>
+              <td><span class="tick-green">✓</span> Cancel anytime</td>
+              <td>One email. No exit fees. We'll transfer your domain and wish you well.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRICING ─── -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <span class="section-label-green">Pricing</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Honest pricing. One plan. No surprises.</h2>
+
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <div class="pricing-badge-bar">🟢 Pine Beach Website</div>
+          <div class="pricing-card-price">
+            <span class="pricing-amount">$79</span>
+            <span class="pricing-period">/month</span>
+          </div>
+          <p class="pricing-sub">$0 setup fee · Cancel anytime · 30-day money-back guarantee</p>
+        </div>
+        <div class="pricing-card-body">
+          <div class="pricing-features">
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> 5-page professional website</div>
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Your own .com.au domain</div>
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Australian hosting + SSL</div>
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> SEO optimisation from day one</div>
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Mobile-first design</div>
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Click-to-call + contact form</div>
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Google Maps embed</div>
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Google Business Profile connection</div>
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Up to 2 updates per month</div>
+            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Email support</div>
+          </div>
+          <div class="pricing-cta" id="get-started">
+            <a href="mailto:support@pinebeach.com.au?subject=Get My Website" class="btn-pricing">Get Started — $79/month →</a>
+            <p class="pricing-fine-print">No lock-in. Cancel with one email. Your domain is always yours.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hormozi-comparison">
+        <h3>What you'd pay if you did it yourself:</h3>
+        <p><strong>Freelancer:</strong> $2,000–$5,000 upfront + $80–$150/hour every time you want a change</p>
+        <p><strong>Agency:</strong> $5,000–$15,000 upfront + monthly retainer</p>
+        <p><strong>Wix or Squarespace:</strong> $30–$50/month AND you build it yourself</p>
+        <div class="hormozi-highlight">
+          <strong>Pine Beach: $79/month. We do everything.</strong><br/>
+          One new customer from Google pays for over a year of this service.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PAYS FOR ITSELF ─── -->
+  <section class="pays-section">
+    <div class="container">
+      <span class="section-label-green">The return on investment</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal); margin-bottom: 2.5rem;">The maths on $79 a month.</h2>
+      <div class="pays-inner">
+        <div class="pays-text">
+          <p>Think about what you charge for an hour of your time, or a single job.</p>
+          <p>Most of our customers tell us they get their first enquiry from Google within the first few weeks. After that, it's pure profit.</p>
+          <p>A website that finds you one new customer a month earns back its cost many times over. It's not a marketing cost. It's infrastructure.</p>
+          <div class="quote-block">
+            "Less than one consult. A new SEO-optimised website will generate much more business. It pays for itself."
+          </div>
+        </div>
+        <div class="pays-calc">
+          <div class="calc-row">
+            <div>
+              <div class="calc-row-label">Physio initial consult</div>
+              <div class="calc-row-sub">= 2+ months of Pine Beach</div>
+            </div>
+            <div class="calc-row-value">~$180</div>
+          </div>
+          <div class="calc-row">
+            <div>
+              <div class="calc-row-label">Tradie call-out</div>
+              <div class="calc-row-sub">= 3+ months of Pine Beach</div>
+            </div>
+            <div class="calc-row-value">~$250</div>
+          </div>
+          <div class="calc-row">
+            <div>
+              <div class="calc-row-label">Personal trainer (new client)</div>
+              <div class="calc-row-sub">= the whole year of Pine Beach</div>
+            </div>
+            <div class="calc-row-value">~$1,200 <span style="font-size: .875rem; font-family: var(--font-sans); color: var(--charcoal-60);">/ yr</span></div>
+          </div>
+          <div class="calc-result">
+            <div class="calc-result-label">Pine Beach monthly</div>
+            <div class="calc-result-value">$79 / mo</div>
+            <div class="calc-result-sub">One new customer pays for it. The rest is profit.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── COMPARISON ─── -->
+  <section class="comparison-section">
+    <div class="container">
+      <span class="section-label-green">How we compare</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal); margin-bottom: .5rem;">See how the options stack up.</h2>
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="highlight-col">Pine Beach</th>
+              <th>Freelancer</th>
+              <th>Agency</th>
+              <th>DIY (Wix / Squarespace)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Monthly cost</strong></td>
+              <td class="highlight-col">$79 / mo</td>
+              <td>Hourly for every change</td>
+              <td>Retainer</td>
+              <td>$30–$50 / mo</td>
+            </tr>
+            <tr>
+              <td><strong>Setup cost</strong></td>
+              <td class="highlight-col">$0</td>
+              <td>$2,000–$5,000</td>
+              <td>$5,000–$15,000</td>
+              <td>$0 + your time</td>
+            </tr>
+            <tr>
+              <td><strong>Time to launch</strong></td>
+              <td class="highlight-col">Days</td>
+              <td>4–12 weeks</td>
+              <td>3–6 months</td>
+              <td>You decide</td>
+            </tr>
+            <tr>
+              <td><strong>Effort from you</strong></td>
+              <td class="highlight-col">~10 minutes</td>
+              <td>Hours of back-and-forth</td>
+              <td>Meetings, briefs, reviews</td>
+              <td>You build the whole thing</td>
+            </tr>
+            <tr>
+              <td><strong>Ongoing updates</strong></td>
+              <td class="highlight-col">Just message us</td>
+              <td>Pay each time</td>
+              <td>Expensive</td>
+              <td>Do it yourself</td>
+            </tr>
+            <tr>
+              <td><strong>Google-ready</strong></td>
+              <td class="highlight-col"><span class="tick">✓</span> From day one</td>
+              <td>Depends on freelancer</td>
+              <td>Usually yes</td>
+              <td>Depends on your skill</td>
+            </tr>
+            <tr>
+              <td><strong>Risk</strong></td>
+              <td class="highlight-col">30-day refund</td>
+              <td>Upfront, non-refundable</td>
+              <td>Contracts</td>
+              <td>Your time, non-refundable</td>
+            </tr>
+            <tr>
+              <td><strong>Australian support</strong></td>
+              <td class="highlight-col"><span class="tick">✓</span> Always</td>
+              <td>Maybe</td>
+              <td>Maybe</td>
+              <td><span class="cross">✗</span> US-based</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SOCIAL PROOF ─── -->
+  <section class="proof-section">
+    <div class="container">
+      <span class="section-label-green">Client results</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal); margin-bottom: .5rem;">Real businesses. Real results.</h2>
+      <p style="font-size: .875rem; color: var(--charcoal-40); font-style: italic; margin-bottom: 2rem;">* Placeholder testimonials — real client reviews coming soon.</p>
+
+      <div class="proof-grid">
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <p class="proof-quote">"I put off getting a website for years — kept thinking I'd sort it out myself. Pine Beach had one built and live in days. I've had three new patients book through Google in the first month alone."</p>
+          <div class="proof-author">Sarah M. — PhysioFit Melbourne, VIC</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <p class="proof-quote">"Honestly the easiest thing I've done for my business. Filled in a short form, they sent me a preview, I said looks good, and that was it. Now I'm getting enquiries from people I've never met. That didn't happen before."</p>
+          <div class="proof-author">James T. — JT Fitness, Brisbane QLD</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <p class="proof-quote">"I was sceptical — I've been burned by web people before. No upfront cost, they showed me the site before I paid anything. Good-looking site, my phone number on every page, works on mobile. Dead simple."</p>
+          <div class="proof-author">Dave R. — Reliable Plumbing, Perth WA</div>
+        </div>
+      </div>
+
+      <div class="proof-tagline">
+        We've built sites for tradies, health practitioners, personal trainers, beauty therapists, nutritionists, and local service businesses across every state in Australia.
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <span class="section-label-green">Common questions</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal); margin-bottom: .5rem;">Questions we get asked a lot.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); max-width: 560px; line-height: 1.7; margin-bottom: 2rem;">Scepticism is healthy. Here are honest answers to the things people actually ask.</p>
+
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-question" aria-expanded="true">
+            Do I need to do anything to get started?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            Just fill in a short form — your business name, suburb, services, and how customers should contact you. That's it. We build from there.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What if I want changes before the site goes live?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            We'll send you a preview link before anything goes live. Tell us what you want changed — more detail on a service, different photo, different wording — and we'll update it. No charge, and you don't pay anything until you're happy.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do I own the website?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            Yes. Your content is yours. Your domain is yours. If you ever want to move your website to a different host or take it over yourself, we'll transfer everything — your files, your domain, all of it — no conditions, no fees.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What if I already have a website?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            If it's old, slow, or not showing up on Google, we can rebuild it on our platform. Get in touch and we'll have a look at what you've got.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How does the 30-day guarantee work?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            If you're not happy for any reason within 30 days of your site going live — just email us. We'll refund your first month in full, take the site down, and transfer your domain to you. No questions, no awkward conversation.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How does cancelling work?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            One email. We'll cancel your billing, archive the site, and transfer your domain. No exit fees. We'd rather you leave on good terms than feel trapped.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Will my site actually show up on Google?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            We set your site up for Google from day one — the right technical foundations, your business name, your suburb, your services structured so Google understands them. Most clients start seeing Google traffic within a few weeks of launch. We're not promising #1 on Google (anyone who does is lying to you) — we're promising a properly built, Google-ready website that gives your business its best chance.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What's included in the updates?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            Up to 2 rounds of updates per month — changed business hours, a new service, updated pricing, a different photo. Just message us and we'll have it sorted within 48 hours. Major rebuilds or additional pages beyond the original 5 are quoted separately.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is Pine Beach Australian?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            Yes. 100%. We're Australian owned and operated. Your support team is in Australia. Your hosting is in Australia. Your billing is in Australian dollars.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            I've heard this sort of thing before. Why should I trust you?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Fair question. Here's how to check: we'll show you a preview of your website before you pay a single cent. Look at it. Ask us to change something. See how we respond. If you like what you see and how we work, pay. If not, walk away — it cost you nothing to look.</p>
+            <p style="margin-top: .75rem;">We also don't ask for annual contracts, we publish a real email address, and we offer a 30-day money-back guarantee on your first month. If we were dodgy, we wouldn't be offering all of that.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FINAL CTA ─── -->
+  <section class="final-cta-section">
+    <div class="container">
+      <h2>Ready to get your business found?</h2>
+      <p>Get started today. Fill in a short form about your business, and we'll have a preview website ready for you to look at — before you pay anything.</p>
+      <div class="final-cta-price">$79/month · $0 setup · 30-day guarantee · Australian owned</div>
+      <div class="final-cta-buttons">
+        <a href="mailto:support@pinebeach.com.au?subject=Get My Website" class="btn-cta-white">Get Started →</a>
+        <a href="mailto:support@pinebeach.com.au" class="btn-cta-outline-white">Talk to a real person →</a>
+      </div>
+      <p class="final-cta-reassurance">No lock-in · Cancel anytime · 30-day money-back guarantee · Australian support</p>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top" style="display: flex; align-items: center; gap: 2rem;">
+        <a href="/" class="footer-logo" aria-label="Pine Beach home" style="flex-shrink: 0;">
+          <img src="../logo-full.png" alt="Pine Beach" style="width: 160px; height: auto;" />
+        </a>
+        <div>
+          <p class="footer-tagline" style="margin: 0;">Professional Websites for Australian Small Businesses.</p>
+          <p class="footer-supporting" style="margin-top: 0.5rem;">🇦🇺 Australian owned and operated · support@pinebeach.com.au</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <span class="footer-link-label">Websites</span>
+          <a href="/websites">Our website service</a>
+          <a href="/websites#how-it-works">How it works</a>
+          <a href="/websites#pricing">Pricing</a>
+          <a href="/websites#faq">FAQ</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Company</span>
+          <a href="/about">About Pine Beach</a>
+          <a href="/contact">Contact</a>
+          <a href="mailto:support@pinebeach.com.au">Support</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Legal</span>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">More from Pine Beach</span>
+          <a href="/products">Products &amp; Tools</a>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="footer-bridge-products">
+        Also building a business from scratch? Check out our tools for solopreneurs and founders. <a href="/products">Pine Beach Products →</a>
+      </div>
+
+      <div class="footer-bottom" style="text-align: center; margin-top: 1.5rem;">
+        <p class="footer-copy">© 2026 Pine Beach Pty Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

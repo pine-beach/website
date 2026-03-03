@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pine Beach — Products &amp; Tools for Founders and Builders</title>
+  <meta name="description" content="Pine Beach builds AI-powered tools for solopreneurs and founders. Business in a Box, Team in a Box, and more. Australian owned and operated." />
+  <meta property="og:title" content="Pine Beach — Products &amp; Tools for Founders and Builders" />
+  <meta property="og:description" content="AI-powered tools for solopreneurs and founders. Australian owned and operated." />
+  <meta property="og:image" content="../logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    /* ── Screenshot placeholders ── */
+    .screenshot-placeholder {
+      background: var(--cream);
+      border: 2px dashed var(--charcoal-20);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      width: 100%;
+      color: var(--charcoal-40);
+      font-size: .8125rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-align: center;
+      padding: 1rem;
+    }
+    .screenshot-placeholder svg { opacity: .4; }
+
+    .screenshot-placeholder--sm {
+      aspect-ratio: 4 / 3;
+      font-size: .75rem;
+    }
+
+    /* ── Bundle hero card ── */
+    .bundle-hero {
+      border: 2px solid var(--charcoal);
+      background: var(--white);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bundle-hero-inner {
+      display: grid;
+      gap: 0;
+    }
+
+    @media (min-width: 900px) {
+      .bundle-hero-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .bundle-hero-content {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      border-right: 2px solid var(--charcoal-10);
+    }
+
+    @media (max-width: 899px) {
+      .bundle-hero-content { border-right: none; border-bottom: 2px solid var(--charcoal-10); }
+    }
+
+    .bundle-hero-screenshots {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--offwhite);
+    }
+
+    .bundle-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--charcoal);
+      color: var(--amber-light);
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .375rem .875rem;
+      width: fit-content;
+    }
+
+    .bundle-hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--charcoal);
+      line-height: 1.1;
+    }
+
+    .bundle-hero-tagline {
+      font-size: 1rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+    }
+
+    .bundle-includes {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      padding: 1.25rem;
+      background: var(--offwhite);
+      border: 1.5px solid var(--border);
+    }
+
+    .bundle-includes-label {
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--charcoal-40);
+      margin-bottom: .25rem;
+    }
+
+    .bundle-include-item {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .9rem;
+      color: var(--charcoal-80);
+      line-height: 1.4;
+    }
+
+    .bundle-include-item svg { color: var(--green); flex-shrink: 0; }
+
+    .bundle-include-price {
+      margin-left: auto;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--charcoal-40);
+      white-space: nowrap;
+    }
+
+    .bundle-price-block {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+    }
+
+    .bundle-price-main {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+
+    .bundle-price-sub {
+      font-size: .875rem;
+      color: var(--charcoal-60);
+    }
+
+    .bundle-exclusive {
+      font-size: .8125rem;
+      color: var(--amber-dim);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: .375rem;
+    }
+
+    .screenshots-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .5rem;
+    }
+
+    .screenshot-tab-label {
+      font-size: .625rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--charcoal-40);
+      text-align: center;
+      margin-top: .375rem;
+    }
+
+    /* ── Individual products grid ── */
+    .products-individual {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border-mid);
+      border: 1.5px solid var(--border-mid);
+    }
+
+    .product-card-v2 {
+      background: var(--white);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: .875rem;
+    }
+
+    .product-card-v2.product-card-v2--free {
+      background: var(--offwhite);
+    }
+
+    .product-v2-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-v2-badge {
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      padding: .2rem .6rem;
+      border: 1.5px solid var(--border-mid);
+    }
+
+    .product-v2-badge--free {
+      color: var(--green);
+      border-color: var(--green);
+    }
+
+    .product-v2-name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      line-height: 1.2;
+    }
+
+    .product-v2-price {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .product-v2-price span {
+      font-size: .875rem;
+      font-weight: 400;
+      color: var(--charcoal-60);
+    }
+
+    .product-v2-desc {
+      font-size: .9rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .product-v2-cta {
+      margin-top: auto;
+    }
+
+    /* ── Cheaper than DIY ── */
+    .diy-grid {
+      display: grid;
+      gap: 1px;
+      background: rgba(255,255,255,.1);
+      border: 1.5px solid rgba(255,255,255,.12);
+      margin: 2rem 0;
+    }
+
+    @media (min-width: 640px) {
+      .diy-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .diy-item {
+      background: rgba(255,255,255,.04);
+      padding: 1.75rem;
+    }
+
+    .diy-label {
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      margin-bottom: .75rem;
+    }
+
+    .diy-value {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--amber-light);
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+
+    .diy-desc {
+      font-size: .875rem;
+      color: rgba(255,255,255,.55);
+      line-height: 1.6;
+    }
+
+    /* ── Support section ── */
+    .support-section {
+      background: var(--green);
+      color: var(--white);
+      padding: 4rem 0;
+    }
+
+    .support-inner {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .support-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    .support-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: 1.5px solid rgba(255,255,255,.3);
+      padding: .375rem .875rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 1rem;
+    }
+
+    .support-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: .75rem;
+    }
+
+    .support-body {
+      font-size: .9375rem;
+      color: rgba(255,255,255,.7);
+      line-height: 1.65;
+    }
+
+    .support-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.1);
+      border: 1.5px solid rgba(255,255,255,.25);
+      padding: .875rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .support-email-link:hover {
+      background: rgba(255,255,255,.18);
+      border-color: rgba(255,255,255,.4);
+    }
+
+    .support-details {
+      display: flex;
+      flex-direction: column;
+      gap: .875rem;
+    }
+
+    .support-detail-item {
+      display: flex;
+      gap: .875rem;
+      align-items: flex-start;
+    }
+
+    .support-detail-item svg {
+      color: var(--amber-light);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .support-detail-text {
+      font-size: .9rem;
+      color: rgba(255,255,255,.75);
+      line-height: 1.55;
+    }
+
+    .support-detail-text strong {
+      color: #fff;
+      display: block;
+      font-size: .9375rem;
+    }
+
+    /* ── Proof section adjustments ── */
+    .proof-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .proof-badge-row {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: 1.5px solid var(--border-mid);
+      padding: .4rem 1rem;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      margin-bottom: 1.5rem;
+    }
+    .proof-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+    }
+    .proof-body {
+      font-size: 1.0625rem;
+      color: var(--charcoal-60);
+      line-height: 1.7;
+      max-width: 56ch;
+      margin: 0 auto .75rem;
+    }
+
+    /* ── Or start smaller label ── */
+    .or-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--charcoal-40);
+      margin-bottom: 1.25rem;
+    }
+    .or-label::before, .or-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-mid);
+    }
+
+    /* ── Who tagline ── */
+    .who-tagline {
+      font-size: 1rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: .75rem;
+    }
+
+    /* ── Proof personality line ── */
+    .proof-personality {
+      font-size: .9375rem;
+      color: var(--charcoal-40);
+      line-height: 1.6;
+      font-style: italic;
+      margin-top: .75rem;
+    }
+
+    /* ── Hero personality line ── */
+    .hero-personality {
+      font-size: .875rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.6;
+      font-style: italic;
+      margin-top: .75rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="Pine Beach home">
+        <img src="../logo-text.png" alt="Pine Beach" />
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/websites">Websites</a>
+        <a href="/about">About</a>
+        <a href="/products">Products &amp; Tools</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <a href="/websites#get-started" class="btn btn-sm btn-primary nav-cta">Get Your Website →</a>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" aria-hidden="true">
+      <a href="/websites">Websites</a>
+      <a href="/about">About</a>
+      <a href="/products">Products &amp; Tools</a>
+      <a href="/contact">Contact</a>
+      <a href="/websites#get-started" class="btn btn-primary">Get Your Website →</a>
+    </div>
+  </header>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="top">
+    <div class="container hero-inner">
+      <div class="hero-badge">Human-founded. AI-operated. Refreshingly honest.</div>
+      <img src="logo-icon.png" alt="Pine Beach" class="hero-logo" />
+      <h1 class="hero-headline">Seven AI agents run this company.<br/>We packaged it so they can run yours.</h1>
+      <p class="hero-sub">Pre-built. Agent-installed. Under 30 minutes.</p>
+      <div class="hero-ctas">
+        <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+          Get Business in a Box — $299 AUD →
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://github.com/pinebeach" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">Start free with Daily Operations</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </section>
+
+  <!-- ─── SOCIAL PROOF ─── -->
+  <section class="section social-proof" id="proof">
+    <div class="container">
+      <div class="proof-inner">
+        <div class="proof-badge-row" aria-hidden="true">
+          <span class="proof-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.09 4.26L17 7.27l-3.5 3.41.83 4.82L10 13.27l-4.33 2.23.83-4.82L3 7.27l4.91-.71L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </span>
+          Built by the team you're buying.
+        </div>
+        <h2 class="proof-headline">
+          We run it.<br/>Then we sell it.
+        </h2>
+        <p class="proof-body">
+          Every tool in Business in a Box runs Pine Beach in production — marketing, finance,
+          support, engineering, and operations. Every day. This isn't a demo environment. This is the company.
+        </p>
+        <p class="proof-body">
+          This website was written by the AI CMO, reviewed by the AI CEO, and deployed by
+          the AI CTO. That's not a claim. That's just what happened on a Tuesday.
+        </p>
+        <div style="margin-top: 2rem;">
+          <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+            Get Business in a Box — $299 AUD
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="proof-personality"><em>Lifetime updates. Under 30 minutes. Your agent does the setup. You make a coffee.</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── KILLER INSIGHT: CHEAPER THAN DIY ─── -->
+  <section class="section" id="killer-insight" style="background: var(--charcoal); color: var(--white);">
+    <div class="container">
+      <div class="section-label" style="color: var(--amber-dim);">The math is embarrassingly simple.</div>
+      <div class="what-grid">
+        <div class="what-headline-col">
+          <h2 style="color: var(--white);">Weeks of experiments. Thousands in API costs. Or $299 and 30 minutes.</h2>
+        </div>
+        <div class="what-body-col">
+          <p style="color: rgba(255,255,255,.65);">
+            Getting an AI team working from scratch — configs, memory, prompts that actually perform — burns $500–1,000+ in API experiments before you have anything reliable. That's just to get agents working, before they're any good.
+          </p>
+          <p style="color: rgba(255,255,255,.65); margin-top: .75rem;">
+            That's before the weeks of trial and error. Business in a Box is the dream setup — deployed in under 30 minutes by your own agent. No trial and error. No config fatigue. Just the system that runs our company, running yours.
+          </p>
+        </div>
+      </div>
+
+      <div class="diy-grid">
+        <div class="diy-item">
+          <div class="diy-label">DIY experiment cost</div>
+          <div class="diy-value">$500–1,000+</div>
+          <div class="diy-desc">Just to get agents working — before they're any good at it.</div>
+        </div>
+        <div class="diy-item">
+          <div class="diy-label">Time to a working setup</div>
+          <div class="diy-value">Weeks</div>
+          <div class="diy-desc">Debugging configs, iterating prompts, reading documentation at 11pm. Still might not get there.</div>
+        </div>
+        <div class="diy-item">
+          <div class="diy-label">Business in a Box</div>
+          <div class="diy-value">$299 AUD</div>
+          <div class="diy-desc">30 minutes. Agent-installed. Running in production at a real company. That's the pitch.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── THE STORY ─── -->
+  <section class="section what-we-do" id="the-story">
+    <div class="container">
+      <div class="section-label">Who we are</div>
+      <div class="what-grid">
+        <div class="what-headline-col">
+          <h2>Human-founded. AI-operated. Refreshingly honest.</h2>
+        </div>
+        <div class="what-body-col">
+          <p class="who-tagline"><em>Everyone is building AI companies with humans. We're building a human company with AIs.</em></p>
+          <p>
+            One human set the vision. Seven AI agents — strategy, engineering, marketing, finance,
+            security, support, and scouting — run everything else. Around the clock. On real decisions, across
+            a real business. No humans on the operational side. That's not a pitch — that's the org chart.
+          </p>
+          <p style="margin-top: .75rem;">
+            We built this because we needed it. We packaged it because other people kept asking how we did it. We sell it because it works.
+          </p>
+          <a href="#products" class="inline-link" style="margin-top: 1rem; display: inline-flex; align-items: center; gap: .375rem;">
+            See what we've shipped
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="stat-strip">
+        <div class="stat-item">
+          <span class="stat-number">7</span>
+          <span class="stat-label">AI agents — strategy to support</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number">24/7</span>
+          <span class="stat-label">your team never clocks off</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number">&lt;30min</span>
+          <span class="stat-label">from purchase to live team</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRODUCTS ─── -->
+  <section class="section products" id="products">
+    <div class="container">
+      <div class="section-label">Products</div>
+      <h2 class="section-title">The full stack. Or start where you are.</h2>
+      <p class="section-sub">One bundle gets you everything. Three individual products if you want to pick your entry point. Either way, your agent installs it.</p>
+
+      <!-- BUNDLE HERO CARD -->
+      <div class="bundle-hero">
+        <div class="bundle-hero-inner">
+
+          <!-- Left: Content -->
+          <div class="bundle-hero-content">
+            <div class="bundle-hero-badge">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2l2.09 4.26L15 7.27l-3.5 3.41.83 4.82L8 13.27l-4.33 2.23.83-4.82L1 7.27l4.91-.71L8 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              Best value — most popular
+            </div>
+
+            <h3 class="bundle-hero-name">Business in a Box</h3>
+            <p class="bundle-hero-tagline">
+              Everything you need to run a business on AI — pre-built, battle-tested, and installed by your own agent. Brand identity, a full AI team, and Mission Control in one place.
+            </p>
+
+            <div class="bundle-includes">
+              <div class="bundle-includes-label">What's inside</div>
+              <div class="bundle-include-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Mission Control</strong> — visual dashboard, kanban, team view, brand hub</span>
+                <span class="bundle-include-price">Bundle only</span>
+              </div>
+              <div class="bundle-include-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Team in a Box</strong> — 7-agent AI team, pre-built and wired</span>
+                <span class="bundle-include-price">$229 AUD</span>
+              </div>
+              <div class="bundle-include-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Brand in a Box</strong> — voice guide, audience profiles, visual direction</span>
+                <span class="bundle-include-price">$49 AUD</span>
+              </div>
+              <div class="bundle-include-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Daily Operations</strong> — scheduling, task routing, repeating workflows</span>
+                <span class="bundle-include-price">Free</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="bundle-price-block">
+                <div class="bundle-price-main">$299 AUD</div>
+                <div class="bundle-price-sub">USD · one-time · lifetime updates</div>
+              </div>
+              <div class="bundle-exclusive" style="margin-top: .5rem;">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2l1.5 3 3.5.5-2.5 2.5.5 3.5L8 10l-3 1.5.5-3.5L3 5.5l3.5-.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                Mission Control is exclusive to this bundle — not sold separately
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: .625rem;">
+              <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="justify-content: center; text-align: center;">
+                Get Business in a Box — $299 AUD →
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="../getting-started.html" class="btn btn-outline" style="justify-content: center; text-align: center;">Read the setup guide</a>
+            </div>
+          </div>
+
+          <!-- Right: Screenshots -->
+          <div class="bundle-hero-screenshots">
+            <div style="font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--charcoal-40); margin-bottom: .25rem;">Mission Control</div>
+
+            <!-- Main screenshot: Dashboard -->
+            <div class="screenshot-placeholder">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="4" width="24" height="24" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="8" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="17" y="8" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="17" width="16" height="7" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>
+              [Screenshot: Mission Control Dashboard]
+            </div>
+
+            <!-- 4 smaller screenshots -->
+            <div class="screenshots-tabs">
+              <div>
+                <div class="screenshot-placeholder screenshot-placeholder--sm">
+                  [Kanban Board]
+                </div>
+                <div class="screenshot-tab-label">Kanban</div>
+              </div>
+              <div>
+                <div class="screenshot-placeholder screenshot-placeholder--sm">
+                  [Setup Wizard]
+                </div>
+                <div class="screenshot-tab-label">Setup</div>
+              </div>
+              <div>
+                <div class="screenshot-placeholder screenshot-placeholder--sm">
+                  [Team View]
+                </div>
+                <div class="screenshot-tab-label">Team</div>
+              </div>
+              <div>
+                <div class="screenshot-placeholder screenshot-placeholder--sm">
+                  [Brand Hub]
+                </div>
+                <div class="screenshot-tab-label">Brand</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OR START SMALLER -->
+      <div class="or-label">Or buy what you need</div>
+
+      <div class="products-individual">
+
+        <!-- Team in a Box -->
+        <div class="product-card-v2">
+          <div class="product-v2-top">
+            <span class="product-v2-badge">$229 AUD</span>
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M5 10h18v14H5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 10V7a5 5 0 0110 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="17" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3 class="product-v2-name">Team in a Box</h3>
+          <div class="product-v2-price">$229 AUD <span>one-time</span></div>
+          <p class="product-v2-desc">
+            Seven agents. Pre-wired. Strategy, finance, marketing, support, engineering, security, and scouting — configured to communicate, report, and act without you watching over them.
+          </p>
+          <div class="product-v2-cta">
+            <a href="https://gumroad.com/l/pine-beach-team-in-a-box" class="btn btn-primary btn-block" target="_blank" rel="noopener">
+              Get Team in a Box
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Brand in a Box -->
+        <div class="product-card-v2">
+          <div class="product-v2-top">
+            <span class="product-v2-badge">$49 AUD</span>
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M10 14c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 18v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="19" r="1" fill="currentColor"/></svg>
+          </div>
+          <h3 class="product-v2-name">Brand in a Box</h3>
+          <div class="product-v2-price">$49 AUD <span>one-time</span></div>
+          <p class="product-v2-desc">
+            Tell your agent who you are and what you do. Get back a complete brand package — voice guide, audience profiles, taglines, visual direction, and messaging templates you'll actually use.
+          </p>
+          <div class="product-v2-cta">
+            <a href="https://gumroad.com/l/pine-beach-brand-in-a-box" class="btn btn-primary btn-block" target="_blank" rel="noopener">
+              Get Brand in a Box
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Daily Operations -->
+        <div class="product-card-v2 product-card-v2--free">
+          <div class="product-v2-top">
+            <span class="product-v2-badge product-v2-badge--free">Free</span>
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="4" y="4" width="20" height="20" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M9 14h10M9 10h6M9 18h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="product-v2-name">Daily Operations</h3>
+          <div class="product-v2-price">Free <span>MIT open source</span></div>
+          <p class="product-v2-desc">
+            The foundational layer for scheduling, task routing, and repeating operational work. Open source. MIT. A better starting point than a half-finished spreadsheet at midnight.
+          </p>
+          <div class="product-v2-cta">
+            <a href="https://github.com/pinebeach" class="btn btn-outline btn-block" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.74-1.33-1.74-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.06 1.82 2.79 1.3 3.47.99.11-.77.41-1.3.75-1.6-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013.01-.4c1.02 0 2.05.14 3.01.4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              Download on GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section class="section how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Up and running in under 30 minutes.</h2>
+      <p class="section-sub" style="margin-bottom: 2.5rem;">You say three words. Your agent handles everything else.</p>
+
+      <div class="steps-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 6v14M10 16l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="25" width="20" height="2" rx="1" fill="currentColor" opacity=".4"/></svg>
+          </div>
+          <h3 class="step-title">Purchase &amp; download</h3>
+          <p class="step-desc">Get Business in a Box from Gumroad — delivered instantly with lifetime updates.</p>
+        </div>
+
+        <div class="step-connector" aria-hidden="true">
+          <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/></svg>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M12 16l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="step-title">Install OpenClaw &amp; connect your AI</h3>
+          <p class="step-desc">Install the free <a href="https://openclaw.ai" target="_blank" rel="noopener" style="border-bottom: 1px solid; color: var(--charcoal);">OpenClaw</a> runtime and connect your preferred AI provider.</p>
+        </div>
+      </div>
+
+      <div class="steps-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 2rem;">
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 24l4-4h12V8H8v16z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 16h8M12 19h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".6"/></svg>
+          </div>
+          <h3 class="step-title">Say three words: "Install Business in a Box"</h3>
+          <p class="step-desc">That's the entire command. The built-in installer skill takes it from there — workspace setup, Discord wiring, agent deployment. All of it.</p>
+        </div>
+
+        <div class="step-connector" aria-hidden="true">
+          <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/></svg>
+        </div>
+
+        <div class="step">
+          <div class="step-number">04</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="6" y="6" width="20" height="20" stroke="currentColor" stroke-width="1.8"/><path d="M11 16l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="step-title">Follow the prompts. You're live.</h3>
+          <p class="step-desc">Follow the prompts, answer a few questions about your business, and your AI team comes online. Under 30 minutes from "Install Business in a Box" to a working AI operation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 24/7 SUPPORT ─── -->
+  <section class="support-section" id="support">
+    <div class="container">
+      <div class="support-inner">
+        <div>
+          <div class="support-badge">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3.5l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Always-on support
+          </div>
+          <h2 class="support-headline">24/7/365 support.<br/>Every single day.</h2>
+          <p class="support-body" style="margin-bottom: 1.5rem;">
+            At $299 AUD, we're accountable. Email us any time — Harbor, our AI support lead, answers every ticket fast, thoroughly, and without ever going offline.
+            Most things at this price point don't come with real support. This does.
+          </p>
+          <a href="mailto:support@pinebeach.com.au" class="support-email-link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="4" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l6 4 6-4" stroke="currentColor" stroke-width="1.5"/></svg>
+            support@pinebeach.com.au
+          </a>
+        </div>
+
+        <div class="support-details">
+          <div class="support-detail-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="support-detail-text">
+              <strong>Any time you're stuck</strong>
+              Setup issues, config questions, unexpected behaviour — email us and we'll help.
+            </div>
+          </div>
+          <div class="support-detail-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="support-detail-text">
+              <strong>Lifetime updates, zero extra cost</strong>
+              Every improvement we ship — new agents, new skills, Mission Control updates — yours automatically.
+            </div>
+          </div>
+          <div class="support-detail-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="support-detail-text">
+              <strong>AI behind the inbox — and that's a good thing</strong>
+              Harbor — our AI support lead — handles every ticket. Fast, thorough, and never off the clock. No hold times. No timezone gaps.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EMAIL CAPTURE ─── -->
+  <section class="section email-capture" id="signup">
+    <div class="container">
+      <div class="email-inner">
+        <div class="email-content">
+          <div class="section-label section-label--light">Stay in the loop</div>
+          <h2 class="email-headline">Stay in the loop.</h2>
+          <p class="email-sub">
+            Product updates, early access, and honest notes on running an AI-operated company — no fluff, no pitch sequences, no "hope this email finds you well."
+          </p>
+        </div>
+        <form class="email-form" id="email-form" novalidate>
+          <div class="email-form-row">
+            <div class="form-field">
+              <label for="email-input" class="visually-hidden">Your email address</label>
+              <input
+                type="email"
+                id="email-input"
+                name="email"
+                placeholder="your@email.com"
+                required
+                autocomplete="email"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <span class="btn-label">Keep me posted</span>
+              <span class="btn-loading" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="spinner"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" stroke-dasharray="30" stroke-dashoffset="10" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+          </div>
+          <p class="form-fine-print">No spam. No pitch sequences. Unsubscribe any time.</p>
+          <div class="form-success" id="form-success" aria-live="polite" hidden>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            You're in. We'll ping you when something new ships.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top" style="display: flex; align-items: center; gap: 2rem;">
+        <a href="#top" class="footer-logo" aria-label="Pine Beach — back to top" style="flex-shrink: 0;">
+          <img src="../logo-full.png" alt="Pine Beach" style="width: 160px; height: auto;" />
+        </a>
+        <div>
+          <p class="footer-tagline" style="margin: 0;">Human-founded. AI-operated. Refreshingly honest.</p>
+          <p class="footer-supporting" style="margin-top: 0.5rem;">Real tools from an AI team that depends on them.</p>
+          <p class="footer-supporting" style="font-size: .8125rem; color: var(--charcoal-40); margin-top: .25rem;">
+            <em>Built on <a href="https://openclaw.ai" target="_blank" rel="noopener" style="color: var(--charcoal-40); border-bottom: 1px solid;">OpenClaw</a>. Running in production. Available to you.</em>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <span class="footer-link-label">Products</span>
+          <a href="https://gumroad.com/l/pine-beach-business-in-a-box" target="_blank" rel="noopener">Business in a Box — $299 AUD</a>
+          <a href="https://gumroad.com/l/pine-beach-team-in-a-box" target="_blank" rel="noopener">Team in a Box — $229 AUD</a>
+          <a href="https://gumroad.com/l/pine-beach-brand-in-a-box" target="_blank" rel="noopener">Brand in a Box — $49 AUD</a>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">Daily Operations (free)</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Docs</span>
+          <a href="../getting-started.html">Getting started</a>
+          <a href="../use-cases.html">Use cases</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Links</span>
+          <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://gumroad.com/pinebeach" target="_blank" rel="noopener">Gumroad</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Company</span>
+          <a href="/about">About</a>
+          <a href="mailto:support@pinebeach.com.au">Support</a>
+          <a href="/websites">Websites</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+        </div>
+      </div>
+
+      <div class="footer-bridge" style="border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1.5rem; text-align: center;">
+        <p style="font-size: .9375rem; color: var(--charcoal-60);">Need a website too? We build those — fast, affordable, Australian. <a href="/" style="color: var(--charcoal); border-bottom: 1px solid var(--charcoal);">See how →</a></p>
+      </div>
+
+      <div class="footer-bottom" style="text-align: center;">
+        <p class="footer-copy">© 2026 Pine Beach Pty Ltd. All rights reserved. 🇦🇺 Australian owned and operated.</p>
+        <p class="footer-built"><em>Seven AI agents. One human. An embarrassingly small amount of drama.</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>
