@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service | Pine Beach</title>
+  <meta name="description" content="Pine Beach's terms of service — what you're buying, what you can do with it, and how we handle things if something goes wrong. Plain language." />
+  <meta property="og:title" content="Terms of Service | Pine Beach" />
+  <meta property="og:description" content="Clear, honest terms of service for Pine Beach Pty Ltd." />
+  <meta property="og:image" content="./logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ─────────────────────────────────────
+       Privacy / Terms — page-specific styles
+    ───────────────────────────────────────*/
+
+    .doc-hero {
+      padding-top: 96px;
+      padding-bottom: 0;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .doc-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--charcoal-10) 1px, transparent 1px),
+        linear-gradient(90deg, var(--charcoal-10) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      opacity: .4;
+    }
+
+    .doc-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-block: 3.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .doc-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      font-size: .875rem;
+      color: var(--charcoal-60);
+      font-weight: 450;
+      transition: color var(--transition), gap var(--transition);
+      margin-bottom: .5rem;
+    }
+    .doc-back-link:hover { color: var(--charcoal); gap: .5rem; }
+
+    .doc-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .3rem .75rem;
+      border: 1.5px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      width: fit-content;
+    }
+
+    .doc-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.1;
+      color: var(--charcoal);
+    }
+
+    .doc-hero-meta {
+      font-size: .875rem;
+      color: var(--charcoal-40);
+    }
+
+    /* ── Policy content ── */
+    .policy-body {
+      background: var(--white);
+      padding-block: 5rem 6rem;
+    }
+
+    .policy-layout {
+      display: grid;
+      gap: 4rem;
+      max-width: 860px;
+      margin-inline: auto;
+    }
+
+    @media (min-width: 900px) {
+      .policy-layout {
+        grid-template-columns: 220px 1fr;
+        max-width: var(--max-width);
+        align-items: start;
+      }
+    }
+
+    /* Table of contents */
+    .policy-toc {
+      position: sticky;
+      top: 88px;
+    }
+
+    .policy-toc-label {
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--charcoal-40);
+      margin-bottom: .75rem;
+    }
+
+    .policy-toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: .125rem;
+      border-left: 1.5px solid var(--border-mid);
+    }
+
+    .policy-toc-list a {
+      display: block;
+      font-size: .875rem;
+      color: var(--charcoal-60);
+      padding: .35rem .75rem;
+      transition: color var(--transition), border-color var(--transition);
+      border-left: 2px solid transparent;
+      margin-left: -1.5px;
+    }
+    .policy-toc-list a:hover {
+      color: var(--charcoal);
+      border-left-color: var(--charcoal);
+    }
+
+    /* Policy sections */
+    .policy-section {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    .policy-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .policy-block h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--charcoal);
+      line-height: 1.2;
+    }
+
+    .policy-block p {
+      font-size: 1rem;
+      color: var(--charcoal-80);
+      line-height: 1.75;
+    }
+
+    .policy-block ul {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      padding-left: 1.25rem;
+    }
+
+    .policy-block ul li {
+      font-size: 1rem;
+      color: var(--charcoal-80);
+      line-height: 1.65;
+      list-style: disc;
+    }
+
+    .policy-block ul li::marker {
+      color: var(--amber-dim);
+    }
+
+    .policy-callout {
+      background: var(--offwhite);
+      border: 1.5px solid var(--border-mid);
+      border-left: 3px solid var(--charcoal);
+      padding: 1.25rem 1.5rem;
+      font-size: .9375rem;
+      color: var(--charcoal-80);
+      line-height: 1.65;
+    }
+
+    .policy-divider {
+      height: 1.5px;
+      background: var(--border);
+      width: 100%;
+    }
+
+    .policy-contact-box {
+      border: 1.5px solid var(--charcoal);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: .875rem;
+    }
+
+    .policy-contact-box h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--charcoal);
+    }
+
+    .policy-contact-box p {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.65;
+    }
+
+    .policy-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      border-bottom: 1.5px solid var(--charcoal);
+      padding-bottom: 1px;
+      transition: opacity var(--transition);
+    }
+    .policy-email-link:hover { opacity: .65; }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="Pine Beach home">
+        <img src="logo-text.png" alt="Pine Beach" />
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/#the-story">The story</a>
+        <a href="/#products">Products</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="use-cases.html">Use Cases</a>
+        <a href="getting-started.html">Getting started</a>
+      </nav>
+      <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-sm btn-primary nav-cta" target="_blank" rel="noopener">Get Business in a Box — $299 AUD</a>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" aria-hidden="true">
+      <a href="/#the-story">The story</a>
+      <a href="/#products">Products</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="getting-started.html">Getting started</a>
+      <a href="https://gumroad.com/l/pine-beach-business-in-a-box" class="btn btn-primary" target="_blank" rel="noopener">Get Business in a Box — $299 AUD →</a>
+    </div>
+  </header>
+
+  <!-- ─── HERO ─── -->
+  <section class="doc-hero">
+    <div class="container">
+      <div class="doc-hero-inner">
+        <a href="/" class="doc-back-link">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to Pine Beach
+        </a>
+        <div class="doc-hero-badge">Legal</div>
+        <h1>Terms of Service</h1>
+        <p class="doc-hero-meta">Pine Beach Pty Ltd · Last updated: March 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TERMS BODY ─── -->
+  <section class="policy-body">
+    <div class="container">
+      <div class="policy-layout">
+
+        <!-- Sidebar ToC -->
+        <aside class="policy-toc" aria-label="Table of contents">
+          <div class="policy-toc-label">On this page</div>
+          <nav class="policy-toc-list">
+            <a href="#overview">Overview</a>
+            <a href="#what-youre-buying">What you're buying</a>
+            <a href="#what-you-can-do">What you can do</a>
+            <a href="#what-you-cant-do">What you can't do</a>
+            <a href="#updates">Lifetime updates</a>
+            <a href="#refunds">Refunds</a>
+            <a href="#liability">Liability</a>
+            <a href="#governing-law">Governing law</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </aside>
+
+        <!-- Main content -->
+        <div class="policy-section">
+
+          <div class="policy-block" id="overview">
+            <div class="policy-callout">
+              These terms are straightforward because the product is. You buy a digital product, you get a digital product. We've written the important parts in plain language so you actually know what you're agreeing to.
+            </div>
+            <p>
+              These Terms of Service ("Terms") govern your use of the Pine Beach website (<strong>pinebeach.com.au</strong>) and any products or services offered by Pine Beach Pty Ltd ("Pine Beach", "we", "us", "our"), an Australian company.
+            </p>
+            <p>
+              By purchasing or using our products, you agree to these Terms. If you don't agree, don't purchase.
+            </p>
+          </div>
+
+          <div class="policy-divider" aria-hidden="true"></div>
+
+          <div class="policy-block" id="what-youre-buying">
+            <h2>What you're buying</h2>
+            <p>Pine Beach sells digital products:</p>
+            <ul>
+              <li><strong>Business in a Box</strong> — a bundle including Mission Control, Team in a Box, Brand in a Box, and Daily Operations ($299 AUD, one-time)</li>
+              <li><strong>Team in a Box</strong> — a pre-configured AI agent team ($229 AUD, one-time)</li>
+              <li><strong>Brand in a Box</strong> — an AI-assisted brand package ($49 AUD, one-time)</li>
+              <li><strong>Daily Operations</strong> — free, open-source, MIT licensed (available on GitHub)</li>
+            </ul>
+            <p>
+              All paid products are digital goods. There's nothing physical. Delivery is immediate (via Gumroad) after purchase. Prices are in Australian dollars (AUD).
+            </p>
+            <p>
+              "One-time" means exactly that — you pay once and the product is yours. No subscription, no hidden renewals.
+            </p>
+          </div>
+
+          <div class="policy-divider" aria-hidden="true"></div>
+
+          <div class="policy-block" id="what-you-can-do">
+            <h2>What you can do with it</h2>
+            <p>When you purchase a Pine Beach product, you receive a <strong>personal, non-exclusive, non-transferable licence</strong> to:</p>
+            <ul>
+              <li>Use the product to set up and run your own AI-operated business operation</li>
+              <li>Modify the configuration files, prompts, and templates for your own use</li>
+              <li>Deploy the system for use within your organisation (single entity, single deployment)</li>
+              <li>Receive all future updates to the product at no additional cost (lifetime updates)</li>
+            </ul>
+          </div>
+
+          <div class="policy-divider" aria-hidden="true"></div>
+
+          <div class="policy-block" id="what-you-cant-do">
+            <h2>What you can't do</h2>
+            <p>The licence above does not include the right to:</p>
+            <ul>
+              <li><strong>Resell or redistribute</strong> — you can't sell, license, or give away the product files to third parties</li>
+              <li><strong>White-label or rebrand</strong> — you can't remove Pine Beach attribution from the core product and sell it as your own</li>
+              <li><strong>Create derivative products for sale</strong> — you can't take our agent configurations, prompts, or frameworks and package them as a competing product</li>
+              <li><strong>Share account access</strong> — your Gumroad purchase is tied to your account; don't share download links publicly</li>
+            </ul>
+            <p>
+              To be clear: we <em>want</em> you to customise, build on, and adapt the system for your own business. That's the point. The restrictions above are about protecting the product from being redistributed or cloned, not about limiting your creative use.
+            </p>
+            <p>
+              If you have an unusual use case that the above doesn't clearly cover, email us. We'll work it out.
+            </p>
+          </div>
+
+          <div class="policy-divider" aria-hidden="true"></div>
+
+          <div class="policy-block" id="updates">
+            <h2>Lifetime updates</h2>
+            <p>
+              When we say "lifetime updates", we mean it. All future versions of your purchased product are included — new agents, new skills, new features, Mission Control improvements. No upgrade fees, no new purchase required.
+            </p>
+            <p>
+              Updates are delivered via Gumroad. You'll be notified by email when significant updates ship.
+            </p>
+            <p>
+              "Lifetime" refers to the lifetime of the product, not any particular individual. If Pine Beach were to wind down a product line, we'd provide reasonable notice and make existing versions available for download.
+            </p>
+          </div>
+
+          <div class="policy-divider" aria-hidden="true"></div>
+
+          <div class="policy-block" id="refunds">
+            <h2>Refunds</h2>
+            <p>
+              Digital products are non-refundable once downloaded — this is standard for digital goods, and it's why we've tried to be as transparent as possible about what you're getting before you buy.
+            </p>
+            <p>That said, we're reasonable people. If:</p>
+            <ul>
+              <li>The product doesn't work as described</li>
+              <li>You encounter a genuine technical issue we can't resolve</li>
+              <li>Something was materially misrepresented</li>
+            </ul>
+            <p>
+              — email us at <a href="mailto:support@pinebeach.com.au" class="policy-email-link">support@pinebeach.com.au</a> and we'll make it right. We'd rather fix the problem or offer a refund than have a customer who feels ripped off.
+            </p>
+            <p>
+              Under Australian Consumer Law, you may also have rights to a refund or remedy that apply regardless of these terms.
+            </p>
+          </div>
+
+          <div class="policy-divider" aria-hidden="true"></div>
+
+          <div class="policy-block" id="liability">
+            <h2>Liability</h2>
+            <p>
+              Pine Beach products are tools. What you build with them, and how you use them, is your responsibility. Specifically:
+            </p>
+            <ul>
+              <li>We're not liable for the outputs generated by AI agents you configure using our products</li>
+              <li>We're not liable for any business decisions made by you or your AI team</li>
+              <li>We're not liable for third-party services (Gumroad, Stripe, Vercel, AI API providers) — their terms and service levels govern those relationships</li>
+              <li>We're not liable for API costs you incur with AI providers when running the system</li>
+            </ul>
+            <p>
+              Our total liability to you for any claim related to these products is capped at the amount you paid us. That's the deal.
+            </p>
+            <p>
+              Nothing in these Terms limits rights you have under Australian Consumer Law that can't be excluded.
+            </p>
+          </div>
+
+          <div class="policy-divider" aria-hidden="true"></div>
+
+          <div class="policy-block" id="governing-law">
+            <h2>Governing law</h2>
+            <p>
+              These Terms are governed by the laws of New South Wales, Australia. If there's a dispute that we can't resolve directly, it falls under the jurisdiction of NSW courts.
+            </p>
+            <p>
+              We'd genuinely prefer to just sort things out by email. We've never had to involve lawyers and we'd like to keep it that way.
+            </p>
+          </div>
+
+          <div class="policy-divider" aria-hidden="true"></div>
+
+          <div class="policy-block">
+            <h2>Changes to these terms</h2>
+            <p>
+              We may update these terms from time to time. If we make material changes, we'll update the date at the top of this page. Your continued use of the products after changes constitutes acceptance of the updated terms.
+            </p>
+            <p>
+              Current terms always live at <strong>pinebeach.com.au/terms</strong>.
+            </p>
+          </div>
+
+          <div class="policy-divider" aria-hidden="true"></div>
+
+          <div class="policy-block" id="contact">
+            <div class="policy-contact-box">
+              <h3>Got questions?</h3>
+              <p>
+                If something in these terms is unclear, or you have a situation you'd like to discuss, just email us. We'd rather have that conversation than leave you guessing.
+              </p>
+              <a href="mailto:support@pinebeach.com.au" class="policy-email-link">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="4" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l6 4 6-4" stroke="currentColor" stroke-width="1.5"/></svg>
+                support@pinebeach.com.au
+              </a>
+              <p style="font-size: .875rem; color: var(--charcoal-40);">Pine Beach Pty Ltd · New South Wales, Australia</p>
+            </div>
+          </div>
+
+        </div><!-- /policy-section -->
+      </div><!-- /policy-layout -->
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top" style="display: flex; align-items: center; gap: 2rem;">
+        <a href="/" class="footer-logo" aria-label="Pine Beach — back to top" style="flex-shrink: 0;">
+          <img src="logo-full.png" alt="Pine Beach" style="width: 160px; height: auto;" />
+        </a>
+        <div>
+          <p class="footer-tagline" style="margin: 0;">Human-founded. AI-operated. Refreshingly honest.</p>
+          <p class="footer-supporting" style="margin-top: 0.5rem;">Real tools from an AI team that depends on them.</p>
+          <p class="footer-supporting" style="font-size: .8125rem; color: var(--charcoal-40); margin-top: .25rem;">
+            <em>Built on <a href="https://openclaw.ai" target="_blank" rel="noopener" style="color: var(--charcoal-40); border-bottom: 1px solid;">OpenClaw</a>. Running in production. Available to you.</em>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <span class="footer-link-label">Products</span>
+          <a href="https://gumroad.com/l/pine-beach-business-in-a-box" target="_blank" rel="noopener">Business in a Box — $299 AUD</a>
+          <a href="https://gumroad.com/l/pine-beach-team-in-a-box" target="_blank" rel="noopener">Team in a Box — $229 AUD</a>
+          <a href="https://gumroad.com/l/pine-beach-brand-in-a-box" target="_blank" rel="noopener">Brand in a Box — $49 AUD</a>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">Daily Operations (free)</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Docs</span>
+          <a href="getting-started.html">Getting started</a>
+          <a href="use-cases.html">Use cases</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Links</span>
+          <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://gumroad.com/pinebeach" target="_blank" rel="noopener">Gumroad</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Company</span>
+          <a href="/#the-story">The story</a>
+          <a href="mailto:support@pinebeach.com.au">Support</a>
+          <a href="/#signup">Stay in the loop</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom" style="text-align: center;">
+        <p class="footer-copy">© 2026 Pine Beach Pty Ltd. All rights reserved.</p>
+        <p class="footer-built"><em>Seven AI agents. One human. An embarrassingly small amount of drama.</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
