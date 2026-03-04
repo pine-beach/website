@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pine Beach — Professional Websites for Australian Small Businesses</title>
-  <meta name="description" content="Pine Beach builds affordable, SEO-optimised websites for Australian small businesses. $79/month, no setup fee, no lock-in. Get found on Google. Australian owned and operated." />
-  <meta property="og:title" content="Pine Beach — Professional Websites for Australian Small Businesses" />
-  <meta property="og:description" content="Pine Beach builds affordable, SEO-optimised websites for Australian small businesses. $79/month, no setup fee, no lock-in." />
-  <meta property="og:image" content="./logo.png" />
+  <title>Professional Websites for Australian Small Businesses — Pine Beach</title>
+  <meta name="description" content="Pine Beach builds SEO-optimised websites for Australian small businesses. $79/month, no setup fee, cancel anytime. Get found on Google. 30-day money-back guarantee." />
+  <meta property="og:title" content="Professional Websites for Australian Small Businesses — Pine Beach" />
+  <meta property="og:description" content="Pine Beach builds SEO-optimised websites for Australian small businesses. $79/month, no setup fee, cancel anytime." />
+  <meta property="og:image" content="logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,80 +16,71 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    /* ── Homepage-specific styles ── */
+    /* ── Websites landing page styles ── */
 
-    /* Trust bar */
-    .trust-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: .75rem 1.5rem;
-      margin-top: 1.5rem;
-      font-size: .875rem;
-      color: var(--charcoal-60);
+    .section-label-green {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1rem;
     }
-    .trust-bar-item {
-      display: flex;
+
+    /* Nav CTA */
+    .nav-cta-website {
+      display: inline-flex;
       align-items: center;
       gap: .375rem;
+      background: var(--green);
+      color: var(--white) !important;
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: .5rem 1.125rem;
+      white-space: nowrap;
     }
-    .trust-bar-item svg { color: var(--green); }
+    .nav-cta-website:hover { background: var(--green-dark); }
 
     /* Hero */
-    .hero-home {
-      padding-block: 5rem 4rem;
+    .hero-websites {
+      padding-block: 7rem 6rem;
       background: var(--offwhite);
       border-bottom: 1.5px solid var(--border);
-    }
-    .hero-home-inner {
-      max-width: 720px;
-      margin: 0 auto;
       text-align: center;
-      /* Fix: use flexbox so block children (flex containers, etc.) are centred */
+    }
+    .hero-websites .container {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      font-size: .8125rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1.25rem;
-    }
-    .hero-headline {
+    .hero-websites h1 {
       font-family: var(--font-serif);
-      font-size: clamp(2.25rem, 5vw, 3.75rem);
-      line-height: 1.1;
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      line-height: 1.15;
       color: var(--charcoal);
-      margin-bottom: 1.25rem;
+      margin-block: 1rem 1.75rem;
+      max-width: 800px;
+      text-align: center;
     }
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.1875rem);
+    .hero-websites .sub {
+      font-size: clamp(.9375rem, 2vw, 1.125rem);
       color: var(--charcoal-60);
-      line-height: 1.65;
+      line-height: 1.7;
       max-width: 600px;
-      margin: 0 auto 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
     }
     .hero-ctas {
       display: flex;
-      flex-direction: row;   /* override style.css column default */
       flex-wrap: wrap;
       gap: 1rem;
       align-items: center;
       justify-content: center;
-      width: auto;           /* override style.css width:100% */
-      max-width: none;       /* override style.css max-width:340px */
-      margin-inline: auto;   /* centre the flex container itself */
+      margin-bottom: 1.5rem;
     }
-
-    /* Btn variants */
-    .btn-hero-primary {
+    .btn-primary-green {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
@@ -101,123 +92,50 @@
       text-decoration: none;
       transition: background var(--transition);
     }
-    .btn-hero-primary:hover { background: var(--charcoal-80); }
-    .btn-hero-secondary {
+    .btn-primary-green:hover { background: var(--charcoal-80); }
+    .btn-secondary-link {
       display: inline-flex;
       align-items: center;
-      gap: .375rem;
       font-size: .9375rem;
       font-weight: 500;
       color: var(--charcoal-60);
       border-bottom: 1px solid var(--charcoal-20);
       padding-bottom: 2px;
     }
-    .btn-hero-secondary:hover { color: var(--charcoal); border-color: var(--charcoal); }
+    .btn-secondary-link:hover { color: var(--charcoal); border-color: var(--charcoal); }
 
-    /* Price badge in hero */
-    .price-badge {
-      display: inline-flex;
+    .trust-bar {
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: .5rem;
+      gap: .75rem 1.5rem;
+      font-size: .875rem;
+      color: var(--charcoal-60);
+    }
+    .trust-bar-item {
+      display: flex;
+      align-items: center;
+      gap: .375rem;
+    }
+    .trust-bar-item svg { color: var(--green); }
+
+    /* One-liner */
+    .one-liner-section {
+      padding-block: 2.5rem;
       background: var(--green);
       color: var(--white);
-      font-size: .8125rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      padding: .4rem 1rem;
-      margin-bottom: 1.75rem;
     }
-
-    /* Hook section */
-    .hook-section {
-      padding-block: 5rem;
-      background: var(--white);
-      border-bottom: 1.5px solid var(--border);
-    }
-    .hook-inner {
-      display: grid;
-      gap: 2.5rem;
-    }
-    @media (min-width: 860px) {
-      .hook-inner {
-        grid-template-columns: 1fr 1fr;
-        align-items: start;
-        gap: 5rem;
-      }
-    }
-    .hook-text h2 {
+    .one-liner-section blockquote {
       font-family: var(--font-serif);
-      font-size: clamp(1.625rem, 3vw, 2.25rem);
-      margin-bottom: 1.25rem;
-      line-height: 1.2;
-    }
-    .hook-text p {
-      font-size: .9375rem;
-      color: var(--charcoal-60);
-      line-height: 1.75;
-      margin-bottom: 1rem;
-    }
-    .hook-text strong { color: var(--charcoal); }
-    .hook-callout {
-      border-left: 3px solid var(--green);
-      padding: 1rem 1.25rem;
-      background: var(--offwhite);
-      font-size: .9375rem;
-      color: var(--charcoal-80);
-      line-height: 1.6;
-      font-style: italic;
-      margin-top: 1.5rem;
-    }
-
-    /* Testimonials */
-    .testimonials-section {
-      padding-block: 5rem;
-      background: var(--cream);
-      border-bottom: 1.5px solid var(--border);
-    }
-    .testimonials-grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-    @media (min-width: 700px) {
-      .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    .testimonial-card {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .testimonial-stars {
-      color: var(--amber);
-      font-size: 1rem;
-      letter-spacing: .1em;
-    }
-    .testimonial-quote {
-      font-size: .9375rem;
-      color: var(--charcoal-80);
-      line-height: 1.7;
-      font-style: italic;
-      flex: 1;
-    }
-    .testimonial-author {
-      font-size: .8125rem;
-      font-weight: 600;
-      color: var(--charcoal-40);
-      letter-spacing: .04em;
-    }
-    .testimonial-placeholder-note {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      line-height: 1.4;
       text-align: center;
-      margin-top: 1.5rem;
-      font-size: .8125rem;
-      color: var(--charcoal-40);
-      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    /* How it works */
-    .how-it-works-section {
+    /* ── How it works — simple 3-column (copied from homepage) ── */
+    .how-simple-section {
       padding-block: 5rem;
       background: var(--white);
       border-bottom: 1.5px solid var(--border);
@@ -251,34 +169,26 @@
       color: var(--charcoal-60);
       line-height: 1.7;
     }
-    .step-simple-link {
-      font-size: .875rem;
-      font-weight: 500;
-      color: var(--green);
-      border-bottom: 1px solid var(--green);
-      display: inline-block;
-      margin-top: .25rem;
-    }
 
-    /* Value stack */
-    .value-section {
+    /* Included tiles */
+    .included-section {
       padding-block: 5rem;
       background: var(--offwhite);
       border-bottom: 1.5px solid var(--border);
     }
-    .value-tiles {
+    .included-tiles {
       display: grid;
       gap: 1rem;
       margin-top: 2rem;
       grid-template-columns: repeat(2, 1fr);
     }
     @media (min-width: 640px) {
-      .value-tiles { grid-template-columns: repeat(3, 1fr); }
+      .included-tiles { grid-template-columns: repeat(3, 1fr); }
     }
     @media (min-width: 1000px) {
-      .value-tiles { grid-template-columns: repeat(4, 1fr); }
+      .included-tiles { grid-template-columns: repeat(4, 1fr); }
     }
-    .value-tile {
+    .included-tile {
       background: var(--white);
       border: 1.5px solid var(--border);
       padding: 1.375rem 1.25rem;
@@ -286,161 +196,203 @@
       flex-direction: column;
       gap: .5rem;
     }
-    .value-tile-icon {
+    .tile-icon {
       font-size: 1.5rem;
       line-height: 1;
     }
-    .value-tile-label {
+    .tile-label {
       font-size: .9375rem;
       font-weight: 600;
       color: var(--charcoal);
     }
-    .value-tile-desc {
+    .tile-desc {
       font-size: .8125rem;
       color: var(--charcoal-60);
       line-height: 1.5;
     }
 
-    /* Who we work with */
-    .audience-section {
+    /* Signup form */
+    .signup-section {
       padding-block: 5rem;
-      background: var(--white);
+      background: var(--offwhite);
       border-bottom: 1.5px solid var(--border);
-    }
-    .audience-grid {
-      display: grid;
-      gap: 1px;
-      background: var(--border);
-      border: 1.5px solid var(--border);
-      margin-top: 2rem;
-    }
-    @media (min-width: 480px) {
-      .audience-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 860px) {
-      .audience-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    .audience-item {
-      background: var(--white);
-      padding: 1.5rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-    .audience-emoji {
-      font-size: 1.75rem;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-    .audience-item-title {
-      font-weight: 600;
-      font-size: .9375rem;
-      color: var(--charcoal);
-      margin-bottom: .25rem;
-    }
-    .audience-item-desc {
-      font-size: .8125rem;
-      color: var(--charcoal-60);
-      line-height: 1.5;
-    }
-    .audience-tagline {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 1rem;
-      color: var(--charcoal-60);
-      font-style: italic;
     }
 
-    /* Comparison section */
-    .comparison-section {
+    /* Pricing */
+    .pricing-section {
       padding-block: 5rem;
-      background: var(--cream);
+      background: var(--white);
       border-bottom: 1.5px solid var(--border);
-      overflow-x: auto;
     }
-    .comparison-table-wrap {
-      overflow-x: auto;
-      margin-top: 2rem;
-      border: 1.5px solid var(--border-mid);
+    .pricing-card {
+      border: 2px solid var(--charcoal);
+      max-width: 560px;
+      margin: 2rem auto 0;
     }
-    .comparison-table {
-      width: 100%;
-      min-width: 640px;
-      border-collapse: collapse;
-      font-size: .875rem;
-    }
-    .comparison-table th {
+    .pricing-card-header {
       background: var(--charcoal);
       color: var(--white);
-      padding: .875rem 1.25rem;
-      text-align: left;
-      font-size: .8125rem;
-      font-weight: 600;
-      letter-spacing: .06em;
+      padding: 2rem 2.5rem;
+    }
+    .pricing-badge-bar {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
       text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 1rem;
     }
-    .comparison-table th.highlight-col {
-      background: var(--green);
-      color: var(--white);
+    .pricing-card-price {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      margin-bottom: .75rem;
     }
-    .comparison-table td {
-      padding: .875rem 1.25rem;
-      border-bottom: 1px solid var(--border);
+    .pricing-amount {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      line-height: 1;
+    }
+    .pricing-period {
+      font-size: 1rem;
+      color: rgba(255,255,255,.6);
+    }
+    .pricing-sub {
+      font-size: .875rem;
+      color: rgba(255,255,255,.6);
+    }
+    .pricing-card-body {
+      padding: 2rem 2.5rem;
+      background: var(--white);
+    }
+    .pricing-features {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-bottom: 2rem;
+    }
+    .pricing-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .9375rem;
       color: var(--charcoal-80);
-      vertical-align: top;
-      line-height: 1.5;
     }
-    .comparison-table tr:last-child td { border-bottom: none; }
-    .comparison-table td.highlight-col {
-      background: rgba(45, 74, 62, .04);
-      color: var(--charcoal);
-      font-weight: 500;
+    .pricing-feature-check { color: var(--green); flex-shrink: 0; margin-top: .1em; }
+    .pricing-cta {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
     }
-    .comparison-table tr:nth-child(even) td { background: var(--offwhite); }
-    .comparison-table tr:nth-child(even) td.highlight-col { background: rgba(45, 74, 62, .06); }
-    .tick { color: var(--green); font-weight: 700; }
-    .cross { color: var(--charcoal-40); }
+    .btn-pricing {
+      display: block;
+      text-align: center;
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      width: 100%;
+    }
+    .btn-pricing:hover { background: var(--charcoal-80); }
+    .pricing-fine-print {
+      font-size: .8125rem;
+      color: var(--charcoal-40);
+      text-align: center;
+      line-height: 1.6;
+    }
 
-    /* Trust section */
-    .trust-section {
+    /* Social proof */
+    .proof-section {
       padding-block: 5rem;
       background: var(--white);
       border-bottom: 1.5px solid var(--border);
     }
-    .trust-points-grid {
+    .proof-grid {
       display: grid;
       gap: 1.5rem;
       margin-top: 2rem;
     }
-    @media (min-width: 640px) {
-      .trust-points-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 700px) {
+      .proof-grid { grid-template-columns: repeat(3, 1fr); }
     }
-    .trust-point {
-      padding: 1.75rem;
+    .proof-card {
       background: var(--offwhite);
       border: 1.5px solid var(--border);
-    }
-    .trust-point-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      background: var(--charcoal);
-      color: var(--white);
+      padding: 1.75rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .trust-point-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: .5rem;
-    }
-    .trust-point-body {
-      font-size: .9rem;
-      color: var(--charcoal-60);
+    .proof-stars { color: var(--amber); font-size: 1rem; letter-spacing: .1em; }
+    .proof-quote {
+      font-size: .9375rem;
+      color: var(--charcoal-80);
       line-height: 1.7;
+      font-style: italic;
+      flex: 1;
     }
+    .proof-author {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--charcoal-40);
+    }
+    .proof-tagline {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--offwhite);
+      border: 1.5px solid var(--border);
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding-block: 5rem;
+      background: var(--offwhite);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 2rem;
+      border: 1.5px solid var(--border-mid);
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      padding: 1.375rem 1.5rem;
+      font-weight: 600;
+      font-size: .9375rem;
+      color: var(--charcoal);
+      cursor: pointer;
+      gap: 1rem;
+      background: var(--white);
+      border: none;
+      text-align: left;
+      width: 100%;
+      line-height: 1.4;
+    }
+    .faq-question:hover { background: var(--offwhite); }
+    .faq-question svg { flex-shrink: 0; transition: transform var(--transition); color: var(--charcoal-40); margin-top: .1em; }
+    .faq-answer {
+      display: none;
+      padding: 0 1.5rem 1.375rem;
+      background: var(--white);
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-question svg { transform: rotate(180deg); }
+    .faq-item.open .faq-answer { display: block; }
 
     /* Final CTA */
     .final-cta-section {
@@ -459,8 +411,18 @@
       font-size: 1.0625rem;
       color: rgba(255,255,255,.7);
       max-width: 560px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1rem;
       line-height: 1.65;
+    }
+    .final-cta-price {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      font-size: 1.125rem;
+      font-weight: 700;
+      padding: .5rem 1.5rem;
+      margin-bottom: 2rem;
+      letter-spacing: .04em;
     }
     .final-cta-buttons {
       display: flex;
@@ -494,23 +456,7 @@
     .final-cta-reassurance {
       font-size: .8125rem;
       color: rgba(255,255,255,.45);
-      margin-top: .5rem;
     }
-
-    /* New nav CTA style */
-    .nav-cta-website {
-      display: inline-flex;
-      align-items: center;
-      gap: .375rem;
-      background: var(--green);
-      color: var(--white) !important;
-      font-size: .8125rem;
-      font-weight: 600;
-      letter-spacing: .04em;
-      padding: .5rem 1.125rem;
-      white-space: nowrap;
-    }
-    .nav-cta-website:hover { background: var(--green-dark); }
 
     /* Footer bridge */
     .footer-bridge-products {
@@ -526,536 +472,591 @@
     }
     .footer-bridge-products a:hover { border-color: var(--charcoal); }
 
-    /* Section decorations */
-    .section-label-green {
-      display: inline-block;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1rem;
+    /* Comparison table */
+    .comparison-section {
+      padding-block: 5rem;
+      background: var(--cream);
+      border-bottom: 1.5px solid var(--border);
     }
-  </style>
-  <!-- ─── ONBOARDING WIZARD STYLES ─── -->
-  <style>
-    /* ══════════════════════════════════════════
-       PB Wizard Modal — Pine Beach brand-aligned
-       6-step onboarding wizard, Shopify-quality UX
-    ══════════════════════════════════════════ */
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin-top: 2rem;
+      border: 1.5px solid var(--border-mid);
+    }
+    .comparison-table {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      font-size: .875rem;
+    }
+    .comparison-table th {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: .875rem 1.25rem;
+      text-align: left;
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .comparison-table th.highlight-col { background: var(--green); }
+    .comparison-table td {
+      padding: .875rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--charcoal-80);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table td.highlight-col {
+      background: rgba(45, 74, 62, .04);
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+    .comparison-table tr:nth-child(even) td { background: var(--offwhite); }
+    .comparison-table tr:nth-child(even) td.highlight-col { background: rgba(45, 74, 62, .06); }
+    .tick { color: var(--green); font-weight: 700; }
+    .cross { color: var(--charcoal-40); }
 
-    /* Modal shell */
-    .pbw-modal {
+    /* ══════════════════════════════════════════
+       ONBOARDING WIZARD MODAL
+       ══════════════════════════════════════════ */
+
+    .wizard-overlay {
       position: fixed;
       inset: 0;
-      z-index: 9000;
+      background: rgba(28,28,28,.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 2000;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.25rem;
       opacity: 0;
-      visibility: hidden;
-      transition: opacity 260ms ease, visibility 260ms ease;
+      pointer-events: none;
+      transition: opacity .25s ease;
     }
-    .pbw-modal.is-open {
+    .wizard-overlay.open {
       opacity: 1;
-      visibility: visible;
+      pointer-events: all;
     }
-    .pbw-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(12,12,12,.72);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-    .pbw-container {
-      position: relative;
-      z-index: 1;
-      background: var(--offwhite);
+    .wizard-modal {
+      background: #F3F2EF;
       width: 100%;
       max-width: 660px;
-      max-height: 88vh;
+      max-height: 90vh;
       display: flex;
       flex-direction: column;
-      border: 1.5px solid var(--border-strong);
-      box-shadow: 0 32px 96px rgba(0,0,0,.22);
-      transform: translateY(28px) scale(.97);
-      transition: transform 320ms cubic-bezier(.34,1.4,.64,1), opacity 280ms ease;
-      overflow: hidden;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform .28s cubic-bezier(.22,.68,0,1.2);
+      box-shadow: 0 32px 80px rgba(28,28,28,.28);
     }
-    .pbw-modal.is-open .pbw-container {
-      transform: translateY(0) scale(1);
+    .wizard-overlay.open .wizard-modal {
+      transform: translateY(0);
     }
-    @media (max-width: 680px) {
-      .pbw-modal { padding: 0; align-items: flex-end; }
-      .pbw-container {
-        max-height: 95dvh;
+    @media (max-width: 700px) {
+      .wizard-overlay { align-items: flex-end; }
+      .wizard-modal {
+        max-height: 96dvh;
         max-width: 100%;
-        border-bottom: none;
-        border-left: none;
-        border-right: none;
+        border-radius: 0;
+        transform: translateY(40px);
       }
     }
 
     /* Header */
-    .pbw-header {
+    .wizard-header {
+      background: var(--charcoal, #1C1C1C);
+      color: #fff;
+      padding: 1.5rem 2rem 1.25rem;
+      flex-shrink: 0;
+    }
+    .wizard-header-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: .875rem 1.375rem;
-      border-bottom: 1.5px solid var(--border);
-      background: var(--white);
-      flex-shrink: 0;
+      margin-bottom: 1.25rem;
     }
-    .pbw-header-left {
-      display: flex;
-      align-items: center;
-      gap: .875rem;
+    .wizard-title {
+      font-family: var(--font-serif, 'DM Serif Display', serif);
+      font-size: 1.0625rem;
+      color: #fff;
+      line-height: 1.2;
     }
-    .pbw-logo {
-      height: 26px;
-      width: auto;
-    }
-    .pbw-step-label {
-      font-size: .8125rem;
-      font-weight: 500;
-      color: var(--charcoal-40);
-      border-left: 1.5px solid var(--border-mid);
-      padding-left: .875rem;
-    }
-    .pbw-close {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .wizard-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,.55);
+      cursor: pointer;
       width: 34px;
       height: 34px;
-      border: 1.5px solid var(--border-mid);
-      color: var(--charcoal-40);
-      transition: color 180ms, border-color 180ms, background 180ms;
-      flex-shrink: 0;
-    }
-    .pbw-close:hover {
-      color: var(--charcoal);
-      border-color: var(--charcoal-40);
-      background: rgba(28,28,28,.04);
-    }
-
-    /* Progress bar */
-    .pbw-progress-track {
-      height: 3px;
-      background: rgba(28,28,28,.08);
-      flex-shrink: 0;
-    }
-    .pbw-progress-fill {
-      height: 100%;
-      background: var(--green);
-      transition: width 400ms cubic-bezier(.4,0,.2,1);
-    }
-
-    /* Step dots */
-    .pbw-dots {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0;
-      padding: .75rem 1.375rem;
-      background: var(--white);
-      border-bottom: 1.5px solid var(--border);
       flex-shrink: 0;
-    }
-    .pbw-dot {
-      width: 26px;
-      height: 26px;
+      transition: color .15s;
+      padding: 0;
       border-radius: 50%;
-      border: 1.5px solid var(--border-mid);
-      font-size: .75rem;
-      font-weight: 600;
-      color: var(--charcoal-40);
+    }
+    .wizard-close:hover { color: #fff; background: rgba(255,255,255,.1); }
+
+    /* Progress */
+    .wizard-progress-bar {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .wizard-progress-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .3rem;
+      position: relative;
+    }
+    .wizard-progress-step::after {
+      content: '';
+      position: absolute;
+      top: 11px;
+      left: calc(50% + 12px);
+      right: calc(-50% + 12px);
+      height: 2px;
+      background: rgba(255,255,255,.12);
+      z-index: 0;
+    }
+    .wizard-progress-step:last-child::after { display: none; }
+    .wizard-progress-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 220ms;
-      flex-shrink: 0;
+      font-size: .5625rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.35);
       position: relative;
       z-index: 1;
+      background: #1C1C1C;
+      transition: all .2s;
     }
-    .pbw-dot.is-active {
-      background: var(--green);
-      border-color: var(--green);
+    .wizard-progress-step.done .wizard-progress-dot {
+      background: var(--green, #2D4A3E);
+      border-color: var(--green, #2D4A3E);
       color: #fff;
     }
-    .pbw-dot.is-done {
-      background: rgba(45,74,62,.12);
-      border-color: var(--green);
-      color: var(--green);
+    .wizard-progress-step.active .wizard-progress-dot {
+      background: #D4A574;
+      border-color: #D4A574;
+      color: #1C1C1C;
+      box-shadow: 0 0 0 3px rgba(212,165,116,.25);
     }
-    .pbw-dot-line {
-      flex: 1;
-      height: 1.5px;
-      background: var(--border-mid);
-      max-width: 48px;
-      transition: background 220ms;
+    .wizard-progress-label {
+      font-size: .5rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      text-align: center;
+      line-height: 1.2;
     }
-    .pbw-dot-line.is-done { background: var(--green); }
+    .wizard-progress-step.active .wizard-progress-label { color: #D4A574; }
+    .wizard-progress-step.done .wizard-progress-label { color: rgba(255,255,255,.5); }
+    @media (max-width: 480px) {
+      .wizard-header { padding: 1.25rem 1.25rem 1rem; }
+      .wizard-progress-label { display: none; }
+      .wizard-progress-dot { width: 20px; height: 20px; font-size: .5rem; }
+    }
 
-    /* Content scroll area */
-    .pbw-content {
+    /* Body */
+    .wizard-body {
       flex: 1;
       overflow-y: auto;
       overscroll-behavior: contain;
-      -webkit-overflow-scrolling: touch;
-      position: relative;
     }
-
-    /* Step panels */
-    .pbw-step {
-      padding: 1.875rem 1.5rem 1rem;
+    .wizard-step-panel {
+      padding: 2rem;
+      display: none;
     }
-    .pbw-step-title {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: var(--charcoal);
+    .wizard-step-panel.active {
+      display: block;
+      animation: wzFadeSlide .22s ease both;
+    }
+    .wizard-step-panel.slide-back.active {
+      animation: wzFadeSlideBack .22s ease both;
+    }
+    @media (max-width: 480px) {
+      .wizard-step-panel { padding: 1.5rem 1.25rem; }
+    }
+    @keyframes wzFadeSlide {
+      from { opacity: 0; transform: translateX(14px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes wzFadeSlideBack {
+      from { opacity: 0; transform: translateX(-14px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .wizard-step-heading {
+      font-family: var(--font-serif, 'DM Serif Display', serif);
+      font-size: 1.625rem;
+      color: var(--charcoal, #1C1C1C);
       margin-bottom: .375rem;
-      line-height: 1.2;
+      line-height: 1.15;
     }
-    .pbw-step-desc {
-      font-size: .9375rem;
-      color: var(--charcoal-60);
-      line-height: 1.6;
-      margin-bottom: 1.625rem;
+    .wizard-step-sub {
+      font-size: .9rem;
+      color: rgba(28,28,28,.58);
+      margin-bottom: 1.75rem;
+      line-height: 1.65;
     }
 
-    /* Step transition animations */
-    @keyframes pbwSlideInRight { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
-    @keyframes pbwSlideInLeft  { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
-    @keyframes pbwSlideOutLeft { from { opacity:1; transform:translateX(0); } to { opacity:0; transform:translateX(-30px); } }
-    @keyframes pbwSlideOutRight{ from { opacity:1; transform:translateX(0); } to { opacity:0; transform:translateX(30px); } }
-    .pbw-anim-in-right  { animation: pbwSlideInRight  280ms cubic-bezier(.4,0,.2,1) both; }
-    .pbw-anim-in-left   { animation: pbwSlideInLeft   280ms cubic-bezier(.4,0,.2,1) both; }
-    .pbw-anim-out-left  { animation: pbwSlideOutLeft  220ms cubic-bezier(.4,0,.2,1) both; }
-    .pbw-anim-out-right { animation: pbwSlideOutRight 220ms cubic-bezier(.4,0,.2,1) both; }
-
-    /* Fields */
-    .pbw-fields { display: flex; flex-direction: column; gap: 1.125rem; }
-    .pbw-field  { display: flex; flex-direction: column; gap: .35rem; }
-    .pbw-label  {
-      font-size: .875rem;
-      font-weight: 600;
-      color: var(--charcoal);
-    }
-    .pbw-label .req { color: #c0392b; }
-    .pbw-optional {
-      font-size: .8125rem;
-      font-weight: 400;
-      color: var(--charcoal-40);
-    }
-    .pbw-hint {
-      font-size: .8125rem;
-      color: var(--charcoal-60);
-      line-height: 1.5;
-    }
-    .pbw-input,
-    .pbw-select,
-    .pbw-textarea {
-      width: 100%;
-      padding: .75rem 1rem;
-      background: var(--white);
-      border: 1.5px solid var(--border-mid);
-      font-family: var(--font-sans);
-      font-size: .9375rem;
-      color: var(--charcoal);
-      outline: none;
-      transition: border-color 180ms, box-shadow 180ms;
-      border-radius: 0;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    .pbw-input:focus,
-    .pbw-select:focus,
-    .pbw-textarea:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(45,74,62,.12);
-    }
-    .pbw-input::placeholder,
-    .pbw-textarea::placeholder { color: var(--charcoal-40); }
-    .pbw-input.is-error,
-    .pbw-select.is-error { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192,57,43,.09); }
-    .pbw-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right .875rem center;
-      padding-right: 2.5rem;
-      cursor: pointer;
-    }
-    .pbw-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
-
-    /* Error banner */
-    .pbw-error {
+    /* Form elements */
+    .wz-group {
       display: flex;
-      align-items: center;
-      gap: .5rem;
+      flex-direction: column;
+      gap: .35rem;
+      margin-bottom: 1.125rem;
+    }
+    .wz-label {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--charcoal, #1C1C1C);
+      letter-spacing: .02em;
+    }
+    .wz-req { color: var(--green, #2D4A3E); }
+    .wz-opt { color: rgba(28,28,28,.4); font-weight: 400; }
+    .wz-input,
+    .wz-select,
+    .wz-textarea {
+      width: 100%;
+      border: 1.5px solid #d0cfc9;
+      background: #fff;
       padding: .75rem 1rem;
-      background: rgba(192,57,43,.07);
-      border: 1.5px solid rgba(192,57,43,.28);
-      font-size: .875rem;
+      font-size: .9375rem;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      color: var(--charcoal, #1C1C1C);
+      border-radius: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color .15s;
+      box-sizing: border-box;
+    }
+    .wz-input:focus,
+    .wz-select:focus,
+    .wz-textarea:focus {
+      outline: none;
+      border-color: var(--green, #2D4A3E);
+    }
+    .wz-input.error,
+    .wz-select.error,
+    .wz-textarea.error { border-color: #c0392b; }
+    .wz-input::placeholder,
+    .wz-textarea::placeholder { color: rgba(28,28,28,.32); }
+    .wz-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+    .wz-select-wrap { position: relative; }
+    .wz-select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(28,28,28,.4);
+      pointer-events: none;
+    }
+    .wz-row { display: grid; gap: .875rem; }
+    @media (min-width: 520px) {
+      .wz-row-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .wz-error {
+      font-size: .8rem;
       color: #c0392b;
-      margin-bottom: 1rem;
+      display: none;
+      margin-top: .125rem;
     }
-    @keyframes pbwShake {
-      0%,100% { transform:translateX(0); }
-      20%,60% { transform:translateX(-5px); }
-      40%,80% { transform:translateX(5px); }
-    }
-    .pbw-error { animation: pbwShake 380ms ease; }
+    .wz-error.visible { display: block; }
 
     /* File upload */
-    .pbw-file-hidden {
-      position: absolute;
-      width: 1px; height: 1px;
-      opacity: 0; pointer-events: none;
-    }
-    .pbw-file-zone {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      padding: 1.5rem 1rem;
-      border: 1.5px dashed var(--border-mid);
-      background: rgba(28,28,28,.02);
-      cursor: pointer;
+    .wz-upload-area {
+      border: 2px dashed #c4c3bd;
+      background: #fff;
+      padding: 1.75rem 1.5rem;
       text-align: center;
-      transition: border-color 180ms, background 180ms;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+      position: relative;
+      user-select: none;
     }
-    .pbw-file-zone:hover {
-      border-color: var(--green);
-      background: rgba(45,74,62,.04);
+    .wz-upload-area:hover,
+    .wz-upload-area.drag-over {
+      border-color: var(--green, #2D4A3E);
+      background: rgba(45,74,62,.03);
     }
-    .pbw-file-zone svg { color: var(--charcoal-40); }
-    .pbw-file-zone strong { font-size: .9375rem; color: var(--charcoal); font-weight: 500; }
-    .pbw-file-zone em { font-style: normal; font-size: .8125rem; color: var(--charcoal-40); }
-    .pbw-file-list { display: flex; flex-direction: column; gap: .375rem; margin-top: .5rem; }
-    .pbw-file-item {
+    .wz-upload-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .wz-upload-icon { font-size: 1.75rem; line-height: 1; display: block; margin-bottom: .5rem; }
+    .wz-upload-label { font-size: .9375rem; font-weight: 600; color: #1C1C1C; margin-bottom: .25rem; }
+    .wz-upload-hint { font-size: .8125rem; color: rgba(28,28,28,.45); }
+    .wz-file-list { margin-top: .625rem; display: flex; flex-direction: column; gap: .375rem; }
+    .wz-file-item {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: .5rem .875rem;
-      background: rgba(45,74,62,.08);
+      gap: .5rem;
+      background: #fff;
+      border: 1.5px solid #e6e5e0;
+      padding: .5rem .75rem;
       font-size: .8125rem;
-      color: var(--charcoal);
-      gap: .75rem;
+      color: #1C1C1C;
     }
-    .pbw-file-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .pbw-file-remove { color: var(--charcoal-40); cursor: pointer; font-size: .75rem; }
-    .pbw-file-remove:hover { color: #c0392b; }
+    .wz-file-item-icon { color: var(--green, #2D4A3E); flex-shrink: 0; }
+    .wz-file-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .wz-file-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(28,28,28,.35);
+      padding: 0;
+      font-size: .75rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .wz-file-remove:hover { color: #c0392b; }
 
     /* Logo preview */
-    .pbw-logo-preview {
-      display: flex;
+    .wz-logo-preview {
+      margin-top: .75rem;
       align-items: center;
-      gap: 1rem;
-      padding: .875rem 1rem;
-      background: rgba(28,28,28,.04);
-      border: 1.5px solid var(--border);
-      margin-top: .625rem;
+      gap: .875rem;
     }
-    .pbw-logo-preview img {
-      height: 52px; width: auto; max-width: 140px; object-fit: contain;
+    .wz-logo-preview img {
+      max-width: 160px;
+      max-height: 80px;
+      object-fit: contain;
+      border: 1.5px solid #e6e5e0;
+      background: #fff;
+      padding: .5rem;
     }
-    .pbw-logo-remove {
-      font-size: .8125rem; color: var(--charcoal-40);
-      text-decoration: underline; cursor: pointer;
-    }
-    .pbw-logo-remove:hover { color: #c0392b; }
+    .wz-logo-preview-meta { font-size: .8125rem; color: rgba(28,28,28,.5); }
 
-    /* Colour palettes */
-    .pbw-palettes {
+    /* Theme swatches */
+    .wz-swatches {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: .625rem;
+      margin-top: .375rem;
     }
-    @media (min-width: 460px) { .pbw-palettes { grid-template-columns: repeat(3, 1fr); } }
-    .pbw-palette-radio { position: absolute; opacity: 0; width: 0; height: 0; }
-    .pbw-palette-label { position: relative; cursor: pointer; }
-    .pbw-palette-card {
+    @media (max-width: 440px) {
+      .wz-swatches { grid-template-columns: repeat(2, 1fr); }
+    }
+    .wz-swatch {
+      border: 2px solid #e0dfd9;
+      cursor: pointer;
+      transition: border-color .15s, transform .1s, box-shadow .15s;
+      background: #fff;
+      padding: .625rem .75rem .75rem;
       display: flex;
       flex-direction: column;
       gap: .5rem;
-      padding: .75rem;
-      border: 1.5px solid var(--border-mid);
-      background: var(--white);
-      transition: border-color 180ms, box-shadow 180ms;
+      position: relative;
     }
-    .pbw-palette-radio:checked ~ .pbw-palette-card {
-      border-color: var(--green);
-      box-shadow: 0 0 0 2px rgba(45,74,62,.2);
-    }
-    .pbw-palette-card:hover { border-color: rgba(28,28,28,.35); }
-    .pbw-swatches { display: flex; gap: 3px; height: 24px; }
-    .pbw-swatches span { flex: 1; display: block; }
-    .pbw-palette-name { font-size: .8125rem; font-weight: 500; color: var(--charcoal); }
-
-    /* Yes/No radio group */
-    .pbw-radio-group { display: flex; flex-direction: column; gap: .5rem; }
-    .pbw-radio-option { display: flex; cursor: pointer; }
-    .pbw-radio-input  { position: absolute; opacity: 0; width: 0; height: 0; }
-    .pbw-radio-box {
-      display: flex;
-      align-items: flex-start;
-      gap: .875rem;
-      width: 100%;
-      padding: .875rem 1.125rem;
-      border: 1.5px solid var(--border-mid);
-      background: var(--white);
-      transition: border-color 180ms, background 180ms;
-    }
-    .pbw-radio-input:checked ~ .pbw-radio-box {
-      border-color: var(--green);
-      background: rgba(45,74,62,.04);
-    }
-    .pbw-radio-dot {
-      width: 18px; height: 18px;
+    .wz-swatch:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(28,28,28,.1); }
+    .wz-swatch.selected { border-color: var(--charcoal, #1C1C1C); box-shadow: 0 0 0 1px #1C1C1C; }
+    .wz-swatch-palette { display: flex; height: 26px; overflow: hidden; }
+    .wz-swatch-palette span { flex: 1; }
+    .wz-swatch-name { font-size: .6875rem; font-weight: 700; color: #1C1C1C; text-align: center; letter-spacing: .02em; }
+    .wz-swatch-check {
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: 16px;
+      height: 16px;
+      background: #1C1C1C;
+      color: #fff;
       border-radius: 50%;
-      border: 1.5px solid var(--border-mid);
-      flex-shrink: 0; margin-top: 3px;
-      position: relative; transition: border-color 180ms;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: .5rem;
+      line-height: 1;
     }
-    .pbw-radio-input:checked ~ .pbw-radio-box .pbw-radio-dot { border-color: var(--green); }
-    .pbw-radio-input:checked ~ .pbw-radio-box .pbw-radio-dot::after {
-      content: '';
-      position: absolute; inset: 3px;
-      border-radius: 50%; background: var(--green);
-    }
-    .pbw-radio-text strong { display: block; font-size: .9375rem; font-weight: 600; color: var(--charcoal); }
-    .pbw-radio-text em { font-style: normal; font-size: .8125rem; color: var(--charcoal-60); }
+    .wz-swatch.selected .wz-swatch-check { display: flex; }
 
-    /* CollabCart notice */
-    .pbw-collabcart {
-      display: flex;
-      align-items: flex-start;
-      gap: .875rem;
-      padding: 1rem 1.125rem;
-      background: rgba(212,165,116,.1);
-      border: 1.5px solid rgba(212,165,116,.4);
-      margin-bottom: .5rem;
+    /* Yes/No toggle */
+    .wz-toggle-row { display: flex; gap: .625rem; margin-top: .375rem; }
+    .wz-toggle-btn {
+      flex: 1;
+      border: 1.5px solid #d0cfc9;
+      background: #fff;
+      padding: .75rem 1rem;
+      font-size: .9375rem;
+      font-weight: 600;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      color: rgba(28,28,28,.55);
+      cursor: pointer;
+      transition: all .15s;
+      text-align: center;
     }
-    .pbw-collabcart svg { color: var(--amber-dim); flex-shrink: 0; margin-top: 2px; }
-    .pbw-collabcart strong { display: block; font-size: .9375rem; font-weight: 600; color: var(--charcoal); margin-bottom: .25rem; }
-    .pbw-collabcart p { font-size: .875rem; color: var(--charcoal-80); line-height: 1.55; }
+    .wz-toggle-btn:hover { border-color: #999; color: #1C1C1C; }
+    .wz-toggle-btn.active-yes { background: var(--green, #2D4A3E); border-color: var(--green); color: #fff; }
+    .wz-toggle-btn.active-no { background: #1C1C1C; border-color: #1C1C1C; color: #fff; }
 
     /* Checkboxes */
-    .pbw-checkboxes { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .pbw-checkbox-option {
-      display: flex; align-items: center; gap: .5rem;
-      padding: .5625rem .9375rem;
-      border: 1.5px solid var(--border-mid);
-      background: var(--white);
+    .wz-check-group { display: flex; flex-direction: column; gap: .625rem; margin-top: .375rem; }
+    .wz-check-item {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
       cursor: pointer;
-      font-size: .9rem;
-      transition: border-color 180ms, background 180ms;
+      font-size: .9375rem;
+      color: #1C1C1C;
+      line-height: 1.3;
     }
-    .pbw-checkbox-option:has(input:checked) {
-      border-color: var(--green);
-      background: rgba(45,74,62,.07);
-    }
-    .pbw-checkbox-option input { accent-color: var(--green); width: 15px; height: 15px; }
-
-    /* Review step */
-    .pbw-review { display: flex; flex-direction: column; gap: .625rem; margin-bottom: 1.5rem; }
-    .pbw-review-section { border: 1.5px solid var(--border); background: var(--white); }
-    .pbw-review-header {
-      display: flex; align-items: center;
-      justify-content: space-between;
-      padding: .75rem 1.125rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .pbw-review-title {
-      font-size: .75rem; font-weight: 700;
-      letter-spacing: .09em; text-transform: uppercase;
-      color: var(--charcoal-40);
-    }
-    .pbw-review-edit {
-      font-size: .8125rem; color: var(--green);
-      text-decoration: underline; cursor: pointer;
-      transition: color 180ms;
-    }
-    .pbw-review-edit:hover { color: var(--green-dark); }
-    .pbw-review-fields { padding: .75rem 1.125rem; display: flex; flex-direction: column; gap: .4375rem; }
-    .pbw-review-row { display: flex; gap: .75rem; }
-    .pbw-review-key { font-size: .8125rem; color: var(--charcoal-60); min-width: 130px; flex-shrink: 0; }
-    .pbw-review-val { font-size: .8125rem; color: var(--charcoal); font-weight: 500; line-height: 1.5; }
-
-    /* Guarantee bar */
-    .pbw-guarantee {
-      background: rgba(45,74,62,.06);
-      border: 1.5px solid rgba(45,74,62,.2);
-      padding: .875rem 1.125rem;
-      margin-bottom: .5rem;
-    }
-    .pbw-guarantee-items {
-      display: flex; flex-wrap: wrap; gap: .375rem 1.25rem;
-      font-size: .8125rem; color: var(--green); font-weight: 500;
-    }
-
-    /* Footer nav */
-    .pbw-footer {
-      display: flex; align-items: center;
-      justify-content: space-between;
-      padding: .875rem 1.375rem;
-      border-top: 1.5px solid var(--border);
-      background: var(--white);
+    .wz-check-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--green, #2D4A3E);
+      cursor: pointer;
       flex-shrink: 0;
-      gap: 1rem;
     }
-    .pbw-btn-back {
-      font-size: .9375rem; font-weight: 500;
-      color: var(--charcoal-60); padding: .5rem 0;
-      transition: color 180ms;
-    }
-    .pbw-btn-back:hover { color: var(--charcoal); }
-    .pbw-btn-next {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--green); color: #fff;
-      font-size: .9375rem; font-weight: 600;
-      padding: .75rem 1.5rem;
-      transition: background 180ms;
-      margin-left: auto;
-    }
-    .pbw-btn-next:hover { background: var(--green-dark); }
-    .pbw-btn-submit {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--green); color: #fff;
-      font-size: 1rem; font-weight: 700;
-      padding: .8125rem 1.625rem;
-      transition: background 180ms, box-shadow 180ms;
-      margin-left: auto;
-    }
-    .pbw-btn-submit:hover { background: var(--green-dark); box-shadow: 0 4px 18px rgba(45,74,62,.35); }
 
-    /* Success view */
-    .pbw-success {
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 3rem 2rem; gap: 1.125rem;
+    /* Review */
+    .wz-review-section { margin-bottom: 1.5rem; }
+    .wz-review-heading {
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(28,28,28,.38);
+      margin-bottom: .75rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid #e6e5e0;
     }
-    .pbw-success-icon {
-      width: 60px; height: 60px;
-      background: var(--green); color: #fff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.625rem; font-weight: 700;
+    .wz-review-row {
+      display: flex;
+      gap: .875rem;
+      margin-bottom: .5rem;
+      font-size: .875rem;
+      line-height: 1.55;
     }
-    .pbw-success-title { font-family: var(--font-serif); font-size: 1.75rem; color: var(--charcoal); }
-    .pbw-success-body  { font-size: .9375rem; color: var(--charcoal-60); line-height: 1.65; max-width: 400px; }
-    .pbw-success-note  { font-size: .875rem; color: var(--charcoal-40); line-height: 1.5; }
-    .pbw-success-note a { color: var(--green); text-decoration: underline; }
-    .pbw-success-cta {
-      display: inline-flex; align-items: center;
-      background: var(--charcoal); color: #fff;
-      font-size: .9375rem; font-weight: 600;
-      padding: .75rem 1.625rem; margin-top: .5rem;
-      transition: background 180ms;
+    .wz-review-key {
+      color: rgba(28,28,28,.48);
+      min-width: 130px;
+      flex-shrink: 0;
+      font-weight: 500;
     }
-    .pbw-success-cta:hover { background: var(--charcoal-80); }
+    .wz-review-val { color: #1C1C1C; word-break: break-word; }
+    @media (max-width: 440px) {
+      .wz-review-row { flex-direction: column; gap: .1rem; }
+      .wz-review-key { min-width: 0; }
+    }
+    .wz-review-reassurance {
+      background: #fff;
+      border: 1.5px solid #e6e5e0;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .wz-review-reassurance strong {
+      display: block;
+      font-size: 1rem;
+      color: #1C1C1C;
+      margin-bottom: .3rem;
+    }
+    .wz-review-reassurance span {
+      font-size: .8125rem;
+      color: rgba(28,28,28,.48);
+    }
+
+    /* Navigation footer */
+    .wizard-nav {
+      background: #fff;
+      border-top: 1.5px solid #e6e5e0;
+      padding: 1.125rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .wizard-nav { padding: 1rem 1.25rem; } }
+    .wz-nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      background: none;
+      border: 1.5px solid #d0cfc9;
+      font-size: .9rem;
+      font-weight: 600;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      color: rgba(28,28,28,.55);
+      padding: .7rem 1.125rem;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .wz-nav-back:hover:not(:disabled) { border-color: #1C1C1C; color: #1C1C1C; }
+    .wz-nav-back:disabled { opacity: .3; pointer-events: none; }
+    .wz-nav-next {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: #1C1C1C;
+      color: #fff;
+      border: none;
+      font-size: .9rem;
+      font-weight: 600;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      padding: .7rem 1.625rem;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .wz-nav-next:hover { background: rgba(28,28,28,.82); }
+    .wz-nav-next.submit-btn {
+      background: var(--green, #2D4A3E);
+      font-size: .9375rem;
+      padding: .8125rem 1.75rem;
+    }
+    .wz-nav-next.submit-btn:hover { background: #1e3329; }
+    .wz-step-counter { font-size: .8rem; color: rgba(28,28,28,.38); font-weight: 500; white-space: nowrap; }
+
+    /* Success screen */
+    .wizard-success {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .wizard-success.active { display: flex; flex-direction: column; align-items: center; }
+    .wz-success-icon { font-size: 3rem; margin-bottom: 1.125rem; }
+    .wz-success-h { font-family: var(--font-serif, 'DM Serif Display', serif); font-size: 2rem; color: #1C1C1C; margin-bottom: .75rem; }
+    .wz-success-p { font-size: .9375rem; color: rgba(28,28,28,.6); max-width: 400px; line-height: 1.7; margin-bottom: .625rem; }
+    .wz-success-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem 1.375rem;
+      margin-top: 1.5rem;
+      font-size: .8125rem;
+      color: rgba(28,28,28,.5);
+    }
+    .wz-success-badges span { display: flex; align-items: center; gap: .3rem; }
+    .wz-success-close {
+      margin-top: 1.75rem;
+      background: none;
+      border: 1.5px solid #d0cfc9;
+      padding: .625rem 1.5rem;
+      font-size: .875rem;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      font-weight: 600;
+      cursor: pointer;
+      color: rgba(28,28,28,.55);
+      transition: all .15s;
+    }
+    .wz-success-close:hover { border-color: #1C1C1C; color: #1C1C1C; }
   </style>
 </head>
 <body>
@@ -1067,139 +1068,63 @@
         <img src="logo-text.png" alt="Pine Beach" />
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="/websites">Websites</a>
         <a href="/about">About</a>
-        <a href="/products">Products &amp; Tools</a>
         <a href="/contact">Contact</a>
       </nav>
-      <button class="nav-cta-website" data-wizard-trigger>Get Your Website →</button>
+      <a href="#get-started" class="nav-cta-website">Get Your Website →</a>
       <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="nav-mobile-menu" aria-hidden="true">
-      <a href="/websites">Websites</a>
       <a href="/about">About</a>
-      <a href="/products">Products &amp; Tools</a>
       <a href="/contact">Contact</a>
-      <button class="btn btn-primary" data-wizard-trigger>Get Your Website →</button>
+      <a href="#get-started" class="btn btn-primary">Get Your Website →</a>
     </div>
   </header>
 
   <!-- ─── HERO ─── -->
-  <section class="hero-home">
+  <section class="hero-websites">
     <div class="container">
-      <div class="hero-home-inner">
-        <div class="price-badge">
-          🇦🇺 Australian owned and operated
-        </div>
-        <h1 class="hero-headline">Your business deserves<br/>to be found on Google.</h1>
-        <p class="hero-sub">We build professional, SEO-optimised websites for Australian small businesses — starting at $79 a month, with no setup fee and no lock-in. You won't need to touch a thing.</p>
-        <div class="hero-ctas">
-          <button class="btn-hero-primary" data-wizard-trigger>
-            Get Your Website →
-          </button>
-          <a href="/websites#how-it-works" class="btn-hero-secondary">
-            See How It Works ↓
-          </a>
-        </div>
-        <div class="trust-bar">
-          <span class="trust-bar-item">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            $0 setup fee
-          </span>
-          <span class="trust-bar-item">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            30-day money-back guarantee
-          </span>
-          <span class="trust-bar-item">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Cancel anytime
-          </span>
-          <span class="trust-bar-item">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            $79 / month
-          </span>
-        </div>
+      <div style="display: inline-flex; align-items: center; gap: .5rem; background: var(--green); color: var(--white); font-size: .8125rem; font-weight: 700; letter-spacing: .08em; padding: .4rem 1rem; margin-bottom: 1.75rem;">
+        🇦🇺 Australian owned and operated
+      </div>
+      <h1>A professional website for your business.<br/><span style="color: var(--green-light);">$79 a month. No setup fee.</span></h1>
+      <p class="sub">We build it, we launch it, we keep it running. You focus on the business.<br/>See your website before you pay a cent. Found on Google. Ready in days.</p>
+      <div class="hero-ctas">
+        <a href="#get-started" class="btn-primary-green">Get Started →</a>
+        <a href="#how-it-works" class="btn-secondary-link">See how it works ↓</a>
+      </div>
+      <div class="trust-bar">
+        <span class="trust-bar-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          $0 setup fee
+        </span>
+        <span class="trust-bar-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          See it before you pay
+        </span>
+        <span class="trust-bar-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          30-day money-back guarantee
+        </span>
+        <span class="trust-bar-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Australian support
+        </span>
       </div>
     </div>
   </section>
 
-  <!-- ─── HOOK ─── -->
-  <section class="hook-section">
+  <!-- ─── ONE-LINER ─── -->
+  <section class="one-liner-section">
     <div class="container">
-      <div class="hook-inner">
-        <div class="hook-text">
-          <span class="section-label-green">Why Pine Beach</span>
-          <h2>Less than one consult.<br/>More business every month.</h2>
-          <p>Most small business owners either spend thousands on a freelancer who disappears after launch, or spend their evenings fighting with Wix. There's a better way.</p>
-          <p>We build your website, keep it running, and handle updates — all for $79 a month. No setup fee. No lock-in. No jargon.</p>
-          <p>A single new client from Google pays for the year. Most customers get their first enquiry within weeks.</p>
-          <div class="hook-callout">
-            <strong>It pays for itself. Usually pretty quickly.</strong>
-          </div>
-        </div>
-        <div>
-          <div style="background: var(--offwhite); border: 1.5px solid var(--border); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem;">
-            <span class="section-label-green">The maths</span>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-              <div style="border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
-                <div style="font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--charcoal-40); margin-bottom: .375rem;">Physio initial consult</div>
-                <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--charcoal);">~$180</div>
-                <div style="font-size: .8125rem; color: var(--charcoal-60); margin-top: .2rem;">= 2+ months of Pine Beach</div>
-              </div>
-              <div style="border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
-                <div style="font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--charcoal-40); margin-bottom: .375rem;">Tradie call-out</div>
-                <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--charcoal);">~$250</div>
-                <div style="font-size: .8125rem; color: var(--charcoal-60); margin-top: .2rem;">= 3+ months of Pine Beach</div>
-              </div>
-              <div>
-                <div style="font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--charcoal-40); margin-bottom: .375rem;">Personal trainer (new client)</div>
-                <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--charcoal);">~$1,200 / year</div>
-                <div style="font-size: .8125rem; color: var(--charcoal-60); margin-top: .2rem;">= the whole year of Pine Beach</div>
-              </div>
-            </div>
-            <div style="background: var(--green); color: var(--white); padding: 1rem 1.25rem; font-size: .9rem; line-height: 1.5; font-weight: 500;">
-              One new customer from Google pays for it. After that, it's pure profit.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── TESTIMONIALS ─── -->
-  <section class="testimonials-section">
-    <div class="container">
-      <span class="section-label-green">What our clients say</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 2rem; color: var(--charcoal);">Real businesses. Real results.</h2>
-      <div class="testimonials-grid">
-
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">"I put off getting a website for years — kept thinking I'd sort it out myself on the weekend. Pine Beach had one built and live in days. I've had three new patients book through Google in the first month alone."</p>
-          <div class="testimonial-author">Sarah M. — PhysioFit Melbourne, VIC</div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">"Honestly the easiest thing I've done for my business. Filled in a short form, they sent me a preview, I said looks good, and that was it. Now I'm getting enquiries from people I've never met. That didn't happen before."</p>
-          <div class="testimonial-author">James T. — JT Fitness, Brisbane QLD</div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">"I was sceptical — I've been burned by web people before. But there was no upfront cost and they showed me the site before I paid anything. Good-looking site, my phone number on every page, and it works on mobile. Dead simple."</p>
-          <div class="testimonial-author">Dave R. — Reliable Plumbing, Perth WA</div>
-        </div>
-
-      </div>
-      <p class="testimonial-placeholder-note">* Placeholder testimonials — real client reviews coming soon.</p>
+      <blockquote>"Less than one consult. A new SEO-optimised website will generate much more business. It pays for itself."</blockquote>
     </div>
   </section>
 
   <!-- ─── HOW IT WORKS ─── -->
-  <section class="how-it-works-section" id="how-it-works">
+  <section class="how-simple-section" id="how-it-works">
     <div class="container">
       <span class="section-label-green">How it works</span>
       <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal);">Simple as it gets.</h2>
@@ -1220,272 +1145,274 @@
           <div class="step-simple-number">03</div>
           <h3 class="step-simple-title">You start getting found</h3>
           <p class="step-simple-desc">Once you're happy, we make it live. Your business shows up on Google. Customers start finding you. We handle everything from that point forward.</p>
-          <a href="/websites#how-it-works" class="step-simple-link">See the full breakdown →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── VALUE STACK ─── -->
-  <section class="value-section">
+  <!-- ─── WHAT'S INCLUDED ─── -->
+  <section class="included-section">
     <div class="container">
       <span class="section-label-green">What's included</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal);">$79 a month. Here's what you get.</h2>
-      <p style="font-size: .9375rem; color: var(--charcoal-60); margin-top: .5rem; max-width: 540px; line-height: 1.7;">No add-ons. No surprises. Everything your business needs to get found online.</p>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Everything you need. Nothing to manage.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); margin-top: .75rem; max-width: 560px; line-height: 1.7;">$79 a month. No add-ons. No surprises.</p>
 
-      <div class="value-tiles">
-        <div class="value-tile">
-          <div class="value-tile-icon">🌐</div>
-          <div class="value-tile-label">5-Page Website</div>
-          <div class="value-tile-desc">Built for your business — not a template you fill in yourself.</div>
+      <div class="included-tiles">
+        <div class="included-tile">
+          <div class="tile-icon">🌐</div>
+          <div class="tile-label">5-Page Website</div>
+          <div class="tile-desc">Built for your business — not a template you fill in yourself.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">🏷️</div>
-          <div class="value-tile-label">.com.au Domain</div>
-          <div class="value-tile-desc">Yours forever. We transfer it to you on request, no conditions.</div>
+        <div class="included-tile">
+          <div class="tile-icon">🏷️</div>
+          <div class="tile-label">.com.au Domain</div>
+          <div class="tile-desc">Yours forever. We transfer it to you on request, no conditions.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">🚀</div>
-          <div class="value-tile-label">Australian Hosting + SSL</div>
-          <div class="value-tile-desc">Local servers, fast load times, 99.9% uptime.</div>
+        <div class="included-tile">
+          <div class="tile-icon">🚀</div>
+          <div class="tile-label">Australian Hosting + SSL</div>
+          <div class="tile-desc">Local servers, fast load times, 99.9% uptime.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">🔍</div>
-          <div class="value-tile-label">SEO from Day One</div>
-          <div class="value-tile-desc">Your suburb, your services — structured so Google finds you.</div>
+        <div class="included-tile">
+          <div class="tile-icon">🔍</div>
+          <div class="tile-label">SEO from Day One</div>
+          <div class="tile-desc">Your suburb, your services — structured so Google finds you.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">📱</div>
-          <div class="value-tile-label">Mobile-First Design</div>
-          <div class="value-tile-desc">Over 70% of your customers search on their phones.</div>
+        <div class="included-tile">
+          <div class="tile-icon">📱</div>
+          <div class="tile-label">Mobile-First Design</div>
+          <div class="tile-desc">Over 70% of your customers search on their phones.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">📞</div>
-          <div class="value-tile-label">Click-to-Call</div>
-          <div class="value-tile-desc">One tap and they're calling you. On every page.</div>
+        <div class="included-tile">
+          <div class="tile-icon">📞</div>
+          <div class="tile-label">Click-to-Call</div>
+          <div class="tile-desc">One tap and they're calling you. On every single page.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">🗺️</div>
-          <div class="value-tile-label">Google Maps Embed</div>
-          <div class="value-tile-desc">Directions to your business, right on your site.</div>
+        <div class="included-tile">
+          <div class="tile-icon">🗺️</div>
+          <div class="tile-label">Google Maps Embed</div>
+          <div class="tile-desc">Directions to your business, right on your site.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">✏️</div>
-          <div class="value-tile-label">2 Updates / Month</div>
-          <div class="value-tile-desc">New hours, new service — just message us. Done in 48hrs.</div>
+        <div class="included-tile">
+          <div class="tile-icon">📊</div>
+          <div class="tile-label">Google Business Link</div>
+          <div class="tile-desc">Connecting your site improves your Google Maps ranking.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">💬</div>
-          <div class="value-tile-label">Australian Support</div>
-          <div class="value-tile-desc">Real people. Real replies. Business hours, your timezone.</div>
+        <div class="included-tile">
+          <div class="tile-icon">📋</div>
+          <div class="tile-label">Contact Form</div>
+          <div class="tile-desc">Enquiries land directly in your inbox.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">🛡️</div>
-          <div class="value-tile-label">30-Day Guarantee</div>
-          <div class="value-tile-desc">Not happy? Full refund. No questions asked.</div>
+        <div class="included-tile">
+          <div class="tile-icon">✏️</div>
+          <div class="tile-label">2 Updates / Month</div>
+          <div class="tile-desc">New hours, new service — just message us. Done in 48hrs.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">🔓</div>
-          <div class="value-tile-label">Cancel Anytime</div>
-          <div class="value-tile-desc">One email. No exit fees. Your domain comes with you.</div>
+        <div class="included-tile">
+          <div class="tile-icon">💬</div>
+          <div class="tile-label">Australian Support</div>
+          <div class="tile-desc">Real people. Real replies. Business hours, your timezone.</div>
         </div>
-        <div class="value-tile">
-          <div class="value-tile-icon">📋</div>
-          <div class="value-tile-label">Contact Form</div>
-          <div class="value-tile-desc">Enquiries land straight in your inbox.</div>
+        <div class="included-tile">
+          <div class="tile-icon">🛡️</div>
+          <div class="tile-label">30-Day Guarantee</div>
+          <div class="tile-desc">Not happy? Full refund. No questions asked.</div>
         </div>
-      </div>
-
-      <div style="margin-top: 2rem; text-align: center;">
-        <button data-wizard-trigger style="display: inline-flex; align-items: center; gap: .375rem; font-size: .9375rem; font-weight: 600; color: var(--green); border-bottom: 1px solid var(--green); background: none; cursor: pointer; font-family: inherit;">Get started — $79 a month →</button>
       </div>
     </div>
   </section>
 
-  <!-- ─── WHO WE WORK WITH ─── -->
-  <section class="audience-section">
+  <!-- ─── PRICING ─── -->
+  <section class="pricing-section" id="pricing">
     <div class="container">
-      <span class="section-label-green">Who we work with</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal);">We've already built sites for businesses like yours.</h2>
+      <span class="section-label-green">Pricing</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Honest pricing. One plan. No surprises.</h2>
 
-      <div class="audience-grid">
-        <div class="audience-item">
-          <span class="audience-emoji">🔧</span>
-          <div>
-            <div class="audience-item-title">Tradies</div>
-            <div class="audience-item-desc">Plumbers, electricians, carpenters, painters, builders</div>
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <div class="pricing-badge-bar">🟢 Pine Beach Website</div>
+          <div class="pricing-card-price">
+            <span class="pricing-amount">$79</span>
+            <span class="pricing-period">/month</span>
+          </div>
+          <p class="pricing-sub">See your website before you pay · $0 setup fee · Cancel anytime</p>
+        </div>
+        <div class="pricing-card-body">
+          <p style="font-size: .9375rem; color: var(--charcoal-60); line-height: 1.7; margin-bottom: 1.5rem;">We build your website and send you a preview link. You only pay when you're completely happy with it. No risk — not a cent until you give us the go-ahead.</p>
+          <div class="pricing-cta">
+            <a href="#get-started" class="btn-pricing">Get Started →</a>
+            <p class="pricing-fine-print">We'll show you your site first — only subscribe when you're ready. Cancel anytime with one email.</p>
           </div>
         </div>
-        <div class="audience-item">
-          <span class="audience-emoji">🏥</span>
-          <div>
-            <div class="audience-item-title">Health practitioners</div>
-            <div class="audience-item-desc">Physios, OTs, osteopaths, chiropractors, dentists</div>
-          </div>
-        </div>
-        <div class="audience-item">
-          <span class="audience-emoji">💪</span>
-          <div>
-            <div class="audience-item-title">Fitness professionals</div>
-            <div class="audience-item-desc">Personal trainers, yoga instructors, coaches</div>
-          </div>
-        </div>
-        <div class="audience-item">
-          <span class="audience-emoji">💆</span>
-          <div>
-            <div class="audience-item-title">Wellbeing &amp; beauty</div>
-            <div class="audience-item-desc">Massage therapists, nail techs, beauty therapists</div>
-          </div>
-        </div>
-        <div class="audience-item">
-          <span class="audience-emoji">🍎</span>
-          <div>
-            <div class="audience-item-title">Nutrition &amp; wellness</div>
-            <div class="audience-item-desc">Nutritionists, naturopaths, health coaches</div>
-          </div>
-        </div>
-        <div class="audience-item">
-          <span class="audience-emoji">🐾</span>
-          <div>
-            <div class="audience-item-title">Local services</div>
-            <div class="audience-item-desc">Vets, groomers, cleaners, gardeners, childcare</div>
-          </div>
-        </div>
-      </div>
-
-      <p class="audience-tagline">If you run a local Australian business and you're not showing up on Google — we're for you.</p>
-    </div>
-  </section>
-
-  <!-- ─── COMPARISON ─── -->
-  <section class="comparison-section">
-    <div class="container">
-      <span class="section-label-green">How we compare</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal); margin-bottom: .5rem;">One flat rate. No surprises.</h2>
-      <p style="font-size: .9375rem; color: var(--charcoal-60); max-width: 560px; line-height: 1.7;">See how Pine Beach stacks up against the other options.</p>
-      <div class="comparison-table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th class="highlight-col">Pine Beach</th>
-              <th>Freelancer</th>
-              <th>Agency</th>
-              <th>DIY (Wix / Squarespace)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Monthly cost</strong></td>
-              <td class="highlight-col">$79 / mo</td>
-              <td>Hourly for every change</td>
-              <td>Retainer</td>
-              <td>$30–$50 / mo</td>
-            </tr>
-            <tr>
-              <td><strong>Setup cost</strong></td>
-              <td class="highlight-col">$0</td>
-              <td>$2,000–$5,000</td>
-              <td>$5,000–$15,000</td>
-              <td>$0 + your time</td>
-            </tr>
-            <tr>
-              <td><strong>Time to launch</strong></td>
-              <td class="highlight-col">Days</td>
-              <td>4–12 weeks</td>
-              <td>3–6 months</td>
-              <td>You decide</td>
-            </tr>
-            <tr>
-              <td><strong>Effort from you</strong></td>
-              <td class="highlight-col">~10 minutes</td>
-              <td>Hours of back-and-forth</td>
-              <td>Meetings, briefs, reviews</td>
-              <td>You build the whole thing</td>
-            </tr>
-            <tr>
-              <td><strong>Ongoing updates</strong></td>
-              <td class="highlight-col">Just message us</td>
-              <td>Pay each time</td>
-              <td>Expensive</td>
-              <td>Do it yourself</td>
-            </tr>
-            <tr>
-              <td><strong>Google-ready</strong></td>
-              <td class="highlight-col"><span class="tick">✓</span> From day one</td>
-              <td>Depends on the freelancer</td>
-              <td>Usually yes</td>
-              <td>Depends on your skill</td>
-            </tr>
-            <tr>
-              <td><strong>Risk</strong></td>
-              <td class="highlight-col">30-day refund</td>
-              <td>Upfront, non-refundable</td>
-              <td>Contracts</td>
-              <td>Your time, non-refundable</td>
-            </tr>
-            <tr>
-              <td><strong>Australian support</strong></td>
-              <td class="highlight-col"><span class="tick">✓</span> Always</td>
-              <td>Maybe</td>
-              <td>Maybe</td>
-              <td><span class="cross">✗</span> US-based</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
 
-  <!-- ─── TRUST ─── -->
-  <section class="trust-section">
+  <!-- ─── SOCIAL PROOF ─── -->
+  <section class="proof-section">
     <div class="container">
-      <span class="section-label-green">Why Pine Beach</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal); margin-bottom: .5rem;">Why Pine Beach?</h2>
+      <span class="section-label-green">Client results</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal); margin-bottom: .5rem;">Real businesses. Real results.</h2>
+      <p style="font-size: .875rem; color: var(--charcoal-40); font-style: italic; margin-bottom: 2rem;">* Placeholder testimonials — real client reviews coming soon.</p>
 
-      <div class="trust-points-grid">
-        <div class="trust-point">
-          <div class="trust-point-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/></svg>
-          </div>
-          <div class="trust-point-title">Australian owned and operated</div>
-          <p class="trust-point-body">We're not a platform headquartered overseas. We're a real Australian business. You talk to real people. Support is in your timezone. We know what a Gippsland physio service needs, not a San Francisco startup.</p>
+      <div class="proof-grid">
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <p class="proof-quote">"I put off getting a website for years — kept thinking I'd sort it out myself. Pine Beach had one built and live in days. I've had three new patients book through Google in the first month alone."</p>
+          <div class="proof-author">Sarah M. — PhysioFit Melbourne, VIC</div>
         </div>
-        <div class="trust-point">
-          <div class="trust-point-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
-          </div>
-          <div class="trust-point-title">We handle everything</div>
-          <p class="trust-point-body">You don't need to know what SSL means. You don't need to understand DNS or hosting. You just need to tell us your business name and what you do. We'll take it from there.</p>
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <p class="proof-quote">"Honestly the easiest thing I've done for my business. Filled in a short form, they sent me a preview, I said looks good, and that was it. Now I'm getting enquiries from people I've never met. That didn't happen before."</p>
+          <div class="proof-author">James T. — JT Fitness, Brisbane QLD</div>
         </div>
-        <div class="trust-point">
-          <div class="trust-point-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="1" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </div>
-          <div class="trust-point-title">You're never locked in</div>
-          <p class="trust-point-body">Monthly billing. Cancel any time with one email. We'll transfer your domain to you on your way out, no questions asked. We're not interested in holding your business hostage.</p>
-        </div>
-        <div class="trust-point">
-          <div class="trust-point-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="currentColor" opacity=".15"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="trust-point-title">30-day guarantee</div>
-          <p class="trust-point-body">If you're not happy after 30 days — for any reason — we'll refund you in full and take the site down. Keep the domain. We'll part as mates.</p>
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <p class="proof-quote">"I was sceptical — I've been burned by web people before. No upfront cost, they showed me the site before I paid anything. Good-looking site, my phone number on every page, works on mobile. Dead simple."</p>
+          <div class="proof-author">Dave R. — Reliable Plumbing, Perth WA</div>
         </div>
       </div>
+
+      <div class="proof-tagline">
+        We've built sites for tradies, health practitioners, personal trainers, beauty therapists, nutritionists, and local service businesses across every state in Australia.
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <span class="section-label-green">Common questions</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal); margin-bottom: .5rem;">Questions we get asked a lot.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); max-width: 560px; line-height: 1.7; margin-bottom: 2rem;">Scepticism is healthy. Here are honest answers to the things people actually ask.</p>
+
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-question" aria-expanded="true">
+            Do I need to do anything to get started?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            Just fill in a short form — your business name, suburb, services, and how customers should contact you. That's it. We build from there.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What if I want changes before the site goes live?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            We'll send you a preview link before anything goes live. Tell us what you want changed — more detail on a service, different photo, different wording — and we'll update it. No charge, and you don't pay anything until you're happy.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do I own the website?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            Yes. Your content is yours. Your domain is yours. If you ever want to move your website to a different host or take it over yourself, we'll transfer everything — your files, your domain, all of it — no conditions, no fees.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What if I already have a website?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            If it's old, slow, or not showing up on Google, we can rebuild it on our platform. Get in touch and we'll have a look at what you've got.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How does the 30-day guarantee work?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            If you're not happy for any reason within 30 days of your site going live — just email us. We'll refund your first month in full, take the site down, and transfer your domain to you. No questions, no awkward conversation.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How does cancelling work?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            One email. We'll cancel your billing, archive the site, and transfer your domain. No exit fees. We'd rather you leave on good terms than feel trapped.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Will my site actually show up on Google?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            We set your site up for Google from day one — the right technical foundations, your business name, your suburb, your services structured so Google understands them. Most clients start seeing Google traffic within a few weeks of launch. We're not promising #1 on Google (anyone who does is lying to you) — we're promising a properly built, Google-ready website that gives your business its best chance.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What's included in the updates?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            Up to 2 rounds of updates per month — changed business hours, a new service, updated pricing, a different photo. Just message us and we'll have it sorted within 48 hours. Major rebuilds or additional pages beyond the original 5 are quoted separately.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is Pine Beach Australian?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            Yes. 100%. We're Australian owned and operated. Your support team is in Australia. Your hosting is in Australia. Your billing is in Australian dollars.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            I've heard this sort of thing before. Why should I trust you?
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Fair question. Here's how to check: we'll show you a preview of your website before you pay a single cent. Look at it. Ask us to change something. See how we respond. If you like what you see and how we work, pay. If not, walk away — it cost you nothing to look.</p>
+            <p style="margin-top: .75rem;">We also don't ask for annual contracts, we publish a real email address, and we offer a 30-day money-back guarantee on your first month. If we were dodgy, we wouldn't be offering all of that.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GET STARTED (wizard trigger) ─── -->
+  <section class="signup-section" id="get-started" style="text-align:center;">
+    <div class="container" style="max-width:640px; display:flex; flex-direction:column; align-items:center;">
+      <span class="section-label-green">Get started</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal); margin-bottom:.875rem;">Get your website. Takes 5 minutes.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); line-height: 1.7; max-width:480px; margin-bottom: 2rem;">Tell us about your business and we'll build a preview site — before you pay a cent. Only subscribe when you love what you see.</p>
+      <a href="#get-started" class="btn-primary-green" style="font-size:1.0625rem; padding:1rem 2.25rem;">Get Started →</a>
+      <p style="font-size:.8125rem; color:var(--charcoal-40); margin-top:1.125rem;">No payment now &nbsp;·&nbsp; See it before you pay &nbsp;·&nbsp; 30-day money-back guarantee</p>
     </div>
   </section>
 
   <!-- ─── FINAL CTA ─── -->
-  <section class="final-cta-section" id="get-started">
+  <section class="final-cta-section">
     <div class="container">
-      <h2>Ready to get found on Google?</h2>
-      <p>It starts with a conversation. Tell us about your business and we'll show you what your website could look like — before you pay a cent.</p>
+      <h2>Simple as that.</h2>
+      <p>Tell us about your business. We'll build a preview. You check it over. Go live when you're happy.</p>
+      <div class="final-cta-price">$79/month · $0 setup · 30-day guarantee · Australian owned</div>
       <div class="final-cta-buttons">
-        <button class="btn-cta-white" data-wizard-trigger>Get Started →</button>
+        <a href="#get-started" class="btn-cta-white">Get Started →</a>
         <a href="mailto:support@pinebeach.com.au" class="btn-cta-outline-white">Talk to a real person →</a>
       </div>
-      <p class="final-cta-reassurance">No lock-in · No setup fee · 30-day money-back guarantee · Australian owned and operated</p>
+      <p class="final-cta-reassurance">No lock-in · Cancel anytime · 30-day money-back guarantee · Australian support</p>
     </div>
   </section>
 
@@ -1493,7 +1420,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-top" style="display: flex; align-items: center; gap: 2rem;">
-        <a href="/" class="footer-logo" aria-label="Pine Beach — back to top" style="flex-shrink: 0;">
+        <a href="/" class="footer-logo" aria-label="Pine Beach home" style="flex-shrink: 0;">
           <img src="logo-full.png" alt="Pine Beach" style="width: 160px; height: auto;" />
         </a>
         <div>
@@ -1523,8 +1450,7 @@
         </div>
         <div class="footer-link-group">
           <span class="footer-link-label">More from Pine Beach</span>
-          <a href="/products">Products &amp; Tools</a>
-          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/pinebeach" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
 
@@ -1539,325 +1465,725 @@
   </footer>
 
   <script src="main.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 
-  <!-- ═══════════════════════════════════════════
-       PINE BEACH ONBOARDING WIZARD MODAL
-  ═══════════════════════════════════════════ -->
-  <div id="pbw-modal" class="pbw-modal" role="dialog" aria-modal="true" aria-labelledby="pbw-step-title" hidden>
-    <div class="pbw-backdrop" id="pbw-backdrop"></div>
+  <!-- ─── ONBOARDING WIZARD MODAL ─── -->
+  <div class="wizard-overlay" id="wizard-overlay" role="dialog" aria-modal="true" aria-label="Get started with Pine Beach">
+    <div class="wizard-modal" id="wizard-modal">
 
-    <div class="pbw-container">
-
-      <!-- ── Header ── -->
-      <div class="pbw-header">
-        <div class="pbw-header-left">
-          <img src="logo-text.png" alt="Pine Beach" class="pbw-logo" />
-          <span class="pbw-step-label">Step <span id="pbw-step-num">1</span> of 6</span>
+      <!-- Header + progress -->
+      <div class="wizard-header">
+        <div class="wizard-header-top">
+          <span class="wizard-title">Get your website — Pine Beach</span>
+          <button class="wizard-close" id="wizard-close" aria-label="Close">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </button>
         </div>
-        <button class="pbw-close" id="pbw-close" aria-label="Close wizard">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
+        <div class="wizard-progress-bar" id="wz-progress">
+          <div class="wizard-progress-step active" data-step="1">
+            <div class="wizard-progress-dot">1</div>
+            <div class="wizard-progress-label">About You</div>
+          </div>
+          <div class="wizard-progress-step" data-step="2">
+            <div class="wizard-progress-dot">2</div>
+            <div class="wizard-progress-label">Online</div>
+          </div>
+          <div class="wizard-progress-step" data-step="3">
+            <div class="wizard-progress-dot">3</div>
+            <div class="wizard-progress-label">Business</div>
+          </div>
+          <div class="wizard-progress-step" data-step="4">
+            <div class="wizard-progress-dot">4</div>
+            <div class="wizard-progress-label">Brand</div>
+          </div>
+          <div class="wizard-progress-step" data-step="5">
+            <div class="wizard-progress-dot">5</div>
+            <div class="wizard-progress-label">Products</div>
+          </div>
+          <div class="wizard-progress-step" data-step="6">
+            <div class="wizard-progress-dot">6</div>
+            <div class="wizard-progress-label">Review</div>
+          </div>
+        </div>
       </div>
 
-      <!-- ── Progress bar ── -->
-      <div class="pbw-progress-track">
-        <div class="pbw-progress-fill" id="pbw-progress" style="width:0%"></div>
-      </div>
+      <!-- Step panels -->
+      <div class="wizard-body" id="wizard-body">
 
-      <!-- ── Step dots ── -->
-      <div class="pbw-dots" aria-hidden="true">
-        <div class="pbw-dot is-active" id="pbw-dot-1">1</div>
-        <div class="pbw-dot-line" id="pbw-line-1"></div>
-        <div class="pbw-dot" id="pbw-dot-2">2</div>
-        <div class="pbw-dot-line" id="pbw-line-2"></div>
-        <div class="pbw-dot" id="pbw-dot-3">3</div>
-        <div class="pbw-dot-line" id="pbw-line-3"></div>
-        <div class="pbw-dot" id="pbw-dot-4">4</div>
-        <div class="pbw-dot-line" id="pbw-line-4"></div>
-        <div class="pbw-dot" id="pbw-dot-5">5</div>
-        <div class="pbw-dot-line" id="pbw-line-5"></div>
-        <div class="pbw-dot" id="pbw-dot-6">6</div>
-      </div>
+        <!-- ── Step 1: About You ── -->
+        <div class="wizard-step-panel active" id="wz-step-1">
+          <h2 class="wizard-step-heading">About you</h2>
+          <p class="wizard-step-sub">Let's start with the basics — we use this to personalise your site.</p>
 
-      <!-- ── Scrollable content ── -->
-      <div class="pbw-content" id="pbw-content">
-
-        <!-- ─── Step 1: About You ─── -->
-        <div class="pbw-step" id="pbw-s1" data-step="1">
-          <h2 class="pbw-step-title" id="pbw-step-title">About You</h2>
-          <p class="pbw-step-desc">Let's start with the basics. Tell us who you are and where your business is based.</p>
-          <div class="pbw-fields">
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-biz-name">Business name <span class="req">*</span></label>
-              <input class="pbw-input" id="pbw-biz-name" type="text" placeholder="e.g. Bayside Physio" autocomplete="organization" />
+          <div class="wz-row wz-row-2">
+            <div class="wz-group">
+              <label class="wz-label" for="wz-businessName">Business name <span class="wz-req">*</span></label>
+              <input class="wz-input" id="wz-businessName" type="text" placeholder="e.g. Sunshine Physio" autocomplete="organization" />
+              <span class="wz-error" id="wz-err-businessName">Please enter your business name</span>
             </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-your-name">Your name <span class="req">*</span></label>
-              <input class="pbw-input" id="pbw-your-name" type="text" placeholder="e.g. Sarah Thompson" autocomplete="name" />
+            <div class="wz-group">
+              <label class="wz-label" for="wz-contactName">Your name <span class="wz-req">*</span></label>
+              <input class="wz-input" id="wz-contactName" type="text" placeholder="First and last name" autocomplete="name" />
+              <span class="wz-error" id="wz-err-contactName">Please enter your name</span>
             </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-email">Email address <span class="req">*</span></label>
-              <input class="pbw-input" id="pbw-email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email" />
+          </div>
+          <div class="wz-row wz-row-2">
+            <div class="wz-group">
+              <label class="wz-label" for="wz-email">Email <span class="wz-req">*</span></label>
+              <input class="wz-input" id="wz-email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email" />
+              <span class="wz-error" id="wz-err-email">Please enter a valid email address</span>
             </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-phone">Phone number <span class="pbw-optional">(optional)</span></label>
-              <input class="pbw-input" id="pbw-phone" type="tel" placeholder="04xx xxx xxx" autocomplete="tel" />
+            <div class="wz-group">
+              <label class="wz-label" for="wz-phone">Phone <span class="wz-opt">(optional)</span></label>
+              <input class="wz-input" id="wz-phone" type="tel" placeholder="04xx xxx xxx" autocomplete="tel" />
             </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-location">Business location / suburb <span class="req">*</span></label>
-              <input class="pbw-input" id="pbw-location" type="text" placeholder="e.g. Fitzroy, Melbourne VIC" autocomplete="address-level2" />
-            </div>
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-suburb">Business location / suburb <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-suburb" type="text" placeholder="e.g. Fitzroy VIC" autocomplete="address-level2" />
           </div>
         </div>
 
-        <!-- ─── Step 2: Online Presence ─── -->
-        <div class="pbw-step" id="pbw-s2" data-step="2" hidden>
-          <h2 class="pbw-step-title">Your Online Presence</h2>
-          <p class="pbw-step-desc">Share any existing profiles or websites. Leave blank if you don't have them — that's completely fine.</p>
-          <div class="pbw-fields">
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-website">Current website <span class="pbw-optional">(if you have one)</span></label>
-              <input class="pbw-input" id="pbw-website" type="url" placeholder="https://yourbusiness.com.au" />
-            </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-facebook">Facebook page URL <span class="pbw-optional">(optional)</span></label>
-              <input class="pbw-input" id="pbw-facebook" type="url" placeholder="https://facebook.com/yourbusiness" />
-            </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-instagram">Instagram profile URL <span class="pbw-optional">(optional)</span></label>
-              <input class="pbw-input" id="pbw-instagram" type="url" placeholder="https://instagram.com/yourbusiness" />
-            </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-linkedin">LinkedIn URL <span class="pbw-optional">(optional)</span></label>
-              <input class="pbw-input" id="pbw-linkedin" type="url" placeholder="https://linkedin.com/in/yourname" />
-            </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-google-biz">Google Business Profile URL <span class="pbw-optional">(optional)</span></label>
-              <input class="pbw-input" id="pbw-google-biz" type="url" placeholder="https://g.page/yourbusiness" />
-            </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-other-social">Any other profiles or links <span class="pbw-optional">(optional)</span></label>
-              <input class="pbw-input" id="pbw-other-social" type="text" placeholder="e.g. TikTok, YouTube, Yelp" />
-            </div>
+        <!-- ── Step 2: Online Presence ── -->
+        <div class="wizard-step-panel" id="wz-step-2">
+          <h2 class="wizard-step-heading">Your online presence</h2>
+          <p class="wizard-step-sub">Do you have existing social profiles or a website? We'll link everything together.</p>
+
+          <div class="wz-group">
+            <label class="wz-label" for="wz-website">Current website URL <span class="wz-opt">(if any)</span></label>
+            <input class="wz-input" id="wz-website" type="url" placeholder="https://yoursite.com.au" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-facebook">Facebook <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-facebook" type="url" placeholder="https://facebook.com/yourbusiness" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-instagram">Instagram <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-instagram" type="url" placeholder="https://instagram.com/yourbusiness" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-linkedin">LinkedIn <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-linkedin" type="url" placeholder="https://linkedin.com/in/yourname" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-googlebiz">Google Business Profile <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-googlebiz" type="url" placeholder="https://g.page/yourbusiness" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-othersocial">Other social profiles <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-othersocial" type="text" placeholder="e.g. TikTok, YouTube — paste link or describe" />
           </div>
         </div>
 
-        <!-- ─── Step 3: About Your Business ─── -->
-        <div class="pbw-step" id="pbw-s3" data-step="3" hidden>
-          <h2 class="pbw-step-title">Tell Us About Your Business</h2>
-          <p class="pbw-step-desc">The more we know, the better your website will be. Write as if you're telling a friend — no jargon needed.</p>
-          <div class="pbw-fields">
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-industry">Business type / industry <span class="req">*</span></label>
-              <select class="pbw-select" id="pbw-industry">
-                <option value="">Select your industry…</option>
-                <option value="physiotherapy">Physiotherapy</option>
-                <option value="personal-training">Personal Training</option>
-                <option value="nutrition">Nutrition</option>
-                <option value="chiropractic">Chiropractic</option>
-                <option value="massage-therapy">Massage Therapy</option>
-                <option value="occupational-therapy">Occupational Therapy</option>
-                <option value="other-health-wellness">Other Health / Wellness</option>
-                <option value="trades">Trades</option>
-                <option value="other">Other</option>
+        <!-- ── Step 3: About Your Business ── -->
+        <div class="wizard-step-panel" id="wz-step-3">
+          <h2 class="wizard-step-heading">Tell us about your business</h2>
+          <p class="wizard-step-sub">The more detail you give us, the better your website will be.</p>
+
+          <div class="wz-group">
+            <label class="wz-label" for="wz-industry">Business type / industry <span class="wz-req">*</span></label>
+            <div class="wz-select-wrap">
+              <select class="wz-select" id="wz-industry">
+                <option value="" disabled selected>Select your industry…</option>
+                <option value="Physiotherapy">Physiotherapy</option>
+                <option value="Personal Training">Personal Training</option>
+                <option value="Nutrition">Nutrition &amp; Dietetics</option>
+                <option value="Chiropractic">Chiropractic</option>
+                <option value="Massage Therapy">Massage Therapy</option>
+                <option value="Occupational Therapy">Occupational Therapy</option>
+                <option value="Other Health/Wellness">Other Health / Wellness</option>
+                <option value="Trades">Trades</option>
+                <option value="Other">Other</option>
               </select>
             </div>
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-about">About your business <span class="req">*</span></label>
-              <p class="pbw-hint">Tell us what you do, who your ideal clients are, and what makes you different.</p>
-              <textarea class="pbw-textarea" id="pbw-about" rows="6" placeholder="e.g. I'm a physio based in Fitzroy specialising in sports injuries. My clients are mostly weekend warriors aged 25–45 who want to get back to training quickly. I'm known for my hands-on approach and realistic recovery timelines…"></textarea>
+            <span class="wz-error" id="wz-err-industry">Please select your industry</span>
+          </div>
+
+          <!-- "Other" text input — hidden until "Other" is selected -->
+          <div class="wz-group" id="wz-other-industry-group" style="display:none;">
+            <label class="wz-label" for="wz-other-industry">Please describe your business type <span class="wz-req">*</span></label>
+            <input class="wz-input" id="wz-other-industry" type="text" placeholder="e.g. Florist, Accountant, Pet groomer…" />
+            <span class="wz-error" id="wz-err-other-industry">Please describe your business type</span>
+          </div>
+
+          <div class="wz-group">
+            <label class="wz-label" for="wz-about">About your business <span class="wz-req">*</span></label>
+            <textarea class="wz-textarea" id="wz-about" rows="5" placeholder="What you do, who your ideal clients are, what makes you different from the competition…"></textarea>
+            <span class="wz-error" id="wz-err-about">Please tell us a bit about your business</span>
+          </div>
+
+          <div class="wz-group">
+            <label class="wz-label">Upload materials <span class="wz-opt">(optional)</span></label>
+            <p style="font-size:.8125rem; color:rgba(28,28,28,.5); margin:.25rem 0 .625rem; line-height:1.55;">Brochures, menus, price lists, photos — anything that helps us represent you well.</p>
+            <div class="wz-upload-area" id="wz-docs-drop">
+              <input type="file" id="wz-docs-input" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif,.webp,.txt" />
+              <span class="wz-upload-icon">📎</span>
+              <div class="wz-upload-label">Drag &amp; drop files here</div>
+              <div class="wz-upload-hint">or click to browse &nbsp;·&nbsp; PDF, Word, images accepted</div>
             </div>
-            <div class="pbw-field">
-              <label class="pbw-label">Upload supporting materials <span class="pbw-optional">(optional)</span></label>
-              <p class="pbw-hint">Brochures, menus, price lists, or anything else that helps us understand your business.</p>
-              <label class="pbw-file-zone" for="pbw-docs">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <strong>Choose files</strong>
-                <em>PDF, Word, JPG, PNG — up to 10 MB each</em>
-              </label>
-              <input class="pbw-file-hidden" type="file" id="pbw-docs" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" />
-              <div class="pbw-file-list" id="pbw-docs-list"></div>
-            </div>
+            <div class="wz-file-list" id="wz-docs-list"></div>
           </div>
         </div>
 
-        <!-- ─── Step 4: Your Brand ─── -->
-        <div class="pbw-step" id="pbw-s4" data-step="4" hidden>
-          <h2 class="pbw-step-title">Your Brand</h2>
-          <p class="pbw-step-desc">Help us get the look right. Don't stress if you don't have everything — we'll work with what you've got.</p>
-          <div class="pbw-fields">
+        <!-- ── Step 4: Your Brand ── -->
+        <div class="wizard-step-panel" id="wz-step-4">
+          <h2 class="wizard-step-heading">Your brand</h2>
+          <p class="wizard-step-sub">Help us capture your look and feel. Nothing here is required — we'll make it work.</p>
 
-            <div class="pbw-field">
-              <label class="pbw-label">Logo <span class="pbw-optional">(optional)</span></label>
-              <p class="pbw-hint">Upload your logo if you have one. PNG or SVG work best.</p>
-              <label class="pbw-file-zone" for="pbw-logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <strong>Upload logo</strong>
-                <em>PNG, SVG, JPG</em>
-              </label>
-              <input class="pbw-file-hidden" type="file" id="pbw-logo" accept="image/*" />
-              <div class="pbw-logo-preview" id="pbw-logo-preview" hidden>
-                <img id="pbw-logo-img" src="" alt="Logo preview" />
-                <button type="button" class="pbw-logo-remove" id="pbw-logo-remove">Remove</button>
-              </div>
+          <div class="wz-group">
+            <label class="wz-label">Logo <span class="wz-opt">(optional)</span></label>
+            <div class="wz-upload-area" id="wz-logo-drop">
+              <input type="file" id="wz-logo-input" accept="image/*" />
+              <span class="wz-upload-icon">🖼️</span>
+              <div class="wz-upload-label">Upload your logo</div>
+              <div class="wz-upload-hint">PNG, SVG, or JPG &nbsp;·&nbsp; Transparent background preferred</div>
             </div>
-
-            <div class="pbw-field">
-              <label class="pbw-label">Colour palette</label>
-              <p class="pbw-hint">Pick the style that feels closest to your brand.</p>
-              <div class="pbw-palettes">
-                <label class="pbw-palette-label">
-                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="warm-earth" />
-                  <div class="pbw-palette-card">
-                    <div class="pbw-swatches"><span style="background:#8B6F47"></span><span style="background:#C4956A"></span><span style="background:#F5E6D3"></span><span style="background:#2D4A3E"></span></div>
-                    <span class="pbw-palette-name">Warm Earth</span>
-                  </div>
-                </label>
-                <label class="pbw-palette-label">
-                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="ocean-blue" />
-                  <div class="pbw-palette-card">
-                    <div class="pbw-swatches"><span style="background:#1B4B82"></span><span style="background:#2E7BC4"></span><span style="background:#D4E9FF"></span><span style="background:#0D2B4E"></span></div>
-                    <span class="pbw-palette-name">Ocean Blue</span>
-                  </div>
-                </label>
-                <label class="pbw-palette-label">
-                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="forest-green" />
-                  <div class="pbw-palette-card">
-                    <div class="pbw-swatches"><span style="background:#2D4A3E"></span><span style="background:#4A7260"></span><span style="background:#D4E9D8"></span><span style="background:#1C3229"></span></div>
-                    <span class="pbw-palette-name">Forest Green</span>
-                  </div>
-                </label>
-                <label class="pbw-palette-label">
-                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="modern-minimal" />
-                  <div class="pbw-palette-card">
-                    <div class="pbw-swatches"><span style="background:#1C1C1C"></span><span style="background:#555555"></span><span style="background:#F3F2EF"></span><span style="background:#CCCCCC"></span></div>
-                    <span class="pbw-palette-name">Modern Minimal</span>
-                  </div>
-                </label>
-                <label class="pbw-palette-label">
-                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="sunset-gold" />
-                  <div class="pbw-palette-card">
-                    <div class="pbw-swatches"><span style="background:#8B3A0F"></span><span style="background:#D4A574"></span><span style="background:#FFF3E0"></span><span style="background:#5C1A00"></span></div>
-                    <span class="pbw-palette-name">Sunset Gold</span>
-                  </div>
-                </label>
-                <label class="pbw-palette-label">
-                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="classic-charcoal" />
-                  <div class="pbw-palette-card">
-                    <div class="pbw-swatches"><span style="background:#1C1C1C"></span><span style="background:#3A3A3A"></span><span style="background:#E8E8E8"></span><span style="background:#C0C0C0"></span></div>
-                    <span class="pbw-palette-name">Classic Charcoal</span>
-                  </div>
-                </label>
-              </div>
+            <!-- Logo preview — hidden until a file is selected -->
+            <div class="wz-logo-preview" id="wz-logo-preview" style="display:none;">
+              <img id="wz-logo-img" src="" alt="Logo preview" />
+              <div class="wz-logo-preview-meta" id="wz-logo-name"></div>
             </div>
-
-            <div class="pbw-field">
-              <label class="pbw-label" for="pbw-custom-brand">Specific colours or fonts <span class="pbw-optional">(optional)</span></label>
-              <input class="pbw-input" id="pbw-custom-brand" type="text" placeholder="e.g. I love teal, or I'd prefer a clean sans-serif font" />
-            </div>
-
           </div>
-        </div>
 
-        <!-- ─── Step 5: Products & Recommendations ─── -->
-        <div class="pbw-step" id="pbw-s5" data-step="5" hidden>
-          <h2 class="pbw-step-title">Products &amp; Recommendations</h2>
-          <p class="pbw-step-desc">Many health and wellness professionals recommend products to their clients. This helps us design the right website for you.</p>
-          <div class="pbw-fields">
+          <div class="wz-group">
+            <label class="wz-label">Colour theme <span class="wz-opt">(choose one that feels right)</span></label>
+            <div class="wz-swatches" id="wz-swatches">
 
-            <div class="pbw-field">
-              <label class="pbw-label">Do you recommend products to your clients?</label>
-              <div class="pbw-radio-group">
-                <label class="pbw-radio-option">
-                  <input class="pbw-radio-input" type="radio" name="pbw-rec-products" id="pbw-prod-yes" value="yes" />
-                  <span class="pbw-radio-box">
-                    <span class="pbw-radio-dot"></span>
-                    <span class="pbw-radio-text">
-                      <strong>Yes</strong>
-                      <em>I recommend products as part of my service</em>
-                    </span>
-                  </span>
-                </label>
-                <label class="pbw-radio-option">
-                  <input class="pbw-radio-input" type="radio" name="pbw-rec-products" id="pbw-prod-no" value="no" />
-                  <span class="pbw-radio-box">
-                    <span class="pbw-radio-dot"></span>
-                    <span class="pbw-radio-text">
-                      <strong>No</strong>
-                      <em>I don't recommend products</em>
-                    </span>
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <div class="pbw-field" id="pbw-products-detail" hidden>
-              <div class="pbw-collabcart">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                <div>
-                  <strong>Earn from your recommendations</strong>
-                  <p>Pine Beach partners with <strong>CollabCart</strong> to help businesses earn commission from the products they already recommend to clients. We can build this directly into your website.</p>
+              <!-- Warm Earth: rich browns, tans, cream -->
+              <div class="wz-swatch" data-theme="Warm Earth">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#6B4226;"></span>
+                  <span style="background:#B8763A;"></span>
+                  <span style="background:#DEB887;"></span>
+                  <span style="background:#FDF6EC;"></span>
                 </div>
+                <div class="wz-swatch-name">Warm Earth</div>
               </div>
 
-              <div class="pbw-field" style="margin-top:.75rem">
-                <label class="pbw-label" for="pbw-product-desc">Tell us about the products you recommend</label>
-                <textarea class="pbw-textarea" id="pbw-product-desc" rows="4" placeholder="e.g. I recommend Metagenics supplements and Theragun recovery tools to my physio clients…"></textarea>
-              </div>
-
-              <div class="pbw-field" style="margin-top:.75rem">
-                <label class="pbw-label">Types of products <span class="pbw-optional">(tick all that apply)</span></label>
-                <div class="pbw-checkboxes">
-                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="supplements" /> <span>Supplements</span></label>
-                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="equipment" /> <span>Equipment</span></label>
-                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="books" /> <span>Books</span></label>
-                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="skincare" /> <span>Skincare</span></label>
-                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="other" /> <span>Other</span></label>
+              <!-- Ocean Blue: navy, deep blue, teal, white -->
+              <div class="wz-swatch" data-theme="Ocean Blue">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#1A3A5C;"></span>
+                  <span style="background:#006994;"></span>
+                  <span style="background:#48C9B0;"></span>
+                  <span style="background:#F0F8FF;"></span>
                 </div>
+                <div class="wz-swatch-name">Ocean Blue</div>
               </div>
-            </div>
 
+              <!-- Forest Green: deep green, sage, cream -->
+              <div class="wz-swatch" data-theme="Forest Green">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#1C3A2A;"></span>
+                  <span style="background:#4A7C59;"></span>
+                  <span style="background:#9DC4A7;"></span>
+                  <span style="background:#F5F9F6;"></span>
+                </div>
+                <div class="wz-swatch-name">Forest Green</div>
+              </div>
+
+              <!-- Sunset Gold: burnt sienna, amber, coral, warm white -->
+              <div class="wz-swatch" data-theme="Sunset Gold">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#C44B1C;"></span>
+                  <span style="background:#E8853A;"></span>
+                  <span style="background:#F5C842;"></span>
+                  <span style="background:#FFF8E7;"></span>
+                </div>
+                <div class="wz-swatch-name">Sunset Gold</div>
+              </div>
+
+              <!-- Berry & Bloom: burgundy, rose, blush, cream -->
+              <div class="wz-swatch" data-theme="Berry &amp; Bloom">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#7B1D3E;"></span>
+                  <span style="background:#C4547A;"></span>
+                  <span style="background:#EFA8C0;"></span>
+                  <span style="background:#FFF0F3;"></span>
+                </div>
+                <div class="wz-swatch-name">Berry &amp; Bloom</div>
+              </div>
+
+              <!-- Classic Charcoal: charcoal, slate, crisp white, blue accent -->
+              <div class="wz-swatch" data-theme="Classic Charcoal">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#2B2B2B;"></span>
+                  <span style="background:#5A6A7A;"></span>
+                  <span style="background:#F5F5F5;"></span>
+                  <span style="background:#2E86AB;"></span>
+                </div>
+                <div class="wz-swatch-name">Classic Charcoal</div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="wz-group">
+            <label class="wz-label" for="wz-brandprefs">Any specific colours or fonts? <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-brandprefs" type="text" placeholder="e.g. Teal #00897B, or Montserrat font" />
           </div>
         </div>
 
-        <!-- ─── Step 6: Review & Submit ─── -->
-        <div class="pbw-step" id="pbw-s6" data-step="6" hidden>
-          <h2 class="pbw-step-title">Review &amp; Get Started</h2>
-          <p class="pbw-step-desc">Here's everything you've told us. Happy with it? Hit the button and we'll get started on your website.</p>
-          <div class="pbw-review" id="pbw-review"></div>
-          <div class="pbw-guarantee">
-            <div class="pbw-guarantee-items">
-              <span>✓ No lock-in contract</span>
-              <span>✓ 30-day money-back guarantee</span>
-              <span>✓ $0 setup fee</span>
-              <span>✓ Australian owned &amp; operated</span>
+        <!-- ── Step 5: Products & Recommendations ── -->
+        <div class="wizard-step-panel" id="wz-step-5">
+          <h2 class="wizard-step-heading">Products &amp; recommendations</h2>
+          <p class="wizard-step-sub">Some businesses recommend products as part of their service. This helps us design the right site for you.</p>
+
+          <div class="wz-group">
+            <label class="wz-label">Do you recommend products to your clients?</label>
+            <div class="wz-toggle-row">
+              <button class="wz-toggle-btn" id="wz-products-yes" type="button">✓ &nbsp;Yes</button>
+              <button class="wz-toggle-btn" id="wz-products-no" type="button">✕ &nbsp;No</button>
+            </div>
+          </div>
+
+          <!-- Only shown when "Yes" is selected -->
+          <div id="wz-products-details" style="display:none;">
+            <div class="wz-group">
+              <label class="wz-label" for="wz-products-desc">Tell us about the products you recommend</label>
+              <textarea class="wz-textarea" id="wz-products-desc" rows="3" placeholder="e.g. Protein supplements, resistance bands, foam rollers, skincare products…"></textarea>
             </div>
           </div>
         </div>
 
-        <!-- ─── Success view ─── -->
-        <div class="pbw-success" id="pbw-success" hidden>
-          <div class="pbw-success-icon">✓</div>
-          <h2 class="pbw-success-title">You're on your way!</h2>
-          <p class="pbw-success-body">Thanks, <strong id="pbw-success-name"></strong>. We've received everything we need and we'll have a preview of your website ready within <strong>2–3 business days</strong>.</p>
-          <p class="pbw-success-body">Keep an eye on <strong id="pbw-success-email"></strong> — that's where we'll send your preview.</p>
-          <p class="pbw-success-note">Questions in the meantime? Email us at <a href="mailto:support@pinebeach.com.au">support@pinebeach.com.au</a></p>
-          <button type="button" class="pbw-success-cta" id="pbw-success-close">Back to website</button>
+        <!-- ── Step 6: Review & Submit ── -->
+        <div class="wizard-step-panel" id="wz-step-6">
+          <h2 class="wizard-step-heading">Review &amp; submit</h2>
+          <p class="wizard-step-sub">Here's what you've told us. Everything look right?</p>
+          <div id="wz-review-content"></div>
         </div>
 
-      </div><!-- /pbw-content -->
+        <!-- ── Success screen — hidden until form is submitted ── -->
+        <div class="wizard-success" id="wz-success" style="display:none;">
+          <div class="wz-success-icon">🎉</div>
+          <h2 class="wz-success-h">You're on your way!</h2>
+          <p class="wz-success-p">We've got everything we need. Our team will have a preview website ready within a few business days.</p>
+          <p class="wz-success-p">We'll send the preview link to <strong id="wz-success-email"></strong> — keep an eye on your inbox.</p>
+          <div class="wz-success-badges">
+            <span>✅ No lock-in</span>
+            <span>✅ No setup fee</span>
+            <span>✅ 30-day money-back guarantee</span>
+          </div>
+          <p class="wz-success-p" style="margin-top:1.25rem; font-size:.875rem;">Questions? <a href="mailto:support@pinebeach.com.au" style="color:var(--green,#2D4A3E);">support@pinebeach.com.au</a></p>
+          <button class="wz-success-close" id="wz-success-close">Close</button>
+        </div>
 
-      <!-- ── Footer navigation ── -->
-      <div class="pbw-footer" id="pbw-footer">
-        <button type="button" class="pbw-btn-back" id="pbw-back" hidden>← Back</button>
-        <button type="button" class="pbw-btn-next" id="pbw-next">Next step →</button>
-        <button type="button" class="pbw-btn-submit" id="pbw-submit" hidden>Get Started — $79/month →</button>
+      </div><!-- /.wizard-body -->
+
+      <!-- Navigation footer — only Back/Next (Submit on step 6) -->
+      <div class="wizard-nav" id="wizard-nav">
+        <button class="wz-nav-back" id="wz-back" type="button" disabled>← Back</button>
+        <span class="wz-step-counter" id="wz-counter">Step 1 of 6</span>
+        <button class="wz-nav-next" id="wz-next" type="button">Next →</button>
       </div>
 
-    </div><!-- /pbw-container -->
-  </div><!-- /pbw-modal -->
+    </div><!-- /.wizard-modal -->
+  </div><!-- /.wizard-overlay -->
 
+  <script>
+    /* ══════════════════════════════════════════
+       ONBOARDING WIZARD
+       ══════════════════════════════════════════ */
+    (function () {
+      var TOTAL = 6;
+      var step = 1;
+      var docFiles = [];
+      var logoFile = null;
+      var selectedTheme = '';
+      var recommendsProducts = null;
+      var slideBack = false;
+
+      /* ── Open / Close ─────────────────────── */
+      function openWizard() {
+        var overlay = document.getElementById('wizard-overlay');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        step = 1;
+        docFiles = [];
+        logoFile = null;
+        selectedTheme = '';
+        recommendsProducts = null;
+        resetForm();
+        goToStep(1, false);
+      }
+
+      function closeWizard() {
+        document.getElementById('wizard-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      window.openWizard = openWizard;
+      window.closeWizard = closeWizard;
+
+      document.getElementById('wizard-close').addEventListener('click', closeWizard);
+      document.getElementById('wz-success-close').addEventListener('click', closeWizard);
+      document.getElementById('wizard-overlay').addEventListener('click', function (e) {
+        if (e.target === this) closeWizard();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && document.getElementById('wizard-overlay').classList.contains('open')) closeWizard();
+      });
+
+      /* ── Intercept all #get-started links ──── */
+      document.querySelectorAll('a[href="#get-started"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          openWizard();
+        });
+      });
+
+      /* ── Navigation ───────────────────────── */
+      document.getElementById('wz-next').addEventListener('click', function () {
+        if (this.dataset.submit === '1') {
+          submitWizard();
+        } else {
+          if (!validateStep(step)) return;
+          goToStep(step + 1, false);
+        }
+      });
+
+      document.getElementById('wz-back').addEventListener('click', function () {
+        if (step > 1) goToStep(step - 1, true);
+      });
+
+      function goToStep(n, back) {
+        var panels = document.querySelectorAll('.wizard-step-panel');
+        panels.forEach(function (p) { p.classList.remove('active', 'slide-back'); });
+
+        step = n;
+        var panel = document.getElementById('wz-step-' + n);
+        panel.classList.add('active');
+        if (back) panel.classList.add('slide-back');
+
+        /* progress dots */
+        document.querySelectorAll('.wizard-progress-step').forEach(function (el, i) {
+          el.classList.remove('active', 'done');
+          if (i + 1 < n) el.classList.add('done');
+          if (i + 1 === n) el.classList.add('active');
+          el.querySelector('.wizard-progress-dot').textContent = (i + 1 < n) ? '✓' : String(i + 1);
+        });
+
+        var backBtn = document.getElementById('wz-back');
+        var nextBtn = document.getElementById('wz-next');
+        var counter = document.getElementById('wz-counter');
+
+        backBtn.disabled = (n === 1);
+        counter.textContent = 'Step ' + n + ' of ' + TOTAL;
+
+        if (n === TOTAL) {
+          buildReview();
+          nextBtn.textContent = 'Submit →';
+          nextBtn.classList.add('submit-btn');
+          nextBtn.dataset.submit = '1';
+        } else {
+          nextBtn.textContent = 'Next →';
+          nextBtn.classList.remove('submit-btn');
+          nextBtn.dataset.submit = '0';
+        }
+
+        document.getElementById('wizard-body').scrollTop = 0;
+      }
+
+      /* ── Validation ───────────────────────── */
+      function validateStep(n) {
+        var ok = true;
+
+        function requireField(id, errId) {
+          var el = document.getElementById(id);
+          var err = document.getElementById(errId);
+          if (!el.value.trim()) {
+            el.classList.add('error');
+            err.classList.add('visible');
+            if (ok) { el.focus(); ok = false; }
+          } else {
+            el.classList.remove('error');
+            err.classList.remove('visible');
+          }
+        }
+
+        if (n === 1) {
+          requireField('wz-businessName', 'wz-err-businessName');
+          requireField('wz-contactName', 'wz-err-contactName');
+          var emailEl = document.getElementById('wz-email');
+          var emailErr = document.getElementById('wz-err-email');
+          var email = emailEl.value.trim();
+          var emailOk = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          if (!emailOk) {
+            emailEl.classList.add('error');
+            emailErr.classList.add('visible');
+            if (ok) { emailEl.focus(); ok = false; }
+          } else {
+            emailEl.classList.remove('error');
+            emailErr.classList.remove('visible');
+          }
+        }
+
+        if (n === 3) {
+          requireField('wz-industry', 'wz-err-industry');
+          requireField('wz-about', 'wz-err-about');
+          /* If "Other" is selected and visible, also require the text field */
+          var industryVal = document.getElementById('wz-industry').value;
+          var otherGroup = document.getElementById('wz-other-industry-group');
+          if ((industryVal === 'Other' || industryVal === 'Other Health/Wellness') && otherGroup.style.display !== 'none') {
+            requireField('wz-other-industry', 'wz-err-other-industry');
+          }
+        }
+
+        return ok;
+      }
+
+      /* ── Step 3: Industry "Other" reveal ──── */
+      document.getElementById('wz-industry').addEventListener('change', function () {
+        var otherGroup = document.getElementById('wz-other-industry-group');
+        if (this.value === 'Other') {
+          otherGroup.style.display = 'flex';
+          otherGroup.style.flexDirection = 'column';
+        } else {
+          otherGroup.style.display = 'none';
+          document.getElementById('wz-other-industry').value = '';
+        }
+      });
+
+      /* ── Step 3: Document upload ─────────── */
+      var docsInput = document.getElementById('wz-docs-input');
+      var docsDrop  = document.getElementById('wz-docs-drop');
+
+      docsInput.addEventListener('change', function () {
+        addFiles(Array.from(this.files));
+        this.value = '';
+      });
+
+      docsDrop.addEventListener('dragover', function (e) { e.preventDefault(); this.classList.add('drag-over'); });
+      docsDrop.addEventListener('dragleave', function () { this.classList.remove('drag-over'); });
+      docsDrop.addEventListener('drop', function (e) {
+        e.preventDefault();
+        this.classList.remove('drag-over');
+        addFiles(Array.from(e.dataTransfer.files));
+      });
+
+      function addFiles(files) {
+        files.forEach(function (f) {
+          if (!docFiles.find(function (x) { return x.name === f.name; })) docFiles.push(f);
+        });
+        renderDocList();
+      }
+
+      function renderDocList() {
+        var list = document.getElementById('wz-docs-list');
+        list.innerHTML = docFiles.map(function (f, i) {
+          return '<div class="wz-file-item">'
+            + '<span class="wz-file-item-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>'
+            + '<span class="wz-file-item-name">' + escHtml(f.name) + '</span>'
+            + '<button class="wz-file-remove" onclick="window._wzRemoveDoc(' + i + ')" type="button" aria-label="Remove">✕</button>'
+            + '</div>';
+        }).join('');
+      }
+
+      window._wzRemoveDoc = function (i) { docFiles.splice(i, 1); renderDocList(); };
+
+      /* ── Step 4: Logo upload ──────────────── */
+      document.getElementById('wz-logo-input').addEventListener('change', function () {
+        if (!this.files[0]) return;
+        logoFile = this.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var preview = document.getElementById('wz-logo-preview');
+          document.getElementById('wz-logo-img').src = e.target.result;
+          document.getElementById('wz-logo-name').textContent = logoFile.name;
+          preview.style.display = 'flex';
+        };
+        reader.readAsDataURL(logoFile);
+      });
+
+      /* ── Step 4: Theme swatches ───────────── */
+      document.querySelectorAll('.wz-swatch').forEach(function (swatch) {
+        swatch.addEventListener('click', function () {
+          document.querySelectorAll('.wz-swatch').forEach(function (s) { s.classList.remove('selected'); });
+          this.classList.add('selected');
+          selectedTheme = this.dataset.theme;
+        });
+      });
+
+      /* ── Step 5: Yes/No toggle ────────────── */
+      document.getElementById('wz-products-yes').addEventListener('click', function () {
+        recommendsProducts = true;
+        this.classList.add('active-yes');
+        document.getElementById('wz-products-no').classList.remove('active-no');
+        document.getElementById('wz-products-details').style.display = 'block';
+      });
+      document.getElementById('wz-products-no').addEventListener('click', function () {
+        recommendsProducts = false;
+        this.classList.add('active-no');
+        document.getElementById('wz-products-yes').classList.remove('active-yes');
+        document.getElementById('wz-products-details').style.display = 'none';
+        /* Auto-advance to next step */
+        setTimeout(function () { goToStep(step + 1, false); }, 300);
+      });
+
+      /* ── Step 6: Build review ─────────────── */
+      function buildReview() {
+        var d = collectData();
+        var html = '';
+
+        function row(key, val) {
+          if (!val) return '';
+          return '<div class="wz-review-row"><span class="wz-review-key">' + escHtml(key) + '</span><span class="wz-review-val">' + escHtml(val) + '</span></div>';
+        }
+
+        html += '<div class="wz-review-section"><div class="wz-review-heading">About You</div>'
+          + row('Business name', d.businessName)
+          + row('Your name', d.contactName)
+          + row('Email', d.email)
+          + row('Phone', d.phone)
+          + row('Location', d.suburb)
+          + '</div>';
+
+        var onlineFields = [d.website, d.facebook, d.instagram, d.linkedin, d.googlebiz, d.othersocial];
+        if (onlineFields.some(Boolean)) {
+          html += '<div class="wz-review-section"><div class="wz-review-heading">Online Presence</div>'
+            + row('Website', d.website)
+            + row('Facebook', d.facebook)
+            + row('Instagram', d.instagram)
+            + row('LinkedIn', d.linkedin)
+            + row('Google Business', d.googlebiz)
+            + row('Other social', d.othersocial)
+            + '</div>';
+        }
+
+        /* Build the industry display value including "Other" text if applicable */
+        var industryDisplay = d.industry;
+        if ((d.industry === 'Other' || d.industry === 'Other Health/Wellness') && d.otherIndustry) {
+          industryDisplay = d.otherIndustry;
+        }
+
+        var aboutText = d.about.length > 220 ? d.about.substring(0, 220) + '…' : d.about;
+        html += '<div class="wz-review-section"><div class="wz-review-heading">Your Business</div>'
+          + row('Industry', industryDisplay)
+          + row('About', aboutText)
+          + (docFiles.length ? row('Documents', docFiles.map(function(f){return f.name;}).join(', ')) : '')
+          + '</div>';
+
+        html += '<div class="wz-review-section"><div class="wz-review-heading">Brand</div>'
+          + row('Logo', logoFile ? logoFile.name : 'Not uploaded')
+          + row('Colour theme', selectedTheme || 'Not selected')
+          + row('Brand notes', d.brandprefs)
+          + '</div>';
+
+        html += '<div class="wz-review-section"><div class="wz-review-heading">Products &amp; Recommendations</div>'
+          + row('Recommends products', recommendsProducts === null ? 'Not answered' : (recommendsProducts ? 'Yes' : 'No'))
+          + (recommendsProducts ? row('Description', d.productsDesc) : '')
+          + '</div>';
+
+        html += '<div class="wz-review-reassurance"><strong>We build your website and show you before you pay.</strong>'
+          + '<span>No lock-in &nbsp;·&nbsp; No setup fee &nbsp;·&nbsp; 30-day money-back guarantee</span></div>';
+
+        document.getElementById('wz-review-content').innerHTML = html;
+      }
+
+      /* ── Collect data ─────────────────────── */
+      function collectData() {
+        return {
+          businessName:       v('wz-businessName'),
+          contactName:        v('wz-contactName'),
+          email:              v('wz-email'),
+          phone:              v('wz-phone'),
+          suburb:             v('wz-suburb'),
+          website:            v('wz-website'),
+          facebook:           v('wz-facebook'),
+          instagram:          v('wz-instagram'),
+          linkedin:           v('wz-linkedin'),
+          googlebiz:          v('wz-googlebiz'),
+          othersocial:        v('wz-othersocial'),
+          industry:           v('wz-industry'),
+          otherIndustry:      v('wz-other-industry'),
+          about:              v('wz-about'),
+          documents:          docFiles.map(function(f){return f.name;}),
+          logo:               logoFile ? logoFile.name : null,
+          colorTheme:         selectedTheme,
+          brandprefs:         v('wz-brandprefs'),
+          recommendsProducts: recommendsProducts,
+          productsDesc:       v('wz-products-desc')
+        };
+      }
+
+      function v(id) {
+        var el = document.getElementById(id);
+        return el ? el.value.trim() : '';
+      }
+
+      /* ── Submit ───────────────────────────── */
+      function submitWizard() {
+        var data = collectData();
+        console.log('[Pine Beach] Onboarding wizard submission:', JSON.stringify(data, null, 2));
+
+        /* Hide nav + steps, show success */
+        document.getElementById('wizard-nav').style.display = 'none';
+        document.querySelectorAll('.wizard-step-panel').forEach(function (p) { p.classList.remove('active'); });
+        var success = document.getElementById('wz-success');
+        success.style.display = 'flex';
+        success.style.flexDirection = 'column';
+        success.style.alignItems = 'center';
+        document.getElementById('wz-success-email').textContent = data.email;
+        document.getElementById('wizard-body').scrollTop = 0;
+      }
+
+      /* ── Reset ────────────────────────────── */
+      function resetForm() {
+        document.getElementById('wizard-nav').style.display = '';
+        /* Hide success */
+        var success = document.getElementById('wz-success');
+        success.style.display = 'none';
+
+        var fields = ['wz-businessName','wz-contactName','wz-email','wz-phone','wz-suburb',
+          'wz-website','wz-facebook','wz-instagram','wz-linkedin','wz-googlebiz','wz-othersocial',
+          'wz-industry','wz-about','wz-products-desc','wz-brandprefs','wz-other-industry'];
+        fields.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) { el.value = ''; el.classList.remove('error'); }
+        });
+
+        document.getElementById('wz-other-industry-group').style.display = 'none';
+        document.getElementById('wz-products-details').style.display = 'none';
+        document.getElementById('wz-products-yes').classList.remove('active-yes');
+        document.getElementById('wz-products-no').classList.remove('active-no');
+        document.getElementById('wz-logo-preview').style.display = 'none';
+        document.getElementById('wz-logo-img').src = '';
+        document.getElementById('wz-docs-list').innerHTML = '';
+        document.querySelectorAll('.wz-swatch').forEach(function (s) { s.classList.remove('selected'); });
+        document.querySelectorAll('.wz-error').forEach(function (e) { e.classList.remove('visible'); });
+      }
+
+      /* ── Utility ──────────────────────────── */
+      function escHtml(s) {
+        if (!s) return '';
+        return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+    }());
+  </script>
 </body>
 </html>
