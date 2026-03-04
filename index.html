@@ -46,6 +46,10 @@
       max-width: 720px;
       margin: 0 auto;
       text-align: center;
+      /* Fix: use flexbox so block children (flex containers, etc.) are centred */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .hero-eyebrow {
       display: inline-flex;
@@ -74,10 +78,14 @@
     }
     .hero-ctas {
       display: flex;
+      flex-direction: row;   /* override style.css column default */
       flex-wrap: wrap;
       gap: 1rem;
       align-items: center;
       justify-content: center;
+      width: auto;           /* override style.css width:100% */
+      max-width: none;       /* override style.css max-width:340px */
+      margin-inline: auto;   /* centre the flex container itself */
     }
 
     /* Btn variants */
@@ -529,6 +537,526 @@
       margin-bottom: 1rem;
     }
   </style>
+  <!-- ─── ONBOARDING WIZARD STYLES ─── -->
+  <style>
+    /* ══════════════════════════════════════════
+       PB Wizard Modal — Pine Beach brand-aligned
+       6-step onboarding wizard, Shopify-quality UX
+    ══════════════════════════════════════════ */
+
+    /* Modal shell */
+    .pbw-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 260ms ease, visibility 260ms ease;
+    }
+    .pbw-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .pbw-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(12,12,12,.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .pbw-container {
+      position: relative;
+      z-index: 1;
+      background: var(--offwhite);
+      width: 100%;
+      max-width: 660px;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      border: 1.5px solid var(--border-strong);
+      box-shadow: 0 32px 96px rgba(0,0,0,.22);
+      transform: translateY(28px) scale(.97);
+      transition: transform 320ms cubic-bezier(.34,1.4,.64,1), opacity 280ms ease;
+      overflow: hidden;
+    }
+    .pbw-modal.is-open .pbw-container {
+      transform: translateY(0) scale(1);
+    }
+    @media (max-width: 680px) {
+      .pbw-modal { padding: 0; align-items: flex-end; }
+      .pbw-container {
+        max-height: 95dvh;
+        max-width: 100%;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+      }
+    }
+
+    /* Header */
+    .pbw-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .875rem 1.375rem;
+      border-bottom: 1.5px solid var(--border);
+      background: var(--white);
+      flex-shrink: 0;
+    }
+    .pbw-header-left {
+      display: flex;
+      align-items: center;
+      gap: .875rem;
+    }
+    .pbw-logo {
+      height: 26px;
+      width: auto;
+    }
+    .pbw-step-label {
+      font-size: .8125rem;
+      font-weight: 500;
+      color: var(--charcoal-40);
+      border-left: 1.5px solid var(--border-mid);
+      padding-left: .875rem;
+    }
+    .pbw-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid var(--border-mid);
+      color: var(--charcoal-40);
+      transition: color 180ms, border-color 180ms, background 180ms;
+      flex-shrink: 0;
+    }
+    .pbw-close:hover {
+      color: var(--charcoal);
+      border-color: var(--charcoal-40);
+      background: rgba(28,28,28,.04);
+    }
+
+    /* Progress bar */
+    .pbw-progress-track {
+      height: 3px;
+      background: rgba(28,28,28,.08);
+      flex-shrink: 0;
+    }
+    .pbw-progress-fill {
+      height: 100%;
+      background: var(--green);
+      transition: width 400ms cubic-bezier(.4,0,.2,1);
+    }
+
+    /* Step dots */
+    .pbw-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: .75rem 1.375rem;
+      background: var(--white);
+      border-bottom: 1.5px solid var(--border);
+      flex-shrink: 0;
+    }
+    .pbw-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-mid);
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--charcoal-40);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 220ms;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .pbw-dot.is-active {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+    .pbw-dot.is-done {
+      background: rgba(45,74,62,.12);
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .pbw-dot-line {
+      flex: 1;
+      height: 1.5px;
+      background: var(--border-mid);
+      max-width: 48px;
+      transition: background 220ms;
+    }
+    .pbw-dot-line.is-done { background: var(--green); }
+
+    /* Content scroll area */
+    .pbw-content {
+      flex: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+
+    /* Step panels */
+    .pbw-step {
+      padding: 1.875rem 1.5rem 1rem;
+    }
+    .pbw-step-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--charcoal);
+      margin-bottom: .375rem;
+      line-height: 1.2;
+    }
+    .pbw-step-desc {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+      margin-bottom: 1.625rem;
+    }
+
+    /* Step transition animations */
+    @keyframes pbwSlideInRight { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes pbwSlideInLeft  { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes pbwSlideOutLeft { from { opacity:1; transform:translateX(0); } to { opacity:0; transform:translateX(-30px); } }
+    @keyframes pbwSlideOutRight{ from { opacity:1; transform:translateX(0); } to { opacity:0; transform:translateX(30px); } }
+    .pbw-anim-in-right  { animation: pbwSlideInRight  280ms cubic-bezier(.4,0,.2,1) both; }
+    .pbw-anim-in-left   { animation: pbwSlideInLeft   280ms cubic-bezier(.4,0,.2,1) both; }
+    .pbw-anim-out-left  { animation: pbwSlideOutLeft  220ms cubic-bezier(.4,0,.2,1) both; }
+    .pbw-anim-out-right { animation: pbwSlideOutRight 220ms cubic-bezier(.4,0,.2,1) both; }
+
+    /* Fields */
+    .pbw-fields { display: flex; flex-direction: column; gap: 1.125rem; }
+    .pbw-field  { display: flex; flex-direction: column; gap: .35rem; }
+    .pbw-label  {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .pbw-label .req { color: #c0392b; }
+    .pbw-optional {
+      font-size: .8125rem;
+      font-weight: 400;
+      color: var(--charcoal-40);
+    }
+    .pbw-hint {
+      font-size: .8125rem;
+      color: var(--charcoal-60);
+      line-height: 1.5;
+    }
+    .pbw-input,
+    .pbw-select,
+    .pbw-textarea {
+      width: 100%;
+      padding: .75rem 1rem;
+      background: var(--white);
+      border: 1.5px solid var(--border-mid);
+      font-family: var(--font-sans);
+      font-size: .9375rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 180ms, box-shadow 180ms;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .pbw-input:focus,
+    .pbw-select:focus,
+    .pbw-textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(45,74,62,.12);
+    }
+    .pbw-input::placeholder,
+    .pbw-textarea::placeholder { color: var(--charcoal-40); }
+    .pbw-input.is-error,
+    .pbw-select.is-error { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192,57,43,.09); }
+    .pbw-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%231C1C1C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .875rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    .pbw-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+    /* Error banner */
+    .pbw-error {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1rem;
+      background: rgba(192,57,43,.07);
+      border: 1.5px solid rgba(192,57,43,.28);
+      font-size: .875rem;
+      color: #c0392b;
+      margin-bottom: 1rem;
+    }
+    @keyframes pbwShake {
+      0%,100% { transform:translateX(0); }
+      20%,60% { transform:translateX(-5px); }
+      40%,80% { transform:translateX(5px); }
+    }
+    .pbw-error { animation: pbwShake 380ms ease; }
+
+    /* File upload */
+    .pbw-file-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      opacity: 0; pointer-events: none;
+    }
+    .pbw-file-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: 1.5rem 1rem;
+      border: 1.5px dashed var(--border-mid);
+      background: rgba(28,28,28,.02);
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 180ms, background 180ms;
+    }
+    .pbw-file-zone:hover {
+      border-color: var(--green);
+      background: rgba(45,74,62,.04);
+    }
+    .pbw-file-zone svg { color: var(--charcoal-40); }
+    .pbw-file-zone strong { font-size: .9375rem; color: var(--charcoal); font-weight: 500; }
+    .pbw-file-zone em { font-style: normal; font-size: .8125rem; color: var(--charcoal-40); }
+    .pbw-file-list { display: flex; flex-direction: column; gap: .375rem; margin-top: .5rem; }
+    .pbw-file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .5rem .875rem;
+      background: rgba(45,74,62,.08);
+      font-size: .8125rem;
+      color: var(--charcoal);
+      gap: .75rem;
+    }
+    .pbw-file-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .pbw-file-remove { color: var(--charcoal-40); cursor: pointer; font-size: .75rem; }
+    .pbw-file-remove:hover { color: #c0392b; }
+
+    /* Logo preview */
+    .pbw-logo-preview {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: .875rem 1rem;
+      background: rgba(28,28,28,.04);
+      border: 1.5px solid var(--border);
+      margin-top: .625rem;
+    }
+    .pbw-logo-preview img {
+      height: 52px; width: auto; max-width: 140px; object-fit: contain;
+    }
+    .pbw-logo-remove {
+      font-size: .8125rem; color: var(--charcoal-40);
+      text-decoration: underline; cursor: pointer;
+    }
+    .pbw-logo-remove:hover { color: #c0392b; }
+
+    /* Colour palettes */
+    .pbw-palettes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .625rem;
+    }
+    @media (min-width: 460px) { .pbw-palettes { grid-template-columns: repeat(3, 1fr); } }
+    .pbw-palette-radio { position: absolute; opacity: 0; width: 0; height: 0; }
+    .pbw-palette-label { position: relative; cursor: pointer; }
+    .pbw-palette-card {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      padding: .75rem;
+      border: 1.5px solid var(--border-mid);
+      background: var(--white);
+      transition: border-color 180ms, box-shadow 180ms;
+    }
+    .pbw-palette-radio:checked ~ .pbw-palette-card {
+      border-color: var(--green);
+      box-shadow: 0 0 0 2px rgba(45,74,62,.2);
+    }
+    .pbw-palette-card:hover { border-color: rgba(28,28,28,.35); }
+    .pbw-swatches { display: flex; gap: 3px; height: 24px; }
+    .pbw-swatches span { flex: 1; display: block; }
+    .pbw-palette-name { font-size: .8125rem; font-weight: 500; color: var(--charcoal); }
+
+    /* Yes/No radio group */
+    .pbw-radio-group { display: flex; flex-direction: column; gap: .5rem; }
+    .pbw-radio-option { display: flex; cursor: pointer; }
+    .pbw-radio-input  { position: absolute; opacity: 0; width: 0; height: 0; }
+    .pbw-radio-box {
+      display: flex;
+      align-items: flex-start;
+      gap: .875rem;
+      width: 100%;
+      padding: .875rem 1.125rem;
+      border: 1.5px solid var(--border-mid);
+      background: var(--white);
+      transition: border-color 180ms, background 180ms;
+    }
+    .pbw-radio-input:checked ~ .pbw-radio-box {
+      border-color: var(--green);
+      background: rgba(45,74,62,.04);
+    }
+    .pbw-radio-dot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-mid);
+      flex-shrink: 0; margin-top: 3px;
+      position: relative; transition: border-color 180ms;
+    }
+    .pbw-radio-input:checked ~ .pbw-radio-box .pbw-radio-dot { border-color: var(--green); }
+    .pbw-radio-input:checked ~ .pbw-radio-box .pbw-radio-dot::after {
+      content: '';
+      position: absolute; inset: 3px;
+      border-radius: 50%; background: var(--green);
+    }
+    .pbw-radio-text strong { display: block; font-size: .9375rem; font-weight: 600; color: var(--charcoal); }
+    .pbw-radio-text em { font-style: normal; font-size: .8125rem; color: var(--charcoal-60); }
+
+    /* CollabCart notice */
+    .pbw-collabcart {
+      display: flex;
+      align-items: flex-start;
+      gap: .875rem;
+      padding: 1rem 1.125rem;
+      background: rgba(212,165,116,.1);
+      border: 1.5px solid rgba(212,165,116,.4);
+      margin-bottom: .5rem;
+    }
+    .pbw-collabcart svg { color: var(--amber-dim); flex-shrink: 0; margin-top: 2px; }
+    .pbw-collabcart strong { display: block; font-size: .9375rem; font-weight: 600; color: var(--charcoal); margin-bottom: .25rem; }
+    .pbw-collabcart p { font-size: .875rem; color: var(--charcoal-80); line-height: 1.55; }
+
+    /* Checkboxes */
+    .pbw-checkboxes { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .pbw-checkbox-option {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .5625rem .9375rem;
+      border: 1.5px solid var(--border-mid);
+      background: var(--white);
+      cursor: pointer;
+      font-size: .9rem;
+      transition: border-color 180ms, background 180ms;
+    }
+    .pbw-checkbox-option:has(input:checked) {
+      border-color: var(--green);
+      background: rgba(45,74,62,.07);
+    }
+    .pbw-checkbox-option input { accent-color: var(--green); width: 15px; height: 15px; }
+
+    /* Review step */
+    .pbw-review { display: flex; flex-direction: column; gap: .625rem; margin-bottom: 1.5rem; }
+    .pbw-review-section { border: 1.5px solid var(--border); background: var(--white); }
+    .pbw-review-header {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: .75rem 1.125rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .pbw-review-title {
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .09em; text-transform: uppercase;
+      color: var(--charcoal-40);
+    }
+    .pbw-review-edit {
+      font-size: .8125rem; color: var(--green);
+      text-decoration: underline; cursor: pointer;
+      transition: color 180ms;
+    }
+    .pbw-review-edit:hover { color: var(--green-dark); }
+    .pbw-review-fields { padding: .75rem 1.125rem; display: flex; flex-direction: column; gap: .4375rem; }
+    .pbw-review-row { display: flex; gap: .75rem; }
+    .pbw-review-key { font-size: .8125rem; color: var(--charcoal-60); min-width: 130px; flex-shrink: 0; }
+    .pbw-review-val { font-size: .8125rem; color: var(--charcoal); font-weight: 500; line-height: 1.5; }
+
+    /* Guarantee bar */
+    .pbw-guarantee {
+      background: rgba(45,74,62,.06);
+      border: 1.5px solid rgba(45,74,62,.2);
+      padding: .875rem 1.125rem;
+      margin-bottom: .5rem;
+    }
+    .pbw-guarantee-items {
+      display: flex; flex-wrap: wrap; gap: .375rem 1.25rem;
+      font-size: .8125rem; color: var(--green); font-weight: 500;
+    }
+
+    /* Footer nav */
+    .pbw-footer {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: .875rem 1.375rem;
+      border-top: 1.5px solid var(--border);
+      background: var(--white);
+      flex-shrink: 0;
+      gap: 1rem;
+    }
+    .pbw-btn-back {
+      font-size: .9375rem; font-weight: 500;
+      color: var(--charcoal-60); padding: .5rem 0;
+      transition: color 180ms;
+    }
+    .pbw-btn-back:hover { color: var(--charcoal); }
+    .pbw-btn-next {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green); color: #fff;
+      font-size: .9375rem; font-weight: 600;
+      padding: .75rem 1.5rem;
+      transition: background 180ms;
+      margin-left: auto;
+    }
+    .pbw-btn-next:hover { background: var(--green-dark); }
+    .pbw-btn-submit {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green); color: #fff;
+      font-size: 1rem; font-weight: 700;
+      padding: .8125rem 1.625rem;
+      transition: background 180ms, box-shadow 180ms;
+      margin-left: auto;
+    }
+    .pbw-btn-submit:hover { background: var(--green-dark); box-shadow: 0 4px 18px rgba(45,74,62,.35); }
+
+    /* Success view */
+    .pbw-success {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 3rem 2rem; gap: 1.125rem;
+    }
+    .pbw-success-icon {
+      width: 60px; height: 60px;
+      background: var(--green); color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.625rem; font-weight: 700;
+    }
+    .pbw-success-title { font-family: var(--font-serif); font-size: 1.75rem; color: var(--charcoal); }
+    .pbw-success-body  { font-size: .9375rem; color: var(--charcoal-60); line-height: 1.65; max-width: 400px; }
+    .pbw-success-note  { font-size: .875rem; color: var(--charcoal-40); line-height: 1.5; }
+    .pbw-success-note a { color: var(--green); text-decoration: underline; }
+    .pbw-success-cta {
+      display: inline-flex; align-items: center;
+      background: var(--charcoal); color: #fff;
+      font-size: .9375rem; font-weight: 600;
+      padding: .75rem 1.625rem; margin-top: .5rem;
+      transition: background 180ms;
+    }
+    .pbw-success-cta:hover { background: var(--charcoal-80); }
+  </style>
 </head>
 <body>
 
@@ -544,7 +1072,7 @@
         <a href="/products">Products &amp; Tools</a>
         <a href="/contact">Contact</a>
       </nav>
-      <a href="/websites#get-started" class="nav-cta-website">Get Your Website →</a>
+      <button class="nav-cta-website" data-wizard-trigger>Get Your Website →</button>
       <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -554,7 +1082,7 @@
       <a href="/about">About</a>
       <a href="/products">Products &amp; Tools</a>
       <a href="/contact">Contact</a>
-      <a href="/websites#get-started" class="btn btn-primary">Get Your Website →</a>
+      <button class="btn btn-primary" data-wizard-trigger>Get Your Website →</button>
     </div>
   </header>
 
@@ -568,9 +1096,9 @@
         <h1 class="hero-headline">Your business deserves<br/>to be found on Google.</h1>
         <p class="hero-sub">We build professional, SEO-optimised websites for Australian small businesses — starting at $79 a month, with no setup fee and no lock-in. You won't need to touch a thing.</p>
         <div class="hero-ctas">
-          <a href="/websites#get-started" class="btn-hero-primary">
+          <button class="btn-hero-primary" data-wizard-trigger>
             Get Your Website →
-          </a>
+          </button>
           <a href="/websites#how-it-works" class="btn-hero-secondary">
             See How It Works ↓
           </a>
@@ -769,7 +1297,7 @@
       </div>
 
       <div style="margin-top: 2rem; text-align: center;">
-        <a href="/websites#get-started" style="display: inline-flex; align-items: center; gap: .375rem; font-size: .9375rem; font-weight: 600; color: var(--green); border-bottom: 1px solid var(--green);">Get started — $79 a month →</a>
+        <button data-wizard-trigger style="display: inline-flex; align-items: center; gap: .375rem; font-size: .9375rem; font-weight: 600; color: var(--green); border-bottom: 1px solid var(--green); background: none; cursor: pointer; font-family: inherit;">Get started — $79 a month →</button>
       </div>
     </div>
   </section>
@@ -954,7 +1482,7 @@
       <h2>Ready to get found on Google?</h2>
       <p>It starts with a conversation. Tell us about your business and we'll show you what your website could look like — before you pay a cent.</p>
       <div class="final-cta-buttons">
-        <a href="/websites#get-started" class="btn-cta-white">Get Started →</a>
+        <button class="btn-cta-white" data-wizard-trigger>Get Started →</button>
         <a href="mailto:support@pinebeach.com.au" class="btn-cta-outline-white">Talk to a real person →</a>
       </div>
       <p class="final-cta-reassurance">No lock-in · No setup fee · 30-day money-back guarantee · Australian owned and operated</p>
@@ -1011,5 +1539,325 @@
   </footer>
 
   <script src="main.js"></script>
+
+  <!-- ═══════════════════════════════════════════
+       PINE BEACH ONBOARDING WIZARD MODAL
+  ═══════════════════════════════════════════ -->
+  <div id="pbw-modal" class="pbw-modal" role="dialog" aria-modal="true" aria-labelledby="pbw-step-title" hidden>
+    <div class="pbw-backdrop" id="pbw-backdrop"></div>
+
+    <div class="pbw-container">
+
+      <!-- ── Header ── -->
+      <div class="pbw-header">
+        <div class="pbw-header-left">
+          <img src="logo-text.png" alt="Pine Beach" class="pbw-logo" />
+          <span class="pbw-step-label">Step <span id="pbw-step-num">1</span> of 6</span>
+        </div>
+        <button class="pbw-close" id="pbw-close" aria-label="Close wizard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- ── Progress bar ── -->
+      <div class="pbw-progress-track">
+        <div class="pbw-progress-fill" id="pbw-progress" style="width:0%"></div>
+      </div>
+
+      <!-- ── Step dots ── -->
+      <div class="pbw-dots" aria-hidden="true">
+        <div class="pbw-dot is-active" id="pbw-dot-1">1</div>
+        <div class="pbw-dot-line" id="pbw-line-1"></div>
+        <div class="pbw-dot" id="pbw-dot-2">2</div>
+        <div class="pbw-dot-line" id="pbw-line-2"></div>
+        <div class="pbw-dot" id="pbw-dot-3">3</div>
+        <div class="pbw-dot-line" id="pbw-line-3"></div>
+        <div class="pbw-dot" id="pbw-dot-4">4</div>
+        <div class="pbw-dot-line" id="pbw-line-4"></div>
+        <div class="pbw-dot" id="pbw-dot-5">5</div>
+        <div class="pbw-dot-line" id="pbw-line-5"></div>
+        <div class="pbw-dot" id="pbw-dot-6">6</div>
+      </div>
+
+      <!-- ── Scrollable content ── -->
+      <div class="pbw-content" id="pbw-content">
+
+        <!-- ─── Step 1: About You ─── -->
+        <div class="pbw-step" id="pbw-s1" data-step="1">
+          <h2 class="pbw-step-title" id="pbw-step-title">About You</h2>
+          <p class="pbw-step-desc">Let's start with the basics. Tell us who you are and where your business is based.</p>
+          <div class="pbw-fields">
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-biz-name">Business name <span class="req">*</span></label>
+              <input class="pbw-input" id="pbw-biz-name" type="text" placeholder="e.g. Bayside Physio" autocomplete="organization" />
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-your-name">Your name <span class="req">*</span></label>
+              <input class="pbw-input" id="pbw-your-name" type="text" placeholder="e.g. Sarah Thompson" autocomplete="name" />
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-email">Email address <span class="req">*</span></label>
+              <input class="pbw-input" id="pbw-email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email" />
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-phone">Phone number <span class="pbw-optional">(optional)</span></label>
+              <input class="pbw-input" id="pbw-phone" type="tel" placeholder="04xx xxx xxx" autocomplete="tel" />
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-location">Business location / suburb <span class="req">*</span></label>
+              <input class="pbw-input" id="pbw-location" type="text" placeholder="e.g. Fitzroy, Melbourne VIC" autocomplete="address-level2" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Step 2: Online Presence ─── -->
+        <div class="pbw-step" id="pbw-s2" data-step="2" hidden>
+          <h2 class="pbw-step-title">Your Online Presence</h2>
+          <p class="pbw-step-desc">Share any existing profiles or websites. Leave blank if you don't have them — that's completely fine.</p>
+          <div class="pbw-fields">
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-website">Current website <span class="pbw-optional">(if you have one)</span></label>
+              <input class="pbw-input" id="pbw-website" type="url" placeholder="https://yourbusiness.com.au" />
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-facebook">Facebook page URL <span class="pbw-optional">(optional)</span></label>
+              <input class="pbw-input" id="pbw-facebook" type="url" placeholder="https://facebook.com/yourbusiness" />
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-instagram">Instagram profile URL <span class="pbw-optional">(optional)</span></label>
+              <input class="pbw-input" id="pbw-instagram" type="url" placeholder="https://instagram.com/yourbusiness" />
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-linkedin">LinkedIn URL <span class="pbw-optional">(optional)</span></label>
+              <input class="pbw-input" id="pbw-linkedin" type="url" placeholder="https://linkedin.com/in/yourname" />
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-google-biz">Google Business Profile URL <span class="pbw-optional">(optional)</span></label>
+              <input class="pbw-input" id="pbw-google-biz" type="url" placeholder="https://g.page/yourbusiness" />
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-other-social">Any other profiles or links <span class="pbw-optional">(optional)</span></label>
+              <input class="pbw-input" id="pbw-other-social" type="text" placeholder="e.g. TikTok, YouTube, Yelp" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Step 3: About Your Business ─── -->
+        <div class="pbw-step" id="pbw-s3" data-step="3" hidden>
+          <h2 class="pbw-step-title">Tell Us About Your Business</h2>
+          <p class="pbw-step-desc">The more we know, the better your website will be. Write as if you're telling a friend — no jargon needed.</p>
+          <div class="pbw-fields">
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-industry">Business type / industry <span class="req">*</span></label>
+              <select class="pbw-select" id="pbw-industry">
+                <option value="">Select your industry…</option>
+                <option value="physiotherapy">Physiotherapy</option>
+                <option value="personal-training">Personal Training</option>
+                <option value="nutrition">Nutrition</option>
+                <option value="chiropractic">Chiropractic</option>
+                <option value="massage-therapy">Massage Therapy</option>
+                <option value="occupational-therapy">Occupational Therapy</option>
+                <option value="other-health-wellness">Other Health / Wellness</option>
+                <option value="trades">Trades</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-about">About your business <span class="req">*</span></label>
+              <p class="pbw-hint">Tell us what you do, who your ideal clients are, and what makes you different.</p>
+              <textarea class="pbw-textarea" id="pbw-about" rows="6" placeholder="e.g. I'm a physio based in Fitzroy specialising in sports injuries. My clients are mostly weekend warriors aged 25–45 who want to get back to training quickly. I'm known for my hands-on approach and realistic recovery timelines…"></textarea>
+            </div>
+            <div class="pbw-field">
+              <label class="pbw-label">Upload supporting materials <span class="pbw-optional">(optional)</span></label>
+              <p class="pbw-hint">Brochures, menus, price lists, or anything else that helps us understand your business.</p>
+              <label class="pbw-file-zone" for="pbw-docs">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <strong>Choose files</strong>
+                <em>PDF, Word, JPG, PNG — up to 10 MB each</em>
+              </label>
+              <input class="pbw-file-hidden" type="file" id="pbw-docs" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" />
+              <div class="pbw-file-list" id="pbw-docs-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Step 4: Your Brand ─── -->
+        <div class="pbw-step" id="pbw-s4" data-step="4" hidden>
+          <h2 class="pbw-step-title">Your Brand</h2>
+          <p class="pbw-step-desc">Help us get the look right. Don't stress if you don't have everything — we'll work with what you've got.</p>
+          <div class="pbw-fields">
+
+            <div class="pbw-field">
+              <label class="pbw-label">Logo <span class="pbw-optional">(optional)</span></label>
+              <p class="pbw-hint">Upload your logo if you have one. PNG or SVG work best.</p>
+              <label class="pbw-file-zone" for="pbw-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <strong>Upload logo</strong>
+                <em>PNG, SVG, JPG</em>
+              </label>
+              <input class="pbw-file-hidden" type="file" id="pbw-logo" accept="image/*" />
+              <div class="pbw-logo-preview" id="pbw-logo-preview" hidden>
+                <img id="pbw-logo-img" src="" alt="Logo preview" />
+                <button type="button" class="pbw-logo-remove" id="pbw-logo-remove">Remove</button>
+              </div>
+            </div>
+
+            <div class="pbw-field">
+              <label class="pbw-label">Colour palette</label>
+              <p class="pbw-hint">Pick the style that feels closest to your brand.</p>
+              <div class="pbw-palettes">
+                <label class="pbw-palette-label">
+                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="warm-earth" />
+                  <div class="pbw-palette-card">
+                    <div class="pbw-swatches"><span style="background:#8B6F47"></span><span style="background:#C4956A"></span><span style="background:#F5E6D3"></span><span style="background:#2D4A3E"></span></div>
+                    <span class="pbw-palette-name">Warm Earth</span>
+                  </div>
+                </label>
+                <label class="pbw-palette-label">
+                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="ocean-blue" />
+                  <div class="pbw-palette-card">
+                    <div class="pbw-swatches"><span style="background:#1B4B82"></span><span style="background:#2E7BC4"></span><span style="background:#D4E9FF"></span><span style="background:#0D2B4E"></span></div>
+                    <span class="pbw-palette-name">Ocean Blue</span>
+                  </div>
+                </label>
+                <label class="pbw-palette-label">
+                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="forest-green" />
+                  <div class="pbw-palette-card">
+                    <div class="pbw-swatches"><span style="background:#2D4A3E"></span><span style="background:#4A7260"></span><span style="background:#D4E9D8"></span><span style="background:#1C3229"></span></div>
+                    <span class="pbw-palette-name">Forest Green</span>
+                  </div>
+                </label>
+                <label class="pbw-palette-label">
+                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="modern-minimal" />
+                  <div class="pbw-palette-card">
+                    <div class="pbw-swatches"><span style="background:#1C1C1C"></span><span style="background:#555555"></span><span style="background:#F3F2EF"></span><span style="background:#CCCCCC"></span></div>
+                    <span class="pbw-palette-name">Modern Minimal</span>
+                  </div>
+                </label>
+                <label class="pbw-palette-label">
+                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="sunset-gold" />
+                  <div class="pbw-palette-card">
+                    <div class="pbw-swatches"><span style="background:#8B3A0F"></span><span style="background:#D4A574"></span><span style="background:#FFF3E0"></span><span style="background:#5C1A00"></span></div>
+                    <span class="pbw-palette-name">Sunset Gold</span>
+                  </div>
+                </label>
+                <label class="pbw-palette-label">
+                  <input class="pbw-palette-radio" type="radio" name="pbw-palette" value="classic-charcoal" />
+                  <div class="pbw-palette-card">
+                    <div class="pbw-swatches"><span style="background:#1C1C1C"></span><span style="background:#3A3A3A"></span><span style="background:#E8E8E8"></span><span style="background:#C0C0C0"></span></div>
+                    <span class="pbw-palette-name">Classic Charcoal</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="pbw-field">
+              <label class="pbw-label" for="pbw-custom-brand">Specific colours or fonts <span class="pbw-optional">(optional)</span></label>
+              <input class="pbw-input" id="pbw-custom-brand" type="text" placeholder="e.g. I love teal, or I'd prefer a clean sans-serif font" />
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── Step 5: Products & Recommendations ─── -->
+        <div class="pbw-step" id="pbw-s5" data-step="5" hidden>
+          <h2 class="pbw-step-title">Products &amp; Recommendations</h2>
+          <p class="pbw-step-desc">Many health and wellness professionals recommend products to their clients. This helps us design the right website for you.</p>
+          <div class="pbw-fields">
+
+            <div class="pbw-field">
+              <label class="pbw-label">Do you recommend products to your clients?</label>
+              <div class="pbw-radio-group">
+                <label class="pbw-radio-option">
+                  <input class="pbw-radio-input" type="radio" name="pbw-rec-products" id="pbw-prod-yes" value="yes" />
+                  <span class="pbw-radio-box">
+                    <span class="pbw-radio-dot"></span>
+                    <span class="pbw-radio-text">
+                      <strong>Yes</strong>
+                      <em>I recommend products as part of my service</em>
+                    </span>
+                  </span>
+                </label>
+                <label class="pbw-radio-option">
+                  <input class="pbw-radio-input" type="radio" name="pbw-rec-products" id="pbw-prod-no" value="no" />
+                  <span class="pbw-radio-box">
+                    <span class="pbw-radio-dot"></span>
+                    <span class="pbw-radio-text">
+                      <strong>No</strong>
+                      <em>I don't recommend products</em>
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="pbw-field" id="pbw-products-detail" hidden>
+              <div class="pbw-collabcart">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <div>
+                  <strong>Earn from your recommendations</strong>
+                  <p>Pine Beach partners with <strong>CollabCart</strong> to help businesses earn commission from the products they already recommend to clients. We can build this directly into your website.</p>
+                </div>
+              </div>
+
+              <div class="pbw-field" style="margin-top:.75rem">
+                <label class="pbw-label" for="pbw-product-desc">Tell us about the products you recommend</label>
+                <textarea class="pbw-textarea" id="pbw-product-desc" rows="4" placeholder="e.g. I recommend Metagenics supplements and Theragun recovery tools to my physio clients…"></textarea>
+              </div>
+
+              <div class="pbw-field" style="margin-top:.75rem">
+                <label class="pbw-label">Types of products <span class="pbw-optional">(tick all that apply)</span></label>
+                <div class="pbw-checkboxes">
+                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="supplements" /> <span>Supplements</span></label>
+                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="equipment" /> <span>Equipment</span></label>
+                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="books" /> <span>Books</span></label>
+                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="skincare" /> <span>Skincare</span></label>
+                  <label class="pbw-checkbox-option"><input type="checkbox" name="pbw-prod-type" value="other" /> <span>Other</span></label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ─── Step 6: Review & Submit ─── -->
+        <div class="pbw-step" id="pbw-s6" data-step="6" hidden>
+          <h2 class="pbw-step-title">Review &amp; Get Started</h2>
+          <p class="pbw-step-desc">Here's everything you've told us. Happy with it? Hit the button and we'll get started on your website.</p>
+          <div class="pbw-review" id="pbw-review"></div>
+          <div class="pbw-guarantee">
+            <div class="pbw-guarantee-items">
+              <span>✓ No lock-in contract</span>
+              <span>✓ 30-day money-back guarantee</span>
+              <span>✓ $0 setup fee</span>
+              <span>✓ Australian owned &amp; operated</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Success view ─── -->
+        <div class="pbw-success" id="pbw-success" hidden>
+          <div class="pbw-success-icon">✓</div>
+          <h2 class="pbw-success-title">You're on your way!</h2>
+          <p class="pbw-success-body">Thanks, <strong id="pbw-success-name"></strong>. We've received everything we need and we'll have a preview of your website ready within <strong>2–3 business days</strong>.</p>
+          <p class="pbw-success-body">Keep an eye on <strong id="pbw-success-email"></strong> — that's where we'll send your preview.</p>
+          <p class="pbw-success-note">Questions in the meantime? Email us at <a href="mailto:support@pinebeach.com.au">support@pinebeach.com.au</a></p>
+          <button type="button" class="pbw-success-cta" id="pbw-success-close">Back to website</button>
+        </div>
+
+      </div><!-- /pbw-content -->
+
+      <!-- ── Footer navigation ── -->
+      <div class="pbw-footer" id="pbw-footer">
+        <button type="button" class="pbw-btn-back" id="pbw-back" hidden>← Back</button>
+        <button type="button" class="pbw-btn-next" id="pbw-next">Next step →</button>
+        <button type="button" class="pbw-btn-submit" id="pbw-submit" hidden>Get Started — $79/month →</button>
+      </div>
+
+    </div><!-- /pbw-container -->
+  </div><!-- /pbw-modal -->
+
 </body>
 </html>
