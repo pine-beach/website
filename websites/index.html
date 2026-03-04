@@ -134,50 +134,40 @@
       margin: 0 auto;
     }
 
-    /* How it works — detailed */
-    .how-detailed-section {
+    /* ── How it works — simple 3-column (copied from homepage) ── */
+    .how-simple-section {
       padding-block: 5rem;
       background: var(--white);
       border-bottom: 1.5px solid var(--border);
     }
-    .how-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    .steps-simple {
+      display: grid;
+      gap: 2.5rem;
       margin-top: 2.5rem;
     }
-    .how-step {
-      display: grid;
-      gap: 2rem;
-      padding-block: 3rem;
-      border-bottom: 1.5px solid var(--border);
+    @media (min-width: 860px) {
+      .steps-simple { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
     }
-    .how-step:last-child { border-bottom: none; }
-    @media (min-width: 640px) {
-      .how-step { grid-template-columns: 80px 1fr; align-items: start; }
+    .step-simple {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
     }
-    .how-step-number {
+    .step-simple-number {
       font-family: var(--font-serif);
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: var(--charcoal-20);
       line-height: 1;
     }
-    .how-step-content h3 {
-      font-size: 1.1875rem;
+    .step-simple-title {
+      font-size: 1.0625rem;
       font-weight: 600;
       color: var(--charcoal);
-      margin-bottom: .75rem;
     }
-    .how-step-content p {
+    .step-simple-desc {
       font-size: .9375rem;
       color: var(--charcoal-60);
-      line-height: 1.75;
-      margin-bottom: .75rem;
-    }
-    .how-step-note {
-      font-size: .8125rem;
-      color: var(--charcoal-40);
-      font-style: italic;
+      line-height: 1.7;
     }
 
     /* Included tiles */
@@ -226,120 +216,6 @@
       padding-block: 5rem;
       background: var(--offwhite);
       border-bottom: 1.5px solid var(--border);
-    }
-    .signup-form {
-      max-width: 680px;
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-    .form-row {
-      display: grid;
-      gap: 1rem;
-    }
-    @media (min-width: 540px) {
-      .form-row-2 { grid-template-columns: 1fr 1fr; }
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: .375rem;
-    }
-    .form-group label {
-      font-size: .8125rem;
-      font-weight: 600;
-      color: var(--charcoal);
-      letter-spacing: .02em;
-    }
-    .form-group .required { color: var(--green); }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      border: 1.5px solid var(--border-mid);
-      background: var(--white);
-      padding: .75rem 1rem;
-      font-size: .9375rem;
-      font-family: var(--font-sans);
-      color: var(--charcoal);
-      border-radius: 0;
-      appearance: none;
-      -webkit-appearance: none;
-      transition: border-color var(--transition);
-      box-sizing: border-box;
-    }
-    .form-group input:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: var(--green);
-    }
-    .form-group input::placeholder { color: var(--charcoal-40); }
-    .form-select-wrap {
-      position: relative;
-    }
-    .form-select-wrap::after {
-      content: '▾';
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--charcoal-40);
-      pointer-events: none;
-    }
-    .form-section-label {
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--charcoal-40);
-      margin-bottom: -.25rem;
-    }
-    .btn-submit {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      background: var(--charcoal);
-      color: var(--white);
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 1rem 2rem;
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      transition: background var(--transition);
-      align-self: flex-start;
-    }
-    .btn-submit:hover { background: var(--charcoal-80); }
-    .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
-    .form-fine-print {
-      font-size: .8125rem;
-      color: var(--charcoal-40);
-      line-height: 1.6;
-    }
-    .form-error {
-      font-size: .8125rem;
-      color: #c0392b;
-      display: none;
-    }
-    .form-error.visible { display: block; }
-    .signup-thanks {
-      max-width: 560px;
-      padding: 2.5rem;
-      background: var(--white);
-      border: 2px solid var(--green);
-      margin-top: 2rem;
-    }
-    .signup-thanks h3 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: var(--charcoal);
-      margin-bottom: .75rem;
-    }
-    .signup-thanks p {
-      font-size: .9375rem;
-      color: var(--charcoal-60);
-      line-height: 1.7;
     }
 
     /* Pricing */
@@ -426,97 +302,6 @@
       line-height: 1.6;
     }
 
-    /* Hormozi comparison */
-    .hormozi-comparison {
-      background: var(--offwhite);
-      border: 1.5px solid var(--border);
-      padding: 2rem;
-      margin-top: 3rem;
-      max-width: 720px;
-      margin-inline: auto;
-    }
-    .hormozi-comparison h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: var(--charcoal-60);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      font-size: .8125rem;
-    }
-    .hormozi-comparison p {
-      font-size: .9375rem;
-      color: var(--charcoal-60);
-      line-height: 1.75;
-      margin-bottom: .5rem;
-    }
-    .hormozi-comparison strong { color: var(--charcoal); }
-    .hormozi-highlight {
-      background: var(--charcoal);
-      color: var(--white);
-      padding: 1rem 1.5rem;
-      font-size: .9375rem;
-      font-weight: 500;
-      line-height: 1.6;
-      margin-top: 1.25rem;
-    }
-
-    /* Pays for itself */
-    .pays-section {
-      padding-block: 5rem;
-      background: var(--cream);
-      border-bottom: 1.5px solid var(--border);
-    }
-    .pays-inner {
-      display: grid;
-      gap: 3rem;
-    }
-    @media (min-width: 860px) {
-      .pays-inner { grid-template-columns: 1fr 1fr; align-items: start; }
-    }
-    .pays-text p {
-      font-size: .9375rem;
-      color: var(--charcoal-60);
-      line-height: 1.75;
-      margin-bottom: 1rem;
-    }
-    .pays-text .quote-block {
-      border-left: 3px solid var(--green);
-      padding: 1rem 1.25rem;
-      background: var(--white);
-      font-style: italic;
-      font-size: .9375rem;
-      color: var(--charcoal-80);
-      line-height: 1.6;
-      margin-top: 1.5rem;
-    }
-    .pays-calc {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .calc-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 1.25rem 1.5rem;
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      gap: 1rem;
-    }
-    .calc-row-label { font-size: .9375rem; color: var(--charcoal-80); }
-    .calc-row-value { font-family: var(--font-serif); font-size: 1.5rem; color: var(--charcoal); white-space: nowrap; }
-    .calc-row-sub { font-size: .75rem; color: var(--charcoal-40); margin-top: .2rem; }
-    .calc-result {
-      background: var(--green);
-      color: var(--white);
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .calc-result-label { font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: .5rem; }
-    .calc-result-value { font-family: var(--font-serif); font-size: 2rem; }
-    .calc-result-sub { font-size: .875rem; color: rgba(255,255,255,.7); margin-top: .25rem; }
-
     /* Social proof */
     .proof-section {
       padding-block: 5rem;
@@ -561,13 +346,6 @@
       color: var(--charcoal-60);
       line-height: 1.6;
       text-align: center;
-    }
-    .proof-placeholder-note {
-      text-align: center;
-      margin-top: 1.5rem;
-      font-size: .8125rem;
-      color: var(--charcoal-40);
-      font-style: italic;
     }
 
     /* FAQ */
@@ -694,7 +472,7 @@
     }
     .footer-bridge-products a:hover { border-color: var(--charcoal); }
 
-    /* Comparison table (same as homepage) */
+    /* Comparison table */
     .comparison-section {
       padding-block: 5rem;
       background: var(--cream);
@@ -1054,7 +832,6 @@
     /* Logo preview */
     .wz-logo-preview {
       margin-top: .75rem;
-      display: none;
       align-items: center;
       gap: .875rem;
     }
@@ -1148,18 +925,6 @@
       cursor: pointer;
       flex-shrink: 0;
     }
-
-    /* Info box */
-    .wz-info-box {
-      background: rgba(45,74,62,.07);
-      border-left: 3px solid var(--green, #2D4A3E);
-      padding: 1rem 1.25rem;
-      font-size: .875rem;
-      color: #1C1C1C;
-      line-height: 1.65;
-      margin-bottom: 1.25rem;
-    }
-    .wz-info-box strong { color: var(--green, #2D4A3E); }
 
     /* Review */
     .wz-review-section { margin-bottom: 1.5rem; }
@@ -1262,7 +1027,6 @@
 
     /* Success screen */
     .wizard-success {
-      display: none;
       padding: 3rem 2rem;
       text-align: center;
     }
@@ -1330,9 +1094,9 @@
         🇦🇺 Australian owned and operated
       </div>
       <h1>A professional website for your business.<br/><span style="color: var(--green-light);">$79 a month. No setup fee.</span></h1>
-      <p class="sub">We build it, we launch it, we keep it running. You focus on the business.<br/>Found on Google. Ready in days. Backed by a 30-day guarantee.</p>
+      <p class="sub">We build it, we launch it, we keep it running. You focus on the business.<br/>See your website before you pay a cent. Found on Google. Ready in days.</p>
       <div class="hero-ctas">
-        <a href="#get-started" class="btn-primary-green">Get Started — $79/month →</a>
+        <a href="#get-started" class="btn-primary-green">Get Started →</a>
         <a href="#how-it-works" class="btn-secondary-link">See how it works ↓</a>
       </div>
       <div class="trust-bar">
@@ -1342,11 +1106,11 @@
         </span>
         <span class="trust-bar-item">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          30-day money-back guarantee
+          See it before you pay
         </span>
         <span class="trust-bar-item">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Cancel anytime
+          30-day money-back guarantee
         </span>
         <span class="trust-bar-item">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1364,37 +1128,27 @@
   </section>
 
   <!-- ─── HOW IT WORKS ─── -->
-  <section class="how-detailed-section" id="how-it-works">
+  <section class="how-simple-section" id="how-it-works">
     <div class="container">
       <span class="section-label-green">How it works</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Three steps. Your part takes about 10 minutes.</h2>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal);">Simple as it gets.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); margin-top: .75rem; max-width: 560px; line-height: 1.7;">Three steps. Your part takes about ten minutes.</p>
 
-      <div class="how-steps">
-        <div class="how-step">
-          <div class="how-step-number">01</div>
-          <div class="how-step-content">
-            <h3>Tell us about your business</h3>
-            <p>Fill in a short form — your business name, your services, your suburb, and how customers should contact you. That's genuinely all we need to get started.</p>
-            <p class="how-step-note">No meetings. No discovery calls. No 40-question brief.</p>
-          </div>
+      <div class="steps-simple">
+        <div class="step-simple">
+          <div class="step-simple-number">01</div>
+          <h3 class="step-simple-title">We build it</h3>
+          <p class="step-simple-desc">We put together a professional website for your business — your name, your services, your phone number, your suburb. Done. You don't lift a finger.</p>
         </div>
-
-        <div class="how-step">
-          <div class="how-step-number">02</div>
-          <div class="how-step-content">
-            <h3>We build your website</h3>
-            <p>Our team puts together a professional, SEO-optimised website for your specific business. Not a generic template — your services, your location, your voice. We'll have a draft ready within a few business days.</p>
-            <p class="how-step-note">You don't touch a thing at this point.</p>
-          </div>
+        <div class="step-simple">
+          <div class="step-simple-number">02</div>
+          <h3 class="step-simple-title">You check it over</h3>
+          <p class="step-simple-desc">We show you the site before it goes live. Like something? Love it. Want us to tweak it? Easy. Don't like it? You owe us nothing. Not a cent.</p>
         </div>
-
-        <div class="how-step">
-          <div class="how-step-number">03</div>
-          <div class="how-step-content">
-            <h3>You check it, we launch it</h3>
-            <p>We send you the preview link. You look it over. Want anything changed? Just tell us and we'll fix it before it goes live. Happy with it? We make it live. Your business starts appearing on Google.</p>
-            <p class="how-step-note">Your total time investment: about 10 minutes.</p>
-          </div>
+        <div class="step-simple">
+          <div class="step-simple-number">03</div>
+          <h3 class="step-simple-title">You start getting found</h3>
+          <p class="step-simple-desc">Once you're happy, we make it live. Your business shows up on Google. Customers start finding you. We handle everything from that point forward.</p>
         </div>
       </div>
     </div>
@@ -1468,11 +1222,6 @@
           <div class="tile-label">30-Day Guarantee</div>
           <div class="tile-desc">Not happy? Full refund. No questions asked.</div>
         </div>
-        <div class="included-tile">
-          <div class="tile-icon">🔓</div>
-          <div class="tile-label">Cancel Anytime</div>
-          <div class="tile-desc">One email. No exit fees. Your domain comes with you.</div>
-        </div>
       </div>
     </div>
   </section>
@@ -1490,13 +1239,13 @@
             <span class="pricing-amount">$79</span>
             <span class="pricing-period">/month</span>
           </div>
-          <p class="pricing-sub">$0 setup fee · Cancel anytime · 30-day money-back guarantee</p>
+          <p class="pricing-sub">See your website before you pay · $0 setup fee · Cancel anytime</p>
         </div>
         <div class="pricing-card-body">
-          <p style="font-size: .9375rem; color: var(--charcoal-60); line-height: 1.7; margin-bottom: 1.5rem;">Everything in the section above — included. No add-ons, no hidden charges.</p>
+          <p style="font-size: .9375rem; color: var(--charcoal-60); line-height: 1.7; margin-bottom: 1.5rem;">We build your website and send you a preview link. You only pay when you're completely happy with it. No risk — not a cent until you give us the go-ahead.</p>
           <div class="pricing-cta">
-            <a href="#get-started" class="btn-pricing">Get Started — $79/month →</a>
-            <p class="pricing-fine-print">No lock-in. Cancel with one email. Your domain is always yours.</p>
+            <a href="#get-started" class="btn-pricing">Get Started →</a>
+            <p class="pricing-fine-print">We'll show you your site first — only subscribe when you're ready. Cancel anytime with one email.</p>
           </div>
         </div>
       </div>
@@ -1651,13 +1400,13 @@
     <div class="container" style="max-width:640px; display:flex; flex-direction:column; align-items:center;">
       <span class="section-label-green">Get started</span>
       <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal); margin-bottom:.875rem;">Get your website. Takes 5 minutes.</h2>
-      <p style="font-size: .9375rem; color: var(--charcoal-60); line-height: 1.7; max-width:480px; margin-bottom: 2rem;">Tell us about your business and we'll build a preview site — before you pay a cent. $79/month. No setup fee.</p>
-      <a href="#get-started" class="btn-primary-green" style="font-size:1.0625rem; padding:1rem 2.25rem;">Get Started — $79/month →</a>
-      <p style="font-size:.8125rem; color:var(--charcoal-40); margin-top:1.125rem;">No lock-in &nbsp;·&nbsp; No payment now &nbsp;·&nbsp; 30-day money-back guarantee</p>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); line-height: 1.7; max-width:480px; margin-bottom: 2rem;">Tell us about your business and we'll build a preview site — before you pay a cent. Only subscribe when you love what you see.</p>
+      <a href="#get-started" class="btn-primary-green" style="font-size:1.0625rem; padding:1rem 2.25rem;">Get Started →</a>
+      <p style="font-size:.8125rem; color:var(--charcoal-40); margin-top:1.125rem;">No payment now &nbsp;·&nbsp; See it before you pay &nbsp;·&nbsp; 30-day money-back guarantee</p>
     </div>
   </section>
 
-    <!-- ─── FINAL CTA ─── -->
+  <!-- ─── FINAL CTA ─── -->
   <section class="final-cta-section">
     <div class="container">
       <h2>Simple as that.</h2>
@@ -1873,6 +1622,13 @@
             <span class="wz-error" id="wz-err-industry">Please select your industry</span>
           </div>
 
+          <!-- "Other" text input — hidden until "Other" is selected -->
+          <div class="wz-group" id="wz-other-industry-group" style="display:none;">
+            <label class="wz-label" for="wz-other-industry">Please describe your business type <span class="wz-req">*</span></label>
+            <input class="wz-input" id="wz-other-industry" type="text" placeholder="e.g. Florist, Accountant, Pet groomer…" />
+            <span class="wz-error" id="wz-err-other-industry">Please describe your business type</span>
+          </div>
+
           <div class="wz-group">
             <label class="wz-label" for="wz-about">About your business <span class="wz-req">*</span></label>
             <textarea class="wz-textarea" id="wz-about" rows="5" placeholder="What you do, who your ideal clients are, what makes you different from the competition…"></textarea>
@@ -1905,7 +1661,8 @@
               <div class="wz-upload-label">Upload your logo</div>
               <div class="wz-upload-hint">PNG, SVG, or JPG &nbsp;·&nbsp; Transparent background preferred</div>
             </div>
-            <div class="wz-logo-preview" id="wz-logo-preview">
+            <!-- Logo preview — hidden until a file is selected -->
+            <div class="wz-logo-preview" id="wz-logo-preview" style="display:none;">
               <img id="wz-logo-img" src="" alt="Logo preview" />
               <div class="wz-logo-preview-meta" id="wz-logo-name"></div>
             </div>
@@ -1915,68 +1672,74 @@
             <label class="wz-label">Colour theme <span class="wz-opt">(choose one that feels right)</span></label>
             <div class="wz-swatches" id="wz-swatches">
 
+              <!-- Warm Earth: rich browns, tans, cream -->
               <div class="wz-swatch" data-theme="Warm Earth">
                 <div class="wz-swatch-check">✓</div>
                 <div class="wz-swatch-palette">
-                  <span style="background:#6B4F3A;"></span>
-                  <span style="background:#9B7B5E;"></span>
-                  <span style="background:#C4A882;"></span>
-                  <span style="background:#F2E8DB;"></span>
+                  <span style="background:#6B4226;"></span>
+                  <span style="background:#B8763A;"></span>
+                  <span style="background:#DEB887;"></span>
+                  <span style="background:#FDF6EC;"></span>
                 </div>
                 <div class="wz-swatch-name">Warm Earth</div>
               </div>
 
+              <!-- Ocean Blue: navy, deep blue, teal, white -->
               <div class="wz-swatch" data-theme="Ocean Blue">
                 <div class="wz-swatch-check">✓</div>
                 <div class="wz-swatch-palette">
-                  <span style="background:#1B4F72;"></span>
-                  <span style="background:#2E86C1;"></span>
-                  <span style="background:#7FB3D3;"></span>
-                  <span style="background:#EBF5FB;"></span>
+                  <span style="background:#1A3A5C;"></span>
+                  <span style="background:#006994;"></span>
+                  <span style="background:#48C9B0;"></span>
+                  <span style="background:#F0F8FF;"></span>
                 </div>
                 <div class="wz-swatch-name">Ocean Blue</div>
               </div>
 
+              <!-- Forest Green: deep green, sage, cream -->
               <div class="wz-swatch" data-theme="Forest Green">
                 <div class="wz-swatch-check">✓</div>
                 <div class="wz-swatch-palette">
-                  <span style="background:#1D4C2F;"></span>
-                  <span style="background:#2D7D46;"></span>
-                  <span style="background:#7DC490;"></span>
-                  <span style="background:#EAFBEA;"></span>
+                  <span style="background:#1C3A2A;"></span>
+                  <span style="background:#4A7C59;"></span>
+                  <span style="background:#9DC4A7;"></span>
+                  <span style="background:#F5F9F6;"></span>
                 </div>
                 <div class="wz-swatch-name">Forest Green</div>
               </div>
 
-              <div class="wz-swatch" data-theme="Modern Minimal">
-                <div class="wz-swatch-check">✓</div>
-                <div class="wz-swatch-palette">
-                  <span style="background:#1C1C1C;"></span>
-                  <span style="background:#6B6B6B;"></span>
-                  <span style="background:#C8C8C8;"></span>
-                  <span style="background:#F8F8F8;"></span>
-                </div>
-                <div class="wz-swatch-name">Modern Minimal</div>
-              </div>
-
+              <!-- Sunset Gold: burnt sienna, amber, coral, warm white -->
               <div class="wz-swatch" data-theme="Sunset Gold">
                 <div class="wz-swatch-check">✓</div>
                 <div class="wz-swatch-palette">
-                  <span style="background:#A0522D;"></span>
-                  <span style="background:#D4822A;"></span>
-                  <span style="background:#F0B429;"></span>
-                  <span style="background:#FFF8E1;"></span>
+                  <span style="background:#C44B1C;"></span>
+                  <span style="background:#E8853A;"></span>
+                  <span style="background:#F5C842;"></span>
+                  <span style="background:#FFF8E7;"></span>
                 </div>
                 <div class="wz-swatch-name">Sunset Gold</div>
               </div>
 
+              <!-- Berry & Bloom: burgundy, rose, blush, cream -->
+              <div class="wz-swatch" data-theme="Berry &amp; Bloom">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#7B1D3E;"></span>
+                  <span style="background:#C4547A;"></span>
+                  <span style="background:#EFA8C0;"></span>
+                  <span style="background:#FFF0F3;"></span>
+                </div>
+                <div class="wz-swatch-name">Berry &amp; Bloom</div>
+              </div>
+
+              <!-- Classic Charcoal: charcoal, slate, crisp white, blue accent -->
               <div class="wz-swatch" data-theme="Classic Charcoal">
                 <div class="wz-swatch-check">✓</div>
                 <div class="wz-swatch-palette">
-                  <span style="background:#1A1A2E;"></span>
-                  <span style="background:#16213E;"></span>
-                  <span style="background:#4A4A5A;"></span>
-                  <span style="background:#F0F0F0;"></span>
+                  <span style="background:#2B2B2B;"></span>
+                  <span style="background:#5A6A7A;"></span>
+                  <span style="background:#F5F5F5;"></span>
+                  <span style="background:#2E86AB;"></span>
                 </div>
                 <div class="wz-swatch-name">Classic Charcoal</div>
               </div>
@@ -1993,7 +1756,7 @@
         <!-- ── Step 5: Products & Recommendations ── -->
         <div class="wizard-step-panel" id="wz-step-5">
           <h2 class="wizard-step-heading">Products &amp; recommendations</h2>
-          <p class="wizard-step-sub">Some businesses recommend products as part of their service. If that's you, we can help you earn from it.</p>
+          <p class="wizard-step-sub">Some businesses recommend products as part of their service. This helps us design the right site for you.</p>
 
           <div class="wz-group">
             <label class="wz-label">Do you recommend products to your clients?</label>
@@ -2003,24 +1766,11 @@
             </div>
           </div>
 
+          <!-- Only shown when "Yes" is selected -->
           <div id="wz-products-details" style="display:none;">
-            <div class="wz-info-box">
-              <strong>Pine Beach × CollabCart</strong><br />
-              Pine Beach partners with CollabCart to help businesses earn commissions from the products they already recommend to clients. We'll share more details once your website is live — no obligation to join.
-            </div>
             <div class="wz-group">
               <label class="wz-label" for="wz-products-desc">Tell us about the products you recommend</label>
               <textarea class="wz-textarea" id="wz-products-desc" rows="3" placeholder="e.g. Protein supplements, resistance bands, foam rollers, skincare products…"></textarea>
-            </div>
-            <div class="wz-group">
-              <label class="wz-label">What categories? <span class="wz-opt">(tick all that apply)</span></label>
-              <div class="wz-check-group">
-                <label class="wz-check-item"><input type="checkbox" value="Supplements" class="wz-product-cat" /> Supplements</label>
-                <label class="wz-check-item"><input type="checkbox" value="Equipment" class="wz-product-cat" /> Equipment</label>
-                <label class="wz-check-item"><input type="checkbox" value="Books" class="wz-product-cat" /> Books</label>
-                <label class="wz-check-item"><input type="checkbox" value="Skincare" class="wz-product-cat" /> Skincare</label>
-                <label class="wz-check-item"><input type="checkbox" value="Other" class="wz-product-cat" /> Other</label>
-              </div>
             </div>
           </div>
         </div>
@@ -2032,10 +1782,10 @@
           <div id="wz-review-content"></div>
         </div>
 
-        <!-- ── Success screen ── -->
-        <div class="wizard-success" id="wz-success">
+        <!-- ── Success screen — hidden until form is submitted ── -->
+        <div class="wizard-success" id="wz-success" style="display:none;">
           <div class="wz-success-icon">🎉</div>
-          <h2 class="wz-success-h">You're in!</h2>
+          <h2 class="wz-success-h">You're on your way!</h2>
           <p class="wz-success-p">We've got everything we need. Our team will have a preview website ready within a few business days.</p>
           <p class="wz-success-p">We'll send the preview link to <strong id="wz-success-email"></strong> — keep an eye on your inbox.</p>
           <div class="wz-success-badges">
@@ -2049,7 +1799,7 @@
 
       </div><!-- /.wizard-body -->
 
-      <!-- Navigation footer -->
+      <!-- Navigation footer — only Back/Next (Submit on step 6) -->
       <div class="wizard-nav" id="wizard-nav">
         <button class="wz-nav-back" id="wz-back" type="button" disabled>← Back</button>
         <span class="wz-step-counter" id="wz-counter">Step 1 of 6</span>
@@ -2151,7 +1901,7 @@
 
         if (n === TOTAL) {
           buildReview();
-          nextBtn.textContent = 'Get Started — $79/month →';
+          nextBtn.textContent = 'Submit →';
           nextBtn.classList.add('submit-btn');
           nextBtn.dataset.submit = '1';
         } else {
@@ -2200,10 +1950,28 @@
         if (n === 3) {
           requireField('wz-industry', 'wz-err-industry');
           requireField('wz-about', 'wz-err-about');
+          /* If "Other" is selected and visible, also require the text field */
+          var industryVal = document.getElementById('wz-industry').value;
+          var otherGroup = document.getElementById('wz-other-industry-group');
+          if ((industryVal === 'Other' || industryVal === 'Other Health/Wellness') && otherGroup.style.display !== 'none') {
+            requireField('wz-other-industry', 'wz-err-other-industry');
+          }
         }
 
         return ok;
       }
+
+      /* ── Step 3: Industry "Other" reveal ──── */
+      document.getElementById('wz-industry').addEventListener('change', function () {
+        var otherGroup = document.getElementById('wz-other-industry-group');
+        if (this.value === 'Other') {
+          otherGroup.style.display = 'flex';
+          otherGroup.style.flexDirection = 'column';
+        } else {
+          otherGroup.style.display = 'none';
+          document.getElementById('wz-other-industry').value = '';
+        }
+      });
 
       /* ── Step 3: Document upload ─────────── */
       var docsInput = document.getElementById('wz-docs-input');
@@ -2248,9 +2016,10 @@
         logoFile = this.files[0];
         var reader = new FileReader();
         reader.onload = function (e) {
+          var preview = document.getElementById('wz-logo-preview');
           document.getElementById('wz-logo-img').src = e.target.result;
           document.getElementById('wz-logo-name').textContent = logoFile.name;
-          document.getElementById('wz-logo-preview').style.display = 'flex';
+          preview.style.display = 'flex';
         };
         reader.readAsDataURL(logoFile);
       });
@@ -2276,6 +2045,8 @@
         this.classList.add('active-no');
         document.getElementById('wz-products-yes').classList.remove('active-yes');
         document.getElementById('wz-products-details').style.display = 'none';
+        /* Auto-advance to next step */
+        setTimeout(function () { goToStep(step + 1, false); }, 300);
       });
 
       /* ── Step 6: Build review ─────────────── */
@@ -2308,9 +2079,15 @@
             + '</div>';
         }
 
+        /* Build the industry display value including "Other" text if applicable */
+        var industryDisplay = d.industry;
+        if ((d.industry === 'Other' || d.industry === 'Other Health/Wellness') && d.otherIndustry) {
+          industryDisplay = d.otherIndustry;
+        }
+
         var aboutText = d.about.length > 220 ? d.about.substring(0, 220) + '…' : d.about;
         html += '<div class="wz-review-section"><div class="wz-review-heading">Your Business</div>'
-          + row('Industry', d.industry)
+          + row('Industry', industryDisplay)
           + row('About', aboutText)
           + (docFiles.length ? row('Documents', docFiles.map(function(f){return f.name;}).join(', ')) : '')
           + '</div>';
@@ -2324,10 +2101,9 @@
         html += '<div class="wz-review-section"><div class="wz-review-heading">Products &amp; Recommendations</div>'
           + row('Recommends products', recommendsProducts === null ? 'Not answered' : (recommendsProducts ? 'Yes' : 'No'))
           + (recommendsProducts ? row('Description', d.productsDesc) : '')
-          + (recommendsProducts && d.productCategories.length ? row('Categories', d.productCategories.join(', ')) : '')
           + '</div>';
 
-        html += '<div class="wz-review-reassurance"><strong>$79/month — that's it.</strong>'
+        html += '<div class="wz-review-reassurance"><strong>We build your website and show you before you pay.</strong>'
           + '<span>No lock-in &nbsp;·&nbsp; No setup fee &nbsp;·&nbsp; 30-day money-back guarantee</span></div>';
 
         document.getElementById('wz-review-content').innerHTML = html;
@@ -2336,26 +2112,26 @@
       /* ── Collect data ─────────────────────── */
       function collectData() {
         return {
-          businessName:     v('wz-businessName'),
-          contactName:      v('wz-contactName'),
-          email:            v('wz-email'),
-          phone:            v('wz-phone'),
-          suburb:           v('wz-suburb'),
-          website:          v('wz-website'),
-          facebook:         v('wz-facebook'),
-          instagram:        v('wz-instagram'),
-          linkedin:         v('wz-linkedin'),
-          googlebiz:        v('wz-googlebiz'),
-          othersocial:      v('wz-othersocial'),
-          industry:         v('wz-industry'),
-          about:            v('wz-about'),
-          documents:        docFiles.map(function(f){return f.name;}),
-          logo:             logoFile ? logoFile.name : null,
-          colorTheme:       selectedTheme,
-          brandprefs:       v('wz-brandprefs'),
+          businessName:       v('wz-businessName'),
+          contactName:        v('wz-contactName'),
+          email:              v('wz-email'),
+          phone:              v('wz-phone'),
+          suburb:             v('wz-suburb'),
+          website:            v('wz-website'),
+          facebook:           v('wz-facebook'),
+          instagram:          v('wz-instagram'),
+          linkedin:           v('wz-linkedin'),
+          googlebiz:          v('wz-googlebiz'),
+          othersocial:        v('wz-othersocial'),
+          industry:           v('wz-industry'),
+          otherIndustry:      v('wz-other-industry'),
+          about:              v('wz-about'),
+          documents:          docFiles.map(function(f){return f.name;}),
+          logo:               logoFile ? logoFile.name : null,
+          colorTheme:         selectedTheme,
+          brandprefs:         v('wz-brandprefs'),
           recommendsProducts: recommendsProducts,
-          productsDesc:     v('wz-products-desc'),
-          productCategories: Array.from(document.querySelectorAll('.wz-product-cat:checked')).map(function(el){return el.value;})
+          productsDesc:       v('wz-products-desc')
         };
       }
 
@@ -2373,7 +2149,9 @@
         document.getElementById('wizard-nav').style.display = 'none';
         document.querySelectorAll('.wizard-step-panel').forEach(function (p) { p.classList.remove('active'); });
         var success = document.getElementById('wz-success');
-        success.classList.add('active');
+        success.style.display = 'flex';
+        success.style.flexDirection = 'column';
+        success.style.alignItems = 'center';
         document.getElementById('wz-success-email').textContent = data.email;
         document.getElementById('wizard-body').scrollTop = 0;
       }
@@ -2381,21 +2159,24 @@
       /* ── Reset ────────────────────────────── */
       function resetForm() {
         document.getElementById('wizard-nav').style.display = '';
-        document.getElementById('wz-success').classList.remove('active');
+        /* Hide success */
+        var success = document.getElementById('wz-success');
+        success.style.display = 'none';
 
         var fields = ['wz-businessName','wz-contactName','wz-email','wz-phone','wz-suburb',
           'wz-website','wz-facebook','wz-instagram','wz-linkedin','wz-googlebiz','wz-othersocial',
-          'wz-industry','wz-about','wz-products-desc','wz-brandprefs'];
+          'wz-industry','wz-about','wz-products-desc','wz-brandprefs','wz-other-industry'];
         fields.forEach(function (id) {
           var el = document.getElementById(id);
           if (el) { el.value = ''; el.classList.remove('error'); }
         });
 
-        document.querySelectorAll('.wz-product-cat').forEach(function (el) { el.checked = false; });
+        document.getElementById('wz-other-industry-group').style.display = 'none';
         document.getElementById('wz-products-details').style.display = 'none';
         document.getElementById('wz-products-yes').classList.remove('active-yes');
         document.getElementById('wz-products-no').classList.remove('active-no');
         document.getElementById('wz-logo-preview').style.display = 'none';
+        document.getElementById('wz-logo-img').src = '';
         document.getElementById('wz-docs-list').innerHTML = '';
         document.querySelectorAll('.wz-swatch').forEach(function (s) { s.classList.remove('selected'); });
         document.querySelectorAll('.wz-error').forEach(function (e) { e.classList.remove('visible'); });
