@@ -171,42 +171,167 @@
       font-style: italic;
     }
 
-    /* Included table */
+    /* Included tiles */
     .included-section {
       padding-block: 5rem;
       background: var(--offwhite);
       border-bottom: 1.5px solid var(--border);
     }
-    .included-table {
-      width: 100%;
-      border-collapse: collapse;
+    .included-tiles {
+      display: grid;
+      gap: 1rem;
       margin-top: 2rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 640px) {
+      .included-tiles { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 1000px) {
+      .included-tiles { grid-template-columns: repeat(4, 1fr); }
+    }
+    .included-tile {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      padding: 1.375rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .tile-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    .tile-label {
       font-size: .9375rem;
-      border: 1.5px solid var(--border-mid);
+      font-weight: 600;
+      color: var(--charcoal);
     }
-    .included-table thead {
-      background: var(--charcoal);
-      color: var(--white);
+    .tile-desc {
+      font-size: .8125rem;
+      color: var(--charcoal-60);
+      line-height: 1.5;
     }
-    .included-table th {
-      padding: .875rem 1.25rem;
-      text-align: left;
+
+    /* Signup form */
+    .signup-section {
+      padding-block: 5rem;
+      background: var(--offwhite);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .signup-form {
+      max-width: 680px;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .form-row {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 540px) {
+      .form-row-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .375rem;
+    }
+    .form-group label {
       font-size: .8125rem;
       font-weight: 600;
-      letter-spacing: .08em;
+      color: var(--charcoal);
+      letter-spacing: .02em;
+    }
+    .form-group .required { color: var(--green); }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      border: 1.5px solid var(--border-mid);
+      background: var(--white);
+      padding: .75rem 1rem;
+      font-size: .9375rem;
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      border-radius: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color var(--transition);
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+    .form-group input::placeholder { color: var(--charcoal-40); }
+    .form-select-wrap {
+      position: relative;
+    }
+    .form-select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--charcoal-40);
+      pointer-events: none;
+    }
+    .form-section-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
       text-transform: uppercase;
+      color: var(--charcoal-40);
+      margin-bottom: -.25rem;
     }
-    .included-table td {
-      padding: .875rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-      line-height: 1.55;
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: background var(--transition);
+      align-self: flex-start;
     }
-    .included-table tr:last-child td { border-bottom: none; }
-    .included-table tr:nth-child(even) td { background: var(--white); }
-    .included-table td:first-child { font-weight: 500; color: var(--charcoal); }
-    .included-table td:last-child { color: var(--charcoal-60); }
-    .tick-green { color: var(--green); font-weight: 700; }
+    .btn-submit:hover { background: var(--charcoal-80); }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+    .form-fine-print {
+      font-size: .8125rem;
+      color: var(--charcoal-40);
+      line-height: 1.6;
+    }
+    .form-error {
+      font-size: .8125rem;
+      color: #c0392b;
+      display: none;
+    }
+    .form-error.visible { display: block; }
+    .signup-thanks {
+      max-width: 560px;
+      padding: 2.5rem;
+      background: var(--white);
+      border: 2px solid var(--green);
+      margin-top: 2rem;
+    }
+    .signup-thanks h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--charcoal);
+      margin-bottom: .75rem;
+    }
+    .signup-thanks p {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.7;
+    }
 
     /* Pricing */
     .pricing-section {
@@ -716,76 +841,75 @@
   <section class="included-section">
     <div class="container">
       <span class="section-label-green">What's included</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Everything you need. Nothing you have to manage.</h2>
-      <p style="font-size: .9375rem; color: var(--charcoal-60); margin-top: .75rem; max-width: 560px; line-height: 1.7;">This is what $79 a month actually gets you — no add-ons, no surprises.</p>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Everything you need. Nothing to manage.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); margin-top: .75rem; max-width: 560px; line-height: 1.7;">$79 a month. No add-ons. No surprises.</p>
 
-      <div style="overflow-x: auto; margin-top: 2rem;">
-        <table class="included-table">
-          <thead>
-            <tr>
-              <th style="width: 35%;">What's Included</th>
-              <th>Why It Matters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="tick-green">✓</span> Professional 5-page website</td>
-              <td>Built for your business, not a template you fill in yourself</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Your own .com.au domain</td>
-              <td>Yours forever — we transfer it to you on request, no conditions</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Fast Australian hosting</td>
-              <td>Local servers, fast load times, 99.9% uptime</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> SSL security certificate</td>
-              <td>The padlock in the browser. Google requires it. Your customers trust it.</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> SEO setup from day one</td>
-              <td>Your business name + suburb + service, set up to show in Google results</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Mobile-first design</td>
-              <td>Over 70% of your customers are searching on their phones</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Click-to-call button</td>
-              <td>One tap and they're calling you — the most important feature for local business</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Google Maps embed</td>
-              <td>Directions to your business, right on your site</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Google Business Profile link</td>
-              <td>Connecting your site improves your Google Maps ranking immediately</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Contact form</td>
-              <td>Enquiries land directly in your inbox</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Up to 2 updates per month</td>
-              <td>Changed your hours? New service? Just message us. Done in 48 hours.</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Email support</td>
-              <td>Real people. Real replies. Business hours, Australian time.</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> 30-day money-back guarantee</td>
-              <td>If you're not happy for any reason, full refund. No questions.</td>
-            </tr>
-            <tr>
-              <td><span class="tick-green">✓</span> Cancel anytime</td>
-              <td>One email. No exit fees. We'll transfer your domain and wish you well.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="included-tiles">
+        <div class="included-tile">
+          <div class="tile-icon">🌐</div>
+          <div class="tile-label">5-Page Website</div>
+          <div class="tile-desc">Built for your business — not a template you fill in yourself.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">🏷️</div>
+          <div class="tile-label">.com.au Domain</div>
+          <div class="tile-desc">Yours forever. We transfer it to you on request, no conditions.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">🚀</div>
+          <div class="tile-label">Australian Hosting + SSL</div>
+          <div class="tile-desc">Local servers, fast load times, 99.9% uptime.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">🔍</div>
+          <div class="tile-label">SEO from Day One</div>
+          <div class="tile-desc">Your suburb, your services — structured so Google finds you.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">📱</div>
+          <div class="tile-label">Mobile-First Design</div>
+          <div class="tile-desc">Over 70% of your customers search on their phones.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">📞</div>
+          <div class="tile-label">Click-to-Call</div>
+          <div class="tile-desc">One tap and they're calling you. On every single page.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">🗺️</div>
+          <div class="tile-label">Google Maps Embed</div>
+          <div class="tile-desc">Directions to your business, right on your site.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">📊</div>
+          <div class="tile-label">Google Business Link</div>
+          <div class="tile-desc">Connecting your site improves your Google Maps ranking.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">📋</div>
+          <div class="tile-label">Contact Form</div>
+          <div class="tile-desc">Enquiries land directly in your inbox.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">✏️</div>
+          <div class="tile-label">2 Updates / Month</div>
+          <div class="tile-desc">New hours, new service — just message us. Done in 48hrs.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">💬</div>
+          <div class="tile-label">Australian Support</div>
+          <div class="tile-desc">Real people. Real replies. Business hours, your timezone.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">🛡️</div>
+          <div class="tile-label">30-Day Guarantee</div>
+          <div class="tile-desc">Not happy? Full refund. No questions asked.</div>
+        </div>
+        <div class="included-tile">
+          <div class="tile-icon">🔓</div>
+          <div class="tile-label">Cancel Anytime</div>
+          <div class="tile-desc">One email. No exit fees. Your domain comes with you.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -806,159 +930,12 @@
           <p class="pricing-sub">$0 setup fee · Cancel anytime · 30-day money-back guarantee</p>
         </div>
         <div class="pricing-card-body">
-          <div class="pricing-features">
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> 5-page professional website</div>
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Your own .com.au domain</div>
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Australian hosting + SSL</div>
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> SEO optimisation from day one</div>
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Mobile-first design</div>
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Click-to-call + contact form</div>
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Google Maps embed</div>
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Google Business Profile connection</div>
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Up to 2 updates per month</div>
-            <div class="pricing-feature"><span class="pricing-feature-check">✓</span> Email support</div>
-          </div>
-          <div class="pricing-cta" id="get-started">
-            <a href="mailto:support@pinebeach.com.au?subject=Get My Website" class="btn-pricing">Get Started — $79/month →</a>
+          <p style="font-size: .9375rem; color: var(--charcoal-60); line-height: 1.7; margin-bottom: 1.5rem;">Everything in the section above — included. No add-ons, no hidden charges.</p>
+          <div class="pricing-cta">
+            <a href="#get-started" class="btn-pricing">Get Started — $79/month →</a>
             <p class="pricing-fine-print">No lock-in. Cancel with one email. Your domain is always yours.</p>
           </div>
         </div>
-      </div>
-
-      <div class="hormozi-comparison">
-        <h3>What you'd pay if you did it yourself:</h3>
-        <p><strong>Freelancer:</strong> $2,000–$5,000 upfront + $80–$150/hour every time you want a change</p>
-        <p><strong>Agency:</strong> $5,000–$15,000 upfront + monthly retainer</p>
-        <p><strong>Wix or Squarespace:</strong> $30–$50/month AND you build it yourself</p>
-        <div class="hormozi-highlight">
-          <strong>Pine Beach: $79/month. We do everything.</strong><br/>
-          One new customer from Google pays for over a year of this service.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── PAYS FOR ITSELF ─── -->
-  <section class="pays-section">
-    <div class="container">
-      <span class="section-label-green">The return on investment</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal); margin-bottom: 2.5rem;">The maths on $79 a month.</h2>
-      <div class="pays-inner">
-        <div class="pays-text">
-          <p>Think about what you charge for an hour of your time, or a single job.</p>
-          <p>Most of our customers tell us they get their first enquiry from Google within the first few weeks. After that, it's pure profit.</p>
-          <p>A website that finds you one new customer a month earns back its cost many times over. It's not a marketing cost. It's infrastructure.</p>
-          <div class="quote-block">
-            "Less than one consult. A new SEO-optimised website will generate much more business. It pays for itself."
-          </div>
-        </div>
-        <div class="pays-calc">
-          <div class="calc-row">
-            <div>
-              <div class="calc-row-label">Physio initial consult</div>
-              <div class="calc-row-sub">= 2+ months of Pine Beach</div>
-            </div>
-            <div class="calc-row-value">~$180</div>
-          </div>
-          <div class="calc-row">
-            <div>
-              <div class="calc-row-label">Tradie call-out</div>
-              <div class="calc-row-sub">= 3+ months of Pine Beach</div>
-            </div>
-            <div class="calc-row-value">~$250</div>
-          </div>
-          <div class="calc-row">
-            <div>
-              <div class="calc-row-label">Personal trainer (new client)</div>
-              <div class="calc-row-sub">= the whole year of Pine Beach</div>
-            </div>
-            <div class="calc-row-value">~$1,200 <span style="font-size: .875rem; font-family: var(--font-sans); color: var(--charcoal-60);">/ yr</span></div>
-          </div>
-          <div class="calc-result">
-            <div class="calc-result-label">Pine Beach monthly</div>
-            <div class="calc-result-value">$79 / mo</div>
-            <div class="calc-result-sub">One new customer pays for it. The rest is profit.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── COMPARISON ─── -->
-  <section class="comparison-section">
-    <div class="container">
-      <span class="section-label-green">How we compare</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal); margin-bottom: .5rem;">See how the options stack up.</h2>
-      <div class="comparison-table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th class="highlight-col">Pine Beach</th>
-              <th>Freelancer</th>
-              <th>Agency</th>
-              <th>DIY (Wix / Squarespace)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Monthly cost</strong></td>
-              <td class="highlight-col">$79 / mo</td>
-              <td>Hourly for every change</td>
-              <td>Retainer</td>
-              <td>$30–$50 / mo</td>
-            </tr>
-            <tr>
-              <td><strong>Setup cost</strong></td>
-              <td class="highlight-col">$0</td>
-              <td>$2,000–$5,000</td>
-              <td>$5,000–$15,000</td>
-              <td>$0 + your time</td>
-            </tr>
-            <tr>
-              <td><strong>Time to launch</strong></td>
-              <td class="highlight-col">Days</td>
-              <td>4–12 weeks</td>
-              <td>3–6 months</td>
-              <td>You decide</td>
-            </tr>
-            <tr>
-              <td><strong>Effort from you</strong></td>
-              <td class="highlight-col">~10 minutes</td>
-              <td>Hours of back-and-forth</td>
-              <td>Meetings, briefs, reviews</td>
-              <td>You build the whole thing</td>
-            </tr>
-            <tr>
-              <td><strong>Ongoing updates</strong></td>
-              <td class="highlight-col">Just message us</td>
-              <td>Pay each time</td>
-              <td>Expensive</td>
-              <td>Do it yourself</td>
-            </tr>
-            <tr>
-              <td><strong>Google-ready</strong></td>
-              <td class="highlight-col"><span class="tick">✓</span> From day one</td>
-              <td>Depends on freelancer</td>
-              <td>Usually yes</td>
-              <td>Depends on your skill</td>
-            </tr>
-            <tr>
-              <td><strong>Risk</strong></td>
-              <td class="highlight-col">30-day refund</td>
-              <td>Upfront, non-refundable</td>
-              <td>Contracts</td>
-              <td>Your time, non-refundable</td>
-            </tr>
-            <tr>
-              <td><strong>Australian support</strong></td>
-              <td class="highlight-col"><span class="tick">✓</span> Always</td>
-              <td>Maybe</td>
-              <td>Maybe</td>
-              <td><span class="cross">✗</span> US-based</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
@@ -1106,14 +1083,124 @@
     </div>
   </section>
 
+  <!-- ─── SIGNUP FORM ─── -->
+  <section class="signup-section" id="get-started">
+    <div class="container">
+      <span class="section-label-green">Get started</span>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Get your website. Takes 5 minutes.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); max-width: 560px; line-height: 1.7; margin-top: .75rem;">Fill in your details below. We'll build a preview site and send it to you — before you pay a cent.</p>
+
+      <div id="signup-thanks" class="signup-thanks" style="display:none;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🎉</div>
+        <h3>We've got your details!</h3>
+        <p>We'll have a preview website ready for you within a few business days. Keep an eye on your inbox — we'll send you the link as soon as it's ready.</p>
+        <p style="margin-top: .75rem; font-size: .875rem; color: var(--charcoal-40);">Questions in the meantime? Email us at <a href="mailto:support@pinebeach.com.au" style="color: var(--charcoal-60);">support@pinebeach.com.au</a></p>
+      </div>
+
+      <form id="signup-form" class="signup-form" novalidate>
+
+        <div class="form-section-label">Your business</div>
+
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label for="businessName">Business name <span class="required">*</span></label>
+            <input type="text" id="businessName" name="businessName" placeholder="e.g. Sunshine Physio" required />
+          </div>
+          <div class="form-group">
+            <label for="businessType">Business type <span class="required">*</span></label>
+            <div class="form-select-wrap">
+              <select id="businessType" name="businessType" required>
+                <option value="" disabled selected>Select your industry…</option>
+                <option value="Physiotherapy">Physiotherapy</option>
+                <option value="Personal Training">Personal Training</option>
+                <option value="Nutrition">Nutrition &amp; Dietetics</option>
+                <option value="Trades">Trades</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section-label">Your contact details</div>
+
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label for="contactName">Your name <span class="required">*</span></label>
+            <input type="text" id="contactName" name="contactName" placeholder="First and last name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@yourbusiness.com.au" required />
+          </div>
+        </div>
+
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label for="phone">Phone <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="04xx xxx xxx" required />
+          </div>
+          <div class="form-group">
+            <label for="website">Existing website <span style="color: var(--charcoal-40); font-weight: 400;">(optional)</span></label>
+            <input type="url" id="website" name="website" placeholder="https://yoursite.com.au" />
+          </div>
+        </div>
+
+        <div class="form-section-label">Business address</div>
+
+        <div class="form-group">
+          <label for="street">Street address <span class="required">*</span></label>
+          <input type="text" id="street" name="street" placeholder="e.g. 42 Collins Street" required />
+        </div>
+
+        <div class="form-group">
+          <label for="suburb">Suburb <span class="required">*</span></label>
+          <input type="text" id="suburb" name="suburb" placeholder="e.g. Fitzroy" required />
+        </div>
+
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label for="state">State <span class="required">*</span></label>
+            <div class="form-select-wrap">
+              <select id="state" name="state" required>
+                <option value="" disabled selected>Select state…</option>
+                <option>VIC</option>
+                <option>NSW</option>
+                <option>QLD</option>
+                <option>WA</option>
+                <option>SA</option>
+                <option>TAS</option>
+                <option>ACT</option>
+                <option>NT</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="postcode">Postcode <span class="required">*</span></label>
+            <input type="text" id="postcode" name="postcode" placeholder="e.g. 3000" maxlength="4" required />
+          </div>
+        </div>
+
+        <div id="form-error" class="form-error" role="alert"></div>
+
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+          <button type="submit" class="btn-submit" id="form-submit">
+            Send My Details →
+          </button>
+          <p class="form-fine-print">No lock-in · No payment now · 30-day money-back guarantee</p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
   <!-- ─── FINAL CTA ─── -->
   <section class="final-cta-section">
     <div class="container">
-      <h2>Ready to get your business found?</h2>
-      <p>Get started today. Fill in a short form about your business, and we'll have a preview website ready for you to look at — before you pay anything.</p>
+      <h2>Simple as that.</h2>
+      <p>Tell us about your business. We'll build a preview. You check it over. Go live when you're happy.</p>
       <div class="final-cta-price">$79/month · $0 setup · 30-day guarantee · Australian owned</div>
       <div class="final-cta-buttons">
-        <a href="mailto:support@pinebeach.com.au?subject=Get My Website" class="btn-cta-white">Get Started →</a>
+        <a href="#get-started" class="btn-cta-white">Get Started →</a>
         <a href="mailto:support@pinebeach.com.au" class="btn-cta-outline-white">Talk to a real person →</a>
       </div>
       <p class="final-cta-reassurance">No lock-in · Cancel anytime · 30-day money-back guarantee · Australian support</p>
@@ -1176,18 +1263,76 @@
       btn.addEventListener('click', () => {
         const item = btn.closest('.faq-item');
         const isOpen = item.classList.contains('open');
-        // Close all
         document.querySelectorAll('.faq-item').forEach(i => {
           i.classList.remove('open');
           i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
         });
-        // Open clicked if it was closed
         if (!isOpen) {
           item.classList.add('open');
           btn.setAttribute('aria-expanded', 'true');
         }
       });
     });
+
+    // Signup form
+    const form = document.getElementById('signup-form');
+    const errorEl = document.getElementById('form-error');
+    const submitBtn = document.getElementById('form-submit');
+    const thanksEl = document.getElementById('signup-thanks');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorEl.textContent = '';
+        errorEl.classList.remove('visible');
+
+        const data = {
+          businessName: form.businessName.value.trim(),
+          businessType: form.businessType.value,
+          contactName: form.contactName.value.trim(),
+          email: form.email.value.trim(),
+          phone: form.phone.value.trim(),
+          website: form.website.value.trim(),
+          street: form.street.value.trim(),
+          suburb: form.suburb.value.trim(),
+          state: form.state.value,
+          postcode: form.postcode.value.trim(),
+        };
+
+        const required = ['businessName','businessType','contactName','email','phone','street','suburb','state','postcode'];
+        const missing = required.filter(f => !data[f]);
+        if (missing.length) {
+          errorEl.textContent = 'Please fill in all required fields before submitting.';
+          errorEl.classList.add('visible');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        try {
+          const res = await fetch('/api/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const json = await res.json();
+
+          if (res.ok && json.success) {
+            form.style.display = 'none';
+            thanksEl.style.display = 'block';
+            thanksEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            throw new Error(json.error || 'Something went wrong. Please try again.');
+          }
+        } catch (err) {
+          errorEl.textContent = err.message || 'Something went wrong. Please try again or email us directly.';
+          errorEl.classList.add('visible');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send My Details →';
+        }
+      });
+    }
   </script>
 </body>
 </html>

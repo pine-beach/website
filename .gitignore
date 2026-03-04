@@ -1,0 +1,11 @@
+# Environment variables — never commit these
+.env
+.env.local
+.env.production
+.env*.local
+
+# Vercel
+.vercel/
+
+# Node
+node_modules/

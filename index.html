@@ -23,6 +23,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
       gap: .75rem 1.5rem;
       margin-top: 1.5rem;
       font-size: .875rem;
@@ -43,6 +44,8 @@
     }
     .hero-home-inner {
       max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
     }
     .hero-eyebrow {
       display: inline-flex;
@@ -67,13 +70,14 @@
       color: var(--charcoal-60);
       line-height: 1.65;
       max-width: 600px;
-      margin-bottom: 2rem;
+      margin: 0 auto 2rem;
     }
     .hero-ctas {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       align-items: center;
+      justify-content: center;
     }
 
     /* Btn variants */
@@ -254,42 +258,39 @@
       background: var(--offwhite);
       border-bottom: 1.5px solid var(--border);
     }
-    .value-grid {
+    .value-tiles {
       display: grid;
-      gap: .875rem;
+      gap: 1rem;
       margin-top: 2rem;
+      grid-template-columns: repeat(2, 1fr);
     }
     @media (min-width: 640px) {
-      .value-grid { grid-template-columns: 1fr 1fr; }
+      .value-tiles { grid-template-columns: repeat(3, 1fr); }
     }
-    .value-item {
-      display: flex;
-      align-items: flex-start;
-      gap: .875rem;
-      padding: 1.125rem 1.25rem;
+    @media (min-width: 1000px) {
+      .value-tiles { grid-template-columns: repeat(4, 1fr); }
+    }
+    .value-tile {
       background: var(--white);
       border: 1.5px solid var(--border);
+      padding: 1.375rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
     }
-    .value-check {
-      color: var(--green);
-      font-size: 1.125rem;
+    .value-tile-icon {
+      font-size: 1.5rem;
       line-height: 1;
-      flex-shrink: 0;
-      margin-top: .1em;
     }
-    .value-text {
+    .value-tile-label {
       font-size: .9375rem;
-      color: var(--charcoal-80);
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .value-tile-desc {
+      font-size: .8125rem;
+      color: var(--charcoal-60);
       line-height: 1.5;
-    }
-    .value-comparison {
-      margin-top: 2rem;
-      padding: 1.25rem 1.5rem;
-      background: var(--charcoal);
-      color: var(--white);
-      font-size: .9375rem;
-      line-height: 1.6;
-      border-left: 4px solid var(--amber);
     }
 
     /* Who we work with */
@@ -603,9 +604,9 @@
         <div class="hook-text">
           <span class="section-label-green">Why Pine Beach</span>
           <h2>Less than one consult.<br/>More business every month.</h2>
-          <p>Here's something most small business owners don't realise: a freelance web designer charges $2,000 to $5,000 upfront and hands you something static that nobody ever touches again. An agency charges three times that. And Wix means spending your evenings doing it yourself.</p>
-          <p>Pine Beach is different. We build your website, we keep it running, and we handle any updates — all for $79 a month. No setup fee. No lock-in. No jargon.</p>
-          <p>A single new client from Google pays for the year. Most of our customers get their first enquiry within weeks.</p>
+          <p>Most small business owners either spend thousands on a freelancer who disappears after launch, or spend their evenings fighting with Wix. There's a better way.</p>
+          <p>We build your website, keep it running, and handle updates — all for $79 a month. No setup fee. No lock-in. No jargon.</p>
+          <p>A single new client from Google pays for the year. Most customers get their first enquiry within weeks.</p>
           <div class="hook-callout">
             <strong>It pays for itself. Usually pretty quickly.</strong>
           </div>
@@ -701,57 +702,74 @@
   <section class="value-section">
     <div class="container">
       <span class="section-label-green">What's included</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal);">$79 a month. Here's what that gets you.</h2>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--charcoal);">$79 a month. Here's what you get.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); margin-top: .5rem; max-width: 540px; line-height: 1.7;">No add-ons. No surprises. Everything your business needs to get found online.</p>
 
-      <div class="value-grid">
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">A professional website that looks the part</span>
+      <div class="value-tiles">
+        <div class="value-tile">
+          <div class="value-tile-icon">🌐</div>
+          <div class="value-tile-label">5-Page Website</div>
+          <div class="value-tile-desc">Built for your business — not a template you fill in yourself.</div>
         </div>
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">Your own .com.au domain — it's yours forever</span>
+        <div class="value-tile">
+          <div class="value-tile-icon">🏷️</div>
+          <div class="value-tile-label">.com.au Domain</div>
+          <div class="value-tile-desc">Yours forever. We transfer it to you on request, no conditions.</div>
         </div>
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">Fast Australian hosting — never goes down</span>
+        <div class="value-tile">
+          <div class="value-tile-icon">🚀</div>
+          <div class="value-tile-label">Australian Hosting + SSL</div>
+          <div class="value-tile-desc">Local servers, fast load times, 99.9% uptime.</div>
         </div>
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">Found and indexed by Google from day one</span>
+        <div class="value-tile">
+          <div class="value-tile-icon">🔍</div>
+          <div class="value-tile-label">SEO from Day One</div>
+          <div class="value-tile-desc">Your suburb, your services — structured so Google finds you.</div>
         </div>
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">Looks perfect on mobile — because that's how they're searching</span>
+        <div class="value-tile">
+          <div class="value-tile-icon">📱</div>
+          <div class="value-tile-label">Mobile-First Design</div>
+          <div class="value-tile-desc">Over 70% of your customers search on their phones.</div>
         </div>
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">One tap to call you — built into every page</span>
+        <div class="value-tile">
+          <div class="value-tile-icon">📞</div>
+          <div class="value-tile-label">Click-to-Call</div>
+          <div class="value-tile-desc">One tap and they're calling you. On every page.</div>
         </div>
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">Directions to your business, embedded on the site</span>
+        <div class="value-tile">
+          <div class="value-tile-icon">🗺️</div>
+          <div class="value-tile-label">Google Maps Embed</div>
+          <div class="value-tile-desc">Directions to your business, right on your site.</div>
         </div>
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">Regular updates — just send us a message</span>
+        <div class="value-tile">
+          <div class="value-tile-icon">✏️</div>
+          <div class="value-tile-label">2 Updates / Month</div>
+          <div class="value-tile-desc">New hours, new service — just message us. Done in 48hrs.</div>
         </div>
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">30-day money-back guarantee</span>
+        <div class="value-tile">
+          <div class="value-tile-icon">💬</div>
+          <div class="value-tile-label">Australian Support</div>
+          <div class="value-tile-desc">Real people. Real replies. Business hours, your timezone.</div>
         </div>
-        <div class="value-item">
-          <span class="value-check">✓</span>
-          <span class="value-text">Cancel anytime, no questions asked</span>
+        <div class="value-tile">
+          <div class="value-tile-icon">🛡️</div>
+          <div class="value-tile-label">30-Day Guarantee</div>
+          <div class="value-tile-desc">Not happy? Full refund. No questions asked.</div>
+        </div>
+        <div class="value-tile">
+          <div class="value-tile-icon">🔓</div>
+          <div class="value-tile-label">Cancel Anytime</div>
+          <div class="value-tile-desc">One email. No exit fees. Your domain comes with you.</div>
+        </div>
+        <div class="value-tile">
+          <div class="value-tile-icon">📋</div>
+          <div class="value-tile-label">Contact Form</div>
+          <div class="value-tile-desc">Enquiries land straight in your inbox.</div>
         </div>
       </div>
 
-      <div class="value-comparison">
-        A freelancer charges $2,000+ upfront and disappears. We charge $79 a month and we're here every month.
-      </div>
-
-      <div style="margin-top: 1.5rem;">
-        <a href="/websites#pricing" style="display: inline-flex; align-items: center; gap: .375rem; font-size: .9375rem; font-weight: 500; color: var(--green); border-bottom: 1px solid var(--green);">See full pricing and what's included →</a>
+      <div style="margin-top: 2rem; text-align: center;">
+        <a href="/websites#get-started" style="display: inline-flex; align-items: center; gap: .375rem; font-size: .9375rem; font-weight: 600; color: var(--green); border-bottom: 1px solid var(--green);">Get started — $79 a month →</a>
       </div>
     </div>
   </section>
