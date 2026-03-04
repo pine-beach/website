@@ -382,7 +382,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   line-height: 1.1;
   color: var(--charcoal);
   letter-spacing: -.01em;
-  max-width: 18ch;
   margin-inline: auto;
   text-align: center;
 }
@@ -403,10 +402,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 .hero-ctas {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: .75rem;
-  width: 100%;
-  max-width: 340px;
+  width: auto;
   margin-top: .5rem;
 }
 
