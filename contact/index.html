@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Pine Beach — We'd Love to Hear From You</title>
+  <meta name="description" content="Got a question about getting your business online? We'd love to chat. Reach out to the Pine Beach team — we typically respond within 24 hours." />
+  <meta property="og:title" content="Contact Pine Beach — We'd Love to Hear From You" />
+  <meta property="og:description" content="Got a question about getting your business online? We'd love to chat. Reach out to the Pine Beach team — we typically respond within 24 hours." />
+  <meta property="og:image" content="../logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    /* ── Contact page styles ── */
+
+    .section-label-green {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+
+    /* Nav CTA */
+    .nav-cta-website {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      background: var(--green);
+      color: var(--white) !important;
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: .5rem 1.125rem;
+      white-space: nowrap;
+    }
+    .nav-cta-website:hover { background: var(--green-dark); }
+
+    /* Active nav */
+    .nav-link-active {
+      color: var(--charcoal) !important;
+      font-weight: 600;
+    }
+
+    /* Hero */
+    .contact-hero {
+      padding-block: 7rem 5rem;
+      background: var(--offwhite);
+      border-bottom: 1.5px solid var(--border);
+      text-align: center;
+    }
+    .contact-hero .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .contact-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-block: 1rem 1.25rem;
+    }
+    .contact-hero .sub {
+      font-size: clamp(.9375rem, 2vw, 1.125rem);
+      color: var(--charcoal-60);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* Contact layout */
+    .contact-section {
+      padding-block: 5rem;
+      background: var(--white);
+    }
+    .contact-layout {
+      display: grid;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    @media (min-width: 860px) {
+      .contact-layout {
+        grid-template-columns: 1fr 360px;
+        gap: 4rem;
+      }
+    }
+
+    /* Form */
+    .contact-form-wrap h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.375rem, 3vw, 1.875rem);
+      color: var(--charcoal);
+      margin-bottom: 1.75rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      margin-bottom: 1.125rem;
+    }
+    .form-label {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: .02em;
+    }
+    .form-req { color: var(--green); }
+    .form-opt { color: var(--charcoal-40); font-weight: 400; }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      border: 1.5px solid #d0cfc9;
+      background: #fff;
+      padding: .75rem 1rem;
+      font-size: .9375rem;
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+      transition: border-color .15s;
+      box-sizing: border-box;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+    .form-input.error,
+    .form-select.error,
+    .form-textarea.error { border-color: #c0392b; }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: rgba(28,28,28,.32); }
+    .form-textarea { resize: vertical; min-height: 160px; line-height: 1.6; }
+    .form-select-wrap { position: relative; }
+    .form-select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(28,28,28,.4);
+      pointer-events: none;
+    }
+    .form-row {
+      display: grid;
+      gap: .875rem;
+    }
+    @media (min-width: 520px) {
+      .form-row-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .form-error-msg {
+      font-size: .8rem;
+      color: #c0392b;
+      display: none;
+      margin-top: .125rem;
+    }
+    .form-error-msg.visible { display: block; }
+
+    /* Submit button */
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--charcoal);
+      color: var(--white);
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      padding: .875rem 2rem;
+      cursor: pointer;
+      transition: background .15s;
+      width: 100%;
+      justify-content: center;
+      margin-top: .5rem;
+    }
+    .btn-submit:hover { background: var(--charcoal-80); }
+    .btn-submit:disabled { opacity: .6; pointer-events: none; }
+
+    /* Success state */
+    .contact-success {
+      display: none;
+      padding: 2.5rem;
+      background: var(--offwhite);
+      border: 1.5px solid var(--border-mid);
+      text-align: center;
+    }
+    .contact-success.visible { display: block; }
+    .contact-success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .contact-success h3 {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      color: var(--charcoal);
+      margin-bottom: .75rem;
+    }
+    .contact-success p {
+      font-size: .9375rem;
+      color: var(--charcoal-60);
+      line-height: 1.7;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .contact-success a { color: var(--green); border-bottom: 1px solid var(--green); }
+
+    /* Sidebar */
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .sidebar-card {
+      background: var(--offwhite);
+      border: 1.5px solid var(--border);
+      padding: 1.75rem;
+    }
+    .sidebar-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: .625rem;
+    }
+    .sidebar-card p {
+      font-size: .9rem;
+      color: var(--charcoal-60);
+      line-height: 1.7;
+      margin-bottom: .75rem;
+    }
+    .sidebar-card p:last-child { margin-bottom: 0; }
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      color: var(--green);
+      font-weight: 600;
+      font-size: .9375rem;
+      border-bottom: 1px solid var(--green);
+    }
+    .email-link:hover { color: var(--green-dark); border-color: var(--green-dark); }
+
+    /* Footer bridge */
+    .footer-bridge-products {
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+      margin-top: 1.25rem;
+      font-size: .875rem;
+      color: var(--charcoal-60);
+    }
+    .footer-bridge-products a {
+      color: var(--charcoal);
+      border-bottom: 1px solid var(--charcoal-20);
+    }
+    .footer-bridge-products a:hover { border-color: var(--charcoal); }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <header class="site-nav" id="top">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="Pine Beach home">
+        <img src="../logo-text.png" alt="Pine Beach" />
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/about">About</a>
+        <a href="/contact" class="nav-link-active">Contact</a>
+      </nav>
+      <a href="/#get-started" class="nav-cta-website">Get Your Website →</a>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" aria-hidden="true">
+      <a href="/about">About</a>
+      <a href="/contact" class="nav-link-active">Contact</a>
+      <a href="/#get-started" class="btn btn-primary">Get Your Website →</a>
+    </div>
+  </header>
+
+  <!-- ─── HERO ─── -->
+  <section class="contact-hero">
+    <div class="container">
+      <span class="section-label-green">Contact us</span>
+      <h1>We'd love to hear from you.</h1>
+      <p class="sub">Whether you're curious about how it all works, ready to get your website started, or just have a question — drop us a line. We're real people, and we actually read every message.</p>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT FORM ─── -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Form -->
+        <div class="contact-form-wrap">
+          <h2>Send us a message</h2>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="cf-name">Name <span class="form-req">*</span></label>
+                <input class="form-input" id="cf-name" type="text" placeholder="Your name" autocomplete="name" required />
+                <span class="form-error-msg" id="cf-err-name">Please enter your name</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cf-email">Email <span class="form-req">*</span></label>
+                <input class="form-input" id="cf-email" type="email" placeholder="your@email.com" autocomplete="email" required />
+                <span class="form-error-msg" id="cf-err-email">Please enter a valid email address</span>
+              </div>
+            </div>
+
+            <div class="form-row form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="cf-phone">Phone <span class="form-opt">(optional)</span></label>
+                <input class="form-input" id="cf-phone" type="tel" placeholder="04xx xxx xxx (optional)" autocomplete="tel" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cf-subject">Subject <span class="form-req">*</span></label>
+                <div class="form-select-wrap">
+                  <select class="form-select" id="cf-subject" required>
+                    <option value="" disabled selected>Select a subject…</option>
+                    <option value="General enquiry">General enquiry</option>
+                    <option value="I want a website">I want a website</option>
+                    <option value="Support">Support</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <span class="form-error-msg" id="cf-err-subject">Please select a subject</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="cf-message">Message <span class="form-req">*</span></label>
+              <textarea class="form-textarea" id="cf-message" placeholder="Tell us what's on your mind..." required></textarea>
+              <span class="form-error-msg" id="cf-err-message">Please enter a message</span>
+            </div>
+
+            <button type="submit" class="btn-submit" id="cf-submit">
+              Send message →
+            </button>
+          </form>
+
+          <!-- Success state -->
+          <div class="contact-success" id="contact-success">
+            <div class="contact-success-icon">✉️</div>
+            <h3>Thanks — we'll be in touch soon.</h3>
+            <p>Your message is on its way to us. We'll get back to you within 24 hours.</p>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="contact-sidebar">
+          <div class="sidebar-card">
+            <h3>📬 Direct email</h3>
+            <p>Prefer to email directly? We're here.</p>
+            <a href="mailto:support@pinebeach.com.au" class="email-link">support@pinebeach.com.au</a>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>⏱️ Response time</h3>
+            <p>We typically respond <strong>within 24 hours</strong> — usually sooner on weekdays.</p>
+            <p>We're based in Australia and work AEST/AEDT hours.</p>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>🌐 Ready to get started?</h3>
+            <p>If you're ready to get a website for your business, jump straight in — it takes about 5 minutes and there's no payment up front.</p>
+            <a href="/#get-started" style="display:inline-flex;align-items:center;gap:.375rem;background:var(--charcoal);color:var(--white);font-size:.875rem;font-weight:600;padding:.625rem 1.25rem;margin-top:.25rem;">Get started →</a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top" style="display: flex; align-items: center; gap: 2rem;">
+        <a href="/" class="footer-logo" aria-label="Pine Beach home" style="flex-shrink: 0;">
+          <img src="../logo-full.png" alt="Pine Beach" style="width: 160px; height: auto;" />
+        </a>
+        <div>
+          <p class="footer-tagline" style="margin: 0;">Professional Websites for Australian Small Businesses.</p>
+          <p class="footer-supporting" style="margin-top: 0.5rem;">🇦🇺 Australian owned and operated · support@pinebeach.com.au</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <span class="footer-link-label">Websites</span>
+          <a href="/">Our website service</a>
+          <a href="/#how-it-works">How it works</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/#faq">FAQ</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Company</span>
+          <a href="/about">About Pine Beach</a>
+          <a href="/contact">Contact</a>
+          <a href="mailto:support@pinebeach.com.au">Support</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">Legal</span>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+        </div>
+        <div class="footer-link-group">
+          <span class="footer-link-label">More from Pine Beach</span>
+          <a href="https://github.com/pinebeach" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="footer-bridge-products">
+        Also building a business from scratch? Check out our tools for solopreneurs and founders. <a href="/products">Pine Beach Products →</a>
+      </div>
+
+      <div class="footer-bottom" style="text-align: center; margin-top: 1.5rem;">
+        <p class="footer-copy">© 2026 Pine Beach Pty Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+  <script>
+    /* ── Contact form handler ── */
+    (function () {
+      'use strict';
+
+      var DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1478550146676428852/M4E1pLpsDOCoPggBli9znzhGhLLowwAL53JpuRxkn2B4t2cq9mKZcvCDw19_biiRJQqb';
+
+      var form      = document.getElementById('contact-form');
+      var submitBtn = document.getElementById('cf-submit');
+      var successEl = document.getElementById('contact-success');
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!validateForm()) return;
+
+        var name    = document.getElementById('cf-name').value.trim();
+        var email   = document.getElementById('cf-email').value.trim();
+        var phone   = document.getElementById('cf-phone').value.trim();
+        var subject = document.getElementById('cf-subject').value;
+        var message = document.getElementById('cf-message').value.trim();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        /* Build Discord message */
+        var lines = [
+          '📩 **New Contact Form Submission — Pine Beach**',
+          '',
+          '**Name:** ' + name,
+          '**Email:** ' + email,
+          phone ? ('**Phone:** ' + phone) : null,
+          '**Subject:** ' + subject,
+          '',
+          '**Message:**',
+          message,
+        ].filter(function (l) { return l !== null; }).join('\n');
+
+        /* Try Discord webhook first */
+        fetch(DISCORD_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: lines }),
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Webhook failed: ' + res.status);
+          showSuccess();
+        })
+        .catch(function () {
+          /* Fallback: open mailto */
+          var mailto = 'mailto:support@pinebeach.com.au'
+            + '?subject=' + encodeURIComponent('[Pine Beach Contact] ' + subject)
+            + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + (phone ? '\nPhone: ' + phone : '') + '\n\n' + message);
+          window.location.href = mailto;
+          showSuccess();
+        });
+      });
+
+      function showSuccess() {
+        form.style.display = 'none';
+        successEl.classList.add('visible');
+      }
+
+      function validateForm() {
+        var ok = true;
+
+        function check(id, errId, testFn) {
+          var el  = document.getElementById(id);
+          var err = document.getElementById(errId);
+          if (!testFn(el.value)) {
+            el.classList.add('error');
+            err.classList.add('visible');
+            if (ok) { el.focus(); ok = false; }
+          } else {
+            el.classList.remove('error');
+            err.classList.remove('visible');
+          }
+        }
+
+        check('cf-name',    'cf-err-name',    function (v) { return v.trim().length > 0; });
+        check('cf-email',   'cf-err-email',   function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); });
+        check('cf-subject', 'cf-err-subject', function (v) { return v !== ''; });
+        check('cf-message', 'cf-err-message', function (v) { return v.trim().length > 0; });
+
+        return ok;
+      }
+    }());
+  </script>
+</body>
+</html>

@@ -59,7 +59,10 @@
   /* ── Smooth scroll for anchor links ── */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
-      const target = document.querySelector(anchor.getAttribute('href'));
+      const href = anchor.getAttribute('href');
+      // Skip #get-started — handled by the wizard overlay (prevents scroll-on-open)
+      if (href === '#get-started') return;
+      const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
       const navHeight = nav ? nav.offsetHeight : 0;
