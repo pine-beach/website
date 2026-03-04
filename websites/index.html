@@ -739,6 +739,560 @@
     .comparison-table tr:nth-child(even) td.highlight-col { background: rgba(45, 74, 62, .06); }
     .tick { color: var(--green); font-weight: 700; }
     .cross { color: var(--charcoal-40); }
+
+    /* ══════════════════════════════════════════
+       ONBOARDING WIZARD MODAL
+       ══════════════════════════════════════════ */
+
+    .wizard-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28,28,28,.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .wizard-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .wizard-modal {
+      background: #F3F2EF;
+      width: 100%;
+      max-width: 660px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform .28s cubic-bezier(.22,.68,0,1.2);
+      box-shadow: 0 32px 80px rgba(28,28,28,.28);
+    }
+    .wizard-overlay.open .wizard-modal {
+      transform: translateY(0);
+    }
+    @media (max-width: 700px) {
+      .wizard-overlay { align-items: flex-end; }
+      .wizard-modal {
+        max-height: 96dvh;
+        max-width: 100%;
+        border-radius: 0;
+        transform: translateY(40px);
+      }
+    }
+
+    /* Header */
+    .wizard-header {
+      background: var(--charcoal, #1C1C1C);
+      color: #fff;
+      padding: 1.5rem 2rem 1.25rem;
+      flex-shrink: 0;
+    }
+    .wizard-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .wizard-title {
+      font-family: var(--font-serif, 'DM Serif Display', serif);
+      font-size: 1.0625rem;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .wizard-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,.55);
+      cursor: pointer;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: color .15s;
+      padding: 0;
+      border-radius: 50%;
+    }
+    .wizard-close:hover { color: #fff; background: rgba(255,255,255,.1); }
+
+    /* Progress */
+    .wizard-progress-bar {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .wizard-progress-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .3rem;
+      position: relative;
+    }
+    .wizard-progress-step::after {
+      content: '';
+      position: absolute;
+      top: 11px;
+      left: calc(50% + 12px);
+      right: calc(-50% + 12px);
+      height: 2px;
+      background: rgba(255,255,255,.12);
+      z-index: 0;
+    }
+    .wizard-progress-step:last-child::after { display: none; }
+    .wizard-progress-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .5625rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.35);
+      position: relative;
+      z-index: 1;
+      background: #1C1C1C;
+      transition: all .2s;
+    }
+    .wizard-progress-step.done .wizard-progress-dot {
+      background: var(--green, #2D4A3E);
+      border-color: var(--green, #2D4A3E);
+      color: #fff;
+    }
+    .wizard-progress-step.active .wizard-progress-dot {
+      background: #D4A574;
+      border-color: #D4A574;
+      color: #1C1C1C;
+      box-shadow: 0 0 0 3px rgba(212,165,116,.25);
+    }
+    .wizard-progress-label {
+      font-size: .5rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      text-align: center;
+      line-height: 1.2;
+    }
+    .wizard-progress-step.active .wizard-progress-label { color: #D4A574; }
+    .wizard-progress-step.done .wizard-progress-label { color: rgba(255,255,255,.5); }
+    @media (max-width: 480px) {
+      .wizard-header { padding: 1.25rem 1.25rem 1rem; }
+      .wizard-progress-label { display: none; }
+      .wizard-progress-dot { width: 20px; height: 20px; font-size: .5rem; }
+    }
+
+    /* Body */
+    .wizard-body {
+      flex: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+    .wizard-step-panel {
+      padding: 2rem;
+      display: none;
+    }
+    .wizard-step-panel.active {
+      display: block;
+      animation: wzFadeSlide .22s ease both;
+    }
+    .wizard-step-panel.slide-back.active {
+      animation: wzFadeSlideBack .22s ease both;
+    }
+    @media (max-width: 480px) {
+      .wizard-step-panel { padding: 1.5rem 1.25rem; }
+    }
+    @keyframes wzFadeSlide {
+      from { opacity: 0; transform: translateX(14px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes wzFadeSlideBack {
+      from { opacity: 0; transform: translateX(-14px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .wizard-step-heading {
+      font-family: var(--font-serif, 'DM Serif Display', serif);
+      font-size: 1.625rem;
+      color: var(--charcoal, #1C1C1C);
+      margin-bottom: .375rem;
+      line-height: 1.15;
+    }
+    .wizard-step-sub {
+      font-size: .9rem;
+      color: rgba(28,28,28,.58);
+      margin-bottom: 1.75rem;
+      line-height: 1.65;
+    }
+
+    /* Form elements */
+    .wz-group {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      margin-bottom: 1.125rem;
+    }
+    .wz-label {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--charcoal, #1C1C1C);
+      letter-spacing: .02em;
+    }
+    .wz-req { color: var(--green, #2D4A3E); }
+    .wz-opt { color: rgba(28,28,28,.4); font-weight: 400; }
+    .wz-input,
+    .wz-select,
+    .wz-textarea {
+      width: 100%;
+      border: 1.5px solid #d0cfc9;
+      background: #fff;
+      padding: .75rem 1rem;
+      font-size: .9375rem;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      color: var(--charcoal, #1C1C1C);
+      border-radius: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color .15s;
+      box-sizing: border-box;
+    }
+    .wz-input:focus,
+    .wz-select:focus,
+    .wz-textarea:focus {
+      outline: none;
+      border-color: var(--green, #2D4A3E);
+    }
+    .wz-input.error,
+    .wz-select.error,
+    .wz-textarea.error { border-color: #c0392b; }
+    .wz-input::placeholder,
+    .wz-textarea::placeholder { color: rgba(28,28,28,.32); }
+    .wz-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+    .wz-select-wrap { position: relative; }
+    .wz-select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(28,28,28,.4);
+      pointer-events: none;
+    }
+    .wz-row { display: grid; gap: .875rem; }
+    @media (min-width: 520px) {
+      .wz-row-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .wz-error {
+      font-size: .8rem;
+      color: #c0392b;
+      display: none;
+      margin-top: .125rem;
+    }
+    .wz-error.visible { display: block; }
+
+    /* File upload */
+    .wz-upload-area {
+      border: 2px dashed #c4c3bd;
+      background: #fff;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+      position: relative;
+      user-select: none;
+    }
+    .wz-upload-area:hover,
+    .wz-upload-area.drag-over {
+      border-color: var(--green, #2D4A3E);
+      background: rgba(45,74,62,.03);
+    }
+    .wz-upload-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .wz-upload-icon { font-size: 1.75rem; line-height: 1; display: block; margin-bottom: .5rem; }
+    .wz-upload-label { font-size: .9375rem; font-weight: 600; color: #1C1C1C; margin-bottom: .25rem; }
+    .wz-upload-hint { font-size: .8125rem; color: rgba(28,28,28,.45); }
+    .wz-file-list { margin-top: .625rem; display: flex; flex-direction: column; gap: .375rem; }
+    .wz-file-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: #fff;
+      border: 1.5px solid #e6e5e0;
+      padding: .5rem .75rem;
+      font-size: .8125rem;
+      color: #1C1C1C;
+    }
+    .wz-file-item-icon { color: var(--green, #2D4A3E); flex-shrink: 0; }
+    .wz-file-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .wz-file-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(28,28,28,.35);
+      padding: 0;
+      font-size: .75rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .wz-file-remove:hover { color: #c0392b; }
+
+    /* Logo preview */
+    .wz-logo-preview {
+      margin-top: .75rem;
+      display: none;
+      align-items: center;
+      gap: .875rem;
+    }
+    .wz-logo-preview img {
+      max-width: 160px;
+      max-height: 80px;
+      object-fit: contain;
+      border: 1.5px solid #e6e5e0;
+      background: #fff;
+      padding: .5rem;
+    }
+    .wz-logo-preview-meta { font-size: .8125rem; color: rgba(28,28,28,.5); }
+
+    /* Theme swatches */
+    .wz-swatches {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .625rem;
+      margin-top: .375rem;
+    }
+    @media (max-width: 440px) {
+      .wz-swatches { grid-template-columns: repeat(2, 1fr); }
+    }
+    .wz-swatch {
+      border: 2px solid #e0dfd9;
+      cursor: pointer;
+      transition: border-color .15s, transform .1s, box-shadow .15s;
+      background: #fff;
+      padding: .625rem .75rem .75rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      position: relative;
+    }
+    .wz-swatch:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(28,28,28,.1); }
+    .wz-swatch.selected { border-color: var(--charcoal, #1C1C1C); box-shadow: 0 0 0 1px #1C1C1C; }
+    .wz-swatch-palette { display: flex; height: 26px; overflow: hidden; }
+    .wz-swatch-palette span { flex: 1; }
+    .wz-swatch-name { font-size: .6875rem; font-weight: 700; color: #1C1C1C; text-align: center; letter-spacing: .02em; }
+    .wz-swatch-check {
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: 16px;
+      height: 16px;
+      background: #1C1C1C;
+      color: #fff;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: .5rem;
+      line-height: 1;
+    }
+    .wz-swatch.selected .wz-swatch-check { display: flex; }
+
+    /* Yes/No toggle */
+    .wz-toggle-row { display: flex; gap: .625rem; margin-top: .375rem; }
+    .wz-toggle-btn {
+      flex: 1;
+      border: 1.5px solid #d0cfc9;
+      background: #fff;
+      padding: .75rem 1rem;
+      font-size: .9375rem;
+      font-weight: 600;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      color: rgba(28,28,28,.55);
+      cursor: pointer;
+      transition: all .15s;
+      text-align: center;
+    }
+    .wz-toggle-btn:hover { border-color: #999; color: #1C1C1C; }
+    .wz-toggle-btn.active-yes { background: var(--green, #2D4A3E); border-color: var(--green); color: #fff; }
+    .wz-toggle-btn.active-no { background: #1C1C1C; border-color: #1C1C1C; color: #fff; }
+
+    /* Checkboxes */
+    .wz-check-group { display: flex; flex-direction: column; gap: .625rem; margin-top: .375rem; }
+    .wz-check-item {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      cursor: pointer;
+      font-size: .9375rem;
+      color: #1C1C1C;
+      line-height: 1.3;
+    }
+    .wz-check-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--green, #2D4A3E);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Info box */
+    .wz-info-box {
+      background: rgba(45,74,62,.07);
+      border-left: 3px solid var(--green, #2D4A3E);
+      padding: 1rem 1.25rem;
+      font-size: .875rem;
+      color: #1C1C1C;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .wz-info-box strong { color: var(--green, #2D4A3E); }
+
+    /* Review */
+    .wz-review-section { margin-bottom: 1.5rem; }
+    .wz-review-heading {
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(28,28,28,.38);
+      margin-bottom: .75rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid #e6e5e0;
+    }
+    .wz-review-row {
+      display: flex;
+      gap: .875rem;
+      margin-bottom: .5rem;
+      font-size: .875rem;
+      line-height: 1.55;
+    }
+    .wz-review-key {
+      color: rgba(28,28,28,.48);
+      min-width: 130px;
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+    .wz-review-val { color: #1C1C1C; word-break: break-word; }
+    @media (max-width: 440px) {
+      .wz-review-row { flex-direction: column; gap: .1rem; }
+      .wz-review-key { min-width: 0; }
+    }
+    .wz-review-reassurance {
+      background: #fff;
+      border: 1.5px solid #e6e5e0;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .wz-review-reassurance strong {
+      display: block;
+      font-size: 1rem;
+      color: #1C1C1C;
+      margin-bottom: .3rem;
+    }
+    .wz-review-reassurance span {
+      font-size: .8125rem;
+      color: rgba(28,28,28,.48);
+    }
+
+    /* Navigation footer */
+    .wizard-nav {
+      background: #fff;
+      border-top: 1.5px solid #e6e5e0;
+      padding: 1.125rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .wizard-nav { padding: 1rem 1.25rem; } }
+    .wz-nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      background: none;
+      border: 1.5px solid #d0cfc9;
+      font-size: .9rem;
+      font-weight: 600;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      color: rgba(28,28,28,.55);
+      padding: .7rem 1.125rem;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .wz-nav-back:hover:not(:disabled) { border-color: #1C1C1C; color: #1C1C1C; }
+    .wz-nav-back:disabled { opacity: .3; pointer-events: none; }
+    .wz-nav-next {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: #1C1C1C;
+      color: #fff;
+      border: none;
+      font-size: .9rem;
+      font-weight: 600;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      padding: .7rem 1.625rem;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .wz-nav-next:hover { background: rgba(28,28,28,.82); }
+    .wz-nav-next.submit-btn {
+      background: var(--green, #2D4A3E);
+      font-size: .9375rem;
+      padding: .8125rem 1.75rem;
+    }
+    .wz-nav-next.submit-btn:hover { background: #1e3329; }
+    .wz-step-counter { font-size: .8rem; color: rgba(28,28,28,.38); font-weight: 500; white-space: nowrap; }
+
+    /* Success screen */
+    .wizard-success {
+      display: none;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .wizard-success.active { display: flex; flex-direction: column; align-items: center; }
+    .wz-success-icon { font-size: 3rem; margin-bottom: 1.125rem; }
+    .wz-success-h { font-family: var(--font-serif, 'DM Serif Display', serif); font-size: 2rem; color: #1C1C1C; margin-bottom: .75rem; }
+    .wz-success-p { font-size: .9375rem; color: rgba(28,28,28,.6); max-width: 400px; line-height: 1.7; margin-bottom: .625rem; }
+    .wz-success-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem 1.375rem;
+      margin-top: 1.5rem;
+      font-size: .8125rem;
+      color: rgba(28,28,28,.5);
+    }
+    .wz-success-badges span { display: flex; align-items: center; gap: .3rem; }
+    .wz-success-close {
+      margin-top: 1.75rem;
+      background: none;
+      border: 1.5px solid #d0cfc9;
+      padding: .625rem 1.5rem;
+      font-size: .875rem;
+      font-family: var(--font-sans, 'DM Sans', sans-serif);
+      font-weight: 600;
+      cursor: pointer;
+      color: rgba(28,28,28,.55);
+      transition: all .15s;
+    }
+    .wz-success-close:hover { border-color: #1C1C1C; color: #1C1C1C; }
   </style>
 </head>
 <body>
@@ -1092,117 +1646,18 @@
     </div>
   </section>
 
-  <!-- ─── SIGNUP FORM ─── -->
-  <section class="signup-section" id="get-started">
-    <div class="container">
+  <!-- ─── GET STARTED (wizard trigger) ─── -->
+  <section class="signup-section" id="get-started" style="text-align:center;">
+    <div class="container" style="max-width:640px; display:flex; flex-direction:column; align-items:center;">
       <span class="section-label-green">Get started</span>
-      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal);">Get your website. Takes 5 minutes.</h2>
-      <p style="font-size: .9375rem; color: var(--charcoal-60); max-width: 560px; line-height: 1.7; margin-top: .75rem;">Fill in your details below. We'll build a preview site and send it to you — before you pay a cent.</p>
-
-      <div id="signup-thanks" class="signup-thanks" style="display:none;">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">🎉</div>
-        <h3>We've got your details!</h3>
-        <p>We'll have a preview website ready for you within a few business days. Keep an eye on your inbox — we'll send you the link as soon as it's ready.</p>
-        <p style="margin-top: .75rem; font-size: .875rem; color: var(--charcoal-40);">Questions in the meantime? Email us at <a href="mailto:support@pinebeach.com.au" style="color: var(--charcoal-60);">support@pinebeach.com.au</a></p>
-      </div>
-
-      <form id="signup-form" class="signup-form" novalidate>
-
-        <div class="form-section-label">Your business</div>
-
-        <div class="form-row form-row-2">
-          <div class="form-group">
-            <label for="businessName">Business name <span class="required">*</span></label>
-            <input type="text" id="businessName" name="businessName" placeholder="e.g. Sunshine Physio" required />
-          </div>
-          <div class="form-group">
-            <label for="businessType">Business type <span class="required">*</span></label>
-            <div class="form-select-wrap">
-              <select id="businessType" name="businessType" required>
-                <option value="" disabled selected>Select your industry…</option>
-                <option value="Physiotherapy">Physiotherapy</option>
-                <option value="Personal Training">Personal Training</option>
-                <option value="Nutrition">Nutrition &amp; Dietetics</option>
-                <option value="Trades">Trades</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-section-label">Your contact details</div>
-
-        <div class="form-row form-row-2">
-          <div class="form-group">
-            <label for="contactName">Your name <span class="required">*</span></label>
-            <input type="text" id="contactName" name="contactName" placeholder="First and last name" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email <span class="required">*</span></label>
-            <input type="email" id="email" name="email" placeholder="you@yourbusiness.com.au" required />
-          </div>
-        </div>
-
-        <div class="form-row form-row-2">
-          <div class="form-group">
-            <label for="phone">Phone <span class="required">*</span></label>
-            <input type="tel" id="phone" name="phone" placeholder="04xx xxx xxx" required />
-          </div>
-          <div class="form-group">
-            <label for="website">Existing website <span style="color: var(--charcoal-40); font-weight: 400;">(optional)</span></label>
-            <input type="url" id="website" name="website" placeholder="https://yoursite.com.au" />
-          </div>
-        </div>
-
-        <div class="form-section-label">Business address</div>
-
-        <div class="form-group">
-          <label for="street">Street address <span class="required">*</span></label>
-          <input type="text" id="street" name="street" placeholder="e.g. 42 Collins Street" required />
-        </div>
-
-        <div class="form-group">
-          <label for="suburb">Suburb <span class="required">*</span></label>
-          <input type="text" id="suburb" name="suburb" placeholder="e.g. Fitzroy" required />
-        </div>
-
-        <div class="form-row form-row-2">
-          <div class="form-group">
-            <label for="state">State <span class="required">*</span></label>
-            <div class="form-select-wrap">
-              <select id="state" name="state" required>
-                <option value="" disabled selected>Select state…</option>
-                <option>VIC</option>
-                <option>NSW</option>
-                <option>QLD</option>
-                <option>WA</option>
-                <option>SA</option>
-                <option>TAS</option>
-                <option>ACT</option>
-                <option>NT</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="postcode">Postcode <span class="required">*</span></label>
-            <input type="text" id="postcode" name="postcode" placeholder="e.g. 3000" maxlength="4" required />
-          </div>
-        </div>
-
-        <div id="form-error" class="form-error" role="alert"></div>
-
-        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
-          <button type="submit" class="btn-submit" id="form-submit">
-            Send My Details →
-          </button>
-          <p class="form-fine-print">No lock-in · No payment now · 30-day money-back guarantee</p>
-        </div>
-
-      </form>
+      <h2 style="font-family: var(--font-serif); font-size: clamp(1.625rem, 3.5vw, 2.5rem); color: var(--charcoal); margin-bottom:.875rem;">Get your website. Takes 5 minutes.</h2>
+      <p style="font-size: .9375rem; color: var(--charcoal-60); line-height: 1.7; max-width:480px; margin-bottom: 2rem;">Tell us about your business and we'll build a preview site — before you pay a cent. $79/month. No setup fee.</p>
+      <a href="#get-started" class="btn-primary-green" style="font-size:1.0625rem; padding:1rem 2.25rem;">Get Started — $79/month →</a>
+      <p style="font-size:.8125rem; color:var(--charcoal-40); margin-top:1.125rem;">No lock-in &nbsp;·&nbsp; No payment now &nbsp;·&nbsp; 30-day money-back guarantee</p>
     </div>
   </section>
 
-  <!-- ─── FINAL CTA ─── -->
+    <!-- ─── FINAL CTA ─── -->
   <section class="final-cta-section">
     <div class="container">
       <h2>Simple as that.</h2>
@@ -1282,66 +1737,677 @@
         }
       });
     });
+  </script>
 
-    // Signup form
-    const form = document.getElementById('signup-form');
-    const errorEl = document.getElementById('form-error');
-    const submitBtn = document.getElementById('form-submit');
-    const thanksEl = document.getElementById('signup-thanks');
+  <!-- ─── ONBOARDING WIZARD MODAL ─── -->
+  <div class="wizard-overlay" id="wizard-overlay" role="dialog" aria-modal="true" aria-label="Get started with Pine Beach">
+    <div class="wizard-modal" id="wizard-modal">
 
-    if (form) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        errorEl.textContent = '';
-        errorEl.classList.remove('visible');
+      <!-- Header + progress -->
+      <div class="wizard-header">
+        <div class="wizard-header-top">
+          <span class="wizard-title">Get your website — Pine Beach</span>
+          <button class="wizard-close" id="wizard-close" aria-label="Close">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="wizard-progress-bar" id="wz-progress">
+          <div class="wizard-progress-step active" data-step="1">
+            <div class="wizard-progress-dot">1</div>
+            <div class="wizard-progress-label">About You</div>
+          </div>
+          <div class="wizard-progress-step" data-step="2">
+            <div class="wizard-progress-dot">2</div>
+            <div class="wizard-progress-label">Online</div>
+          </div>
+          <div class="wizard-progress-step" data-step="3">
+            <div class="wizard-progress-dot">3</div>
+            <div class="wizard-progress-label">Business</div>
+          </div>
+          <div class="wizard-progress-step" data-step="4">
+            <div class="wizard-progress-dot">4</div>
+            <div class="wizard-progress-label">Brand</div>
+          </div>
+          <div class="wizard-progress-step" data-step="5">
+            <div class="wizard-progress-dot">5</div>
+            <div class="wizard-progress-label">Products</div>
+          </div>
+          <div class="wizard-progress-step" data-step="6">
+            <div class="wizard-progress-dot">6</div>
+            <div class="wizard-progress-label">Review</div>
+          </div>
+        </div>
+      </div>
 
-        const data = {
-          businessName: form.businessName.value.trim(),
-          businessType: form.businessType.value,
-          contactName: form.contactName.value.trim(),
-          email: form.email.value.trim(),
-          phone: form.phone.value.trim(),
-          website: form.website.value.trim(),
-          street: form.street.value.trim(),
-          suburb: form.suburb.value.trim(),
-          state: form.state.value,
-          postcode: form.postcode.value.trim(),
-        };
+      <!-- Step panels -->
+      <div class="wizard-body" id="wizard-body">
 
-        const required = ['businessName','businessType','contactName','email','phone','street','suburb','state','postcode'];
-        const missing = required.filter(f => !data[f]);
-        if (missing.length) {
-          errorEl.textContent = 'Please fill in all required fields before submitting.';
-          errorEl.classList.add('visible');
-          return;
-        }
+        <!-- ── Step 1: About You ── -->
+        <div class="wizard-step-panel active" id="wz-step-1">
+          <h2 class="wizard-step-heading">About you</h2>
+          <p class="wizard-step-sub">Let's start with the basics — we use this to personalise your site.</p>
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
+          <div class="wz-row wz-row-2">
+            <div class="wz-group">
+              <label class="wz-label" for="wz-businessName">Business name <span class="wz-req">*</span></label>
+              <input class="wz-input" id="wz-businessName" type="text" placeholder="e.g. Sunshine Physio" autocomplete="organization" />
+              <span class="wz-error" id="wz-err-businessName">Please enter your business name</span>
+            </div>
+            <div class="wz-group">
+              <label class="wz-label" for="wz-contactName">Your name <span class="wz-req">*</span></label>
+              <input class="wz-input" id="wz-contactName" type="text" placeholder="First and last name" autocomplete="name" />
+              <span class="wz-error" id="wz-err-contactName">Please enter your name</span>
+            </div>
+          </div>
+          <div class="wz-row wz-row-2">
+            <div class="wz-group">
+              <label class="wz-label" for="wz-email">Email <span class="wz-req">*</span></label>
+              <input class="wz-input" id="wz-email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email" />
+              <span class="wz-error" id="wz-err-email">Please enter a valid email address</span>
+            </div>
+            <div class="wz-group">
+              <label class="wz-label" for="wz-phone">Phone <span class="wz-opt">(optional)</span></label>
+              <input class="wz-input" id="wz-phone" type="tel" placeholder="04xx xxx xxx" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-suburb">Business location / suburb <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-suburb" type="text" placeholder="e.g. Fitzroy VIC" autocomplete="address-level2" />
+          </div>
+        </div>
 
-        try {
-          const res = await fetch('/api/signup', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
-          const json = await res.json();
+        <!-- ── Step 2: Online Presence ── -->
+        <div class="wizard-step-panel" id="wz-step-2">
+          <h2 class="wizard-step-heading">Your online presence</h2>
+          <p class="wizard-step-sub">Do you have existing social profiles or a website? We'll link everything together.</p>
 
-          if (res.ok && json.success) {
-            form.style.display = 'none';
-            thanksEl.style.display = 'block';
-            thanksEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          } else {
-            throw new Error(json.error || 'Something went wrong. Please try again.');
-          }
-        } catch (err) {
-          errorEl.textContent = err.message || 'Something went wrong. Please try again or email us directly.';
-          errorEl.classList.add('visible');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send My Details →';
+          <div class="wz-group">
+            <label class="wz-label" for="wz-website">Current website URL <span class="wz-opt">(if any)</span></label>
+            <input class="wz-input" id="wz-website" type="url" placeholder="https://yoursite.com.au" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-facebook">Facebook <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-facebook" type="url" placeholder="https://facebook.com/yourbusiness" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-instagram">Instagram <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-instagram" type="url" placeholder="https://instagram.com/yourbusiness" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-linkedin">LinkedIn <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-linkedin" type="url" placeholder="https://linkedin.com/in/yourname" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-googlebiz">Google Business Profile <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-googlebiz" type="url" placeholder="https://g.page/yourbusiness" />
+          </div>
+          <div class="wz-group">
+            <label class="wz-label" for="wz-othersocial">Other social profiles <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-othersocial" type="text" placeholder="e.g. TikTok, YouTube — paste link or describe" />
+          </div>
+        </div>
+
+        <!-- ── Step 3: About Your Business ── -->
+        <div class="wizard-step-panel" id="wz-step-3">
+          <h2 class="wizard-step-heading">Tell us about your business</h2>
+          <p class="wizard-step-sub">The more detail you give us, the better your website will be.</p>
+
+          <div class="wz-group">
+            <label class="wz-label" for="wz-industry">Business type / industry <span class="wz-req">*</span></label>
+            <div class="wz-select-wrap">
+              <select class="wz-select" id="wz-industry">
+                <option value="" disabled selected>Select your industry…</option>
+                <option value="Physiotherapy">Physiotherapy</option>
+                <option value="Personal Training">Personal Training</option>
+                <option value="Nutrition">Nutrition &amp; Dietetics</option>
+                <option value="Chiropractic">Chiropractic</option>
+                <option value="Massage Therapy">Massage Therapy</option>
+                <option value="Occupational Therapy">Occupational Therapy</option>
+                <option value="Other Health/Wellness">Other Health / Wellness</option>
+                <option value="Trades">Trades</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <span class="wz-error" id="wz-err-industry">Please select your industry</span>
+          </div>
+
+          <div class="wz-group">
+            <label class="wz-label" for="wz-about">About your business <span class="wz-req">*</span></label>
+            <textarea class="wz-textarea" id="wz-about" rows="5" placeholder="What you do, who your ideal clients are, what makes you different from the competition…"></textarea>
+            <span class="wz-error" id="wz-err-about">Please tell us a bit about your business</span>
+          </div>
+
+          <div class="wz-group">
+            <label class="wz-label">Upload materials <span class="wz-opt">(optional)</span></label>
+            <p style="font-size:.8125rem; color:rgba(28,28,28,.5); margin:.25rem 0 .625rem; line-height:1.55;">Brochures, menus, price lists, photos — anything that helps us represent you well.</p>
+            <div class="wz-upload-area" id="wz-docs-drop">
+              <input type="file" id="wz-docs-input" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif,.webp,.txt" />
+              <span class="wz-upload-icon">📎</span>
+              <div class="wz-upload-label">Drag &amp; drop files here</div>
+              <div class="wz-upload-hint">or click to browse &nbsp;·&nbsp; PDF, Word, images accepted</div>
+            </div>
+            <div class="wz-file-list" id="wz-docs-list"></div>
+          </div>
+        </div>
+
+        <!-- ── Step 4: Your Brand ── -->
+        <div class="wizard-step-panel" id="wz-step-4">
+          <h2 class="wizard-step-heading">Your brand</h2>
+          <p class="wizard-step-sub">Help us capture your look and feel. Nothing here is required — we'll make it work.</p>
+
+          <div class="wz-group">
+            <label class="wz-label">Logo <span class="wz-opt">(optional)</span></label>
+            <div class="wz-upload-area" id="wz-logo-drop">
+              <input type="file" id="wz-logo-input" accept="image/*" />
+              <span class="wz-upload-icon">🖼️</span>
+              <div class="wz-upload-label">Upload your logo</div>
+              <div class="wz-upload-hint">PNG, SVG, or JPG &nbsp;·&nbsp; Transparent background preferred</div>
+            </div>
+            <div class="wz-logo-preview" id="wz-logo-preview">
+              <img id="wz-logo-img" src="" alt="Logo preview" />
+              <div class="wz-logo-preview-meta" id="wz-logo-name"></div>
+            </div>
+          </div>
+
+          <div class="wz-group">
+            <label class="wz-label">Colour theme <span class="wz-opt">(choose one that feels right)</span></label>
+            <div class="wz-swatches" id="wz-swatches">
+
+              <div class="wz-swatch" data-theme="Warm Earth">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#6B4F3A;"></span>
+                  <span style="background:#9B7B5E;"></span>
+                  <span style="background:#C4A882;"></span>
+                  <span style="background:#F2E8DB;"></span>
+                </div>
+                <div class="wz-swatch-name">Warm Earth</div>
+              </div>
+
+              <div class="wz-swatch" data-theme="Ocean Blue">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#1B4F72;"></span>
+                  <span style="background:#2E86C1;"></span>
+                  <span style="background:#7FB3D3;"></span>
+                  <span style="background:#EBF5FB;"></span>
+                </div>
+                <div class="wz-swatch-name">Ocean Blue</div>
+              </div>
+
+              <div class="wz-swatch" data-theme="Forest Green">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#1D4C2F;"></span>
+                  <span style="background:#2D7D46;"></span>
+                  <span style="background:#7DC490;"></span>
+                  <span style="background:#EAFBEA;"></span>
+                </div>
+                <div class="wz-swatch-name">Forest Green</div>
+              </div>
+
+              <div class="wz-swatch" data-theme="Modern Minimal">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#1C1C1C;"></span>
+                  <span style="background:#6B6B6B;"></span>
+                  <span style="background:#C8C8C8;"></span>
+                  <span style="background:#F8F8F8;"></span>
+                </div>
+                <div class="wz-swatch-name">Modern Minimal</div>
+              </div>
+
+              <div class="wz-swatch" data-theme="Sunset Gold">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#A0522D;"></span>
+                  <span style="background:#D4822A;"></span>
+                  <span style="background:#F0B429;"></span>
+                  <span style="background:#FFF8E1;"></span>
+                </div>
+                <div class="wz-swatch-name">Sunset Gold</div>
+              </div>
+
+              <div class="wz-swatch" data-theme="Classic Charcoal">
+                <div class="wz-swatch-check">✓</div>
+                <div class="wz-swatch-palette">
+                  <span style="background:#1A1A2E;"></span>
+                  <span style="background:#16213E;"></span>
+                  <span style="background:#4A4A5A;"></span>
+                  <span style="background:#F0F0F0;"></span>
+                </div>
+                <div class="wz-swatch-name">Classic Charcoal</div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="wz-group">
+            <label class="wz-label" for="wz-brandprefs">Any specific colours or fonts? <span class="wz-opt">(optional)</span></label>
+            <input class="wz-input" id="wz-brandprefs" type="text" placeholder="e.g. Teal #00897B, or Montserrat font" />
+          </div>
+        </div>
+
+        <!-- ── Step 5: Products & Recommendations ── -->
+        <div class="wizard-step-panel" id="wz-step-5">
+          <h2 class="wizard-step-heading">Products &amp; recommendations</h2>
+          <p class="wizard-step-sub">Some businesses recommend products as part of their service. If that's you, we can help you earn from it.</p>
+
+          <div class="wz-group">
+            <label class="wz-label">Do you recommend products to your clients?</label>
+            <div class="wz-toggle-row">
+              <button class="wz-toggle-btn" id="wz-products-yes" type="button">✓ &nbsp;Yes</button>
+              <button class="wz-toggle-btn" id="wz-products-no" type="button">✕ &nbsp;No</button>
+            </div>
+          </div>
+
+          <div id="wz-products-details" style="display:none;">
+            <div class="wz-info-box">
+              <strong>Pine Beach × CollabCart</strong><br />
+              Pine Beach partners with CollabCart to help businesses earn commissions from the products they already recommend to clients. We'll share more details once your website is live — no obligation to join.
+            </div>
+            <div class="wz-group">
+              <label class="wz-label" for="wz-products-desc">Tell us about the products you recommend</label>
+              <textarea class="wz-textarea" id="wz-products-desc" rows="3" placeholder="e.g. Protein supplements, resistance bands, foam rollers, skincare products…"></textarea>
+            </div>
+            <div class="wz-group">
+              <label class="wz-label">What categories? <span class="wz-opt">(tick all that apply)</span></label>
+              <div class="wz-check-group">
+                <label class="wz-check-item"><input type="checkbox" value="Supplements" class="wz-product-cat" /> Supplements</label>
+                <label class="wz-check-item"><input type="checkbox" value="Equipment" class="wz-product-cat" /> Equipment</label>
+                <label class="wz-check-item"><input type="checkbox" value="Books" class="wz-product-cat" /> Books</label>
+                <label class="wz-check-item"><input type="checkbox" value="Skincare" class="wz-product-cat" /> Skincare</label>
+                <label class="wz-check-item"><input type="checkbox" value="Other" class="wz-product-cat" /> Other</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Step 6: Review & Submit ── -->
+        <div class="wizard-step-panel" id="wz-step-6">
+          <h2 class="wizard-step-heading">Review &amp; submit</h2>
+          <p class="wizard-step-sub">Here's what you've told us. Everything look right?</p>
+          <div id="wz-review-content"></div>
+        </div>
+
+        <!-- ── Success screen ── -->
+        <div class="wizard-success" id="wz-success">
+          <div class="wz-success-icon">🎉</div>
+          <h2 class="wz-success-h">You're in!</h2>
+          <p class="wz-success-p">We've got everything we need. Our team will have a preview website ready within a few business days.</p>
+          <p class="wz-success-p">We'll send the preview link to <strong id="wz-success-email"></strong> — keep an eye on your inbox.</p>
+          <div class="wz-success-badges">
+            <span>✅ No lock-in</span>
+            <span>✅ No setup fee</span>
+            <span>✅ 30-day money-back guarantee</span>
+          </div>
+          <p class="wz-success-p" style="margin-top:1.25rem; font-size:.875rem;">Questions? <a href="mailto:support@pinebeach.com.au" style="color:var(--green,#2D4A3E);">support@pinebeach.com.au</a></p>
+          <button class="wz-success-close" id="wz-success-close">Close</button>
+        </div>
+
+      </div><!-- /.wizard-body -->
+
+      <!-- Navigation footer -->
+      <div class="wizard-nav" id="wizard-nav">
+        <button class="wz-nav-back" id="wz-back" type="button" disabled>← Back</button>
+        <span class="wz-step-counter" id="wz-counter">Step 1 of 6</span>
+        <button class="wz-nav-next" id="wz-next" type="button">Next →</button>
+      </div>
+
+    </div><!-- /.wizard-modal -->
+  </div><!-- /.wizard-overlay -->
+
+  <script>
+    /* ══════════════════════════════════════════
+       ONBOARDING WIZARD
+       ══════════════════════════════════════════ */
+    (function () {
+      var TOTAL = 6;
+      var step = 1;
+      var docFiles = [];
+      var logoFile = null;
+      var selectedTheme = '';
+      var recommendsProducts = null;
+      var slideBack = false;
+
+      /* ── Open / Close ─────────────────────── */
+      function openWizard() {
+        var overlay = document.getElementById('wizard-overlay');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        step = 1;
+        docFiles = [];
+        logoFile = null;
+        selectedTheme = '';
+        recommendsProducts = null;
+        resetForm();
+        goToStep(1, false);
+      }
+
+      function closeWizard() {
+        document.getElementById('wizard-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      window.openWizard = openWizard;
+      window.closeWizard = closeWizard;
+
+      document.getElementById('wizard-close').addEventListener('click', closeWizard);
+      document.getElementById('wz-success-close').addEventListener('click', closeWizard);
+      document.getElementById('wizard-overlay').addEventListener('click', function (e) {
+        if (e.target === this) closeWizard();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && document.getElementById('wizard-overlay').classList.contains('open')) closeWizard();
+      });
+
+      /* ── Intercept all #get-started links ──── */
+      document.querySelectorAll('a[href="#get-started"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          openWizard();
+        });
+      });
+
+      /* ── Navigation ───────────────────────── */
+      document.getElementById('wz-next').addEventListener('click', function () {
+        if (this.dataset.submit === '1') {
+          submitWizard();
+        } else {
+          if (!validateStep(step)) return;
+          goToStep(step + 1, false);
         }
       });
-    }
+
+      document.getElementById('wz-back').addEventListener('click', function () {
+        if (step > 1) goToStep(step - 1, true);
+      });
+
+      function goToStep(n, back) {
+        var panels = document.querySelectorAll('.wizard-step-panel');
+        panels.forEach(function (p) { p.classList.remove('active', 'slide-back'); });
+
+        step = n;
+        var panel = document.getElementById('wz-step-' + n);
+        panel.classList.add('active');
+        if (back) panel.classList.add('slide-back');
+
+        /* progress dots */
+        document.querySelectorAll('.wizard-progress-step').forEach(function (el, i) {
+          el.classList.remove('active', 'done');
+          if (i + 1 < n) el.classList.add('done');
+          if (i + 1 === n) el.classList.add('active');
+          el.querySelector('.wizard-progress-dot').textContent = (i + 1 < n) ? '✓' : String(i + 1);
+        });
+
+        var backBtn = document.getElementById('wz-back');
+        var nextBtn = document.getElementById('wz-next');
+        var counter = document.getElementById('wz-counter');
+
+        backBtn.disabled = (n === 1);
+        counter.textContent = 'Step ' + n + ' of ' + TOTAL;
+
+        if (n === TOTAL) {
+          buildReview();
+          nextBtn.textContent = 'Get Started — $79/month →';
+          nextBtn.classList.add('submit-btn');
+          nextBtn.dataset.submit = '1';
+        } else {
+          nextBtn.textContent = 'Next →';
+          nextBtn.classList.remove('submit-btn');
+          nextBtn.dataset.submit = '0';
+        }
+
+        document.getElementById('wizard-body').scrollTop = 0;
+      }
+
+      /* ── Validation ───────────────────────── */
+      function validateStep(n) {
+        var ok = true;
+
+        function requireField(id, errId) {
+          var el = document.getElementById(id);
+          var err = document.getElementById(errId);
+          if (!el.value.trim()) {
+            el.classList.add('error');
+            err.classList.add('visible');
+            if (ok) { el.focus(); ok = false; }
+          } else {
+            el.classList.remove('error');
+            err.classList.remove('visible');
+          }
+        }
+
+        if (n === 1) {
+          requireField('wz-businessName', 'wz-err-businessName');
+          requireField('wz-contactName', 'wz-err-contactName');
+          var emailEl = document.getElementById('wz-email');
+          var emailErr = document.getElementById('wz-err-email');
+          var email = emailEl.value.trim();
+          var emailOk = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          if (!emailOk) {
+            emailEl.classList.add('error');
+            emailErr.classList.add('visible');
+            if (ok) { emailEl.focus(); ok = false; }
+          } else {
+            emailEl.classList.remove('error');
+            emailErr.classList.remove('visible');
+          }
+        }
+
+        if (n === 3) {
+          requireField('wz-industry', 'wz-err-industry');
+          requireField('wz-about', 'wz-err-about');
+        }
+
+        return ok;
+      }
+
+      /* ── Step 3: Document upload ─────────── */
+      var docsInput = document.getElementById('wz-docs-input');
+      var docsDrop  = document.getElementById('wz-docs-drop');
+
+      docsInput.addEventListener('change', function () {
+        addFiles(Array.from(this.files));
+        this.value = '';
+      });
+
+      docsDrop.addEventListener('dragover', function (e) { e.preventDefault(); this.classList.add('drag-over'); });
+      docsDrop.addEventListener('dragleave', function () { this.classList.remove('drag-over'); });
+      docsDrop.addEventListener('drop', function (e) {
+        e.preventDefault();
+        this.classList.remove('drag-over');
+        addFiles(Array.from(e.dataTransfer.files));
+      });
+
+      function addFiles(files) {
+        files.forEach(function (f) {
+          if (!docFiles.find(function (x) { return x.name === f.name; })) docFiles.push(f);
+        });
+        renderDocList();
+      }
+
+      function renderDocList() {
+        var list = document.getElementById('wz-docs-list');
+        list.innerHTML = docFiles.map(function (f, i) {
+          return '<div class="wz-file-item">'
+            + '<span class="wz-file-item-icon"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>'
+            + '<span class="wz-file-item-name">' + escHtml(f.name) + '</span>'
+            + '<button class="wz-file-remove" onclick="window._wzRemoveDoc(' + i + ')" type="button" aria-label="Remove">✕</button>'
+            + '</div>';
+        }).join('');
+      }
+
+      window._wzRemoveDoc = function (i) { docFiles.splice(i, 1); renderDocList(); };
+
+      /* ── Step 4: Logo upload ──────────────── */
+      document.getElementById('wz-logo-input').addEventListener('change', function () {
+        if (!this.files[0]) return;
+        logoFile = this.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById('wz-logo-img').src = e.target.result;
+          document.getElementById('wz-logo-name').textContent = logoFile.name;
+          document.getElementById('wz-logo-preview').style.display = 'flex';
+        };
+        reader.readAsDataURL(logoFile);
+      });
+
+      /* ── Step 4: Theme swatches ───────────── */
+      document.querySelectorAll('.wz-swatch').forEach(function (swatch) {
+        swatch.addEventListener('click', function () {
+          document.querySelectorAll('.wz-swatch').forEach(function (s) { s.classList.remove('selected'); });
+          this.classList.add('selected');
+          selectedTheme = this.dataset.theme;
+        });
+      });
+
+      /* ── Step 5: Yes/No toggle ────────────── */
+      document.getElementById('wz-products-yes').addEventListener('click', function () {
+        recommendsProducts = true;
+        this.classList.add('active-yes');
+        document.getElementById('wz-products-no').classList.remove('active-no');
+        document.getElementById('wz-products-details').style.display = 'block';
+      });
+      document.getElementById('wz-products-no').addEventListener('click', function () {
+        recommendsProducts = false;
+        this.classList.add('active-no');
+        document.getElementById('wz-products-yes').classList.remove('active-yes');
+        document.getElementById('wz-products-details').style.display = 'none';
+      });
+
+      /* ── Step 6: Build review ─────────────── */
+      function buildReview() {
+        var d = collectData();
+        var html = '';
+
+        function row(key, val) {
+          if (!val) return '';
+          return '<div class="wz-review-row"><span class="wz-review-key">' + escHtml(key) + '</span><span class="wz-review-val">' + escHtml(val) + '</span></div>';
+        }
+
+        html += '<div class="wz-review-section"><div class="wz-review-heading">About You</div>'
+          + row('Business name', d.businessName)
+          + row('Your name', d.contactName)
+          + row('Email', d.email)
+          + row('Phone', d.phone)
+          + row('Location', d.suburb)
+          + '</div>';
+
+        var onlineFields = [d.website, d.facebook, d.instagram, d.linkedin, d.googlebiz, d.othersocial];
+        if (onlineFields.some(Boolean)) {
+          html += '<div class="wz-review-section"><div class="wz-review-heading">Online Presence</div>'
+            + row('Website', d.website)
+            + row('Facebook', d.facebook)
+            + row('Instagram', d.instagram)
+            + row('LinkedIn', d.linkedin)
+            + row('Google Business', d.googlebiz)
+            + row('Other social', d.othersocial)
+            + '</div>';
+        }
+
+        var aboutText = d.about.length > 220 ? d.about.substring(0, 220) + '…' : d.about;
+        html += '<div class="wz-review-section"><div class="wz-review-heading">Your Business</div>'
+          + row('Industry', d.industry)
+          + row('About', aboutText)
+          + (docFiles.length ? row('Documents', docFiles.map(function(f){return f.name;}).join(', ')) : '')
+          + '</div>';
+
+        html += '<div class="wz-review-section"><div class="wz-review-heading">Brand</div>'
+          + row('Logo', logoFile ? logoFile.name : 'Not uploaded')
+          + row('Colour theme', selectedTheme || 'Not selected')
+          + row('Brand notes', d.brandprefs)
+          + '</div>';
+
+        html += '<div class="wz-review-section"><div class="wz-review-heading">Products &amp; Recommendations</div>'
+          + row('Recommends products', recommendsProducts === null ? 'Not answered' : (recommendsProducts ? 'Yes' : 'No'))
+          + (recommendsProducts ? row('Description', d.productsDesc) : '')
+          + (recommendsProducts && d.productCategories.length ? row('Categories', d.productCategories.join(', ')) : '')
+          + '</div>';
+
+        html += '<div class="wz-review-reassurance"><strong>$79/month — that's it.</strong>'
+          + '<span>No lock-in &nbsp;·&nbsp; No setup fee &nbsp;·&nbsp; 30-day money-back guarantee</span></div>';
+
+        document.getElementById('wz-review-content').innerHTML = html;
+      }
+
+      /* ── Collect data ─────────────────────── */
+      function collectData() {
+        return {
+          businessName:     v('wz-businessName'),
+          contactName:      v('wz-contactName'),
+          email:            v('wz-email'),
+          phone:            v('wz-phone'),
+          suburb:           v('wz-suburb'),
+          website:          v('wz-website'),
+          facebook:         v('wz-facebook'),
+          instagram:        v('wz-instagram'),
+          linkedin:         v('wz-linkedin'),
+          googlebiz:        v('wz-googlebiz'),
+          othersocial:      v('wz-othersocial'),
+          industry:         v('wz-industry'),
+          about:            v('wz-about'),
+          documents:        docFiles.map(function(f){return f.name;}),
+          logo:             logoFile ? logoFile.name : null,
+          colorTheme:       selectedTheme,
+          brandprefs:       v('wz-brandprefs'),
+          recommendsProducts: recommendsProducts,
+          productsDesc:     v('wz-products-desc'),
+          productCategories: Array.from(document.querySelectorAll('.wz-product-cat:checked')).map(function(el){return el.value;})
+        };
+      }
+
+      function v(id) {
+        var el = document.getElementById(id);
+        return el ? el.value.trim() : '';
+      }
+
+      /* ── Submit ───────────────────────────── */
+      function submitWizard() {
+        var data = collectData();
+        console.log('[Pine Beach] Onboarding wizard submission:', JSON.stringify(data, null, 2));
+
+        /* Hide nav + steps, show success */
+        document.getElementById('wizard-nav').style.display = 'none';
+        document.querySelectorAll('.wizard-step-panel').forEach(function (p) { p.classList.remove('active'); });
+        var success = document.getElementById('wz-success');
+        success.classList.add('active');
+        document.getElementById('wz-success-email').textContent = data.email;
+        document.getElementById('wizard-body').scrollTop = 0;
+      }
+
+      /* ── Reset ────────────────────────────── */
+      function resetForm() {
+        document.getElementById('wizard-nav').style.display = '';
+        document.getElementById('wz-success').classList.remove('active');
+
+        var fields = ['wz-businessName','wz-contactName','wz-email','wz-phone','wz-suburb',
+          'wz-website','wz-facebook','wz-instagram','wz-linkedin','wz-googlebiz','wz-othersocial',
+          'wz-industry','wz-about','wz-products-desc','wz-brandprefs'];
+        fields.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) { el.value = ''; el.classList.remove('error'); }
+        });
+
+        document.querySelectorAll('.wz-product-cat').forEach(function (el) { el.checked = false; });
+        document.getElementById('wz-products-details').style.display = 'none';
+        document.getElementById('wz-products-yes').classList.remove('active-yes');
+        document.getElementById('wz-products-no').classList.remove('active-no');
+        document.getElementById('wz-logo-preview').style.display = 'none';
+        document.getElementById('wz-docs-list').innerHTML = '';
+        document.querySelectorAll('.wz-swatch').forEach(function (s) { s.classList.remove('selected'); });
+        document.querySelectorAll('.wz-error').forEach(function (e) { e.classList.remove('visible'); });
+      }
+
+      /* ── Utility ──────────────────────────── */
+      function escHtml(s) {
+        if (!s) return '';
+        return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+    }());
   </script>
 </body>
 </html>
