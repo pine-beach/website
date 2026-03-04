@@ -384,6 +384,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   letter-spacing: -.01em;
   max-width: 18ch;
   margin-inline: auto;
+  text-align: center;
 }
 
 .hero-headline em {
@@ -396,6 +397,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   color: var(--charcoal-60);
   max-width: 46ch;
   line-height: 1.65;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .hero-ctas {
