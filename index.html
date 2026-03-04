@@ -2138,9 +2138,8 @@
       /* ── Submit ───────────────────────────── */
       function submitWizard() {
         var data = collectData();
-        console.log('[Pine Beach] Onboarding wizard submission:', JSON.stringify(data, null, 2));
 
-        /* Hide nav + steps, show success */
+        /* Show success immediately — don't block on API */
         document.getElementById('wizard-nav').style.display = 'none';
         document.querySelectorAll('.wizard-step-panel').forEach(function (p) { p.classList.remove('active'); });
         var success = document.getElementById('wz-success');
@@ -2149,6 +2148,16 @@
         success.style.alignItems = 'center';
         document.getElementById('wz-success-email').textContent = data.email;
         document.getElementById('wizard-body').scrollTop = 0;
+
+        /* POST to Pine Beach CRM */
+        fetch('https://crm-alpha-rust.vercel.app/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).catch(function (err) {
+          /* Silent fail — user already sees success screen */
+          console.warn('[Pine Beach] Lead submission error:', err);
+        });
       }
 
       /* ── Reset ────────────────────────────── */
