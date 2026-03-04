@@ -379,9 +379,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .hero-headline {
   font-family: var(--font-serif);
   font-size: clamp(2.25rem, 6vw, 4rem);
-  line-height: 1.1;
+  line-height: 1.15;
   color: var(--charcoal);
   letter-spacing: -.01em;
+  max-width: 680px;
   margin-inline: auto;
   text-align: center;
 }
