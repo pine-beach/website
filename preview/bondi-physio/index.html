@@ -3,284 +3,385 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bondi Physiotherapy &amp; Sports Injury Centre | Bondi Beach Since 1987</title>
-  <meta name="description" content="Expert sports physiotherapy at Bondi Beach. 80+ years combined clinical experience, 1,000+ National League games across NRL, NBL, WNBL. Treating all athletes — industrial, recreational, adolescent, professional. Call 02 9130 6914." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <title>Bondi Physio | Elite Sports Physiotherapy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --gold: #C9972A;
       --charcoal: #1C1C1E;
       --offwhite: #F5F0E8;
-      --midgrey: #6B6560;
-      --text: #1A1A1A;
       --white: #FFFFFF;
-      --max-width: 1120px;
+      --text: #1B1B1B;
+      --muted: #6B6B6B;
+      --shadow: 0 12px 30px rgba(0,0,0,0.12);
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-family: 'DM Sans', sans-serif;
       color: var(--text);
       background: var(--offwhite);
       line-height: 1.6;
     }
-    img { max-width: 100%; height: auto; display: block; }
-    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(1200px, 92%); margin: 0 auto; }
+    section { padding: 90px 0; }
 
-    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(28, 28, 30, 0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
+    /* NAV */
     .nav {
+      position: absolute;
+      width: 100%;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      padding: 24px 0;
+      color: var(--white);
+    }
+    .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 0;
     }
-    .nav-logo { display: flex; align-items: center; gap: 12px; }
-    .nav-logo img { height: 40px; }
-    .nav-links {
-      display: none; gap: 24px; font-size: 14px; color: #EAE5DC;
+    .logo {
+      display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.5px;
     }
-    .nav-cta {
-      background: var(--gold); color: var(--charcoal); font-weight: 600;
-      padding: 10px 16px; border-radius: 999px; font-size: 14px;
+    .logo img { height: 44px; width: auto; border-radius: 6px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { font-weight: 500; opacity: 0.9; }
+    .nav-links a:hover { opacity: 1; }
+    .btn {
+      background: var(--gold); color: #111; padding: 14px 26px; border-radius: 999px; font-weight: 700; display: inline-block; transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 12px 24px rgba(201,151,42,0.25);
     }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 28px rgba(201,151,42,0.35); }
 
+    .hamburger { display: none; width: 36px; height: 36px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; }
+    .mobile-menu { display: none; }
+
+    /* HERO */
     .hero {
+      min-height: 88vh;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('assets/hero-banner.jpg') center/cover no-repeat, linear-gradient(120deg, #222, #111);
+      color: var(--white);
+      display: flex; align-items: center;
+    }
+    .hero-content { max-width: 650px; }
+    .hero h1 { font-size: clamp(2.6rem, 4vw, 4rem); line-height: 1.05; font-weight: 700; margin-bottom: 20px; }
+    .hero p { font-size: 1.1rem; margin-bottom: 28px; color: rgba(255,255,255,0.85); }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero .ghost {
+      border: 1px solid rgba(255,255,255,0.5); color: var(--white); padding: 14px 26px; border-radius: 999px; font-weight: 600; transition: all .2s ease;
+    }
+    .hero .ghost:hover { background: rgba(255,255,255,0.12); }
+
+    /* SERVICES */
+    .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+    .section-sub { color: var(--muted); max-width: 680px; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 36px; }
+    .card {
+      background: var(--white); padding: 26px; border-radius: 20px; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease;
+      min-height: 190px; display: flex; flex-direction: column; gap: 14px;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.15); }
+    .card .icon { width: 48px; height: 48px; border-radius: 14px; background: rgba(201,151,42,0.15); display: grid; place-items: center; color: var(--gold); font-size: 20px; }
+    .card h3 { font-size: 1.2rem; font-weight: 700; }
+    .card p { color: var(--muted); font-size: 0.98rem; }
+
+    /* STATS */
+    .stats {
       background: var(--charcoal);
       color: var(--white);
-      padding: 64px 0 72px;
+      padding: 70px 0;
     }
-    .hero-grid { display: grid; gap: 32px; align-items: center; }
-    .hero h1 {
-      font-family: "Outfit", sans-serif; font-size: 36px; line-height: 1.15; margin: 0 0 16px;
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+    .stat-num { font-size: 2.6rem; font-weight: 700; color: var(--gold); }
+    .stat-label { margin-top: 6px; font-weight: 500; }
+
+    /* ABOUT */
+    .about { background: var(--white); }
+    .about-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: center; }
+    .about-img { border-radius: 24px; overflow: hidden; min-height: 320px; background: linear-gradient(135deg, #e6dfd4, #cbb59a); }
+
+    /* TEAM */
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+    .team-card {
+      background: var(--white); padding: 28px; border-radius: 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center;
     }
-    .hero p { margin: 0 0 24px; color: #E6E1D8; }
-    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn-primary {
-      background: var(--gold); color: var(--charcoal); padding: 12px 20px; border-radius: 999px;
-      font-weight: 600; display: inline-block;
+    .team-photo { width: 140px; height: 140px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, #d9cbb8, #b59d7a); }
+    .team-name { font-size: 1.3rem; font-weight: 700; }
+    .team-title { color: var(--muted); font-weight: 500; }
+    .badges { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .badge { background: rgba(201,151,42,0.12); color: #6f4b05; padding: 6px 12px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+
+    /* GALLERY */
+    .gallery { background: var(--offwhite); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
+    .gallery-item { border-radius: 18px; overflow: hidden; min-height: 220px; background: linear-gradient(135deg, #e0d6c5, #bda582); }
+
+    /* CONTACT */
+    .contact { background: var(--white); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: center; }
+    .contact-list { display: grid; gap: 18px; margin: 24px 0; }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; }
+    .contact-item .icon {
+      width: 40px; height: 40px; border-radius: 12px; background: rgba(201,151,42,0.15); color: var(--gold); display: grid; place-items: center; font-size: 18px;
     }
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.2); color: #EAE5DC;
-      padding: 12px 20px; border-radius: 999px; display: inline-block;
-    }
+    .map { width: 100%; height: 320px; border: 0; border-radius: 20px; }
 
-    section { padding: 64px 0; }
-    section.light { background: var(--offwhite); }
-    section.dark { background: var(--charcoal); color: var(--white); }
+    /* FOOTER */
+    footer { background: var(--charcoal); color: var(--white); padding: 50px 0; }
+    .footer-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: center; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; }
+    .footer-logo img { height: 40px; border-radius: 6px; }
+    .categories { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+    .cat { border: 1px solid rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 999px; font-size: 0.85rem; }
 
-    h2 {
-      font-family: "Outfit", sans-serif; font-size: 28px; margin: 0 0 16px; line-height: 1.2;
-    }
-    h3 { font-family: "Outfit", sans-serif; font-size: 20px; margin: 0 0 12px; }
-    .muted { color: var(--midgrey); }
-    .dark .muted { color: #CFC8BD; }
-
-    .intro { font-size: 18px; }
-
-    .cards { display: grid; gap: 20px; }
-    .card {
-      background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; padding: 20px;
-    }
-    .dark .card { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
-
-    .team-grid { display: grid; gap: 20px; }
-    .team-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
-    .team-card img { width: 100%; height: 240px; object-fit: cover; }
-    .team-card .content { padding: 20px; }
-
-    .gallery { display: grid; gap: 12px; }
-    .gallery img { border-radius: 14px; }
-
-    .contact-grid { display: grid; gap: 28px; }
-    .contact-box { background: #fff; border-radius: 16px; padding: 20px; border: 1px solid rgba(0,0,0,0.06); }
-    iframe { width: 100%; border: 0; border-radius: 16px; height: 320px; }
-
-    footer {
-      background: var(--charcoal); color: #EAE5DC; padding: 32px 0; text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer-tagline { font-size: 12px; letter-spacing: 0.08em; color: #BFB7A8; }
-
-    @media (min-width: 768px) {
-      .nav-links { display: flex; }
-      .hero { padding: 96px 0; }
-      .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
-      .hero h1 { font-size: 46px; }
+    /* Responsive */
+    @media (max-width: 980px) {
       .cards { grid-template-columns: repeat(2, 1fr); }
-      .team-grid { grid-template-columns: repeat(3, 1fr); }
-      .gallery { grid-template-columns: repeat(4, 1fr); }
-      .contact-grid { grid-template-columns: 1.1fr 0.9fr; align-items: start; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner, .contact-inner { grid-template-columns: 1fr; }
+      .hero { min-height: 78vh; }
     }
-
-    @media (min-width: 1024px) {
-      h2 { font-size: 32px; }
-      .hero h1 { font-size: 52px; }
-      .nav-logo img { height: 48px; }
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu {
+        display: none; position: absolute; top: 80px; right: 4%; left: 4%; background: rgba(28,28,30,0.95); padding: 18px; border-radius: 16px; z-index: 30;
+      }
+      .mobile-menu a { display: block; padding: 10px 0; color: var(--white); font-weight: 600; }
+      .cards, .team-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; gap: 24px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="nav-logo" href="#top" aria-label="Bondi Physiotherapy & Sports Injury Centre">
-        <img src="assets/logo.jpg" alt="Bondi Physiotherapy & Sports Injury Centre" />
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#about">About</a>
+  <header class="hero" id="home">
+    <nav class="nav">
+      <div class="container nav-inner">
+        <div class="logo">
+          <img src="assets/logo.jpg" alt="Bondi Physio logo" />
+          <span>Bondi Physio</span>
+        </div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#team">Team</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+          <a href="#contact" class="btn">Book Now</a>
+        </div>
+        <div class="hamburger" id="hamburger" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
         <a href="#services">Services</a>
+        <a href="#about">About</a>
         <a href="#team">Team</a>
+        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-      </nav>
-      <a class="nav-cta" href="tel:0291306914">Book Now</a>
+        <a href="#contact" class="btn" style="display:inline-block; margin-top:10px;">Book Now</a>
+      </div>
+    </nav>
+
+    <div class="container hero-content">
+      <h1>Elite Physiotherapy for Athletes Who Demand More</h1>
+      <p>National‑league expertise, evidence‑based care, and a performance-first approach in the heart of Bondi.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn">Book Now</a>
+        <a href="#services" class="ghost">Explore Services</a>
+      </div>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <h1>Expert Sports Physiotherapy. Bondi Beach. Trusted by Athletes Since 1987.</h1>
-          <p>From elite professionals to weekend warriors, our team brings 80+ combined years of clinical experience to every injury and every recovery.</p>
-          <div class="hero-cta">
-            <a class="btn-primary" href="tel:0291306914">Book Now: 02 9130 6914</a>
-            <a class="btn-secondary" href="#services">View Services</a>
-          </div>
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Performance‑Driven Services</h2>
+      <p class="section-sub">Focused, targeted care designed for peak performance and fast return to play.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Sports Injury Rehab</h3>
+          <p>Personalised recovery plans to rebuild strength, mobility, and confidence in competition.</p>
         </div>
-        <div>
-          <img src="assets/hero-banner.jpg" alt="Bondi Physiotherapy & Sports Injury Centre" />
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-person-running"></i></div>
+          <h3>Performance Conditioning</h3>
+          <p>Strength and movement programming to unlock speed, power, and durability.</p>
         </div>
-      </div>
-    </section>
-
-    <section id="about" class="light">
-      <div class="container">
-        <h2>Bondi Physiotherapy &amp; Sports Injury Centre</h2>
-        <p class="intro">Bondi Physiotherapy &amp; Sports Injury Centre has served the Bondi community from 30 Curlewis St since 1987. We don't categorise patients by treatment type — we treat you as the athlete you are. Whether you're managing a desk injury, returning from surgery, or preparing for competition, our approach is built around your goals.</p>
-        <div class="cards" style="margin-top: 28px;">
-          <div class="card">
-            <h3>Clinic Story</h3>
-            <p>Bondi Physiotherapy &amp; Sports Injury Centre opened in 1987 at 30 Curlewis St, Bondi Beach — and has been here ever since. Founded by Lisa Tomlinson-Alonso two years after graduating, the clinic was built on a simple principle: every patient deserves the same precision and commitment you'd bring to an elite athlete. Nearly four decades later, that principle still drives everything we do.</p>
-          </div>
-          <div class="card">
-            <h3>Team Highlight</h3>
-            <p>Our principals, Lisa Tomlinson-Alonso and Albert Alonso, have worked the sidelines of the WNBL, NBL, and NRL across more than 1,000 combined National League games — bringing that same precision and commitment to every patient at Bondi Beach.</p>
-          </div>
-          <div class="card">
-            <h3>Values</h3>
-            <p>We believe every person who walks through our door is an athlete — their goals just look different. We bring honesty, precision, and genuine sporting expertise to every consultation. We don't pad treatment plans or overpromise timelines. We get you better, and we tell you the truth about how long it takes.</p>
-          </div>
-          <div class="card">
-            <h3>Book an Appointment</h3>
-            <p>Book an appointment: call 02 9130 6914 or email reception@bondiphysio.com.au<br />Open Mon–Fri, 7am–7pm.</p>
-          </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-dumbbell"></i></div>
+          <h3>Biomechanics Assessment</h3>
+          <p>Precision analysis to identify movement faults and prevent re‑injury.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-hand-holding-medical"></i></div>
+          <h3>Hands‑On Therapy</h3>
+          <p>Targeted manual treatment to reduce pain and restore full function.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="services" class="light">
-      <div class="container">
-        <h2>Services by Athlete Type</h2>
-        <p class="muted">We don't categorise patients by treatment type — we categorise them by athlete type. Because how you move, what you're training for, and what you're trying to get back to shapes every clinical decision we make.</p>
-        <div class="cards" style="margin-top: 28px;">
-          <div class="card">
-            <h3>Industrial Athlete</h3>
-            <p>You sit for extended periods, commute, or manage physical demands specific to your job. WFH has introduced a new generation of workplace injuries — postural strain, repetitive stress, and ergonomic imbalances that accumulate over time. We assess, treat, and build sustainable movement habits so your body can handle what work demands of it.</p>
+  <section class="stats">
+    <div class="container stats-grid">
+      <div>
+        <div class="stat-num">1,000+</div>
+        <div class="stat-label">National League Games</div>
+      </div>
+      <div>
+        <div class="stat-num">80+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">1987</div>
+        <div class="stat-label">Established</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Expert Physios</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container about-inner">
+      <div>
+        <h2 class="section-title">About Bondi Physio</h2>
+        <p class="section-sub">We’ve supported elite athletes for decades, combining clinical precision with a results‑driven mindset. Our clinic blends advanced rehabilitation with performance conditioning so you can return stronger, faster, and more resilient. Every plan is tailored, measurable, and built around your goals.</p>
+      </div>
+      <div class="about-img">
+        <img src="assets/gallery-4.jpg" alt="Bondi Physio treatment" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <h2 class="section-title">Meet the Team</h2>
+      <p class="section-sub">National‑level experience across elite basketball, football, and high‑performance programs.</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo"><img src="assets/gallery-1.jpg" alt="Heather Green" style="width:100%; height:100%; object-fit:cover;"></div>
+          <div class="team-name">Heather Green</div>
+          <div class="team-title">Principal Physiotherapist</div>
+          <div class="badges">
+            <span class="badge">WNBL Flames</span>
+            <span class="badge">Australian Opals</span>
+            <span class="badge">400+ Games</span>
           </div>
-          <div class="card">
-            <h3>Recreational Athlete</h3>
-            <p>Weekend sport, running, gym, ocean swimming — the recreational athlete pushes hard without the recovery infrastructure of a professional setup. We diagnose accurately, rehabilitate thoroughly, and guide you through a structured Return to Play protocol so you get back to what you love with confidence.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo"><img src="assets/gallery-2.jpg" alt="David Rowe" style="width:100%; height:100%; object-fit:cover;"></div>
+          <div class="team-name">David Rowe</div>
+          <div class="team-title">Sports Physiotherapist</div>
+          <div class="badges">
+            <span class="badge">NBL Programs</span>
+            <span class="badge">Elite Rehab</span>
+            <span class="badge">Strength Coach</span>
           </div>
-          <div class="card">
-            <h3>Adolescent Athlete</h3>
-            <p>Young athletes face a unique set of challenges: growing bones, multiple sports, high training loads, and pressure to perform year-round. We understand the physiology of developing bodies and provide careful, age-appropriate management to keep adolescent athletes healthy through their formative years.</p>
-          </div>
-          <div class="card">
-            <h3>Professional Athlete</h3>
-            <p>When your livelihood depends on physical performance, clinical opinions must be exact. We have worked at the highest levels of Australian sport and bring that same rigour to elite and semi-elite athletes requiring complex rehabilitation or independent second opinions.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo"><img src="assets/gallery-3.jpg" alt="Sophie Tran" style="width:100%; height:100%; object-fit:cover;"></div>
+          <div class="team-name">Sophie Tran</div>
+          <div class="team-title">Performance Physio</div>
+          <div class="badges">
+            <span class="badge">Speed & Agility</span>
+            <span class="badge">Athlete Care</span>
+            <span class="badge">Return‑to‑Play</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section aria-label="Gallery" class="light">
-      <div class="container">
-        <div class="gallery">
-          <img src="assets/gallery-1.jpg" alt="Bondi Physiotherapy clinic" />
-          <img src="assets/gallery-2.jpg" alt="Bondi Physiotherapy clinic" />
-          <img src="assets/gallery-3.jpg" alt="Bondi Physiotherapy clinic" />
-          <img src="assets/gallery-4.jpg" alt="Bondi Physiotherapy clinic" />
-        </div>
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <h2 class="section-title">Lifestyle & Training Gallery</h2>
+      <p class="section-sub">A glimpse into our training environment and athlete-focused care.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="assets/gallery-1.jpg" alt="Training 1" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="gallery-item"><img src="assets/gallery-2.jpg" alt="Training 2" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="gallery-item"><img src="assets/gallery-3.jpg" alt="Training 3" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="gallery-item"><img src="assets/gallery-4.jpg" alt="Training 4" style="width:100%; height:100%; object-fit:cover;"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="team" class="light">
-      <div class="container">
-        <h2>Meet the Team</h2>
-        <div class="team-grid" style="margin-top: 28px;">
-          <div class="team-card">
-            <img src="assets/gallery-1.jpg" alt="Lisa Tomlinson-Alonso" />
-            <div class="content">
-              <h3>Lisa Tomlinson-Alonso — Principal &amp; Founder</h3>
-              <p>Lisa graduated in 1985 and founded the clinic two years later. She served as physiotherapist to the WNBL Sydney Flames (1993–2000), the NBL Sydney Kings (1997–2000), and the Australian Opals — accumulating over 400 National League games on the bench. She has also supported GPS Sydney Grammar and CAS Waverley College schoolboy rugby programmes since the 1980s.</p>
+  <section id="contact" class="contact">
+    <div class="container contact-inner">
+      <div>
+        <h2 class="section-title">Book an Appointment</h2>
+        <p class="section-sub">Visit our Bondi clinic for elite-level physiotherapy and performance care.</p>
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <strong>Address</strong><br>
+              65 Campbell Parade, Bondi Beach NSW 2026
             </div>
           </div>
-          <div class="team-card">
-            <img src="assets/gallery-2.jpg" alt="Albert Alonso" />
-            <div class="content">
-              <h3>Albert Alonso — Principal, Sports Physiotherapy</h3>
-              <p>Albert graduated from Sydney University in 1985 and spent 21 seasons (1988–2008) as physiotherapist to the NRL Canterbury Bulldogs, alongside a stint with the NBL West Sydney Razorbacks. He holds a Masters in Sports Physiotherapy (2002), is a published researcher, an Honorary Research Associate at Sydney University, and served on the ACU committee from 2017 to 2023.</p>
+          <div class="contact-item">
+            <div class="icon"><i class="fa-solid fa-clock"></i></div>
+            <div>
+              <strong>Hours</strong><br>
+              Mon–Fri: 7:00am–7:00pm · Sat: 8:00am–1:00pm
             </div>
           </div>
-          <div class="team-card">
-            <img src="assets/gallery-3.jpg" alt="Ivan Liang" />
-            <div class="content">
-              <h3>Ivan Liang — Physiotherapist</h3>
-              <p>Ivan graduated from ACU in 2024 and completed an internship with the Cronulla Sharks NRL programme. He specialises in movement biomechanics and completed the UTA22 Blue Mountains ultramarathon in 2025. Ivan consults in English and Cantonese.</p>
+          <div class="contact-item">
+            <div class="icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <strong>Phone</strong><br>
+              (02) 9130 2222
             </div>
           </div>
         </div>
+        <a href="#" class="btn">Book Now</a>
       </div>
-    </section>
-
-    <section id="contact" class="light">
-      <div class="container">
-        <h2>Contact</h2>
-        <div class="contact-grid" style="margin-top: 24px;">
-          <div class="contact-box">
-            <p><strong>Address:</strong> 30 Curlewis St (corner Wellington St), Bondi Beach NSW 2026</p>
-            <p><strong>Hours:</strong> Monday to Friday, 7:00am – 7:00pm, by appointment</p>
-            <p><strong>Phone:</strong> 02 9130 6914</p>
-            <p><strong>Email:</strong> reception@bondiphysio.com.au</p>
-            <p><strong>Parking:</strong> Street parking available on surrounding streets — both 2-hour and unrestricted zones nearby.</p>
-            <p><strong>Payment:</strong> HICAPS on-the-spot health fund claiming. EFTPOS accepted (Visa, Mastercard, Amex). Workers Compensation and Third Party claims welcome.</p>
-            <p><strong>Booking:</strong> To book an appointment, call 02 9130 6914 or email reception@bondiphysio.com.au. We're open Monday to Friday, 7am–7pm.</p>
-            <a class="btn-primary" href="tel:0291306914">Book Now</a>
-          </div>
-          <div>
-            <iframe
-              title="Bondi Physiotherapy & Sports Injury Centre"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=30%20Curlewis%20St%20Bondi%20Beach%20NSW%202026&output=embed">
-            </iframe>
-          </div>
-        </div>
+      <div>
+        <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.572713250676!2d151.2741676152069!3d-33.8914759806535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ad9f4b23b3e9%3A0x3ccfb18f0d33bd44!2sCampbell%20Pde%2C%20Bondi%20Beach%20NSW%202026!5e0!3m2!1sen!2sau!4v1719891540000"></iframe>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer>
-    <div class="container">
-      <div class="footer-tagline">MASTERS ATHLETE - INDUSTRIAL ATHLETE - ADOLESCENT ATHLETE - RECREATIONAL ATHLETE - PROFESSIONAL ATHLETE</div>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo.jpg" alt="Bondi Physio logo">
+          <div>
+            <div style="font-weight:700;">Bondi Physio</div>
+            <div style="color: rgba(255,255,255,0.7);">Elite sports physiotherapy since 1987</div>
+          </div>
+        </div>
+        <div class="categories">
+          <span class="cat">Basketball</span>
+          <span class="cat">Rugby</span>
+          <span class="cat">Netball</span>
+          <span class="cat">Football</span>
+          <span class="cat">Surf Sports</span>
+        </div>
+      </div>
+      <div style="text-align:right; color: rgba(255,255,255,0.7);">
+        © 2026 Bondi Physio. All rights reserved.
+      </div>
     </div>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger?.addEventListener('click', () => {
+      mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+    });
+    mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.style.display = 'none'));
+  </script>
 </body>
 </html>
