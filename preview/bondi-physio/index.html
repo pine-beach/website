@@ -114,11 +114,67 @@
     .team-title { color: var(--muted); font-weight: 500; }
     .badges { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
     .badge { background: rgba(201,151,42,0.12); color: #6f4b05; padding: 6px 12px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+    .profile-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,151,42,0.4);
+      color: #6f4b05;
+      font-weight: 600;
+      background: transparent;
+      cursor: pointer;
+    }
 
-    /* GALLERY */
-    .gallery { background: var(--offwhite); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
-    .gallery-item { border-radius: 18px; overflow: hidden; min-height: 220px; background: linear-gradient(135deg, #e0d6c5, #bda582); }
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28,28,30,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease, visibility .2s ease;
+      z-index: 1000;
+      padding: 24px;
+    }
+    .modal-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-card {
+      background: var(--white);
+      border-radius: 24px;
+      max-width: 560px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      text-align: center;
+    }
+    .modal-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 16px;
+    }
+    .modal-title { color: var(--muted); font-weight: 500; margin-bottom: 14px; }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: var(--white);
+      cursor: pointer;
+      font-size: 18px;
+    }
 
     /* CONTACT */
     .contact { background: var(--white); }
@@ -166,15 +222,12 @@
     }
     .team-card { transition: transform .2s ease, box-shadow .2s ease; }
     .team-card:hover { transform: scale(1.03); }
-    .gallery-item { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
-    .gallery-item.is-visible { opacity: 1; transform: translateY(0); }
 
     /* Responsive */
     @media (max-width: 980px) {
       .cards { grid-template-columns: repeat(2, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .team-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .about-inner, .contact-inner { grid-template-columns: 1fr; }
       .hero { min-height: 78vh; }
     }
@@ -186,7 +239,6 @@
       }
       .mobile-menu a { display: block; padding: 10px 0; color: var(--white); font-weight: 600; }
       .cards, .team-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: 1fr; gap: 24px; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
     }
@@ -204,7 +256,6 @@
           <a href="#services">Services</a>
           <a href="#about">About</a>
           <a href="#team">Team</a>
-          <a href="#gallery">Gallery</a>
           <a href="#contact">Contact</a>
           <a href="https://book.nookal.com/bookings/book/DD9e7cAc-9D87-e39C-1ce5-fAAEde694Edc/location/BLZMA" class="btn" target="_blank" rel="noopener">Book Now</a>
         </div>
@@ -216,7 +267,6 @@
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#team">Team</a>
-        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
         <a href="https://book.nookal.com/bookings/book/DD9e7cAc-9D87-e39C-1ce5-fAAEde694Edc/location/BLZMA" class="btn" style="display:inline-block; margin-top:10px;" target="_blank" rel="noopener">Book Now</a>
       </div>
@@ -300,7 +350,7 @@
       <p class="section-sub">National‑level experience across elite basketball, football, and high‑performance programs.</p>
       <div class="team-grid">
         <div class="team-card">
-          <div class="team-photo"><img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=400&q=80" alt="Lisa Tomlinson-Alonso" style="width:100%; height:100%; object-fit:cover;"></div>
+          <div class="team-photo"><img src="assets/team-lisa.jpg" alt="Lisa Tomlinson-Alonso" style="width:100%; height:100%; object-fit:cover;"></div>
           <div class="team-name">Lisa Tomlinson-Alonso</div>
           <div class="team-title">Principal / Founder</div>
           <div class="badges">
@@ -308,9 +358,10 @@
             <span class="badge">Australian Opals</span>
             <span class="badge">400+ Games</span>
           </div>
+          <button class="profile-btn" data-modal-target="modal-lisa">View Profile</button>
         </div>
         <div class="team-card">
-          <div class="team-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Albert Alonso" style="width:100%; height:100%; object-fit:cover;"></div>
+          <div class="team-photo"><img src="assets/team-albert.jpg" alt="Albert Alonso" style="width:100%; height:100%; object-fit:cover;"></div>
           <div class="team-name">Albert Alonso</div>
           <div class="team-title">Principal / Sports Physiotherapist</div>
           <div class="badges">
@@ -318,34 +369,51 @@
             <span class="badge">21 Seasons</span>
             <span class="badge">Masters Sports Physio</span>
           </div>
+          <button class="profile-btn" data-modal-target="modal-albert">View Profile</button>
         </div>
         <div class="team-card">
-          <div class="team-photo"><img src="https://images.unsplash.com/photo-1546456073-6712f79251bb?w=400&q=80" alt="Ivan Liang" style="width:100%; height:100%; object-fit:cover;"></div>
+          <div class="team-photo"><img src="assets/team-ivan.jpg" alt="Ivan Liang" style="width:100%; height:100%; object-fit:cover;"></div>
           <div class="team-name">Ivan Liang</div>
           <div class="team-title">Physiotherapist</div>
           <div class="badges">
             <span class="badge">Cronulla Sharks NRL</span>
             <span class="badge">English & Cantonese</span>
           </div>
+          <button class="profile-btn" data-modal-target="modal-ivan">View Profile</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="gallery" class="gallery">
-    <div class="container">
-      <h2 class="section-title reveal">Lifestyle & Training Gallery</h2>
-      <p class="section-sub">A glimpse into our training environment and athlete-focused care.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item"><img src="assets/gallery-1.jpg" alt="Training 1" style="width:100%; height:100%; object-fit:cover;"></div>
-        <div class="gallery-item"><img src="assets/gallery-2.jpg" alt="Training 2" style="width:100%; height:100%; object-fit:cover;"></div>
-        <div class="gallery-item"><img src="assets/gallery-3.jpg" alt="Training 3" style="width:100%; height:100%; object-fit:cover;"></div>
-        <div class="gallery-item"><img src="assets/gallery-4.jpg" alt="Training 4" style="width:100%; height:100%; object-fit:cover;"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" alt="Physiotherapy session" style="width:100%; height:100%; object-fit:cover;"></div>
-        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80" alt="Sports training" style="width:100%; height:100%; object-fit:cover;"></div>
-      </div>
+  <div class="modal-overlay" id="modal-lisa" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-lisa-name">
+      <button class="modal-close" type="button" aria-label="Close profile">×</button>
+      <div class="modal-photo"><img src="assets/team-lisa.jpg" alt="Lisa Tomlinson-Alonso" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="team-name" id="modal-lisa-name">Lisa Tomlinson-Alonso</div>
+      <div class="modal-title">Principal / Founder</div>
+      <p>Graduated 1985. Founded clinic 1987 from one-room in O'Brien St Bondi. Grew to current Curlewis St location over 3 decades. Played in National Women's Basketball League. WNBL Flames physio (1993-2000), NBL Kings (1997-2000), toured with Australian Opals. 400+ National League games. GPS Sydney Grammar and CAS Waverley College schoolboy rugby since the 80s.</p>
     </div>
-  </section>
+  </div>
+
+  <div class="modal-overlay" id="modal-albert" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-albert-name">
+      <button class="modal-close" type="button" aria-label="Close profile">×</button>
+      <div class="modal-photo"><img src="assets/team-albert.jpg" alt="Albert Alonso" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="team-name" id="modal-albert-name">Albert Alonso</div>
+      <div class="modal-title">Principal / Sports Physiotherapist</div>
+      <p>Sydney University 1985. 21 seasons NRL Canterbury Bulldogs (1988-2008), final 9 years full-time. NBL West Sydney Razorbacks. Worked with coaches Steve Folkes and Gordon McLeod. Masters in Sports Physiotherapy (2002). Honorary Research Associate, Sydney University. Published in peer-reviewed journals. ACU Physiotherapy External Consultative Committee (2017-2023).</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ivan" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-ivan-name">
+      <button class="modal-close" type="button" aria-label="Close profile">×</button>
+      <div class="modal-photo"><img src="assets/team-ivan.jpg" alt="Ivan Liang" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="team-name" id="modal-ivan-name">Ivan Liang</div>
+      <div class="modal-title">Physiotherapist</div>
+      <p>Australian Catholic University 2024. Cronulla Sharks NRL internship. Special interest in movement biomechanics and sports injuries. Hospital experience in MSK, cardiorespiratory, neurological physio. GPS background in basketball and football. Completed UTA22 Blue Mountains 2025. Languages: English & Cantonese.</p>
+    </div>
+  </div>
 
   <section id="contact" class="contact">
     <div class="container contact-inner">
@@ -422,6 +490,34 @@
     });
     mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.style.display = 'none'));
 
+    const modals = document.querySelectorAll('.modal-overlay');
+    const openModal = modal => {
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+    const closeModal = modal => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    };
+    document.querySelectorAll('[data-modal-target]').forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-modal-target');
+        const modal = document.getElementById(targetId);
+        if (modal) openModal(modal);
+      });
+    });
+    modals.forEach(modal => {
+      modal.addEventListener('click', event => {
+        if (event.target === modal) closeModal(modal);
+      });
+      modal.querySelector('.modal-close')?.addEventListener('click', () => closeModal(modal));
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        modals.forEach(modal => closeModal(modal));
+      }
+    });
+
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -431,7 +527,7 @@
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('.reveal, .cards .card, .gallery-item').forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal, .cards .card').forEach(el => revealObserver.observe(el));
     document.querySelectorAll('.cards .card').forEach((card, index) => {
       card.style.transitionDelay = `${index * 100}ms`;
     });
