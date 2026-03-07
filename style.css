@@ -495,6 +495,8 @@ button { font: inherit; border: none; background: none; }
   border: none;
   display: block;
   pointer-events: none;
+  object-fit: cover;
+  object-position: top;
 }
 .portfolio-meta h3 {
   font-size: var(--text-h4);
