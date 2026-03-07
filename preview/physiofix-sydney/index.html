@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhysioFIX Sydney — Rose Bay Physiotherapy Clinic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F5F7FA;
+      --card: #FFFFFF;
+      --primary: #1B3A5C;
+      --secondary: #3A8DDE;
+      --text: #1C1C1C;
+      --muted: #6B7280;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+    .btn:hover { background: var(--secondary); }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245, 247, 250, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(27, 58, 92, 0.08);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background: url('https://physiofixsydney.com.au/wp-content/uploads/2025/10/IMG_9914-5-scaled-1920x1920.jpg') center/cover no-repeat;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(27, 58, 92, 0.65);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 90px 0;
+      max-width: 700px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      margin: 0 0 16px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin: 0 0 28px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      color: var(--primary);
+      margin: 0 0 12px;
+    }
+    .section-sub {
+      color: var(--muted);
+      margin: 0 0 40px;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(27, 58, 92, 0.08);
+    }
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(58, 141, 222, 0.12);
+      display: grid;
+      place-items: center;
+      color: var(--secondary);
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    /* Stats */
+    .stats {
+      background: #fff;
+      border-top: 1px solid rgba(27, 58, 92, 0.08);
+      border-bottom: 1px solid rgba(27, 58, 92, 0.08);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+    .stat h3 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+    .stat p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .team-card img {
+      border-radius: 16px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+    .team-card h4 {
+      margin: 16px 0 4px;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+    .team-card p { margin: 0; color: var(--muted); }
+
+    /* About */
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      align-items: center;
+    }
+    .about-card {
+      background: var(--card);
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: 0 12px 28px rgba(27, 58, 92, 0.08);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      align-items: start;
+    }
+    .contact-card {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(27, 58, 92, 0.08);
+    }
+    .contact-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      color: var(--muted);
+    }
+    .contact-item i { color: var(--secondary); margin-top: 4px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    td {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(27, 58, 92, 0.08);
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      background: #fff;
+      padding: 40px 0;
+      border-top: 1px solid rgba(27, 58, 92, 0.08);
+    }
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { min-height: 60vh; }
+      .hero-content { padding: 70px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <img src="https://physiofixsydney.com.au/wp-content/uploads/2017/11/logo-physiofix-small.png" alt="PhysioFIX Sydney" style="height: 44px;" />
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#team">Team</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn" href="https://physiofixsydney.com.au/contact/#book" target="_blank" rel="noopener">Book Online</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Rose Bay's trusted physiotherapy clinic — fix pain, move better.</h1>
+      <p>Expert physiotherapy for sports injuries, back pain, and musculoskeletal conditions. Conveniently located in Rose Bay, Sydney. Book your appointment today.</p>
+      <a class="btn" href="https://physiofixsydney.com.au/contact/#book" target="_blank" rel="noopener">Book an Appointment</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Targeted treatment for pain, injury, and recovery</h2>
+      <p class="section-sub">Premium, evidence-based care tailored to your body, goals, and lifestyle.</p>
+      <div class="services-grid">
+        <div class="card">
+          <div class="service-icon"><i class="fa-solid fa-person-walking"></i></div>
+          <h3>Sports Physiotherapy</h3>
+          <p>Injury treatment and return-to-sport programs tailored to your performance goals.</p>
+        </div>
+        <div class="card">
+          <div class="service-icon"><i class="fa-solid fa-spine"></i></div>
+          <h3>Neck and Back Pain</h3>
+          <p>Specialised spinal physiotherapy for both acute flare-ups and chronic pain.</p>
+        </div>
+        <div class="card">
+          <div class="service-icon"><i class="fa-solid fa-hand-holding-medical"></i></div>
+          <h3>Musculoskeletal Injuries</h3>
+          <p>Assessment and hands-on treatment of muscles, joints, and soft tissue.</p>
+        </div>
+        <div class="card">
+          <div class="service-icon"><i class="fa-solid fa-person-cane"></i></div>
+          <h3>Orthopaedic Rehabilitation</h3>
+          <p>Pre and post-operative care to support full recovery after surgery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <h3>5.0 Rating</h3>
+          <p>Google Rating</p>
+        </div>
+        <div class="stat">
+          <h3>218+ Reviews</h3>
+          <p>Google Reviews</p>
+        </div>
+        <div class="stat">
+          <h3>4 Physios</h3>
+          <p>Experienced Team</p>
+        </div>
+        <div class="stat">
+          <h3>Rose Bay</h3>
+          <p>Prime Location</p>
+        </div>
+      </div>
+      <p class="section-sub" style="text-align:center; margin-top: 18px;">218 five-star reviews. Real patients. Real results.</p>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <h2 class="section-title">Meet Your Physios</h2>
+      <p class="section-sub">A dedicated team of experienced physiotherapists, right in the heart of Rose Bay.</p>
+      <div class="team-grid">
+        <div class="team-card card">
+          <img src="https://physiofixsydney.com.au/wp-content/uploads/2025/10/IMG_9914-5-scaled-1920x1920.jpg" alt="Sam Bartlett" />
+          <h4>Sam Bartlett</h4>
+          <p>Physiotherapist</p>
+        </div>
+        <div class="team-card card">
+          <img src="https://physiofixsydney.com.au/wp-content/uploads/2022/04/IMG_8423-scaled-e1762139208203-1766x1766.jpeg" alt="Sara Bartlett" />
+          <h4>Sara Bartlett</h4>
+          <p>Physiotherapist</p>
+        </div>
+        <div class="team-card card">
+          <img src="https://physiofixsydney.com.au/wp-content/uploads/2025/06/Harry-Image67-scaled-2045x2045.jpeg" alt="Harry Forsythe" />
+          <h4>Harry Forsythe</h4>
+          <p>Physiotherapist</p>
+        </div>
+        <div class="team-card card">
+          <img src="https://physiofixsydney.com.au/wp-content/uploads/2018/06/Screenshot-2025-10-07-at-9.48.01-am-e1762138687725-1308x1308.png" alt="Lauren Richardson" />
+          <h4>Lauren Richardson</h4>
+          <p>Physiotherapist (B.Phty)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about">
+      <div>
+        <h2 class="section-title">Premium physiotherapy in Rose Bay</h2>
+        <p class="section-sub">PhysioFIX Sydney delivers expert solutions for pain, sports injury, and musculoskeletal conditions.</p>
+        <p>PhysioFIX Sydney delivers expert solutions for pain, sports injury, and musculoskeletal conditions in the heart of Rose Bay. Our experienced team of physiotherapists takes a hands-on, evidence-based approach to get you moving better — faster. Whether you are recovering from surgery, managing chronic pain, or returning to sport, we have the expertise to help.</p>
+        <a class="btn" href="https://physiofixsydney.com.au/contact/#book" target="_blank" rel="noopener">Book Online</a>
+      </div>
+      <div class="about-card">
+        <h3 style="color: var(--primary); margin-top:0;">What to expect</h3>
+        <p style="color: var(--muted);">Personalised assessment, expert manual therapy, and clear rehab plans. We focus on long-term outcomes, not quick fixes.</p>
+        <div style="margin-top: 18px; display:grid; gap:10px; color: var(--muted);">
+          <div><strong style="color: var(--primary);">Evidence-based care</strong> tailored to your goals</div>
+          <div><strong style="color: var(--primary);">Hands-on treatment</strong> for pain relief and mobility</div>
+          <div><strong style="color: var(--primary);">Performance-focused rehab</strong> for sport and life</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact PhysioFIX Sydney</h2>
+      <p class="section-sub">Book your appointment or visit the clinic in Rose Bay.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>736 New South Head Rd, Rose Bay NSW 2029</span></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><span>02 9371 2750</span></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>info@physiofixsydney.com.au</span></div>
+          <a class="btn" href="https://physiofixsydney.com.au/contact/#book" target="_blank" rel="noopener">Book Online</a>
+          <h4 style="color: var(--primary); margin-top: 24px;">Hours</h4>
+          <table>
+            <tr><td>Monday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Thursday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Friday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Saturday</td><td>Closed</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </table>
+        </div>
+        <div class="contact-card" style="padding:0; overflow:hidden;">
+          <iframe
+            title="PhysioFIX Sydney Map"
+            src="https://www.google.com/maps?q=736%20New%20South%20Head%20Rd,%20Rose%20Bay%20NSW%202029&output=embed"
+            width="100%"
+            height="420"
+            style="border:0;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer">
+      <img src="https://physiofixsydney.com.au/wp-content/uploads/2017/11/logo-physiofix-small.png" alt="PhysioFIX Sydney" style="height: 40px;" />
+      <div>© 2026 PhysioFIX Sydney. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
