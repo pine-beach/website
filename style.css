@@ -1193,7 +1193,7 @@ button { font: inherit; border: none; background: none; }
 
 /* 15. Animations */
 [data-reveal] {
-  opacity: 0;
+  opacity: 1;
   transform: translateY(20px);
   transition: opacity var(--transition-reveal), transform var(--transition-reveal);
   transition-delay: var(--reveal-delay, 0ms);
