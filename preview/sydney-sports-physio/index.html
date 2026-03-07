@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sydney Sports Physio & Fitness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0A0A0A;
+      --card: #161616;
+      --accent: #FF6B35;
+      --accent-2: #1DB954;
+      --text: #F0F0F0;
+      --muted: #9A9A9A;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.5px;
+      margin: 0 0 12px;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container {
+      width: min(1200px, 90%);
+      margin: 0 auto;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #0A0A0A;
+      font-weight: 700;
+      border-radius: 999px;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,107,53,0.3); }
+    .hero {
+      position: relative;
+      background: url('https://sydney-sports-physio.com.au/wp-content/uploads/2024/10/30-Pitt-St-Physio.png') center/cover no-repeat;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 80px 0;
+      max-width: 700px;
+    }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+    .hero p { color: var(--muted); font-size: 1.1rem; }
+    .hero-cta { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 16px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      background: rgba(29,185,84,0.15);
+      border: 1px solid rgba(29,185,84,0.4);
+      border-radius: 999px;
+      font-weight: 600;
+      color: var(--accent-2);
+      margin-bottom: 16px;
+    }
+    .section { padding: 80px 0; }
+    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
+    .section-title p { color: var(--muted); max-width: 520px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #1f1f1f;
+      display: flex;
+      flex-direction: column;
+    }
+    .card img { width: 100%; height: 200px; object-fit: cover; }
+    .card-body { padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .card-icon {
+      width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+      background: rgba(255,107,53,0.15); color: var(--accent);
+      font-size: 1.2rem;
+    }
+    .stats {
+      background: #0f0f0f;
+      border-top: 1px solid #1d1d1d;
+      border-bottom: 1px solid #1d1d1d;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .stat-number { color: var(--accent); font-size: 2rem; font-weight: 700; font-family: 'Oswald', sans-serif; }
+    .stat-label { color: var(--muted); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      align-items: center;
+    }
+    .about-card {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid #1f1f1f;
+    }
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .location-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid #1f1f1f;
+    }
+    .location-card h3 { margin-bottom: 8px; }
+    .location-meta { color: var(--muted); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+    .map {
+      width: 100%;
+      height: 320px;
+      border: 0;
+      border-radius: 16px;
+    }
+    footer {
+      background: #0d0d0d;
+      border-top: 1px solid #1d1d1d;
+      padding: 40px 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      align-items: center;
+    }
+    .footer-logo { max-width: 180px; }
+    .socials { display: flex; gap: 16px; }
+    .socials a { color: var(--muted); font-size: 1.2rem; }
+    .cta-strip {
+      background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(29,185,84,0.2));
+      border: 1px solid #242424;
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    @media (max-width: 768px) {
+      .hero { min-height: 70vh; }
+      .section { padding: 64px 0; }
+      .hero-cta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="hero-badge"><i class="fa-solid fa-location-dot"></i> Sydney CBD • Two Locations</div>
+      <h1>Your path to pain-free living starts here.</h1>
+      <p>Expert physiotherapy, structured rehabilitation, and strength and conditioning — all under one roof. Two locations in Sydney CBD, near Circular Quay.</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://sydney-sports-physio-fitness.au1.cliniko.com/bookings#location" target="_blank" rel="noopener">Book Online Now</a>
+        <a class="btn" style="background: var(--accent-2);" href="https://sydney-sports-physio-fitness.au1.cliniko.com/bookings#location" target="_blank" rel="noopener">View Appointment Times</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Services built for real results</h2>
+          <p>High-performance treatment, rehabilitation, and training programs designed by expert physios in Sydney CBD.</p>
+        </div>
+        <a class="btn" href="https://sydney-sports-physio-fitness.au1.cliniko.com/bookings#location" target="_blank" rel="noopener">Book Now</a>
+      </div>
+      <div class="services-grid">
+        <div class="card">
+          <img src="https://sydney-sports-physio.com.au/wp-content/uploads/2024/10/Physio.png" alt="Physiotherapy" />
+          <div class="card-body">
+            <div class="card-icon"><i class="fa-solid fa-person-running"></i></div>
+            <h3>Physiotherapy</h3>
+            <p>Expert assessment and treatment for pain, injury, and movement issues. Get back to doing what you love.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://sydney-sports-physio.com.au/wp-content/uploads/2024/10/Rehab.png" alt="Rehabilitation" />
+          <div class="card-body">
+            <div class="card-icon"><i class="fa-solid fa-kit-medical"></i></div>
+            <h3>Rehabilitation</h3>
+            <p>Structured recovery programs for post-injury and post-surgery patients, designed around your timeline and goals.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://sydney-sports-physio.com.au/wp-content/uploads/2024/10/Strength-and-Conditioning.png" alt="Strength and Conditioning" />
+          <div class="card-body">
+            <div class="card-icon"><i class="fa-solid fa-dumbbell"></i></div>
+            <h3>Strength &amp; Conditioning</h3>
+            <p>Performance training and fitness programming to build strength, prevent injury, and elevate your game.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container stats-grid">
+      <div>
+        <div class="stat-number">5.0</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+      <div>
+        <div class="stat-number">90+</div>
+        <div class="stat-label">Reviews</div>
+      </div>
+      <div>
+        <div class="stat-number">2</div>
+        <div class="stat-label">Locations</div>
+      </div>
+      <div>
+        <div class="stat-number">Sydney CBD</div>
+        <div class="stat-label">Central Access</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-grid">
+      <div>
+        <h2>About Sydney Sports Physio &amp; Fitness</h2>
+        <p>Sydney Sports Physio and Fitness brings expert physiotherapy and modern gym facilities together in the heart of Sydney CBD. With two convenient locations — including Level 4 at 30 Pitt St (Marriott Hotel) — the clinic is built for busy professionals and serious athletes alike. Customised care, accessible from Circular Quay, with a 5.0-star rating across 90 reviews.</p>
+        <div class="cta-strip" style="margin-top: 24px;">
+          <div>
+            <h3>Two CBD locations</h3>
+            <p class="location-meta">30 Pitt St (Marriott Hotel) &amp; Bond St (Fitness First)</p>
+          </div>
+          <a class="btn" href="https://sydney-sports-physio-fitness.au1.cliniko.com/bookings#location" target="_blank" rel="noopener">Book Online</a>
+        </div>
+      </div>
+      <div class="about-card">
+        <h3>Why athletes choose us</h3>
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; color: var(--muted);">
+          <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Expert physiotherapy and injury management</li>
+          <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Structured rehabilitation pathways</li>
+          <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Strength &amp; conditioning in modern facilities</li>
+          <li><i class="fa-solid fa-check" style="color: var(--accent);"></i> Central CBD access near Circular Quay</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Locations</h2>
+          <p>Choose the CBD location that suits you. Both offer comprehensive physio, rehab, and performance services.</p>
+        </div>
+      </div>
+      <div class="location-grid">
+        <div class="location-card">
+          <h3>30 Pitt St (Marriott Hotel)</h3>
+          <p class="location-meta">Level 4, 30 Pitt St, Sydney NSW 2000</p>
+          <p><strong>Phone:</strong> 0481 85 85 86</p>
+        </div>
+        <div class="location-card">
+          <h3>Bond St (Fitness First)</h3>
+          <p class="location-meta">Bond St Fitness First, Sydney CBD</p>
+          <p><strong>Phone:</strong> 0413 309 903</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Contact &amp; Bookings</h2>
+          <p>Call either location or book online via Cliniko for fast, secure appointments.</p>
+        </div>
+        <a class="btn" href="https://sydney-sports-physio-fitness.au1.cliniko.com/bookings#location" target="_blank" rel="noopener">Book Online</a>
+      </div>
+      <div class="contact-grid">
+        <div class="location-card">
+          <h3>30 Pitt St (Marriott Hotel)</h3>
+          <p class="location-meta">Level 4, 30 Pitt St, Sydney NSW 2000</p>
+          <p><strong>Phone:</strong> 0481 85 85 86</p>
+          <p><strong>Book Online:</strong> <a href="https://sydney-sports-physio-fitness.au1.cliniko.com/bookings#location" target="_blank" rel="noopener" style="color: var(--accent);">Cliniko Booking</a></p>
+        </div>
+        <div class="location-card">
+          <h3>Bond St (Fitness First)</h3>
+          <p class="location-meta">Bond St Fitness First, Sydney CBD</p>
+          <p><strong>Phone:</strong> 0413 309 903</p>
+          <p><strong>Book Online:</strong> <a href="https://sydney-sports-physio-fitness.au1.cliniko.com/bookings#location" target="_blank" rel="noopener" style="color: var(--accent);">Cliniko Booking</a></p>
+        </div>
+        <iframe class="map" loading="lazy" allowfullscreen
+          src="https://www.google.com/maps?q=Level%204%2C%2030%20Pitt%20St%2C%20Sydney%20NSW%202000&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="https://sydney-sports-physio.com.au/wp-content/uploads/2024/10/cropped-sydney-sports-physiofitness-2048x1411-1-1024x706.png" alt="Sydney Sports Physio & Fitness" />
+        <p class="location-meta">Your Path to Pain-Free Living</p>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <div class="socials">
+          <a href="https://www.instagram.com/sydsportsphysio/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/sydney-sports-physio-fitness/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Bookings</h4>
+        <a class="btn" href="https://sydney-sports-physio-fitness.au1.cliniko.com/bookings#location" target="_blank" rel="noopener">Book Now</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 24px; color: var(--muted); font-size: 0.9rem;">
+      © 2026 Sydney Sports Physio & Fitness. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
