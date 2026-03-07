@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinic 27 — Sydney CBD Chiropractors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-AvlE9y8W2f7Yj7FQ+1j8sVv1zE1yq3yqQ9aVJd5Qp1r5gQ0s8G9cE0eF0nD4xwKq7H0X1y4iJm1u1p0M9tV5uQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg: #0F0F0F;
+      --card: #1A1A1A;
+      --gold: #C9A84C;
+      --teal: #2ABFBF;
+      --text: #F0EDE8;
+      --muted: #8A8A8A;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; margin: 0 0 12px; }
+    h1 { font-size: clamp(2.6rem, 4vw, 4rem); letter-spacing: 0.3px; }
+    h2 { font-size: clamp(2rem, 3vw, 3rem); }
+    h3 { font-size: 1.4rem; }
+    p { margin: 0 0 16px; color: var(--muted); }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #0B0B0B;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
+
+    header {
+      background: linear-gradient(145deg, #0F0F0F 10%, #1A1A1A 60%, #0F0F0F 100%);
+      padding: 80px 0 70px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-card {
+      background: rgba(26,26,26,0.75);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 28px;
+      border-radius: 18px;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .section { padding: 70px 0; }
+
+    .treatments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 24px;
+      border-radius: 16px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card i {
+      font-size: 26px;
+      color: var(--teal);
+    }
+
+    .stats-strip {
+      background: #121212;
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: center;
+      padding: 30px 0;
+    }
+    .stat-number {
+      font-size: 2rem;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
+    .stat-label { color: var(--muted); font-size: 0.95rem; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: start;
+    }
+    .about-card {
+      background: var(--card);
+      padding: 26px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .accent { color: var(--gold); }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .location-card {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .location-card h3 { margin-bottom: 8px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+    .map-embed {
+      width: 100%;
+      min-height: 320px;
+      border: 0;
+      border-radius: 14px;
+    }
+
+    footer {
+      padding: 30px 0 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      header { padding: 70px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-tag">Clinic 27 — Sydney CBD Chiropractors</span>
+        <h1>Sydney CBD chiropractors for high-performance professionals.</h1>
+        <p>Clinic 27 delivers chiropractic care with a difference — helping Sydney's business professionals achieve their health goals and perform at their best.</p>
+        <a class="btn" href="https://clinic27intake.bookings.pracsuite.com/guest" target="_blank" rel="noopener">Book Your Appointment</a>
+      </div>
+      <div class="hero-card">
+        <h3>Chiropractic care built for results</h3>
+        <p>Premium, evidence-informed chiropractic care tailored for professionals who want to move better, work better, and live better.</p>
+        <p class="accent">Rated 4.9 stars across 162 Google reviews.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h2>Targeted chiropractic treatments</h2>
+      <p>Comprehensive assessment and hands-on chiropractic care designed to restore spinal function, relieve discomfort, and improve performance.</p>
+      <div class="treatments-grid">
+        <div class="card">
+          <i class="fa-solid fa-spine"></i>
+          <h3>Back Pain Treatment</h3>
+          <p>Targeted chiropractic assessment and treatment for acute and chronic back pain.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-head-side"></i>
+          <h3>Neck Pain Treatment</h3>
+          <p>Relief for desk-driven tension, stiffness, and cervical spine issues.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-head-side-virus"></i>
+          <h3>Headache and Migraine Treatment</h3>
+          <p>Chiropractic care addressing the structural causes of recurring headaches.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-person-walking"></i>
+          <h3>Sciatica Treatment</h3>
+          <p>Assessment and hands-on treatment for nerve pain radiating from the lower back.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-person-rays"></i>
+          <h3>Posture Treatment</h3>
+          <p>Corrective care for postural imbalances caused by prolonged desk and screen use.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-person-circle-check"></i>
+          <h3>Vertigo Treatment</h3>
+          <p>Chiropractic approaches to dizziness and balance disorders rooted in spinal dysfunction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-strip">
+    <div class="container stats-grid">
+      <div>
+        <div class="stat-number">4.9</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+      <div>
+        <div class="stat-number">162+</div>
+        <div class="stat-label">Google Reviews</div>
+      </div>
+      <div>
+        <div class="stat-number">2</div>
+        <div class="stat-label">Locations</div>
+      </div>
+      <div>
+        <div class="stat-number">14+</div>
+        <div class="stat-label">Treatments</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-grid">
+      <div>
+        <h2>Chiropractic care with a difference</h2>
+        <p>Clinic 27 is a team of Sydney CBD chiropractors dedicated to chiropractic care with a difference — built for business professionals who demand high performance from their health. With locations in the Sydney CBD and Dee Why, the clinic combines advanced techniques with a patient-centred approach to deliver lasting results. Rated 4.9 stars across 162 Google reviews, Clinic 27 is one of Sydney's most trusted chiropractic practices.</p>
+        <a class="btn" href="https://clinic27intake.bookings.pracsuite.com/guest" target="_blank" rel="noopener">Book Your Appointment</a>
+      </div>
+      <div class="about-card">
+        <h3>Why Clinic 27</h3>
+        <p>Boardroom-ready care for professionals who need precision, clarity, and reliable outcomes from their chiropractic treatment.</p>
+        <p class="accent">CBD location with convenient access, plus a Dee Why clinic for the Northern Beaches.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Two convenient locations</h2>
+      <div class="locations-grid">
+        <div class="location-card">
+          <h3>Clinic 27 — Sydney CBD</h3>
+          <p>27 Macquarie Pl, Sydney NSW 2000</p>
+          <p>02 8059 7743</p>
+          <a class="btn" href="https://clinic27intake.bookings.pracsuite.com/guest" target="_blank" rel="noopener">Book Online</a>
+        </div>
+        <div class="location-card">
+          <h3>Complete Chiropractic — Dee Why</h3>
+          <p>Dee Why, NSW</p>
+          <p>02 9972 0040</p>
+          <a class="btn" href="https://clinic27intake.bookings.pracsuite.com/guest" target="_blank" rel="noopener">Book Online</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div>
+        <h2>Contact & bookings</h2>
+        <p><strong>Location 1 — Sydney CBD</strong><br />27 Macquarie Pl, Sydney NSW 2000<br />02 8059 7743</p>
+        <p><strong>Location 2 — Dee Why</strong><br />Dee Why, NSW<br />02 9972 0040</p>
+        <a class="btn" href="https://clinic27intake.bookings.pracsuite.com/guest" target="_blank" rel="noopener">Book Your Appointment</a>
+      </div>
+      <div>
+        <iframe class="map-embed" loading="lazy" allowfullscreen
+          src="https://www.google.com/maps?q=27%20Macquarie%20Pl%2C%20Sydney%20NSW%202000&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 Clinic 27. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
