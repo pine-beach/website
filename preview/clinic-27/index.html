@@ -50,11 +50,39 @@
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
 
     header {
-      background: linear-gradient(145deg, #0F0F0F 10%, #1A1A1A 60%, #0F0F0F 100%);
-      padding: 80px 0 70px;
+      position: relative;
+      overflow: hidden;
+      min-height: 75vh;
+      background: linear-gradient(135deg, #0F0F0F 10%, #16201F 45%, #1A1A1A 70%, #0F0F0F 100%);
+      padding: 110px 0 100px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: -20% -10% 0 -10%;
+      background:
+        radial-gradient(circle at 18% 25%, rgba(42,191,191,0.18), transparent 55%),
+        radial-gradient(circle at 78% 20%, rgba(201,168,76,0.22), transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08), transparent 60%);
+      pointer-events: none;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 1px, transparent 1px, transparent 26px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 1px, transparent 1px, transparent 26px),
+        linear-gradient(120deg, rgba(255,255,255,0.06), transparent 40%, rgba(255,255,255,0.02));
+      opacity: 0.35;
+      pointer-events: none;
     }
     .hero-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 40px;
@@ -65,6 +93,7 @@
       border: 1px solid rgba(201,168,76,0.2);
       padding: 28px;
       border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
     }
     .hero-tag {
       display: inline-block;
@@ -119,16 +148,40 @@
     .stat-label { color: var(--muted); font-size: 0.95rem; }
 
     .about-grid {
+      position: relative;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 30px;
       align-items: start;
     }
+    .about-grid::after {
+      content: '';
+      position: absolute;
+      left: 8%;
+      bottom: -14px;
+      width: 240px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.7), transparent);
+      opacity: 0.7;
+    }
     .about-card {
+      position: relative;
+      overflow: hidden;
       background: var(--card);
       padding: 26px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.05);
+    }
+    .about-card::after {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      top: -60px;
+      right: -60px;
+      background: radial-gradient(circle, rgba(42,191,191,0.22), transparent 70%);
+      opacity: 0.8;
     }
     .accent { color: var(--gold); }
 
@@ -169,7 +222,7 @@
 
     @media (max-width: 900px) {
       .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      header { padding: 70px 0 60px; }
+      header { padding: 90px 0 70px; min-height: auto; }
     }
   </style>
 </head>
