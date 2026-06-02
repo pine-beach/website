@@ -69,6 +69,8 @@ export default function PineBeachSite() {
     const blob = { x: -9999, y: -9999 };
     let orbit = 0;
     let raf = 0;
+    let lastMoveAt = 0;
+    const IDLE_RESUME_MS = 1500; // hand control back to auto-orbit after this much pointer stillness
 
     function resize() {
       W = window.innerWidth;
@@ -108,6 +110,13 @@ export default function PineBeachSite() {
 
     function frame() {
       if (W === 0 || canvas!.width === 0) resize();
+      // If the pointer has been still for IDLE_RESUME_MS, give control back to
+      // the auto-orbit so the field doesn't freeze when the cursor stops or a
+      // touch is held without moving.
+      if (mouse.x > -999 && performance.now() - lastMoveAt > IDLE_RESUME_MS) {
+        mouse.x = -9999;
+        mouse.y = -9999;
+      }
       t += 0.016;
       orbit += 0.01;
       let tx: number, ty: number;
@@ -156,6 +165,7 @@ export default function PineBeachSite() {
     function onMove(e: PointerEvent) {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
+      lastMoveAt = performance.now();
       if (hudRef.current) {
         hudRef.current.textContent =
           "x:" +
@@ -164,13 +174,17 @@ export default function PineBeachSite() {
           String(Math.max(0, e.clientY | 0)).padStart(4, "0");
       }
     }
-    function onLeave() {
+    // Resume auto-orbit when the pointer leaves the window, the touch is
+    // lifted, or the touch is cancelled (e.g. interrupted by a system gesture).
+    function onRelease() {
       mouse.x = -9999;
       mouse.y = -9999;
     }
 
     window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerleave", onLeave);
+    window.addEventListener("pointerleave", onRelease);
+    window.addEventListener("pointerup", onRelease);
+    window.addEventListener("pointercancel", onRelease);
     window.addEventListener("resize", resize);
     resize();
     frame(); // paint one frame immediately, then it self-schedules via rAF
@@ -178,7 +192,9 @@ export default function PineBeachSite() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerleave", onLeave);
+      window.removeEventListener("pointerleave", onRelease);
+      window.removeEventListener("pointerup", onRelease);
+      window.removeEventListener("pointercancel", onRelease);
       window.removeEventListener("resize", resize);
     };
   }, []);
