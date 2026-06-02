@@ -49,7 +49,7 @@ body { background: #0a0a0b; color: #fafafa; font-family: var(--font-display), sa
 .hero h1 { font-size: clamp(40px, 7.4vw, 104px); font-weight: 600; letter-spacing: -0.045em; line-height: 0.92; max-width: 15ch; }
 .hero .caret { display: inline-block; width: 0.5ch; height: 0.82em; background: #fafafa; margin-left: 0.12em; transform: translateY(0.1em); animation: blink 1.05s steps(1) infinite; }
 @keyframes blink { 0%,50% { opacity: 1; } 50.01%,100% { opacity: 0; } }
-.hero .lead { font-family: var(--font-mono), monospace; font-size: 14px; color: #a1a1aa; line-height: 1.6; max-width: 52ch; margin-top: 26px; }
+.hero .lead { font-family: var(--font-mono), monospace; font-size: 14px; color: #a1a1aa; line-height: 1.6; max-width: 52ch; margin-top: 26px; text-wrap: pretty; }
 .hero .cta { display: flex; gap: 13px; margin-top: 34px; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-mono), monospace; font-weight: 500; font-size: 13px; padding: 14px 24px; border-radius: 10px; border: none; cursor: pointer; background: #fafafa; color: #0a0a0b; transition: transform .16s; }
 .btn:hover { transform: translateY(-2px); }

@@ -57,6 +57,9 @@ export default function PineBeachSite() {
     if (!ctx) return;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // ?still — paint a single deterministic initial frame and don't animate.
+    // Useful for capturing exact hero stills (load-video end frame, OG images).
+    const still = new URLSearchParams(window.location.search).has("still");
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let W = 0,
       H = 0,
@@ -71,6 +74,13 @@ export default function PineBeachSite() {
     let raf = 0;
     let lastMoveAt = 0;
     const IDLE_RESUME_MS = 1500; // hand control back to auto-orbit after this much pointer stillness
+    // On release we ease from the stopped position into the orbit path: the
+    // target = orbit point + a decaying offset that starts at (blob − orbit
+    // point), so the field never snaps to a far-away phase.
+    let wasControlled = false;
+    let resumeOffX = 0,
+      resumeOffY = 0;
+    const RESUME_DECAY = 0.965; // per-frame easing of the offset toward 0 (~1.3s)
 
     function resize() {
       W = window.innerWidth;
@@ -110,22 +120,32 @@ export default function PineBeachSite() {
 
     function frame() {
       if (W === 0 || canvas!.width === 0) resize();
-      // If the pointer has been still for IDLE_RESUME_MS, give control back to
-      // the auto-orbit so the field doesn't freeze when the cursor stops or a
-      // touch is held without moving.
-      if (mouse.x > -999 && performance.now() - lastMoveAt > IDLE_RESUME_MS) {
-        mouse.x = -9999;
-        mouse.y = -9999;
-      }
       t += 0.016;
       orbit += 0.01;
+      // Controlled = pointer present AND moved within the idle window. After
+      // IDLE_RESUME_MS of stillness (or on release) control hands back so the
+      // field never freezes.
+      const controlled =
+        mouse.x > -999 && performance.now() - lastMoveAt <= IDLE_RESUME_MS;
+      const orbitX = W / 2 + Math.cos(orbit) * W * 0.26;
+      const orbitY = H / 2 + Math.sin(orbit * 1.3) * H * 0.32;
       let tx: number, ty: number;
-      if (mouse.x > -999) {
+      if (controlled) {
         tx = mouse.x;
         ty = mouse.y;
+        wasControlled = true;
       } else {
-        tx = W / 2 + Math.cos(orbit) * W * 0.26;
-        ty = H / 2 + Math.sin(orbit * 1.3) * H * 0.32;
+        if (wasControlled) {
+          // Just released: seed the offset so the target begins exactly where
+          // the blob is now, then eases into the orbit as the offset decays.
+          resumeOffX = blob.x - orbitX;
+          resumeOffY = blob.y - orbitY;
+          wasControlled = false;
+        }
+        resumeOffX *= RESUME_DECAY;
+        resumeOffY *= RESUME_DECAY;
+        tx = orbitX + resumeOffX;
+        ty = orbitY + resumeOffY;
       }
       if (blob.x < -999) {
         blob.x = tx;
@@ -159,7 +179,7 @@ export default function PineBeachSite() {
         ctx!.fillStyle = "rgba(250,250,250," + Math.min(1, a) + ")";
         ctx!.fillRect(p.x - sz / 2, p.y - sz / 2, sz, sz);
       }
-      if (!reduce) raf = requestAnimationFrame(frame);
+      if (!reduce && !still) raf = requestAnimationFrame(frame);
     }
 
     function onMove(e: PointerEvent) {
@@ -369,13 +389,13 @@ export default function PineBeachSite() {
         </div>
 
         <div className={"hero" + (isOpen ? " recede" : "")}>
-          <div className="eyebrow">Design &amp; development studio</div>
+          <div className="eyebrow">Design &amp; engineering studio</div>
           <h1>
-            We build what doesn&apos;t exist yet<span className="caret" />
+            Make the<br />impossible<br />inevitable<span className="caret" />
           </h1>
           <p className="lead">
-            A design and engineering studio for teams shipping at the edge of
-            what&apos;s possible. No ceiling, no excuses — we ship.
+            A small senior design and engineering studio for the work at the
+            edge of what&apos;s possible.
           </p>
           <div className="cta">
             <button className="btn" onClick={(e) => handleSec("contact", e)}>
