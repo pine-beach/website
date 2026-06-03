@@ -16,19 +16,26 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+const HEADLINE = "Complex by nature. Elegant by design.";
+const SUBHEAD =
+  "A senior design and engineering studio for transformative products that don't have a blueprint.";
+
 export const metadata: Metadata = {
-  title: "Pine Beach — Design & development studio",
-  description:
-    "A design and engineering studio for teams shipping at the edge of what's possible. We build what doesn't exist yet.",
+  title: `Pine Beach — ${HEADLINE}`,
+  description: SUBHEAD,
   metadataBase: new URL("https://pinebeach.com.au"),
   openGraph: {
-    title: "Pine Beach — Design & development studio",
-    description:
-      "A design and engineering studio for teams shipping at the edge of what's possible. We build what doesn't exist yet.",
+    title: HEADLINE,
+    description: SUBHEAD,
     url: "https://pinebeach.com.au",
     siteName: "Pine Beach",
     locale: "en_AU",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: HEADLINE,
+    description: SUBHEAD,
   },
 };
 

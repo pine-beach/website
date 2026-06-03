@@ -482,15 +482,14 @@ export default function PineBeachSite() {
         <div className={"hero" + (isOpen ? " recede" : "")}>
           <div className="eyebrow pb-reveal">Design &amp; engineering studio</div>
           <h1>
-            <span className="ln pb-reveal">Make the</span>
-            <span className="ln pb-reveal">impossible</span>
+            <span className="ln pb-reveal">Complex by nature.</span>
             <span className="ln pb-reveal">
-              inevitable<span className="caret" />
+              Elegant by design.<span className="caret" />
             </span>
           </h1>
           <p className="lead pb-reveal">
-            A small senior design and engineering studio for the work at the
-            edge of what&apos;s possible.
+            A senior design and engineering studio for transformative products
+            that don&apos;t have a blueprint.
           </p>
           <div className="cta pb-reveal">
             <button className="btn" onClick={(e) => handleSec("contact", e)}>
