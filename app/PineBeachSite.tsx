@@ -454,7 +454,7 @@ export default function PineBeachSite() {
               className={navActive("studio")}
               onClick={(e) => handleSec("studio", e, true)}
             >
-              <span className="n">02</span>Studio
+              <span className="n">02</span>About
             </a>
             <a
               className={navActive("capabilities")}
@@ -527,7 +527,7 @@ export default function PineBeachSite() {
               <span className="n">01</span> Work
             </a>
             <a onClick={(e) => handleSec("studio", e)}>
-              <span className="n">02</span> Studio
+              <span className="n">02</span> About
             </a>
             <a onClick={(e) => handleSec("capabilities", e)}>
               <span className="n">03</span> Capabilities
@@ -562,40 +562,89 @@ export default function PineBeachSite() {
             <div className="ov-head">
               <div>
                 <div className="idx">01 — Work</div>
-                <h2>Built for the edge of possible.</h2>
+                <h2>Selected work.</h2>
               </div>
               <div className="tag">
-                Case studies are in the works. Want a preview? Start a
-                conversation.
+                Platforms, brands and products — built end-to-end.
               </div>
             </div>
-            <div className="work-wrap stag">
-              <div className="dotrow">
-                <span />
-                <span />
-                <span />
+            <div className="work-grid stag">
+              <div className="wcard">
+                <div className="wlogo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/work/collabcart.png" alt="CollabCart" />
+                </div>
+                <div className="wname">CollabCart</div>
+                <div className="wrole">Branding · Website · Platform</div>
+                <div className="wcopy">
+                  Creator commerce that turns trust into revenue — personalised
+                  storefronts for creators and small businesses, with no
+                  inventory or setup.
+                </div>
               </div>
-              <h3>The case studies are coming.</h3>
-              <p>
-                We&apos;re polishing the work worth showing. In the meantime,
-                tell us what you&apos;re building and we&apos;ll walk you through
-                the most relevant projects directly.
-              </p>
-              <div className="work-list">
-                <span className="work-chip">AI platforms</span>
-                <span className="work-chip">Fintech</span>
-                <span className="work-chip">Developer tools</span>
-                <span className="work-chip">Robotics</span>
-                <span className="work-chip">0 → 1 products</span>
+              <div className="wcard">
+                <div className="wlogo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/work/gro.svg" alt="Gro Clinics" />
+                </div>
+                <div className="wname">Gro Clinics</div>
+                <div className="wrole">System architecture · Telehealth</div>
+                <div className="wcopy">
+                  Doctor-led hair restoration across Australia and New Zealand.
+                  Full system architecture and a telehealth platform spanning
+                  consults to scripts.
+                </div>
               </div>
-              <div style={{ marginTop: 30 }}>
-                <button className="btn" onClick={(e) => handleSec("contact", e)}>
-                  Request a preview{" "}
+              <div className="wcard">
+                <div className="wlogo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/work/mpd.svg" alt="My Performance Doctor" />
+                </div>
+                <div className="wname">My Performance Doctor</div>
+                <div className="wrole">Platform</div>
+                <div className="wcopy">
+                  Concierge longevity and performance medicine. A platform that
+                  makes advanced biomarkers legible and care genuinely
+                  proactive.
+                </div>
+              </div>
+              <div className="wcard">
+                <div className="wlogo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/work/kurk.png" alt="Kurk" />
+                </div>
+                <div className="wname">Kurk</div>
+                <div className="wrole">Website · Platform</div>
+                <div className="wcopy">
+                  A natural anti-inflammatory wellness brand built on
+                  next-generation liquid curcumin. Storefront and commerce
+                  platform.
+                </div>
+              </div>
+              <div className="wcard">
+                <div className="wlogo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/work/eyetelligence.png" alt="Eyetelligence" />
+                </div>
+                <div className="wname">Eyetelligence</div>
+                <div className="wrole">Website</div>
+                <div className="wcopy">
+                  AI retinal imaging that screens for disease from a single
+                  photo — since scaled internationally as Optain.
+                </div>
+              </div>
+              <button
+                className="wcard wcard-cta"
+                onClick={(e) => handleSec("contact", e)}
+              >
+                <div className="wcta-l">Your project, next.</div>
+                <div className="wcta-r">
+                  Start a project{" "}
                   <span className="ico">
                     <ArrowUpRight size={15} strokeWidth={1.5} />
                   </span>
-                </button>
-              </div>
+                </div>
+              </button>
             </div>
           </section>
 
@@ -603,14 +652,15 @@ export default function PineBeachSite() {
           <section className={secClass("studio")}>
             <div className="ov-head">
               <div>
-                <div className="idx">02 — Studio</div>
-                <h2>Quiet craft, ambitious work.</h2>
+                <div className="idx">02 — About</div>
+                <h2>Quiet craft. Ambitious work.</h2>
               </div>
               <div className="tag">
-                A small senior team that takes the briefs others won&apos;t.
+                A senior studio — and the person behind it.
               </div>
             </div>
             <div className="studio-grid">
+              {/* LEFT — Pine Beach: statement, body, principles */}
               <div className="stag">
                 <div className="studio-lead">
                   We build <em>what doesn&apos;t exist yet</em> — precisely, and
@@ -627,40 +677,67 @@ export default function PineBeachSite() {
                   ill-defined problems and turn them into products that feel
                   inevitable.
                 </p>
-                <div className="founder">
-                  <span className="mark">
-                    <span className="sprig" />
-                  </span>
-                  <div>
-                    <div className="nm">Jake Sobel</div>
-                    <div className="role">CEO &amp; Founder</div>
+                <div className="principles" style={{ marginTop: 30 }}>
+                  <div className="p">
+                    <div className="pn">P/01</div>
+                    <h4>Precision over noise</h4>
+                    <p>
+                      Every pixel, millisecond and word is deliberate. Restraint
+                      is the point.
+                    </p>
+                  </div>
+                  <div className="p">
+                    <div className="pn">P/02</div>
+                    <h4>Build the impossible</h4>
+                    <p>
+                      Ambitious by default. If it hasn&apos;t been done,
+                      that&apos;s the reason to do it.
+                    </p>
+                  </div>
+                  <div className="p">
+                    <div className="pn">P/03</div>
+                    <h4>Quiet confidence</h4>
+                    <p>
+                      We let craft and outcomes speak. Calm, engineered, capable.
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="principles stag">
-                <div className="p">
-                  <div className="pn">P/01</div>
-                  <h4>Precision over noise</h4>
-                  <p>
-                    Every pixel, millisecond and word is deliberate. Restraint is
-                    the point.
-                  </p>
+
+              {/* RIGHT — Jake: profile card */}
+              <div className="about-jake stag">
+                <span className="founder-photo founder-photo-lg">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/about/jake.jpg"
+                    alt="Jake Sobel"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.display = "none";
+                    }}
+                  />
+                </span>
+                <div className="jake-id">
+                  <div className="nm">Jake Sobel</div>
+                  <div className="role">CEO &amp; Founder</div>
                 </div>
-                <div className="p">
-                  <div className="pn">P/02</div>
-                  <h4>Build the impossible</h4>
-                  <p>
-                    Ambitious by default. If it hasn&apos;t been done, that&apos;s
-                    the reason to do it.
-                  </p>
-                </div>
-                <div className="p">
-                  <div className="pn">P/03</div>
-                  <h4>Quiet confidence</h4>
-                  <p>
-                    We let craft and outcomes speak. Calm, engineered, capable.
-                  </p>
-                </div>
+                <p className="founder-bio">
+                  Jake Sobel builds technology that makes complex systems simple
+                  and personal. Across his career he has designed telehealth
+                  prescribing platforms, launched AI-powered diagnostics, and
+                  scaled consumer wellness brands — work spanning regulated
+                  healthcare, frontier AI and high-growth commerce.
+                </p>
+                <p className="founder-bio">
+                  The throughline is personalisation: platforms that connect
+                  people with exactly what they need, proven at scale. That
+                  conviction led him to found CollabCart, turning trusted
+                  recommendations into seamless commerce.
+                </p>
+                <p className="founder-bio">
+                  Pine Beach is the studio expression of the same belief — that
+                  the hardest, least-defined problems deserve design and
+                  engineering of the highest craft.
+                </p>
               </div>
             </div>
           </section>
