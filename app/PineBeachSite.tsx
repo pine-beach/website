@@ -670,9 +670,11 @@ export default function PineBeachSite() {
             <div className="ov-head">
               <div>
                 <div className="idx">03 — Capabilities</div>
-                <h2>Capable of anything we take on.</h2>
+                <h2>Built end-to-end.</h2>
               </div>
-              <div className="tag">Six disciplines, one senior team.</div>
+              <div className="tag">
+                Strategy, design and engineering under one roof.
+              </div>
             </div>
             <div className="cap-grid stag">
               <div className="cap">
@@ -681,8 +683,8 @@ export default function PineBeachSite() {
                 </span>
                 <div className="cn">Product design</div>
                 <div className="cd">
-                  Interfaces engineered for clarity at speed. Zero to a system
-                  that scales.
+                  From first principles to polished experiences. We design
+                  products people understand instantly and remember long after.
                 </div>
               </div>
               <div className="cap">
@@ -691,8 +693,8 @@ export default function PineBeachSite() {
                 </span>
                 <div className="cn">Engineering</div>
                 <div className="cd">
-                  Full-stack delivery — performant, typed, tested. We ship the
-                  hard parts.
+                  Robust systems, elegant architecture, and production-grade
+                  delivery. Built to scale from day one.
                 </div>
               </div>
               <div className="cap">
@@ -701,17 +703,18 @@ export default function PineBeachSite() {
                 </span>
                 <div className="cn">Motion &amp; interaction</div>
                 <div className="cd">
-                  Signature moments that make a product feel alive and precise.
+                  Movement with purpose. The details that make products feel
+                  intuitive, responsive, and alive.
                 </div>
               </div>
               <div className="cap">
                 <span className="ci">
                   <Cpu size={22} strokeWidth={1.5} />
                 </span>
-                <div className="cn">AI &amp; applied R&amp;D</div>
+                <div className="cn">AI &amp; research</div>
                 <div className="cd">
-                  Frontier capability, grounded in real outcomes — the work
-                  others avoid.
+                  Emerging technologies, novel approaches, and difficult
+                  problems. Exploration grounded in real-world outcomes.
                 </div>
               </div>
               <div className="cap">
@@ -720,18 +723,18 @@ export default function PineBeachSite() {
                 </span>
                 <div className="cn">Brand &amp; identity</div>
                 <div className="cd">
-                  Systems, not logos. One language across every surface you
-                  touch.
+                  Brands are systems, not logos. We create coherent identities
+                  that scale across every customer touchpoint.
                 </div>
               </div>
               <div className="cap">
                 <span className="ci">
                   <GitBranch size={22} strokeWidth={1.5} />
                 </span>
-                <div className="cn">Platform &amp; infra</div>
+                <div className="cn">Platform &amp; infrastructure</div>
                 <div className="cd">
-                  Reliable, observable, fast foundations under ambitious
-                  products.
+                  The foundations behind ambitious products. Reliable,
+                  observable, and engineered for long-term growth.
                 </div>
               </div>
             </div>
