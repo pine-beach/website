@@ -235,3 +235,15 @@ body { background: #0a0a0b; color: #fafafa; font-family: var(--font-display), sa
 @media (prefers-reduced-motion: reduce) {
   .hero .caret, .ov-head h2 .caret { animation: none; }
 }
+
+/* ============ FIRST-LOAD INTRO (Bloom) ============
+   A pre-paint inline script adds .pb-intro to <html> only when the intro will
+   play (first visit this session, motion allowed). Until then the hero content
+   is held hidden so the dot-field bloom can morph into the orbit first; the
+   canvas effect then adds .pb-in to each element to fade it up. Without the
+   class (no-JS, reduced motion, repeat visit) the hero shows immediately. */
+.hero h1 .ln { display: block; }
+.pb-intro .pb-reveal { opacity: 0; transform: translateY(20px); }
+.pb-intro .pb-reveal.pb-fade { transform: none; }
+.pb-intro .pb-reveal.pb-in { opacity: 1; transform: none; transition: opacity 1.1s var(--e), transform 1.1s var(--e); }
+@media (prefers-reduced-motion: reduce) { .pb-intro .pb-reveal { opacity: 1; transform: none; } }

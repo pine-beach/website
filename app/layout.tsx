@@ -45,7 +45,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {/* Decide the first-load intro before paint (no flash). Plays once per
+            session, never under reduced-motion or in ?still capture mode. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var p=!sessionStorage.getItem('pb-introSeen')&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&location.search.indexOf('still')<0;if(p){document.documentElement.classList.add('pb-intro');sessionStorage.setItem('pb-introSeen','1');}}catch(e){}",
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

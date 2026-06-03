@@ -82,6 +82,69 @@ export default function PineBeachSite() {
       resumeOffY = 0;
     const RESUME_DECAY = 0.965; // per-frame easing of the offset toward 0 (~1.3s)
 
+    // ---- first-load Bloom intro: dot-field blooms, then morphs into the orbit ----
+    const playIntro =
+      document.documentElement.classList.contains("pb-intro") && !reduce && !still;
+    let bloom = playIntro; // intro choreography running
+    let introT = 0;
+    const introStart = performance.now();
+    let fade = bloom ? 0 : 1; // global dot opacity (fades in from black)
+    let orbitActive = !bloom; // orbit suppressed during the bloom
+    let orbitReleased = !bloom; // lens still pinned to centre until released
+    let blobMix = bloom ? 0 : 1; // strength of the orbit lens
+    let bloomRip = 0; // current ripple amplitude
+    let handover = false,
+      released = false,
+      revealed = false;
+    const introTimers: number[] = [];
+    const sm = (x: number) => {
+      x = x < 0 ? 0 : x > 1 ? 1 : x;
+      return x * x * (3 - 2 * x);
+    };
+    const rampUp = (tt: number, a: number, b: number) => sm((tt - a) / (b - a));
+    const bandE = (tt: number, a: number, b: number, c: number, d: number) =>
+      sm((tt - a) / (b - a)) * (1 - sm((tt - c) / (d - c)));
+    function revealHero() {
+      const add = (sel: string, ms: number) => {
+        const el = document.querySelector(sel);
+        if (el) introTimers.push(window.setTimeout(() => el.classList.add("pb-in"), ms));
+      };
+      add(".bar", 0);
+      add(".rail", 0);
+      add(".hero .eyebrow", 250);
+      document.querySelectorAll<HTMLElement>(".hero h1 .ln").forEach((l, i) => {
+        introTimers.push(window.setTimeout(() => l.classList.add("pb-in"), 480 + i * 200));
+      });
+      add(".hero .lead", 1250);
+      add(".hero .cta", 1500);
+    }
+    function driveIntro(tt: number) {
+      fade = rampUp(tt, 0, 1.0);
+      bloomRip = 24 * bandE(tt, 0.7, 1.9, 2.6, 3.2);
+      // the lens is born at the exact centre, holds, then eases onto its orbit
+      if (!handover && tt >= 3.2) {
+        handover = true;
+        orbitActive = true;
+        orbitReleased = false;
+        blob.x = W / 2;
+        blob.y = H / 2;
+      }
+      blobMix = rampUp(tt, 3.2, 3.7);
+      if (!released && tt >= 3.9) {
+        released = true;
+        orbitReleased = true;
+        orbit = 0;
+        resumeOffX = blob.x - (W / 2 + W * 0.26);
+        resumeOffY = blob.y - H / 2;
+        wasControlled = false;
+      }
+      if (!revealed && tt >= 3.9) {
+        revealed = true;
+        revealHero();
+      }
+      if (tt > 5.2) bloom = false;
+    }
+
     function resize() {
       W = window.innerWidth;
       H = window.innerHeight;
@@ -118,66 +181,93 @@ export default function PineBeachSite() {
     }
     lens.current.impulse = impulse;
 
-    function frame() {
+    function frame(now: number) {
       if (W === 0 || canvas!.width === 0) resize();
       t += 0.016;
-      orbit += 0.01;
-      // Controlled = pointer present AND moved within the idle window. After
-      // IDLE_RESUME_MS of stillness (or on release) control hands back so the
-      // field never freezes.
-      const controlled =
-        mouse.x > -999 && performance.now() - lastMoveAt <= IDLE_RESUME_MS;
-      const orbitX = W / 2 + Math.cos(orbit) * W * 0.26;
-      const orbitY = H / 2 + Math.sin(orbit * 1.3) * H * 0.32;
-      let tx: number, ty: number;
-      if (controlled) {
-        tx = mouse.x;
-        ty = mouse.y;
-        wasControlled = true;
-      } else {
-        if (wasControlled) {
-          // Just released: seed the offset so the target begins exactly where
-          // the blob is now, then eases into the orbit as the offset decays.
-          resumeOffX = blob.x - orbitX;
-          resumeOffY = blob.y - orbitY;
-          wasControlled = false;
+      if (bloom) {
+        introT = (now - introStart) / 1000;
+        driveIntro(introT);
+      }
+      // ---- orbit lens (only once active) ----
+      if (orbitActive) {
+        if (orbitReleased) {
+          orbit += 0.01;
+          const controlled =
+            mouse.x > -999 && performance.now() - lastMoveAt <= IDLE_RESUME_MS;
+          const orbitX = W / 2 + Math.cos(orbit) * W * 0.26;
+          const orbitY = H / 2 + Math.sin(orbit * 1.3) * H * 0.32;
+          let tx: number, ty: number;
+          if (controlled) {
+            tx = mouse.x;
+            ty = mouse.y;
+            wasControlled = true;
+          } else {
+            if (wasControlled) {
+              resumeOffX = blob.x - orbitX;
+              resumeOffY = blob.y - orbitY;
+              wasControlled = false;
+            }
+            resumeOffX *= RESUME_DECAY;
+            resumeOffY *= RESUME_DECAY;
+            tx = orbitX + resumeOffX;
+            ty = orbitY + resumeOffY;
+          }
+          if (blob.x < -999) {
+            blob.x = tx;
+            blob.y = ty;
+          }
+          blob.x += (tx - blob.x) * 0.11;
+          blob.y += (ty - blob.y) * 0.11;
+        } else {
+          // hold the lens at the exact centre while it fades in
+          blob.x += (W / 2 - blob.x) * 0.12;
+          blob.y += (H / 2 - blob.y) * 0.12;
         }
-        resumeOffX *= RESUME_DECAY;
-        resumeOffY *= RESUME_DECAY;
-        tx = orbitX + resumeOffX;
-        ty = orbitY + resumeOffY;
       }
-      if (blob.x < -999) {
-        blob.x = tx;
-        blob.y = ty;
-      }
-      blob.x += (tx - blob.x) * 0.11;
-      blob.y += (ty - blob.y) * 0.11;
       ctx!.clearRect(0, 0, W, H);
       for (let i = 0; i < cells.length; i++) {
         const p = cells[i];
+        // bloom ripple offset (radial concentric waves from centre)
+        let offx = 0,
+          offy = 0;
+        if (bloom && bloomRip > 0.001) {
+          const dx0 = p.rx - W / 2,
+            dy0 = p.ry - H / 2,
+            dd = Math.hypot(dx0, dy0) || 1;
+          const rad = Math.sin(dd * 0.028 - introT * 2.1) * bloomRip;
+          offx = (dx0 / dd) * rad;
+          offy = (dy0 / dd) * rad;
+        }
+        const tx2 = p.rx + offx,
+          ty2 = p.ry + offy;
         let fx = 0,
           fy = 0;
-        const dx = p.rx - blob.x,
-          dy = p.ry - blob.y,
-          d = Math.hypot(dx, dy) || 1;
-        if (d < 150) {
-          const f = 1 - d / 150;
-          fx += (dx / d) * f * f * 7;
-          fy += (dy / d) * f * f * 7;
+        if (blobMix > 0) {
+          const dx = p.rx - blob.x,
+            dy = p.ry - blob.y,
+            d = Math.hypot(dx, dy) || 1;
+          if (d < 150) {
+            const f = 1 - d / 150;
+            fx = (dx / d) * f * f * 7 * blobMix;
+            fy = (dy / d) * f * f * 7 * blobMix;
+          }
         }
-        const ox = p.x - p.rx,
-          oy = p.y - p.ry;
+        const ox = p.x - tx2,
+          oy = p.y - ty2;
         p.vx += fx - ox * 0.06 - p.vx * 0.16;
         p.vy += fy - oy * 0.06 - p.vy * 0.16;
         p.x += p.vx;
         p.y += p.vy;
-        const off = Math.hypot(ox, oy);
+        const hx = p.x - p.rx,
+          hy = p.y - p.ry,
+          off = Math.hypot(hx, hy);
         const idle = 0.5 + 0.5 * Math.sin((p.rx + p.ry) * 0.012 + t * 1.2);
-        const a = 0.05 + 0.07 * idle + Math.min(0.9, off * 0.07);
+        const a = (0.05 + 0.07 * idle + Math.min(0.9, off * 0.07)) * fade;
         const sz = 1 + Math.min(3, off * 0.11);
-        ctx!.fillStyle = "rgba(250,250,250," + Math.min(1, a) + ")";
-        ctx!.fillRect(p.x - sz / 2, p.y - sz / 2, sz, sz);
+        if (a > 0.001) {
+          ctx!.fillStyle = "rgba(250,250,250," + Math.min(1, a) + ")";
+          ctx!.fillRect(p.x - sz / 2, p.y - sz / 2, sz, sz);
+        }
       }
       if (!reduce && !still) raf = requestAnimationFrame(frame);
     }
@@ -207,10 +297,11 @@ export default function PineBeachSite() {
     window.addEventListener("pointercancel", onRelease);
     window.addEventListener("resize", resize);
     resize();
-    frame(); // paint one frame immediately, then it self-schedules via rAF
+    frame(performance.now()); // paint one frame immediately, then it self-schedules via rAF
 
     return () => {
       cancelAnimationFrame(raf);
+      introTimers.forEach(clearTimeout);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerleave", onRelease);
       window.removeEventListener("pointerup", onRelease);
@@ -348,7 +439,7 @@ export default function PineBeachSite() {
 
       {/* ===== SHELL ===== */}
       <div className="shell">
-        <div className="bar">
+        <div className="bar pb-reveal pb-fade">
           <a className="brand" onClick={goHome}>
             <span className="mark">
               <span className="sprig" />
@@ -389,15 +480,19 @@ export default function PineBeachSite() {
         </div>
 
         <div className={"hero" + (isOpen ? " recede" : "")}>
-          <div className="eyebrow">Design &amp; engineering studio</div>
+          <div className="eyebrow pb-reveal">Design &amp; engineering studio</div>
           <h1>
-            Make the<br />impossible<br />inevitable<span className="caret" />
+            <span className="ln pb-reveal">Make the</span>
+            <span className="ln pb-reveal">impossible</span>
+            <span className="ln pb-reveal">
+              inevitable<span className="caret" />
+            </span>
           </h1>
-          <p className="lead">
+          <p className="lead pb-reveal">
             A small senior design and engineering studio for the work at the
             edge of what&apos;s possible.
           </p>
-          <div className="cta">
+          <div className="cta pb-reveal">
             <button className="btn" onClick={(e) => handleSec("contact", e)}>
               Start a project{" "}
               <span className="ico">
@@ -410,7 +505,7 @@ export default function PineBeachSite() {
           </div>
         </div>
 
-        <div className="rail">
+        <div className="rail pb-reveal pb-fade">
           <span>Sydney · est. 2019</span>
           <span className="hud" ref={hudRef}>
             x:0000 y:0000
