@@ -680,25 +680,33 @@ export default function PineBeachSite() {
                 <div className="principles" style={{ marginTop: 30 }}>
                   <div className="p">
                     <div className="pn">P/01</div>
-                    <h4>Precision over noise</h4>
+                    <h4>Craft without compromise</h4>
+                    <p className="p-lead">Every decision matters.</p>
                     <p>
-                      Every pixel, millisecond and word is deliberate. Restraint
-                      is the point.
+                      From system architecture to typography, we pursue clarity,
+                      quality, and attention to detail in everything we build.
                     </p>
                   </div>
                   <div className="p">
                     <div className="pn">P/02</div>
-                    <h4>Build the impossible</h4>
+                    <h4>Embrace complexity</h4>
+                    <p className="p-lead">
+                      The hardest problems are often the most valuable.
+                    </p>
                     <p>
-                      Ambitious by default. If it hasn&apos;t been done,
-                      that&apos;s the reason to do it.
+                      We lean into ambiguity, navigate constraints, and create
+                      elegant solutions where others see obstacles.
                     </p>
                   </div>
                   <div className="p">
                     <div className="pn">P/03</div>
-                    <h4>Quiet confidence</h4>
+                    <h4>First, understand</h4>
+                    <p className="p-lead">Solve the problem, not the symptom.</p>
                     <p>
-                      We let craft and outcomes speak. Calm, engineered, capable.
+                      We begin with fundamentals — the people, the constraints,
+                      and the underlying need. By understanding what truly
+                      matters, we avoid unnecessary complexity and build only
+                      what creates value.
                     </p>
                   </div>
                 </div>
