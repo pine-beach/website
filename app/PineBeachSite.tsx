@@ -42,6 +42,7 @@ export default function PineBeachSite() {
   const [isOpen, setIsOpen] = useState(false);
   const [staggerIn, setStaggerIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [aboutTab, setAboutTab] = useState(0); // 0 Studio · 1 Principles · 2 Founder
 
   const [form, setForm] = useState({ name: "", email: "", company: "", brief: "" });
   const [errors, setErrors] = useState({ name: false, email: false, brief: false });
@@ -325,6 +326,7 @@ export default function PineBeachSite() {
       scrimRef.current.style.setProperty("--oy", y + "px");
     }
     lens.current.impulse(x, y, 26); // liquid burst from the click
+    if (name === "studio") setAboutTab(0); // always open About on the first tab
     setActiveSection(name);
     setIsOpen(true);
   }
@@ -653,68 +655,93 @@ export default function PineBeachSite() {
             <div className="ov-head">
               <div>
                 <div className="idx">02 — About</div>
-                <h2>Quiet craft. Ambitious work.</h2>
+                <h2>Where vision meets reality</h2>
               </div>
               <div className="tag">
                 A senior studio — and the person behind it.
               </div>
             </div>
-            <div className="studio-grid">
-              {/* LEFT — Pine Beach: statement, body, principles */}
-              <div className="stag">
+
+            <div className="about-tabs stag">
+              <button
+                className={"about-tab" + (aboutTab === 0 ? " active" : "")}
+                onClick={() => setAboutTab(0)}
+              >
+                <span className="tn">01</span> Studio
+              </button>
+              <button
+                className={"about-tab" + (aboutTab === 1 ? " active" : "")}
+                onClick={() => setAboutTab(1)}
+              >
+                <span className="tn">02</span> Principles
+              </button>
+              <button
+                className={"about-tab" + (aboutTab === 2 ? " active" : "")}
+                onClick={() => setAboutTab(2)}
+              >
+                <span className="tn">03</span> Founder
+              </button>
+            </div>
+
+            {aboutTab === 0 && (
+              <div className="tab-panel panel-studio" key="studio">
                 <div className="studio-lead">
-                  We build <em>what doesn&apos;t exist yet</em> — precisely, and
-                  at the speed of thought.
+                  Ideas are easy. <em>Execution is everything.</em>
                 </div>
-                <p className="studio-body" style={{ marginTop: 22 }}>
-                  Pine Beach is a design and development studio working at the
-                  forefront of technology. We pair senior design with senior
-                  engineering, so the people scoping the work are the people who
-                  ship it.
-                </p>
-                <p className="studio-body">
-                  No hand-offs, no hype, no filler. We take ambitious,
-                  ill-defined problems and turn them into products that feel
-                  inevitable.
-                </p>
-                <div className="principles" style={{ marginTop: 30 }}>
-                  <div className="p">
-                    <div className="pn">P/01</div>
-                    <h4>Craft without compromise</h4>
-                    <p className="p-lead">Every decision matters.</p>
-                    <p>
-                      From system architecture to typography, we pursue clarity,
-                      quality, and attention to detail in everything we build.
-                    </p>
-                  </div>
-                  <div className="p">
-                    <div className="pn">P/02</div>
-                    <h4>Embrace complexity</h4>
-                    <p className="p-lead">
-                      The hardest problems are often the most valuable.
-                    </p>
-                    <p>
-                      We lean into ambiguity, navigate constraints, and create
-                      elegant solutions where others see obstacles.
-                    </p>
-                  </div>
-                  <div className="p">
-                    <div className="pn">P/03</div>
-                    <h4>First, understand</h4>
-                    <p className="p-lead">Solve the problem, not the symptom.</p>
-                    <p>
-                      We begin with fundamentals — the people, the constraints,
-                      and the underlying need. By understanding what truly
-                      matters, we avoid unnecessary complexity and build only
-                      what creates value.
-                    </p>
-                  </div>
+                <div className="studio-body-col">
+                  <p className="studio-body">
+                    Pine Beach partners with founders, startups, and
+                    organisations to transform ambitious ideas into products
+                    that create real-world impact.
+                  </p>
+                  <p className="studio-body">
+                    We combine strategy, design, and engineering into a single
+                    integrated practice — bringing clarity to uncertainty and
+                    momentum to complex challenges.
+                  </p>
                 </div>
               </div>
+            )}
 
-              {/* RIGHT — Jake: profile card */}
-              <div className="about-jake stag">
-                <span className="founder-photo founder-photo-lg">
+            {aboutTab === 1 && (
+              <div className="tab-panel panel-principles" key="principles">
+                <div className="p">
+                  <div className="pn">P/01</div>
+                  <h4>Craft without compromise</h4>
+                  <p className="p-lead">Every decision matters.</p>
+                  <p>
+                    From system architecture to typography, we pursue clarity,
+                    quality, and attention to detail in everything we build.
+                  </p>
+                </div>
+                <div className="p">
+                  <div className="pn">P/02</div>
+                  <h4>Embrace complexity</h4>
+                  <p className="p-lead">
+                    The hardest problems are often the most valuable.
+                  </p>
+                  <p>
+                    We lean into ambiguity, navigate constraints, and create
+                    elegant solutions where others see obstacles.
+                  </p>
+                </div>
+                <div className="p">
+                  <div className="pn">P/03</div>
+                  <h4>First, understand</h4>
+                  <p className="p-lead">Solve the problem, not the symptom.</p>
+                  <p>
+                    We begin with fundamentals — the people, the constraints,
+                    and the underlying need. By understanding what truly
+                    matters, we avoid unnecessary complexity and build only what
+                    creates value.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {aboutTab === 2 && (
+              <div className="tab-panel panel-founder" key="founder">
+                <div className="founder-photo-xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/about/jake.jpg"
@@ -723,31 +750,34 @@ export default function PineBeachSite() {
                       (e.currentTarget as HTMLImageElement).style.display = "none";
                     }}
                   />
-                </span>
-                <div className="jake-id">
-                  <div className="nm">Jake Sobel</div>
-                  <div className="role">CEO &amp; Founder</div>
                 </div>
-                <p className="founder-bio">
-                  Jake Sobel builds technology that makes complex systems simple
-                  and personal. Across his career he has designed telehealth
-                  prescribing platforms, launched AI-powered diagnostics, and
-                  scaled consumer wellness brands — work spanning regulated
-                  healthcare, frontier AI and high-growth commerce.
-                </p>
-                <p className="founder-bio">
-                  The throughline is personalisation: platforms that connect
-                  people with exactly what they need, proven at scale. That
-                  conviction led him to found CollabCart, turning trusted
-                  recommendations into seamless commerce.
-                </p>
-                <p className="founder-bio">
-                  Pine Beach is the studio expression of the same belief — that
-                  the hardest, least-defined problems deserve design and
-                  engineering of the highest craft.
-                </p>
+                <div className="founder-col">
+                  <div className="jake-id">
+                    <div className="nm">Jake Sobel</div>
+                    <div className="role">CEO &amp; Founder</div>
+                  </div>
+                  <p className="founder-bio">
+                    Jake Sobel builds technology that makes complex systems
+                    simple and personal. Across his career he has designed
+                    telehealth prescribing platforms, launched AI-powered
+                    diagnostics, and scaled consumer wellness brands — work
+                    spanning regulated healthcare, frontier AI and high-growth
+                    commerce.
+                  </p>
+                  <p className="founder-bio">
+                    The throughline is personalisation: platforms that connect
+                    people with exactly what they need, proven at scale. That
+                    conviction led him to found CollabCart, turning trusted
+                    recommendations into seamless commerce.
+                  </p>
+                  <p className="founder-bio">
+                    Pine Beach is the studio expression of the same belief —
+                    that the hardest, least-defined problems deserve design and
+                    engineering of the highest craft.
+                  </p>
+                </div>
               </div>
-            </div>
+            )}
           </section>
 
           {/* CAPABILITIES */}
