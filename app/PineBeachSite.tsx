@@ -596,7 +596,7 @@ export default function PineBeachSite() {
               <div className="wcard">
                 <div className="wlogo">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/work/collabcart.png" alt="CollabCart" />
+                  <img src="/work/collabcart.svg" alt="CollabCart" />
                 </div>
                 <div className="wname">CollabCart</div>
                 <div className="wrole">Branding · Website · Platform</div>

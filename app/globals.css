@@ -181,7 +181,7 @@ body { background: #0a0a0b; color: #fafafa; font-family: var(--font-display), sa
 .wcard:hover { background: rgba(22,22,26,0.8); }
 /* full-colour logos on a light tile so every brand colour reads on the dark card */
 .wlogo { align-self: flex-start; height: 48px; display: inline-flex; align-items: center; justify-content: center; background: #fafafa; border-radius: 10px; padding: 0 18px; margin-bottom: 22px; }
-.wlogo img { max-height: 24px; max-width: 158px; width: auto; display: block; object-fit: contain; }
+.wlogo img { height: 24px; width: auto; max-width: 158px; display: block; object-fit: contain; }
 .wlogo-text { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: #0a0a0b; }
 .wname { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 7px; }
 .wrole { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6b73; margin-bottom: 12px; }
