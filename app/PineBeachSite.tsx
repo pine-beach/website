@@ -47,6 +47,8 @@ export default function PineBeachSite() {
   const [form, setForm] = useState({ name: "", email: "", company: "", brief: "" });
   const [errors, setErrors] = useState({ name: false, email: false, brief: false });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [submittedName, setSubmittedName] = useState("");
   const [submittedEmail, setSubmittedEmail] = useState("");
 
@@ -82,6 +84,9 @@ export default function PineBeachSite() {
     let resumeOffX = 0,
       resumeOffY = 0;
     const RESUME_DECAY = 0.965; // per-frame easing of the offset toward 0 (~1.3s)
+    // Lens influence — smaller + gentler on mobile so the orbit is subtler.
+    let LENS_R = 150;
+    let LENS_PULL = 7;
 
     // ---- first-load Bloom intro: dot-field blooms, then morphs into the orbit ----
     const playIntro =
@@ -149,6 +154,9 @@ export default function PineBeachSite() {
     function resize() {
       W = window.innerWidth;
       H = window.innerHeight;
+      const mobile = W <= 560;
+      LENS_R = mobile ? 95 : 150; // tighter lens on mobile
+      LENS_PULL = mobile ? 4.5 : 7; // gentler push on mobile
       canvas!.width = W * dpr;
       canvas!.height = H * dpr;
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -247,10 +255,10 @@ export default function PineBeachSite() {
           const dx = p.rx - blob.x,
             dy = p.ry - blob.y,
             d = Math.hypot(dx, dy) || 1;
-          if (d < 150) {
-            const f = 1 - d / 150;
-            fx = (dx / d) * f * f * 7 * blobMix;
-            fy = (dy / d) * f * f * 7 * blobMix;
+          if (d < LENS_R) {
+            const f = 1 - d / LENS_R;
+            fx = (dx / d) * f * f * LENS_PULL * blobMix;
+            fy = (dy / d) * f * f * LENS_PULL * blobMix;
           }
         }
         const ox = p.x - tx2,
@@ -394,8 +402,9 @@ export default function PineBeachSite() {
   }, []);
 
   /* ---------------- lead capture → mailto ---------------- */
-  function submitLead(e: React.FormEvent<HTMLFormElement>) {
+  async function submitLead(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
     const name = form.name.trim(),
       email = form.email.trim(),
       brief = form.brief.trim(),
@@ -406,24 +415,37 @@ export default function PineBeachSite() {
       return;
     }
     setErrors({ name: false, email: false, brief: false });
+    setSubmitError("");
+    setSubmitting(true);
 
-    const subject = `New project enquiry — ${name}`;
-    const bodyLines = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      company ? `Company: ${company}` : null,
-      "",
-      "What we're building:",
-      brief,
-    ].filter((l) => l !== null);
-    const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
-    window.location.href = mailto;
+    // on-brand signature ripple from the submit button outward
+    try {
+      const r = e.currentTarget.getBoundingClientRect();
+      lens.current.impulse(r.left + r.width / 2, r.top + r.height / 2, 24);
+    } catch {}
 
-    setSubmittedName(name.split(" ")[0]);
-    setSubmittedEmail(email);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, company, brief }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+      setSubmittedName(name.split(" ")[0]);
+      setSubmittedEmail(email);
+      setSubmitted(true);
+      // a second, softer ripple as the success state blooms in
+      lens.current.impulse(lens.current.W / 2, lens.current.H / 2, 20);
+    } catch {
+      setSubmitError(
+        "Couldn't send just now — please email jake@pinebeach.com.au directly."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   const secClass = (sec: SectionName) =>
@@ -881,7 +903,7 @@ export default function PineBeachSite() {
                 </a>
               </div>
               {submitted ? (
-                <div className="form-success stag" style={{ gridColumn: "span 2" }}>
+                <div className="form-success" style={{ gridColumn: "span 2" }}>
                   <div className="ok">
                     <span className="ico">
                       <Check size={24} strokeWidth={1.5} />
@@ -956,12 +978,21 @@ export default function PineBeachSite() {
                     />
                   </div>
                   <div className="submit">
-                    <span className="note">We reply within 2 business days.</span>
-                    <button className="btn" type="submit">
-                      Start a project{" "}
-                      <span className="ico">
-                        <ArrowUpRight size={15} strokeWidth={1.5} />
-                      </span>
+                    <span className={"note" + (submitError ? " note-error" : "")}>
+                      {submitError || "We reply within 2 business days."}
+                    </span>
+                    <button
+                      className="btn"
+                      type="submit"
+                      disabled={submitting}
+                      aria-busy={submitting}
+                    >
+                      {submitting ? "Sending…" : "Start a project"}
+                      {!submitting && (
+                        <span className="ico">
+                          <ArrowUpRight size={15} strokeWidth={1.5} />
+                        </span>
+                      )}
                     </button>
                   </div>
                 </form>
