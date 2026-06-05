@@ -689,23 +689,23 @@ export default function PineBeachSite() {
                 className={"about-tab" + (aboutTab === 0 ? " active" : "")}
                 onClick={() => setAboutTab(0)}
               >
-                <span className="tn">01</span> Studio
+                <span className="tn">01</span> Founder
               </button>
               <button
                 className={"about-tab" + (aboutTab === 1 ? " active" : "")}
                 onClick={() => setAboutTab(1)}
               >
-                <span className="tn">02</span> Principles
+                <span className="tn">02</span> Studio
               </button>
               <button
                 className={"about-tab" + (aboutTab === 2 ? " active" : "")}
                 onClick={() => setAboutTab(2)}
               >
-                <span className="tn">03</span> Founder
+                <span className="tn">03</span> Principles
               </button>
             </div>
 
-            {aboutTab === 0 && (
+            {aboutTab === 1 && (
               <div className="tab-panel panel-studio" key="studio">
                 <div className="studio-lead">
                   Ideas are easy. <em>Execution is everything.</em>
@@ -725,7 +725,7 @@ export default function PineBeachSite() {
               </div>
             )}
 
-            {aboutTab === 1 && (
+            {aboutTab === 2 && (
               <div className="tab-panel panel-principles" key="principles">
                 <div className="p">
                   <div className="pn">P/01</div>
@@ -761,7 +761,7 @@ export default function PineBeachSite() {
               </div>
             )}
 
-            {aboutTab === 2 && (
+            {aboutTab === 0 && (
               <div className="tab-panel panel-founder" key="founder">
                 <div className="founder-photo-xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
